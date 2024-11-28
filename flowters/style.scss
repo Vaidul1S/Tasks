@@ -1,0 +1,12 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background: #222;
+    color: white;
+    font-family: Arial, sans-serif;
+    .phrase {
+        position: absolute;
+        font-size: 24px;
+        white-space: nowrap;
+    }
+}
