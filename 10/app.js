@@ -10,7 +10,7 @@ function showSlide(index) {
     slides.forEach((slide, i) => {
         slide.classList.toggle('active', i === index);
     });
-}
+};
 
 rightClick.addEventListener('click', () => {
     currentSlide = (currentSlide + 1 + slides.length) % slides.length;
