@@ -136,10 +136,7 @@ input[type="checkbox"]:checked+label {
     align-items: last baseline;
     color: red;
     font-size: 16px;
-    font-weight: 700;
-    background-image: url("./Components/sheep.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+    font-weight: 700;    
     cursor: pointer;
   }  
 }
@@ -157,10 +154,7 @@ input[type="checkbox"]:checked+label {
     align-items: last baseline;
     color: red;
     font-size: 16px;
-    font-weight: 700;
-    background-image: url("./Components/cow.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+    font-weight: 700;    
     cursor: pointer;
   } 
 }
