@@ -11,21 +11,19 @@ function App() {
     const [karves, setKarves] = useState([]);
 
     const iGanykla = _ => {
-        for (let i = 0; i < rand(5, 25); i++) {
+        for (let i = 0; i < rand(5, 20); i++) {
             setAvys(a => [...a, {
                 id: 'A' + rand(1000000, 9999999),
-                color: 'white',
-                kind: '50%',
-                ganykla: true
+                ganykla: true,
+                kind: 'sheep'
             }]);
         }
 
-        for (let i = 0; i < rand(5, 25); i++) {
+        for (let i = 0; i < rand(5, 20); i++) {
             setKarves(k => [...k, {
                 id: 'K' + rand(1000000, 9999999),
-                color: 'darkgoldenrod',
-                kind: '2px',
-                ganykla: false
+                ganykla: false,
+                kind: 'cow'
             }]);
         }
 
@@ -39,10 +37,10 @@ function App() {
     const perbegimas = (id, ganykla) => {
         
         if (ganykla) {
-            setKarves(k => [...k, {id: id, color: k.color, kind: k.kind, ganykla: false}]);
+            setKarves(k => [...k, {id: id, kind: 'sheep' && id.includes('A') ? 'sheep' : 'cow', ganykla: false}]);
             setAvys(a => a.filter(a => a.id !== id));
         } else {
-            setAvys(a => [...a, {id: id, color: a.color, kind: a.kind, ganykla: true}]);
+            setAvys(a => [...a, {id: id, kind: 'cow' && id.includes('K') ? 'cow' : 'sheep', ganykla: true}]);
             setKarves(k => k.filter(k => k.id !== id));
         }
         
@@ -58,7 +56,7 @@ function App() {
                         <h4>Avys</h4>
                         <div className="sheeps">
                             {
-                                avys.map(a => <Avis key={a.id} id={a.id} perbegimas={perbegimas} color={a.color} kind={a.kind} ganykla={a.ganykla}/>)
+                                avys.map(a => <Avis key={a.id} id={a.id} perbegimas={perbegimas} kind={a.kind} ganykla={a.ganykla}/>)
                             }
                         </div>
                     </div>
@@ -67,7 +65,7 @@ function App() {
                         <h4>Karvės</h4>
                         <div className="cows">
                             {
-                                karves.map(k => <Karve key={k.id} id={k.id} perbegimas={perbegimas} color={k.color} kind={k.kind} ganykla={k.ganykla}/>)
+                                karves.map(k => <Karve key={k.id} id={k.id} perbegimas={perbegimas} kind={k.kind} ganykla={k.ganykla}/>)
                             }
 
                         </div>
