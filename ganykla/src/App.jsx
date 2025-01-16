@@ -14,12 +14,18 @@ function App() {
         for (let i = 0; i < rand(5, 25); i++) {
             setAvys(a => [...a, {
                 id: 'A' + rand(1000000, 9999999),
+                color: 'white',
+                kind: '50%',
+                ganykla: true
             }]);
         }
 
         for (let i = 0; i < rand(5, 25); i++) {
             setKarves(k => [...k, {
                 id: 'K' + rand(1000000, 9999999),
+                color: 'darkgoldenrod',
+                kind: '2px',
+                ganykla: false
             }]);
         }
 
@@ -30,10 +36,14 @@ function App() {
         setKarves([]);
     }
 
-    const perbegimas = id => {
-        if (id.includes('A')) {
+    const perbegimas = (id, ganykla) => {
+        console.log(ganykla);
+        
+        if (ganykla) {
+            setKarves(k => [...k, {id: id, color: 'white', kind: '50%', ganykla: false}]);
             setAvys(a => a.filter(a => a.id !== id));
         } else {
+            setAvys(a => [...a, {id: id, color: 'darkgoldenrod', kind: '2px', ganykla: true}]);
             setKarves(k => k.filter(k => k.id !== id));
         }
         
@@ -49,7 +59,7 @@ function App() {
                         <h4>Avys</h4>
                         <div className="sheeps">
                             {
-                                avys.map(a => <Avis key={a.id} id={a.id} perbegimas={perbegimas}/>)
+                                avys.map(a => <Avis key={a.id} id={a.id} perbegimas={perbegimas} color={a.color} kind={a.kind} ganykla={a.ganykla}/>)
                             }
                         </div>
                     </div>
@@ -58,7 +68,7 @@ function App() {
                         <h4>Karvės</h4>
                         <div className="cows">
                             {
-                                karves.map(k => <Karve key={k.id} id={k.id} perbegimas={perbegimas}/>)
+                                karves.map(k => <Karve key={k.id} id={k.id} perbegimas={perbegimas} color={k.color} kind={k.kind} ganykla={k.ganykla}/>)
                             }
 
                         </div>
