@@ -1,0 +1,156 @@
+$tang: #EF946C;
+$ecru: #C4A77D;
+$hgreen: #70877F;
+$dblue: #454372;
+$cadet: #2F2963;
+
+button {
+    background-color: $cadet;
+    border: 0;
+    border-radius: 56px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: system-ui, -apple-system, system-ui, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    outline: 0;
+    padding: 16px 21px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin: 10px;
+
+    &.tang {
+        background-color: $tang;
+
+        &:hover {
+            background-color: darken($tang, 5%);
+        }
+    }
+
+    &.ecru {
+        background-color: $ecru;
+
+        &:hover {
+            background-color: darken($ecru, 5%);
+        }
+    }
+
+    &.hgreen {
+        background-color: $hgreen;
+
+        &:hover {
+            background-color: darken($hgreen, 5%);
+        }
+    }
+
+    &.dblue {
+        background-color: $dblue;
+
+        &:hover {
+            background-color: darken($dblue, 5%);
+        }
+    }
+}
+
+.button91 {
+    color: #fff;
+    padding: 15px 25px;
+    background-color: $cadet;
+    background-image: radial-gradient(93% 87% at 87% 89%, rgba(0, 0, 0, 0.23) 0%, transparent 86.18%), radial-gradient(66% 66% at 26% 20%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
+    box-shadow: inset -3px -3px 9px rgba(255, 255, 255, 0.25), inset 0px 3px 9px rgba(255, 255, 255, 0.3), inset 0px 1px 1px rgba(255, 255, 255, 0.6), inset 0px -8px 36px rgba(0, 0, 0, 0.3), inset 0px 1px 5px rgba(255, 255, 255, 0.6), 2px 19px 31px rgba(0, 0, 0, 0.2);
+    border-radius: 14px;
+    font-weight: bold;
+    font-size: 16px;
+    border: 0;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    cursor: pointer;
+    &.tang {
+        background-color: $tang;
+
+        &:hover {
+            background-color: darken($tang, 5%);
+        }
+    }
+    &.dblue {
+        background-color: $dblue;
+
+        &:hover {
+            background-color: darken($dblue, 5%);
+        }
+    }
+}
+
+.button27 {
+    appearance: none;
+    background-color: #000000;
+    border: 2px solid #1A1A1A;
+    border-radius: 15px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+    min-height: 60px;
+    min-width: 0;
+    outline: none;
+    padding: 16px 24px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;    
+    will-change: transform;
+    margin: 10px;
+    &:hover {
+        background-color: #f5f5dc28;
+        box-shadow: #00000040 0 8px 15px;
+        transform: translateY(-2px);
+    }
+}
+
+
+
+
+.button42 {
+    background-color: initial;
+    background-image: linear-gradient(-180deg, #FF7E31, #E62C03);
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Inter, -apple-system, system-ui, Roboto, "Helvetica Neue", Arial, sans-serif;
+    height: 40px;
+    line-height: 40px;
+    outline: 0;
+    overflow: hidden;
+    padding: 0 20px;
+    pointer-events: auto;
+    position: relative;
+    text-align: center;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: top;
+    white-space: nowrap;    
+    z-index: 9;
+    border: 0;
+    transition: box-shadow .2s;
+    &:hover {
+        box-shadow: rgba(253, 76, 0, 0.5) 0 3px 8px;
+    }
+}
+
