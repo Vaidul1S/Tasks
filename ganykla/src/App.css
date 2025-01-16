@@ -122,24 +122,27 @@ input[type="checkbox"]:checked+label {
   flex-direction: row;
   gap: 20px;
 }
+
 .sheeps {
   border: #61dafb 1px dashed;
   width: 700px;
-  height: 60vh;  
+  height: 60vh;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-content: flex-start;  
+  align-content: flex-start;
+
   div {
     display: flex;
     justify-content: center;
     align-items: last baseline;
     color: red;
     font-size: 16px;
-    font-weight: 700;    
+    font-weight: 700;
     cursor: pointer;
-  }  
+  }
 }
+
 .cows {
   border: #61dafb 1px dashed;
   width: 700px;
@@ -147,14 +150,29 @@ input[type="checkbox"]:checked+label {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-content: flex-start;  
+  align-content: flex-start;
+
   div {
     display: flex;
     justify-content: center;
     align-items: last baseline;
     color: red;
     font-size: 16px;
-    font-weight: 700;    
+    font-weight: 700;
     cursor: pointer;
-  } 
+  }
+}
+
+.sheep {
+  border-radius: 50%;
+  background-image: url("./Components/sheep.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.cow {
+  border-radius: 2px;
+  background-image: url("./Components/cow.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
