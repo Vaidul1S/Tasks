@@ -37,13 +37,12 @@ function App() {
     }
 
     const perbegimas = (id, ganykla) => {
-        console.log(ganykla);
         
         if (ganykla) {
-            setKarves(k => [...k, {id: id, color: 'white', kind: '50%', ganykla: false}]);
+            setKarves(k => [...k, {id: id, color: k.color, kind: k.kind, ganykla: false}]);
             setAvys(a => a.filter(a => a.id !== id));
         } else {
-            setAvys(a => [...a, {id: id, color: 'darkgoldenrod', kind: '2px', ganykla: true}]);
+            setAvys(a => [...a, {id: id, color: a.color, kind: a.kind, ganykla: true}]);
             setKarves(k => k.filter(k => k.id !== id));
         }
         

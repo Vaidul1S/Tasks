@@ -1,7 +1,7 @@
-export default function Avis({id, perbegimas, color, kind}) {
+export default function Avis({id, perbegimas, color, kind, ganykla}) {
    
     return (
-        <div onClick={_ => perbegimas(id)} style={{
+        <div onClick={_ => perbegimas(id, ganykla)} style={{
             width: 80 + 'px',
             height: 80 + 'px',            
             borderRadius: kind,
