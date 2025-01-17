@@ -124,7 +124,8 @@ input[type="checkbox"]:checked+label {
 }
 
 .sheeps {
-  border: #61dafb 1px dashed;
+  border: lime 1px dashed;
+  border-radius: 3px;
   width: 700px;
   height: 60vh;
   display: flex;
@@ -144,7 +145,8 @@ input[type="checkbox"]:checked+label {
 }
 
 .cows {
-  border: #61dafb 1px dashed;
+  border: lime 1px dashed;
+  border-radius: 3px;
   width: 700px;
   height: 60vh;
   display: flex;
@@ -164,6 +166,9 @@ input[type="checkbox"]:checked+label {
 }
 
 .sheep {
+  width: 80px;
+  height: 80px;           
+  margin: 10px;    
   border-radius: 50%;
   background-image: url("./Components/sheep.jpg");
   background-repeat: no-repeat;
@@ -171,6 +176,9 @@ input[type="checkbox"]:checked+label {
 }
 
 .cow {
+  width: 80px;
+  height: 80px;           
+  margin: 10px;
   border-radius: 2px;
   background-image: url("./Components/cow.jpg");
   background-repeat: no-repeat;
