@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import './buttons.scss';
 import rand from './Components/rand';
@@ -7,9 +7,13 @@ import Karve from './Components/Karve';
 
 function App() {
 
-    const [avys, setAvys] = useState([]);
-    const [karves, setKarves] = useState([]);
+    const [avys, setAvys] = useState(JSON.parse(localStorage.getItem('avide')) ?? []);
+    const [karves, setKarves] = useState(JSON.parse(localStorage.getItem('karvide')) ?? []);
 
+    useEffect(_ => {
+        localStore();        
+    }, [avys, karves]);    
+    
     const iGanykla = _ => {
         for (let i = 0; i < rand(5, 20); i++) {
             setAvys(a => [...a, {
@@ -25,13 +29,12 @@ function App() {
                 ganykla: false,
                 kind: 'cow'
             }]);
-        }
-
+        }                
     }
 
     const iSkerdykla = _ => {
         setAvys([]);
-        setKarves([]);
+        setKarves([]);                
     }
 
     const perbegimas = (id, ganykla) => {
@@ -45,6 +48,11 @@ function App() {
         }
         
     }
+
+    const localStore = _ => {
+        localStorage.setItem('avide', JSON.stringify(avys));
+        localStorage.setItem('karvide', JSON.stringify(karves));
+    }    
 
     return (
         <div className="app">
