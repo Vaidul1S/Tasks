@@ -73,8 +73,8 @@ function App() {
                     </div>
                 </div>
                 <div>
-                    <button className="button27" onClick={iGanykla}>Į ganyklą</button>
-                    <button className="button27" onClick={iSkerdykla}>Į skerdyklą</button>
+                    <button className="button27 green" onClick={iGanykla}>Į ganyklą</button>
+                    <button className="button27 red" onClick={iSkerdykla}>Į skerdyklą</button>
                 </div>
 
             </header>
