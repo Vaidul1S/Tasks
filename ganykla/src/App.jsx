@@ -1,18 +1,31 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import './App.css';
 import './buttons.scss';
 import rand from './Components/rand';
 import Avis from './Components/Avis';
 import Karve from './Components/Karve';
 
+// REACT useState PROJECT (MyLittleFarm)
+
+
+// Sukurti tuščią “Ganyklą”. Ją padalinti į dvi dalis su užrašais- Avys ir Karvės. Sukurti mygtuką “į ganyklą”, kurį paspaudus dešinė pusė būtų apgyvendinta avimis, kurias vaizduoja apskritimai, o kairė pusė karvėmis, kurias vaizduoja keturkampiai. Avių ir karvių skaičius rand 5 - 20. Kiekvieno gyvulio viduje yra random identifikacinis numeris: pvz avim A0254787, karvėm K0007898, kur skaičius yra septynženklis rand skaičius. Perkrovus puslapį avių ir karvių skaičius ir jų identifikaciniai numeriai turi nekisti (tik patį pirmą kartą “Ganykla” turi būti tuščia). Paspaudus ant avies arba karvės ji turi perbėgti į priešingą ganyklos pusę (antrą kartą paspaudus grįžti atgal). Perkrovus puslapį perbėgimai turi išlikti nepakitę. Pakartotinai paspaudus “į ganyklą”, turi atsirasti nauji gyvuliai, kaip ir pirmą kartą.
+
+// Pastaba: karvė avių ganyklos pusėje lieka karve, o avis- avimi. Nemutuojam! Perbėgusios avys ir karvės yra dedamos į bandos galą. 
+
+
 function App() {
 
     const [avys, setAvys] = useState(JSON.parse(localStorage.getItem('avide')) ?? []);
     const [karves, setKarves] = useState(JSON.parse(localStorage.getItem('karvide')) ?? []);
 
+    const localStore = useCallback(_ => {
+        localStorage.setItem('avide', JSON.stringify(avys));
+        localStorage.setItem('karvide', JSON.stringify(karves));
+    },[avys, karves]);  
+    
     useEffect(_ => {
         localStore();        
-    }, [avys, karves]);    
+    }, [avys, karves, localStore]);    
     
     const iGanykla = _ => {
         for (let i = 0; i < rand(5, 20); i++) {
@@ -48,12 +61,7 @@ function App() {
         }
         
     }
-
-    const localStore = _ => {
-        localStorage.setItem('avide', JSON.stringify(avys));
-        localStorage.setItem('karvide', JSON.stringify(karves));
-    }    
-
+    
     return (
         <div className="app">
             <header className="app-header">
@@ -92,9 +100,3 @@ function App() {
 
 export default App;
 
-// REACT useState PROJECT (MyLittleFarm)
-
-
-// Sukurti tuščią “Ganyklą”. Ją padalinti į dvi dalis su užrašais- Avys ir Karvės. Sukurti mygtuką “į ganyklą”, kurį paspaudus dešinė pusė būtų apgyvendinta avimis, kurias vaizduoja apskritimai, o kairė pusė karvėmis, kurias vaizduoja keturkampiai. Avių ir karvių skaičius rand 5 - 20. Kiekvieno gyvulio viduje yra random identifikacinis numeris: pvz avim A0254787, karvėm K0007898, kur skaičius yra septynženklis rand skaičius. Perkrovus puslapį avių ir karvių skaičius ir jų identifikaciniai numeriai turi nekisti (tik patį pirmą kartą “Ganykla” turi būti tuščia). Paspaudus ant avies arba karvės ji turi perbėgti į priešingą ganyklos pusę (antrą kartą paspaudus grįžti atgal). Perkrovus puslapį perbėgimai turi išlikti nepakitę. Pakartotinai paspaudus “į ganyklą”, turi atsirasti nauji gyvuliai, kaip ir pirmą kartą.
-
-// Pastaba: karvė avių ganyklos pusėje lieka karve, o avis- avimi. Nemutuojam! Perbėgusios avys ir karvės yra dedamos į bandos galą. 
