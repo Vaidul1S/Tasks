@@ -15,13 +15,15 @@ import Karve from './Components/Karve';
 
 function App() {
 
+    const [ganykla, setGanykla] = useState(JSON.parse(localStorage.getItem('ganykla')) ?? [])
     const [avys, setAvys] = useState(JSON.parse(localStorage.getItem('avide')) ?? []);
     const [karves, setKarves] = useState(JSON.parse(localStorage.getItem('karvide')) ?? []);
 
     const localStore = useCallback(_ => {
         localStorage.setItem('avide', JSON.stringify(avys));
         localStorage.setItem('karvide', JSON.stringify(karves));
-    },[avys, karves]);  
+        localStorage.setItem('ganykla', JSON.stringify(ganykla));
+    },[avys, karves, ganykla]);  
     
     useEffect(_ => {
         localStore();        
@@ -29,17 +31,17 @@ function App() {
     
     const iGanykla = _ => {
         for (let i = 0; i < rand(5, 20); i++) {
-            setAvys(a => [...a, {
+            setGanykla(a => [...a, {
                 id: 'A' + rand(1000000, 9999999),
-                ganykla: true,
+                gardas: 'avide',
                 kind: 'sheep'
             }]);
         }
 
         for (let i = 0; i < rand(5, 20); i++) {
-            setKarves(k => [...k, {
+            setGanykla(k => [...k, {
                 id: 'K' + rand(1000000, 9999999),
-                ganykla: false,
+                gardas: 'karvide',
                 kind: 'cow'
             }]);
         }                
@@ -47,17 +49,18 @@ function App() {
 
     const iSkerdykla = _ => {
         setAvys([]);
-        setKarves([]);                
+        setKarves([]); 
+        setGanykla([]);               
     }
 
-    const perbegimas = (id, ganykla) => {
+    const perbegimas = (id, gardas) => {
         
-        if (ganykla) {
-            setKarves(k => [...k, {id: id, kind: 'sheep' && id.includes('A') ? 'sheep' : 'cow', ganykla: false}]);
-            setAvys(a => a.filter(a => a.id !== id));
+        if (gardas === 'avide') {
+            setGanykla(g => [...g, {id: id, kind: 'sheep' && id.includes('A') ? 'sheep' : 'cow', gardas: 'karvide'}]); 
+            setGanykla(g => g.filter(g => g.id !== id));           
         } else {
-            setAvys(a => [...a, {id: id, kind: 'cow' && id.includes('K') ? 'cow' : 'sheep', ganykla: true}]);
-            setKarves(k => k.filter(k => k.id !== id));
+            setGanykla(g => [...g, {id: id, kind: 'cow' && id.includes('K') ? 'cow' : 'sheep', gardas: 'avide'}]);
+            setGanykla(g => g.filter(g => g.id !== id));            
         }
         
     }
@@ -72,7 +75,7 @@ function App() {
                         <h4>Avys</h4>
                         <div className="sheeps">
                             {
-                                avys.map(a => <Avis key={a.id} id={a.id} perbegimas={perbegimas} kind={a.kind} ganykla={a.ganykla}/>)
+                                ganykla.filter(g => g.id.includes('A') !== id).map(g => <Avis key={g.id} id={g.id} perbegimas={perbegimas} kind={g.kind} gardas={g.gardas}/>)
                             }
                         </div>
                     </div>
@@ -81,7 +84,7 @@ function App() {
                         <h4>Karvės</h4>
                         <div className="cows">
                             {
-                                karves.map(k => <Karve key={k.id} id={k.id} perbegimas={perbegimas} kind={k.kind} ganykla={k.ganykla}/>)
+                                ganykla.map(g => <Karve key={g.id} id={g.id} perbegimas={perbegimas} kind={g.kind} gardas={g.gardas}/>)
                             }
 
                         </div>
