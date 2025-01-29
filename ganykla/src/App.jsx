@@ -75,7 +75,7 @@ function App() {
                         <h4>Avys</h4>
                         <div className="sheeps">
                             {
-                                ganykla.filter(g => g.id.includes('A') !== id).map(g => <Avis key={g.id} id={g.id} perbegimas={perbegimas} kind={g.kind} gardas={g.gardas}/>)
+                                ganykla.map(g => <Avis key={g.id} id={g.id} perbegimas={perbegimas} kind={g.kind} gardas={g.gardas}/>)
                             }
                         </div>
                     </div>
