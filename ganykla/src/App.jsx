@@ -57,10 +57,10 @@ function App() {
         
         if (gardas === 'avide') {
             setGanykla(g => [...g, {id: id, kind: 'sheep' && id.includes('A') ? 'sheep' : 'cow', gardas: 'karvide'}]); 
-            setGanykla(g => g.filter(g => g.id !== id));           
+                       
         } else {
             setGanykla(g => [...g, {id: id, kind: 'cow' && id.includes('K') ? 'cow' : 'sheep', gardas: 'avide'}]);
-            setGanykla(g => g.filter(g => g.id !== id));            
+                        
         }
         
     }
