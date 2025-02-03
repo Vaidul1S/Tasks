@@ -16,18 +16,14 @@ import Karve from './Components/Karve';
 function App() {
 
     const [ganykla, setGanykla] = useState(JSON.parse(localStorage.getItem('ganykla')) ?? [])
-    const [avys, setAvys] = useState(JSON.parse(localStorage.getItem('avide')) ?? []);
-    const [karves, setKarves] = useState(JSON.parse(localStorage.getItem('karvide')) ?? []);
-
-    const localStore = useCallback(_ => {
-        localStorage.setItem('avide', JSON.stringify(avys));
-        localStorage.setItem('karvide', JSON.stringify(karves));
+    
+    const localStore = useCallback(_ => {        
         localStorage.setItem('ganykla', JSON.stringify(ganykla));
-    },[avys, karves, ganykla]);  
+    },[ganykla]);  
     
     useEffect(_ => {
         localStore();        
-    }, [avys, karves, localStore]);    
+    }, [localStore]);    
     
     const iGanykla = _ => {
         for (let i = 0; i < rand(5, 20); i++) {
@@ -47,9 +43,7 @@ function App() {
         }                
     }
 
-    const iSkerdykla = _ => {
-        setAvys([]);
-        setKarves([]); 
+    const iSkerdykla = _ => {        
         setGanykla([]);               
     }
 
@@ -57,10 +51,10 @@ function App() {
         
         if (gardas === 'avide') {
             setGanykla(g => [...g, {id: id, kind: 'sheep' && id.includes('A') ? 'sheep' : 'cow', gardas: 'karvide'}]); 
-                       
+            setGanykla(g => g.filter(g => g.gardas === 'avide' ? g.id !== id : g));
         } else {
             setGanykla(g => [...g, {id: id, kind: 'cow' && id.includes('K') ? 'cow' : 'sheep', gardas: 'avide'}]);
-                        
+            setGanykla(g => g.filter(g => g.gardas === 'karvide' ? g.id !== id : g));                        
         }
         
     }
@@ -75,7 +69,7 @@ function App() {
                         <h4>Avys</h4>
                         <div className="sheeps">
                             {
-                                ganykla.map(g => <Avis key={g.id} id={g.id} perbegimas={perbegimas} kind={g.kind} gardas={g.gardas}/>)
+                                ganykla.map(g => g.gardas === 'avide' ? <Avis key={g.id} id={g.id} perbegimas={perbegimas} kind={g.kind} gardas={g.gardas}/> : null)
                             }
                         </div>
                     </div>
@@ -84,7 +78,7 @@ function App() {
                         <h4>Karvės</h4>
                         <div className="cows">
                             {
-                                ganykla.map(g => <Karve key={g.id} id={g.id} perbegimas={perbegimas} kind={g.kind} gardas={g.gardas}/>)
+                                ganykla.map(g => g.gardas === 'karvide' ? <Karve key={g.id} id={g.id} perbegimas={perbegimas} kind={g.kind} gardas={g.gardas}/> : null)
                             }
 
                         </div>
