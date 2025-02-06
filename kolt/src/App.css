@@ -45,3 +45,36 @@ body {
   }
 }
 
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.cardbody {
+  display: flex;  
+  align-items: start;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.card {
+  width: 100%;
+  display: flex;  
+  justify-content: space-between;
+  align-items: center;
+}
+
+label {
+  margin-right: 20px;
+}
+
+input {
+  width: 25%;
+  border-radius: 3px;
+  border: none;
+  outline: none;  
+}
