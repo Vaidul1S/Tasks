@@ -52,29 +52,62 @@ body {
   flex-direction: row;
   gap: 20px;
   flex-wrap: wrap;
+  
 }
 
 .cardbody {
-  display: flex;  
+  display: flex;   
   align-items: start;
   flex-direction: column;
-  padding: 10px;
+  padding: 20px;
 }
 
 .card {
   width: 100%;
-  display: flex;  
-  justify-content: space-between;
+  display: flex;    
   align-items: center;
+  flex-direction: column;
+  
 }
 
 label {
-  margin-right: 20px;
+  width: 100%;
+  text-align: start;
+  margin: 10px 0;
 }
 
-input {
-  width: 25%;
+.form-control {
+  width: 100%;
   border-radius: 3px;
   border: none;
   outline: none;  
+  padding: 10px 0;
+  margin: 10px 30px;
 }
+
+.container {
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 20px;  
+}
+
+.cbox {
+  width: 100%;
+  display: flex;     
+}
+
+#laisvas, #uzimtas {
+  display: none;  
+}
+
+input[type="checkbox"]:checked + label{
+  color: lime;
+}
+
+.state {
+  padding: 0 5px;   
+  cursor: pointer;
+  font-size: calc(2px + 2vmin);
+  width: 25%;
+} 
+

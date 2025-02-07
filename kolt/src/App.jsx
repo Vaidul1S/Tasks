@@ -1,22 +1,50 @@
+import { useState, useEffect, useCallback } from "react";
 import './App.css';
 import './buttons.scss';
 import Create from './Components/Create';
 
 
 
+
 export default function App() {
 
+    const [paspirtukas, setPaspirtukas] = useState(null);
+    const [scooters, setScooters] = useState(JSON.parse(localStorage.getItem('scooters')) ?? []);
+    const [messages, setMessages] = useState([]);
 
+    const addMessage = useCallback((message) => {
+               
+        setMessages(m => m.map(msg => msg));
+                
+        setTimeout(_ => {
+            setMessages(m => m.filter(msg => msg))
+        }, 2000)
+    }, [setMessages]);
+
+    const localStore = useCallback(_ => {        
+        localStorage.setItem('scooters', JSON.stringify(scooters));
+    },[scooters]);  
+    
+    useEffect(_ => {
+        localStore();        
+    }, [localStore]);   
+
+    useEffect(_ => {
+        if (null === paspirtukas) {
+            return;
+        };
+        setScooters(s => [...s, paspirtukas])
+    },[paspirtukas])
 
     return (
         <div className="app">
             <header className="app-header">
                 <h2>Kolt paspirtukų nuoma</h2>
 
-                <div className="container">
+                <div>
                     <div className="box">
                         <div className="bin">
-                            <Create />
+                            <Create setPaspirtukas={setPaspirtukas} addMessage={addMessage}/>
                         </div>
                         <div className="bin">
                             List
