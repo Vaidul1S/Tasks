@@ -2,57 +2,68 @@ import { useState, useEffect, useCallback } from "react";
 import './App.css';
 import './buttons.scss';
 import Create from './Components/Create';
-
-
-
+import List from "./Components/List";
+import Delete from "./Components/Delete";
+import Message from "./Components/Message";
+import Edit from "./Components/Edit";
 
 export default function App() {
 
     const [paspirtukas, setPaspirtukas] = useState(null);
     const [scooters, setScooters] = useState(JSON.parse(localStorage.getItem('scooters')) ?? []);
     const [messages, setMessages] = useState([]);
+    const [deleteModal, setDeleteModal] = useState(null);
+    const [showMsg, setShowMsg] = useState(null);
+    const [editModal, setEditModal] = useState(null);
 
-    const addMessage = useCallback((message) => {
-               
-        setMessages(m => m.map(msg => msg));
-                
-        setTimeout(_ => {
-            setMessages(m => m.filter(msg => msg))
-        }, 2000)
-    }, [setMessages]);
-
-    const localStore = useCallback(_ => {        
+    const localStore = useCallback(_ => {
         localStorage.setItem('scooters', JSON.stringify(scooters));
-    },[scooters]);  
-    
+    }, [scooters]);
+
     useEffect(_ => {
-        localStore();        
-    }, [localStore]);   
+        setShowMsg('');
+        setTimeout(_ => {
+             setShowMsg(null)
+        }, 3000);
+       
+    }, [messages]);
+
+    useEffect(_ => {
+        localStore();
+    }, [localStore]);
 
     useEffect(_ => {
         if (null === paspirtukas) {
             return;
         };
-        setScooters(s => [...s, paspirtukas])
-    },[paspirtukas])
+        setScooters(s => [paspirtukas, ...s])
+    }, [paspirtukas])
 
     return (
-        <div className="app">
+        <>
             <header className="app-header">
-                <h2>Kolt paspirtukų nuoma</h2>
-
-                <div>
+                <div className="content">
+                    <h1>Kolt paspirtukų nuoma</h1>
                     <div className="box">
                         <div className="bin">
-                            <Create setPaspirtukas={setPaspirtukas} addMessage={addMessage}/>
+                            <Create setPaspirtukas={setPaspirtukas} setMessages={setMessages} />
                         </div>
                         <div className="bin">
-                            List
+                            <List scooters={scooters} setDeleteModal={setDeleteModal} setEditModal={setEditModal}/>
                         </div>
                     </div>
                 </div>
             </header>
-        </div>
+            {
+                deleteModal !== null ? <Delete deleteModal={deleteModal} setScooters={setScooters} setDeleteModal={setDeleteModal} setMessages={setMessages}/> : null
+            }
+            {
+                showMsg !== null ? <Message messages={messages} setMessages={setMessages}/> : null
+            }
+            {
+                editModal !== null ? <Edit editModal={editModal} setEditModal={setEditModal}/> : null
+            }
+        </>
     );
 };
 

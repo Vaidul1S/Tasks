@@ -1,7 +1,7 @@
 import { useState } from "react";
 import rand from './rand';
 
-export default function Create({ setPaspirtukas, addMessage }) {
+export default function Create({ setPaspirtukas, setMessages }) {
 
     const [state, setState] = useState('');
     const [date, setDate] = useState('');
@@ -11,8 +11,9 @@ export default function Create({ setPaspirtukas, addMessage }) {
         setState(s => s === id ? '' : id);
     };
 
+    
     const addScooter = _ => {
-        const newScooter = {
+        const newScooter = {            
             code: rand(10000000, 99999999),
             state: state,
             date: date,
@@ -20,21 +21,27 @@ export default function Create({ setPaspirtukas, addMessage }) {
         };
 
         if (state === '') {            
-            return addMessage({
-                type: 'danger', title: 'Neteisingi duomenys', text: 'Pasirinkite būseną!'
+            return setMessages({
+                type: 'danger', title: 'Neteisingi duomenys!', text: 'Pasirinkite būseną!'
             });
         };
 
         const today = new Date();
-        if (date > today) {            
-            return addMessage({
-                type: 'danger', title: 'Neteisingi duomenys', text: 'Data negagli būti ateityje!'
+        let selectedDate = new Date(date)
+        let year = today.getFullYear() - selectedDate.getFullYear();
+        let month = today.getMonth() - selectedDate.getMonth();
+        let day =  today.getDate() - selectedDate.getDate();
+                
+        if (isNaN(selectedDate)  || year < 0 || month < 0 || (month === 0 && day < 0)) { 
+            return setMessages({
+                type: 'danger', title: 'Neteisingi duomenys!', text: 'Pasirinkite datą (data negali būti ateityje)!'                
             });
+            
         };
-
-        if (rida < 0) {            
-            return addMessage({
-                type: 'danger', title: 'Neteisingi duomenys', text: 'Rida negagli būti neigiama!'
+        
+        if (rida === '' || rida < 0) {            
+            return setMessages({
+                type: 'danger', title: 'Neteisingi duomenys!', text: 'Įveskite ridą (rida negali būti neigiama)!'
             });
         };
 
@@ -42,6 +49,9 @@ export default function Create({ setPaspirtukas, addMessage }) {
         setState('')
         setDate('');
         setRida('');
+        setMessages({
+            type: 'success', title: 'Valio!', text: 'Paspirtukas sėkmingai pridėtas!'
+        });        
     };
 
     return (

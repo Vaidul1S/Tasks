@@ -1,37 +1,33 @@
-export default function List() {
+export default function List({scooters, setDeleteModal, setEditModal}) {
 
     return (
+
         <div className="container">
-            <h3>Pridėti naują paspirtuką</h3>
-            <div className="cardbody">
-                <div className="card">
-                    <label className="form-label">Paspirtuko numeris</label>
-                    <input type="number" className="form-control" />
+            <ul className="list" >
+            <h3>Paspirtukų sąrašas</h3>
+            {scooters.map(scooters =>  
+            <li key={scooters.code}>                
+                <div className="list-card">
+                    <div className="card-content">
+                        <span className="list-stats">Paspirtuko id:</span><span>{scooters.code}</span> 
+                    </div>
+                    <div className="card-content">
+                        <span className="list-stats">Paskutinio naudojimo data:</span><span>{scooters.date}</span>
+                    </div>
+                    <div className="card-content">
+                        <span className="list-stats">Paspirtuko būsena:</span><span>{scooters.state}</span>
+                    </div>
+                    <div className="card-content">
+                        <span className="list-stats">Paspirtuko rida (km):</span><span>{scooters.rida}</span>
+                    </div>
+                    
+                    <div className="list-buttons">
+                        <button className='button91 cadet'onClick={_ =>setEditModal(scooters)}>Redaguoti</button>
+                        <button className='button91 red' onClick={_ =>setDeleteModal(scooters)}>Ištrinti</button>
+                    </div>
                 </div>
-
-                <div className="card">
-                    <label className="form-label">Paspirtuko id</label>
-                    <input type="number" className="form-control" />
-                </div>
-
-                <div className="card">
-                    <label className="form-label">Paspirtuko užimtumas</label>
-                    <input type="checkbox" className="form-control" />
-                </div>
-
-                <div className="card">
-                    <label className="form-label">Paskutinio naudojimo data</label>
-                    <input type="date" className="form-control" name='name' />
-                </div>
-
-                <div className="card">
-                    <label className="form-label">Paspirtuko rida</label>
-                    <input type="number" className="form-control" />
-                </div>
-            </div>
-            <button className="button91 lime">Pridėti paspirtuką</button>
-
-
+            </li>)}
+            </ul>
         </div>
     )
 }

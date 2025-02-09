@@ -5,58 +5,46 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.app {
-  text-align: center;
-}
-
-.app-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 2s linear;
-  }
-}
-
 .app-header {
   background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0;
+  width: 100%;
+  min-height: 100vh;
 }
 
-.app-link {
-  color: #61dafb;
-}
+.content {
+  width: 90%;
+  margin: 0;
+  padding: 0;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
+  h2 {
+    margin: 0;
+    padding: 40px 0;
 
-  to {
-    transform: rotate(360deg);
   }
 }
 
 .box {
+  width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: row;
-  gap: 20px;
+  justify-content: space-around;
   flex-wrap: wrap;
-  
+  gap: 20px;
+}
+
+.bin {
+  min-width: 400px;
+  max-width: 700px;
 }
 
 .cardbody {
-  display: flex;   
+  display: flex;
   align-items: start;
   flex-direction: column;
   padding: 20px;
@@ -64,10 +52,10 @@ body {
 
 .card {
   width: 100%;
-  display: flex;    
+  display: flex;
   align-items: center;
   flex-direction: column;
-  
+
 }
 
 label {
@@ -80,34 +68,144 @@ label {
   width: 100%;
   border-radius: 3px;
   border: none;
-  outline: none;  
+  outline: none;
   padding: 10px 0;
   margin: 10px 30px;
 }
 
 .container {
+  width: 100%;
   border: 1px solid white;
   border-radius: 5px;
-  padding: 20px;  
+  padding: 20px;
 }
 
 .cbox {
   width: 100%;
-  display: flex;     
+  display: flex;
 }
 
-#laisvas, #uzimtas {
-  display: none;  
+#laisvas,
+#uzimtas {
+  display: none;
 }
 
-input[type="checkbox"]:checked + label{
+input[type="checkbox"]:checked+label {
   color: lime;
 }
 
 .state {
-  padding: 0 5px;   
+  padding: 0 5px;
   cursor: pointer;
-  font-size: calc(2px + 2vmin);
   width: 25%;
-} 
+}
 
+.list {
+  list-style: none;
+  width: 100%;
+  padding: 0;
+}
+
+.list-card {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  margin-top: 10px;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.24);
+}
+
+.card-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+span {
+  margin: 10px 0;
+}
+
+.list-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 100;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  width: 40%;
+  border-radius: 10px;
+  border: 1px solid white;
+  padding: 30px;
+  background-color: #282c34;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: end;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.danger {
+  width: 25%;
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  background-color: pink;
+  padding: 0 50px;
+  border-radius: 5px;  
+}
+
+.success {
+  width: 25%;
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  background-color: lightgreen;
+  padding: 0 50px;
+  border-radius: 5px;  
+}
+
+.edit-body {
+  width: 100%;
+  margin: 0;
+  padding: 5px;
+}
+
+.edit-content {
+  width: 100%;
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-input {
+  outline: none;
+  padding: 5px;
+  border-radius: 3px;  
+  border: none;
+}
