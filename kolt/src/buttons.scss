@@ -102,6 +102,13 @@ button {
             background-color: darken($red, 5%);
         }
     }
+    &.ecru {
+        background-color: $ecru;
+
+        &:hover {
+            background-color: darken($ecru, 5%);
+        }
+    }
     &:disabled {
         background-color: gray;
         cursor: default;

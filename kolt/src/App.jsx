@@ -6,16 +6,17 @@ import List from "./Components/List";
 import Delete from "./Components/Delete";
 import Message from "./Components/Message";
 import Edit from "./Components/Edit";
+import Stats from "./Components/Stats";
 
 export default function App() {
 
     const [paspirtukas, setPaspirtukas] = useState(null);
-    const [editedPaspirtukas, setEditedPaspirtukas] = useState(null);
     const [scooters, setScooters] = useState(JSON.parse(localStorage.getItem('scooters')) ?? []);
     const [messages, setMessages] = useState([]);
     const [deleteModal, setDeleteModal] = useState(null);
     const [showMsg, setShowMsg] = useState(null);
     const [editModal, setEditModal] = useState(null);
+    const [editedPaspirtukas, setEditedPaspirtukas] = useState(null);
 
     const localStore = useCallback(_ => {
         localStorage.setItem('scooters', JSON.stringify(scooters));
@@ -24,9 +25,9 @@ export default function App() {
     useEffect(_ => {
         setShowMsg('');
         setTimeout(_ => {
-             setShowMsg(null)
+            setShowMsg(null)
         }, 3000);
-       
+
     }, [messages]);
 
     useEffect(_ => {
@@ -36,15 +37,24 @@ export default function App() {
     useEffect(_ => {
         if (null === paspirtukas) {
             return;
-        };        
-        setScooters(s => [paspirtukas, ...s]) 
+        };
+        setScooters(s => [paspirtukas, ...s])
     }, [paspirtukas]);
 
     useEffect(_ => {
         if (null === editedPaspirtukas) {
             return;
-        }; 
-    },[editedPaspirtukas])
+        };
+        setScooters(s => s.map(s => editedPaspirtukas.code === s.code ? { ...s, ...editedPaspirtukas } : s));
+    }, [editedPaspirtukas]);
+
+    const orderByDate = _ => {
+        setScooters(s => [...s].sort((a,b) => new Date(b.date) - new Date(a.date)));
+    };
+
+    const orderByKm = _ => {
+        setScooters(s => [...s].sort((a,b) => a.rida - b.rida));
+    };
 
     return (
         <>
@@ -53,22 +63,27 @@ export default function App() {
                     <h1>Kolt paspirtukų nuoma</h1>
                     <div className="box">
                         <div className="bin">
-                            <Create setPaspirtukas={setPaspirtukas} setMessages={setMessages} />
+                            <div>
+                                <button className="button91 tang" onClick={orderByDate}>Rikiuoti pagal paskutinę naudojimo datą</button>
+                                <button className="button91 tang" onClick={orderByKm}>Rikiuoti pagal ridą</button>
+                            </div>
+                            <List scooters={scooters} setDeleteModal={setDeleteModal} setEditModal={setEditModal} />
                         </div>
                         <div className="bin">
-                            <List scooters={scooters} setDeleteModal={setDeleteModal} setEditModal={setEditModal}/>
+                            <Stats scooters={scooters} />
+                            <Create setPaspirtukas={setPaspirtukas} setMessages={setMessages} />
                         </div>
                     </div>
                 </div>
             </header>
             {
-                deleteModal !== null ? <Delete deleteModal={deleteModal} setScooters={setScooters} setDeleteModal={setDeleteModal} setMessages={setMessages}/> : null
+                deleteModal !== null ? <Delete deleteModal={deleteModal} setScooters={setScooters} setDeleteModal={setDeleteModal} setMessages={setMessages} /> : null
             }
             {
-                showMsg !== null ? <Message messages={messages} setMessages={setMessages}/> : null
+                showMsg !== null ? <Message messages={messages} setMessages={setMessages} /> : null
             }
             {
-                editModal !== null ? <Edit editModal={editModal} setEditModal={setEditModal} setEditedPaspirtukas={setEditedPaspirtukas} setMessages={setMessages}/> : null
+                editModal !== null ? <Edit editModal={editModal} setEditModal={setEditModal} setEditedPaspirtukas={setEditedPaspirtukas} setMessages={setMessages} /> : null
             }
         </>
     );
