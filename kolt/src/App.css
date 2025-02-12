@@ -209,3 +209,8 @@ span {
   border-radius: 3px;  
   border: none;
 }
+
+#editLaisvas,
+#editUzimtas {
+  display: none;
+}
