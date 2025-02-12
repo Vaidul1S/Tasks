@@ -10,6 +10,7 @@ import Edit from "./Components/Edit";
 export default function App() {
 
     const [paspirtukas, setPaspirtukas] = useState(null);
+    const [editedPaspirtukas, setEditedPaspirtukas] = useState(null);
     const [scooters, setScooters] = useState(JSON.parse(localStorage.getItem('scooters')) ?? []);
     const [messages, setMessages] = useState([]);
     const [deleteModal, setDeleteModal] = useState(null);
@@ -35,9 +36,15 @@ export default function App() {
     useEffect(_ => {
         if (null === paspirtukas) {
             return;
-        };
-        setScooters(s => [paspirtukas, ...s])
-    }, [paspirtukas])
+        };        
+        setScooters(s => [paspirtukas, ...s]) 
+    }, [paspirtukas]);
+
+    useEffect(_ => {
+        if (null === editedPaspirtukas) {
+            return;
+        }; 
+    },[editedPaspirtukas])
 
     return (
         <>
@@ -61,7 +68,7 @@ export default function App() {
                 showMsg !== null ? <Message messages={messages} setMessages={setMessages}/> : null
             }
             {
-                editModal !== null ? <Edit editModal={editModal} setEditModal={setEditModal}/> : null
+                editModal !== null ? <Edit editModal={editModal} setEditModal={setEditModal} setEditedPaspirtukas={setEditedPaspirtukas} setMessages={setMessages}/> : null
             }
         </>
     );
