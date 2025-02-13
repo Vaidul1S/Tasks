@@ -153,9 +153,7 @@ span {
   border-radius: 10px;
   border: 1px solid white;
   padding: 30px;
-  background-color: #282c34;
-  display: flex;
-  flex-wrap: wrap;
+  background-color: #282c34;  
 }
 
 .modal-header {
@@ -167,10 +165,13 @@ span {
 .modal-footer {
   display: flex;
   justify-content: end;
+  flex-wrap: wrap;
 }
 
 .modal-body {
   padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .danger {
@@ -196,7 +197,7 @@ span {
 .edit-body {
   width: 100%;
   margin: 0;
-  padding: 5px;
+  padding: 5px;  
 }
 
 .edit-content {
@@ -205,9 +206,11 @@ span {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .edit-input {
+  width: 30%;
   outline: none;
   padding: 5px;
   border-radius: 3px;  
