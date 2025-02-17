@@ -28,7 +28,7 @@ export default function App() {
             setShowMsg(null)
         }, 3000);
 
-    }, [messages]);
+    }, [messages]);    
 
     useEffect(_ => {
         localStore();
@@ -64,7 +64,7 @@ export default function App() {
                     <div className="box">
                         <div className="bin">
                             <div>
-                                <button className="button91 tang" onClick={orderByDate}>Rikiuoti pagal paskutinę naudojimo datą</button>
+                                <button className="button91 tang" onClick={orderByDate}>Rikiuoti pagal naudojimo datą</button>
                                 <button className="button91 tang" onClick={orderByKm}>Rikiuoti pagal ridą</button>
                             </div>
                             <List scooters={scooters} setDeleteModal={setDeleteModal} setEditModal={setEditModal} />
