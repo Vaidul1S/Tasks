@@ -7,13 +7,24 @@ export default function Create({ setPaspirtukas, setMessages }) {
     const [date, setDate] = useState('');
     const [rida, setRida] = useState('');
 
+    const getNextId = _ => {
+        let nextId = localStorage.getItem("nextId");
+        if (!nextId) {
+            nextId = 1;
+        } else {
+            nextId = parseInt(nextId, 10);
+        }
+        localStorage.setItem("nextId", nextId + 1); 
+        return nextId;
+    };
+
     const handleState = id => {
         setState(s => s === id ? '' : id);
     };
-
     
     const addScooter = _ => {
-        const newScooter = {            
+        const newScooter = {    
+            id: getNextId(),        
             code: rand(10000000, 99999999),
             state: state,
             date: date,
