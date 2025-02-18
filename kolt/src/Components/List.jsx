@@ -8,8 +8,11 @@ export default function List({scooters, setDeleteModal, setEditModal}) {
             {scooters.map(scooters =>  
             <li key={scooters.code}>                
                 <div className="list-card">
+                <div className="card-content">
+                        <span className="list-stats">Paspirtuko id:</span><span>{scooters.id}</span> 
+                    </div>
                     <div className="card-content">
-                        <span className="list-stats">Paspirtuko id:</span><span>{scooters.code}</span> 
+                        <span className="list-stats">Paspirtuko kodas:</span><span>{scooters.code}</span> 
                     </div>
                     <div className="card-content">
                         <span className="list-stats">Paskutinio naudojimo data:</span><span>{scooters.date}</span>

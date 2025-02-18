@@ -56,6 +56,10 @@ export default function App() {
         setScooters(s => [...s].sort((a,b) => a.rida - b.rida));
     };
 
+    const orderById = _ => {
+        setScooters(s => [...s].sort((a,b) => a.id - b.id));
+    };
+
     return (
         <>
             <header className="app-header">
@@ -64,6 +68,7 @@ export default function App() {
                     <div className="box">
                         <div className="bin">
                             <div>
+                                <button className="button91 tang" onClick={orderById}>Rikiuoti pagal ID</button>
                                 <button className="button91 tang" onClick={orderByDate}>Rikiuoti pagal naudojimo datą</button>
                                 <button className="button91 tang" onClick={orderByKm}>Rikiuoti pagal ridą</button>
                             </div>
