@@ -23,14 +23,7 @@ export default function Create({ setPaspirtukas, setMessages }) {
     };
     
     const addScooter = _ => {
-        const newScooter = {    
-            id: getNextId(),        
-            code: rand(10000000, 99999999),
-            state: state,
-            date: date,
-            rida: parseFloat(rida).toFixed(2)
-        };
-
+        
         if (state === '') {            
             return setMessages({
                 type: 'danger', title: 'Neteisingi duomenys!', text: 'Pasirinkite būseną!'
@@ -54,6 +47,14 @@ export default function Create({ setPaspirtukas, setMessages }) {
             return setMessages({
                 type: 'danger', title: 'Neteisingi duomenys!', text: 'Įveskite ridą (rida negali būti neigiama)!'
             });
+        };
+
+        const newScooter = {    
+            id: getNextId(),        
+            code: rand(10000000, 99999999),
+            state: state,
+            date: date,
+            rida: parseFloat(rida).toFixed(2)
         };
 
         setPaspirtukas(newScooter);
