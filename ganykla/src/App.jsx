@@ -62,11 +62,11 @@ function App() {
     return (
         <div className="app">
             <header className="app-header">
-                <h3>Ganykla</h3>
+                <h3>Sveiki, atvykę į ganyklą.</h3>
 
                 <div className="ganykla">
                     <div>
-                        <h4>Avys</h4>
+                        <h4>Avidės</h4>
                         <div className="sheeps">
                             {
                                 ganykla.map(g => g.gardas === 'avide' ? <Avis key={g.id} id={g.id} perbegimas={perbegimas} kind={g.kind} gardas={g.gardas}/> : null)
@@ -75,7 +75,7 @@ function App() {
                     </div>
 
                     <div>
-                        <h4>Karvės</h4>
+                        <h4>Karvidės</h4>
                         <div className="cows">
                             {
                                 ganykla.map(g => g.gardas === 'karvide' ? <Karve key={g.id} id={g.id} perbegimas={perbegimas} kind={g.kind} gardas={g.gardas}/> : null)
