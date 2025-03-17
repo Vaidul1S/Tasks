@@ -21,14 +21,15 @@ body {
 }
 
 .app-header {
-  background-color: #282c34;
+  background-image: url("./Components/farm.webp");
+  background-size: cover;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
 }
 
 .app-link {
@@ -120,11 +121,11 @@ input[type="checkbox"]:checked+label {
 .ganykla {
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  gap: 40px;
 }
 
 .sheeps {
-  border: lime 1px dashed;
+  border: lime 2px dashed;
   border-radius: 3px;
   width: 700px;
   height: 60vh;
@@ -145,7 +146,7 @@ input[type="checkbox"]:checked+label {
 }
 
 .cows {
-  border: lime 1px dashed;
+  border: lime 2px dashed;
   border-radius: 3px;
   width: 700px;
   height: 60vh;
