@@ -8,6 +8,8 @@ body {
 
 .app-header {
   background-color: #3a404b;
+  background-image: url('./Components/kolt.avif');
+  background-size: cover;
   color: white;
   display: flex;
   justify-content: center;
