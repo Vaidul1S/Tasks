@@ -20,6 +20,5 @@ export default function Stats({ scooters }) {
             <button className="stats button91 ecru">Viso paspirtukų: {scooterCount}</button>
             <button className="stats button91 ecru">Viso kilomentrų: {scooterKm}</button>
         </div>
-
     )
 }
