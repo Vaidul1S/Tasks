@@ -40,7 +40,6 @@ export default function Create({ setPaspirtukas, setMessages }) {
             return setMessages({
                 type: 'danger', title: 'Neteisingi duomenys!', text: 'Pasirinkite datą (data negali būti ateityje)!'                
             });
-            
         };
         
         if (rida === '' || rida < 0) {            
@@ -79,7 +78,6 @@ export default function Create({ setPaspirtukas, setMessages }) {
                         <input type="checkbox" id="uzimtas" checked={state === 'Užimtas'} onChange={_ => handleState('Užimtas')} />
                         <label className="state" htmlFor="uzimtas">Užimtas</label>
                     </div>
-
                 </div>
 
                 <div className="card">
@@ -94,7 +92,6 @@ export default function Create({ setPaspirtukas, setMessages }) {
 
             </div>
             <button className="button91 lime" onClick={addScooter}>Pridėti paspirtuką</button>
-
 
         </div>
     )
