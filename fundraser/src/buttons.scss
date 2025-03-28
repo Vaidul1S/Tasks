@@ -1,0 +1,193 @@
+@use "sass:color";
+@use 'colors.scss' as C;
+
+button {
+    background-color: C.$cadet;
+    border: 0;
+    border-radius: 56px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: system-ui, -apple-system, system-ui, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    outline: 0;
+    padding: 16px 21px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin: 10px;
+
+    &.tang {
+        background-color: C.$tang;
+
+        &:hover {
+            background-color: color.adjust(C.$tang, $lightness: -5%);
+        }
+    }
+
+    &.ecru {
+        background-color: C.$ecru;
+
+        &:hover {
+            background-color: color.adjust(C.$ecru, $lightness: -5%);
+        }
+    }
+
+    &.hgreen {
+        background-color: C.$hgreen;
+
+        &:hover {
+            background-color: color.adjust(C.$hgreen, $lightness: -5%);
+        }
+    }
+
+    &.dblue {
+        background-color: C.$dblue;
+
+        &:hover {
+            background-color: color.adjust(C.$dblue, $lightness: -5%);
+        }
+    }
+}
+
+.button91 {
+    color: #fff;
+    padding: 10px 20px;
+    background-color: C.$cadet;
+    background-image: radial-gradient(93% 87% at 87% 89%, rgba(0, 0, 0, 0.23) 0%, transparent 86.18%), radial-gradient(66% 66% at 26% 20%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
+    box-shadow: inset -3px -3px 9px rgba(255, 255, 255, 0.25), inset 0px 3px 9px rgba(255, 255, 255, 0.3), inset 0px 1px 1px rgba(255, 255, 255, 0.6), inset 0px -8px 36px rgba(0, 0, 0, 0.3), inset 0px 1px 5px rgba(255, 255, 255, 0.6), 2px 19px 31px rgba(0, 0, 0, 0.2);
+    border-radius: 14px;
+    font-weight: bold;
+    font-size: 16px;
+    border: 0;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    cursor: pointer;
+    &.tang {
+        background-color: C.$tang;
+
+        &:hover {
+            background-color: color.adjust(C.$tang, $lightness: -5%);
+        }
+    }
+    &.dblue {
+        background-color: C.$dblue;
+
+        &:hover {
+            background-color: color.adjust(C.$dblue, $lightness: -5%);
+        }
+    }
+    &.lime {
+        background-color: C.$lime;
+
+        &:hover {
+            background-color: color.adjust(C.$lime, $lightness: -5%);
+        }
+    }
+    &.red {
+        background-color: C.$red;
+
+        &:hover {
+            background-color: color.adjust(C.$red, $lightness: -5%);
+        }
+    }
+    &:disabled {
+        background-color: gray;
+        cursor: default;
+        opacity: 0.5;
+        &:hover {
+            background-color: gray;
+        }
+    }
+}
+
+.button27 {
+    appearance: none;
+    background-color: #000000;
+    border: 2px solid #1A1A1A;
+    border-radius: 15px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+    min-height: 60px;
+    min-width: 0;
+    outline: none;
+    padding: 16px 24px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;    
+    will-change: transform;
+    &:hover {
+        box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+        transform: translateY(-2px);
+    }
+}
+
+
+
+
+.button42 {
+    background-color: initial;    
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Inter, -apple-system, system-ui, Roboto, "Helvetica Neue", Arial, sans-serif;
+    height: 40px;
+    line-height: 40px;
+    outline: 0;
+    overflow: hidden;
+    padding: 0 20px;
+    pointer-events: auto;
+    position: relative;
+    text-align: center;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: top;
+    white-space: nowrap;    
+    z-index: 9;
+    border: 0;
+    transition: box-shadow .2s;
+    &.lime {
+        background-color: C.$lime;
+
+        &:hover {
+            background-color: color.adjust(C.$lime, $lightness: -15%);
+            box-shadow: C.$lime 0 3px 8px;
+        }        
+    }
+    &.red {
+        background-color: C.$red;
+
+        &:hover {
+            background-color: color.adjust(C.$red, $lightness: -15%);
+            box-shadow: C.$red 0 3px 8px;
+        }
+    }    
+    &.hgreen {
+        background-color: C.$hgreen;
+
+        &:hover {
+            background-color: color.adjust(C.$hgreen, $lightness: -15%);
+            box-shadow: C.$lime 0 3px 8px;
+        }
+    }   
+}
+
