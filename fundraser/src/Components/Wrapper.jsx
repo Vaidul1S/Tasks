@@ -3,5 +3,5 @@ export default function Wrapper({ children }) {
         <div className="app">
             {children}
         </div>
-    )
-}
+    );
+};
