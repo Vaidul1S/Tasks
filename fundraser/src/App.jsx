@@ -1,8 +1,7 @@
 import { Router } from "./Components/Router";
 import Wrapper from "./Components/Wrapper";
 import Nav from "./Components/Nav";
-import './App.css';
-import './buttons.scss';
+import './crud.scss';
 
 export default function App() {
 
