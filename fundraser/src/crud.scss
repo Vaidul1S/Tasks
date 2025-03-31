@@ -1,0 +1,126 @@
+@use 'colors.scss' as C;
+@use 'vars.scss' as V;
+@use 'buttons.scss' as B;
+
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: C.$gray;
+    color: C.$white;
+    font-family: Inter, -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+}
+
+section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .container {
+        width: 100%;
+        max-width: V.$l;
+        padding: 0 V.$p;
+    }
+}
+
+.screen-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 20px;
+    font-weight: 100;
+    color: C.$white;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        padding: 10px;
+
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        text-transform: uppercase;
+        list-style: none;
+        margin: 0;
+
+        li {
+            a {
+                color: C.$tang;
+                text-decoration: none;
+
+                &:hover {
+                    color: C.$lime;
+                }
+            }
+        }
+    }
+
+    .auth {
+
+        display: flex;
+        gap: 20px;
+        .avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: C.$cadet;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+            img {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        a {
+            color: C.$tang;
+            text-decoration: none;
+
+            &:hover {
+                color: C.$lime;
+            }
+        }
+        &.user {
+            display: flex;
+            align-items: center;
+            h3 {
+                 color: C.$tang;
+                font-weight: bold;
+            }
+            .avatar {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background-color: C.$white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-right: 30px;
+            }
+            img {
+                width: 30px;
+                height: 30px;               
+            }
+        }
+
+    }
+}
