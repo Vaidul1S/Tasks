@@ -9,6 +9,7 @@ export default function Nav() {
                     <ul>
                         <li><img src="" alt="" /></li>
                         <li><Link to="">Home</Link></li>
+                        <li><Link to="">Create Fundraising</Link></li>
                         <li><Link to="about">About</Link></li>
                         <li><Link to="contact">Contact</Link></li>
                     </ul>

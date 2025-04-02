@@ -56,7 +56,6 @@ nav {
         color: white;
         font-size: 20px;
         font-weight: bold;
-        text-transform: uppercase;
         list-style: none;
         margin: 0;
 
@@ -66,7 +65,7 @@ nav {
                 text-decoration: none;
 
                 &:hover {
-                    color: C.$lime;
+                    color: C.$ecru;
                 }
             }
         }
