@@ -65,7 +65,7 @@ nav {
                 text-decoration: none;
 
                 &:hover {
-                    color: C.$ecru;
+                    color: C.$hgreen;
                 }
             }
         }
@@ -74,28 +74,14 @@ nav {
     .auth {
 
         display: flex;
-        gap: 20px;
-        .avatar {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background-color: C.$cadet;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-right: 10px;
-            img {
-                width: 20px;
-                height: 20px;
-            }
-        }
+        gap: 20px;       
 
         a {
             color: C.$tang;
             text-decoration: none;
 
             &:hover {
-                color: C.$lime;
+                color: C.$hgreen;
             }
         }
         &.user {
@@ -121,5 +107,46 @@ nav {
             }
         }
 
+    }
+}
+
+.login {
+    h1 {
+        font-size: 40px;
+        font-weight: bold;
+        color: C.$tang;
+        margin: 100px 0 20px 20px;
+        text-align: center;
+       
+    }
+    .form {
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+        width: 460px;
+        padding: 20px;
+        margin: 0 auto;
+        .form-group {
+            display: flex;
+            column-gap: 10px;
+            label {
+                font-size: 20px;
+                font-weight: bold;
+                color: C.$tang;
+                width: 100px;
+            }
+            input {
+                width: calc(100% - 120px);
+                padding: 10px;
+                font-size: 20px;
+                border-radius: 10px;
+                border: none;
+                background-color: C.$veryGray;
+                color: white;
+                &:focus {
+                    outline: none;
+                }
+            }
+        }     
     }
 }
