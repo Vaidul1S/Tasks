@@ -116,7 +116,6 @@ app.use(cookieParser());
 // });
 
 // Start server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+app.listen(port, () => {
+    console.log(`Fundraserio serveris darbui pasiruošęs ant ${port} porto!`)
 });
