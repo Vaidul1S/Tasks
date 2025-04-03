@@ -29,13 +29,13 @@ app.use(cookieParser());
 // app.use(express.json());
 // app.use(cors());
 
-// // MySQL Connection
-// const db = mysql.createConnection({
-//     host: 'localhost',
-//     user: 'root',
-//     password: '',
-//     database: 'fundraising_db'
-// });
+
+const con = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'fundraising_db'
+});
 
 // db.connect(err => {
 //     if (err) throw err;
