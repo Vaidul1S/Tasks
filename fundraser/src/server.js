@@ -107,12 +107,12 @@ app.post('/donate', (req, res) => {
     con.query(sql, [story_id, donor_name, amount], (err, result) => {
         if (err) return res.status(500).json(err);
 
-        const updateSql = `
+        const sql = `
             UPDATE stories 
             SET collected_amount = collected_amount + ? 
             WHERE id = ?
         `;
-        con.query(updateSql, [amount, story_id], (updateErr, updateResult) => {
+        con.query(sql, [amount, story_id], (err, result) => {
             if (err) return res.status(500).json(err);
             res.json({ message: 'Donation successful' });
         });
