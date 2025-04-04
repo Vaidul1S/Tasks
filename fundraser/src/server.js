@@ -97,21 +97,27 @@ app.get('/stories', (req, res) => {
     });
 });
 
-// // Donate to a Story
-// app.post('/donate', (req, res) => {
-//     const { story_id, donor_name, amount } = req.body;
-//     const sql = "INSERT INTO donations (story_id, donor_name, amount) VALUES (?, ?, ?)";
-//     db.query(sql, [story_id, donor_name, amount], (err, result) => {
-//         if (err) return res.status(500).json(err);
+// Donate to a Story
+app.post('/donate', (req, res) => {
+    const { story_id, donor_name, amount } = req.body;
+    const sql = `
+        INSERT INTO donations (story_id, donor_name, amount) 
+        VALUES (?, ?, ?)
+    `;
+    con.query(sql, [story_id, donor_name, amount], (err, result) => {
+        if (err) return res.status(500).json(err);
 
-//         // Update collected amount in the story
-//         const updateSql = "UPDATE stories SET collected_amount = collected_amount + ? WHERE id = ?";
-//         db.query(updateSql, [amount, story_id], (updateErr, updateResult) => {
-//             if (updateErr) return res.status(500).json(updateErr);
-//             res.json({ message: 'Donation successful' });
-//         });
-//     });
-// });
+        const updateSql = `
+            UPDATE stories 
+            SET collected_amount = collected_amount + ? 
+            WHERE id = ?
+        `;
+        con.query(updateSql, [amount, story_id], (updateErr, updateResult) => {
+            if (err) return res.status(500).json(err);
+            res.json({ message: 'Donation successful' });
+        });
+    });
+});
 
 // // Admin Approving a Story
 // app.put('/stories/approve/:id', (req, res) => {
