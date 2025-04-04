@@ -34,7 +34,7 @@ const con = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'fundraising_db'
+    database: 'fundraising'
 });
 
 // db.connect(err => {
