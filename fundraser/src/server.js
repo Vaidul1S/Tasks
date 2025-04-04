@@ -60,11 +60,11 @@ const con = mysql.createConnection({
 //     db.query(sql, [username], async (err, result) => {
 //         if (err) return res.status(500).json(err);
 //         if (result.length === 0) return res.status(401).json({ message: 'User not found' });
-        
+
 //         const user = result[0];
 //         const isMatch = await bcrypt.compare(password, user.password);
 //         if (!isMatch) return res.status(401).json({ message: 'Invalid credentials' });
-        
+
 //         const token = jwt.sign({ id: user.id, username: user.username }, process.env.JWT_SECRET, { expiresIn: '1h' });
 //         res.json({ token });
 //     });
@@ -80,14 +80,18 @@ const con = mysql.createConnection({
 //     });
 // });
 
-// // Get All Approved Fundraising Stories
-// app.get('/stories', (req, res) => {
-//     const sql = "SELECT * FROM stories WHERE approved = 1 ORDER BY collected_amount < goal_amount DESC";
-//     db.query(sql, (err, results) => {
-//         if (err) return res.status(500).json(err);
-//         res.json(results);
-//     });
-// });
+// Get All Approved Fundraising Stories
+app.get('/stories', (req, res) => {
+    const sql = `
+        SELECT * FROM stories 
+        WHERE approved = 1 
+        ORDER BY collected_amount < goal_amount DESC
+    `;
+    con.query(sql, (err, results) => {
+        if (err) return res.status(500).json(err);
+        res.json(results);
+    });
+});
 
 // // Donate to a Story
 // app.post('/donate', (req, res) => {
@@ -95,7 +99,7 @@ const con = mysql.createConnection({
 //     const sql = "INSERT INTO donations (story_id, donor_name, amount) VALUES (?, ?, ?)";
 //     db.query(sql, [story_id, donor_name, amount], (err, result) => {
 //         if (err) return res.status(500).json(err);
-        
+
 //         // Update collected amount in the story
 //         const updateSql = "UPDATE stories SET collected_amount = collected_amount + ? WHERE id = ?";
 //         db.query(updateSql, [amount, story_id], (updateErr, updateResult) => {
