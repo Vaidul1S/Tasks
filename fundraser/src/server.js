@@ -37,7 +37,7 @@ const con = mysql.createConnection({
     database: 'fundraising'
 });
 
-// db.connect(err => {
+// con.connect(err => {
 //     if (err) throw err;
 //     console.log('Connected to MySQL');
 // });
