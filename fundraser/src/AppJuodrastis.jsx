@@ -2,26 +2,6 @@ import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function App() {
-  return (
-    <Router>
-      <nav className="p-4 bg-blue-600 text-white flex justify-between">
-        <h1 className="text-xl font-bold">Fundraising Platform</h1>
-        <div>
-          <Link to="/" className="mr-4">Home</Link>
-          <Link to="/login" className="mr-4">Login</Link>
-          <Link to="/register" className="bg-white text-blue-600 px-4 py-2 rounded">Register</Link>
-        </div>
-      </nav>
-      <Routes>
-        <Route path="/" element={<StoryList />} />
-        <Route path="/create" element={<CreateStory />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
-    </Router>
-  );
-}
 
 function Login() {
   const [username, setUsername] = useState('');

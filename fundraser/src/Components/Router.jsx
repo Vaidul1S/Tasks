@@ -2,6 +2,7 @@ import { useEffect, useState, createContext } from 'react';
 import Wrapper from './Wrapper';
 import Page404 from './Page404';
 import Home from "./Home";
+import About from './About';
 // import Login from '../Pages/Login';
 // import Logout from '../Pages/Logout';
 
@@ -14,6 +15,7 @@ export const Router = ({ children }) => {
     const routes = {
         '': {c: <Home />, title: 'Home', params: 0},
         'home': {c: <Home />, title: 'Home', params: 0},
+        'about': {c: <About />, title: 'About', params: 0},
         // 'login': {c: <Login />, title: 'Login', params: 0, hideNav: true},
         // 'logout': {c: <Logout/>, title: 'Logout', params: 0, hideNav: true},
         'register': {c: null, title: 'Register', params: 0, hideNav: true},
