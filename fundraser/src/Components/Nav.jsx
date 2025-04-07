@@ -12,6 +12,7 @@ export default function Nav() {
                         <li><Link to="create">Create Fundraising</Link></li>
                         <li><Link to="about">About</Link></li>
                         <li><Link to="contact">Contact</Link></li>
+                        <li><Link to="contact">Admin Panel</Link></li>
                     </ul>
                     <div className="auth">
                         <Link to="login">Login</Link>

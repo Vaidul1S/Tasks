@@ -1,4 +1,4 @@
-export default function CreateStory() {
+export default function Create() {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [goalAmount, setGoalAmount] = useState('');
