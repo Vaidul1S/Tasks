@@ -47,7 +47,7 @@ const con = mysql.createConnection({
 //     const { username, password } = req.body;
 //     const hashedPassword = await bcrypt.hash(password, 10);
 //     const sql = "INSERT INTO users (username, password) VALUES (?, ?)";
-//     db.query(sql, [username, hashedPassword], (err, result) => {
+//     con.query(sql, [username, hashedPassword], (err, result) => {
 //         if (err) return res.status(500).json(err);
 //         res.json({ message: 'User registered successfully' });
 //     });
@@ -57,7 +57,7 @@ const con = mysql.createConnection({
 // app.post('/login', (req, res) => {
 //     const { username, password } = req.body;
 //     const sql = "SELECT * FROM users WHERE username = ?";
-//     db.query(sql, [username], async (err, result) => {
+//     con.query(sql, [username], async (err, result) => {
 //         if (err) return res.status(500).json(err);
 //         if (result.length === 0) return res.status(401).json({ message: 'User not found' });
 
@@ -123,7 +123,7 @@ app.post('/donate', (req, res) => {
 // app.put('/stories/approve/:id', (req, res) => {
 //     const { id } = req.params;
 //     const sql = "UPDATE stories SET approved = 1 WHERE id = ?";
-//     db.query(sql, [id], (err, result) => {
+//     con.query(sql, [id], (err, result) => {
 //         if (err) return res.status(500).json(err);
 //         res.json({ message: 'Story approved successfully' });
 //     });
