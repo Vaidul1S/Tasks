@@ -4,7 +4,7 @@ import RouterContext from "./Router";
 export default function Main() {
  
     const { page, parameters, routes } = useContext(RouterContext);
-    console.log('maino parametrai', parameters);
+    console.log('maino parametrai atnaujinti', parameters);
     
      
     const route = _ => {
