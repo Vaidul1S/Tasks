@@ -24,10 +24,12 @@ const con = mysql.createConnection({
     database: 'fundraising'
 });
 
-// con.connect(err => {
-//     if (err) throw err;
-//     console.log('Connected to MySQL');
-// });
+con.connect((err) => {
+    if (err) {
+        throw err;
+    }
+    console.log('Prisijungta prie duomenų bazės!');
+});
 
 // // User Registration
 // app.post('/register', async (req, res) => {
