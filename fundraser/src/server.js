@@ -72,13 +72,13 @@ const con = mysql.createConnection({
 
 // Create a New Fundraising Story
 app.post('/stories', (req, res) => {
-    const { title, description, image_url, goal_amount, user_id } = req.body;
+    const { title, text, image_url, goal_amount, user_id } = req.body;
     const sql = `
-        INSERT INTO stories (title, description, image_url, goal_amount, collected_amount, user_id, approved) 
+        INSERT INTO stories (title, text, image_url, goal_amount, collected_amount, user_id, approved) 
         VALUES (?, ?, ?, ?, 0, ?, 0)
     `;
 
-    con.query(sql, [title, description, image_url, goal_amount, user_id], (err, result) => {
+    con.query(sql, [title, text, image_url, goal_amount, user_id], (err, result) => {
         if (err) return res.status(500).json(err);
         res.json({ message: 'Story created successfully, pending approval' });
     });
