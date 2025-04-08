@@ -7,7 +7,6 @@ import cookieParser from 'cookie-parser';
 import { v4 as uuidv4 } from 'uuid';
 
 const app = express();
-
 const port = 3001;
 
 app.use(cors({
@@ -17,18 +16,6 @@ app.use(cors({
 
 app.use(bodyParser.json());
 app.use(cookieParser());
-
-// const express = require('express');
-// const mysql = require('mysql2');
-// const cors = require('cors');
-// const jwt = require('jsonwebtoken');
-// const bcrypt = require('bcrypt');
-// require('dotenv').config();
-
-// const app = express();
-// app.use(express.json());
-// app.use(cors());
-
 
 const con = mysql.createConnection({
     host: 'localhost',
@@ -129,7 +116,6 @@ app.post('/donate', (req, res) => {
 //     });
 // });
 
-// Start server
 app.listen(port, () => {
     console.log(`Fundraserio serveris darbui pasiruošęs ant ${port} porto!`)
 });

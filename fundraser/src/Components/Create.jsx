@@ -5,7 +5,7 @@ export default function Create() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:5000/stories', {
+        axios.post('http://localhost:3000/stories', {
             title,
             description,
             goal_amount: goalAmount,
