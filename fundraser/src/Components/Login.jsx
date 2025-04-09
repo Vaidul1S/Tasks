@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from 'axios';
+import AuthContext from "./Auth";
 
 export default function Login() {
 
@@ -7,6 +8,8 @@ export default function Login() {
         name: '',
         password: ''
     });
+
+    const { setUser } = useContext(AuthContext);
 
     const changeHandler = e => {
         setForm(f => ({
@@ -21,7 +24,7 @@ export default function Login() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3000/login', loginData)
+        axios.post('http://localhost:3001/login', form)
             .then(res => {
                 setUser(res.data.user);
                 redirectAfterLogin();                
