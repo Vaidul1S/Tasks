@@ -7,31 +7,45 @@ export default function List() {
 
     useEffect(() => {
         axios.get('http://localhost:3001/stories')
-            .then(res => setStories(res.data))            
+            .then(res => setStories(res.data))
             .catch(err => console.error(err));
     }, []);
 
-    const handleDonate = (storyId, donorName, amount) => {
-        axios.post('http://localhost:3000/donate', { id: storyId, donor_name: donorName, amount })
-            .then(() => window.location.reload())
+    const [donate, setDonate] = useState({
+        storyId: '',
+        donorName: '',
+        amount: ''
+    });
+
+    const changeHandler = e => {
+        setDonate(d => ({
+            ...d,
+            [e.target.id]: e.target.value
+        }));
+    };
+
+    const handleDonate = (donate) => {       
+        axios.post('http://localhost:3000/donate', donate)
+            .then(() => window.location.reload())            
             .catch(err => console.error(err));
+            setDonate({});
     };
 
     return (
-        <div className="p-4">
-            <h2 className="text">Fundraising Stories</h2>
-            <div className="grid">
+        <div className="home_content">
+            <h2>They need your help</h2>
+            <div className="stories">
                 {stories.map(story => (
                     <div key={story.id} className="p-4">
-                        <h3 className="text">{story.title}</h3>
-                        <p>{story.text}</p>
-                        <p>Goal: ${story.goal_amount}</p>
-                        <p>Collected: ${story.collected_amount}</p>
+                        <h3 className="title">{story.title}</h3>
+                        <p className="story_text">{story.text}</p>
+                        <p className="story_text">Goal: ${story.goal_amount}</p>
+                        <p className="story_text">Collected: ${story.collected_amount}</p>
                         {story.collected_amount < story.goal_amount && (
-                            <div className="mt-2">
-                                <input type="text" placeholder="Your Name" className="p-2 border mr-2" id={`name-${story.id}`} />
-                                <input type="number" placeholder="Amount" className="p-2 border mr-2" id={`amount-${story.id}`} />
-                                <button className="bg-blue-600 text-white px-4 py-2 rounded">Donate</button>
+                            <div className="donate">
+                                <input type="text" placeholder="Your Name" className="donate_input" id="donorName" onChange={changeHandler} value={donate.donorName}/>
+                                <input type="number" placeholder="Amount" className="donate_input" id="amount" onChange={changeHandler} value={donate.amount}/>
+                                <button className="button42 lime" onClick={_ => handleDonate(donate)}>Donate</button>
                             </div>
                         )}
                     </div>
