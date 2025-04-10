@@ -9,12 +9,12 @@ export default function App() {
 
     return (
         <Router>
-            <Auth>
+            
                 <Wrapper>
                     <Nav />
                     <Main />
                 </Wrapper>
-            </Auth>
+            
         </Router>
     );
 };

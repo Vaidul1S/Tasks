@@ -32,44 +32,44 @@ con.connect((err) => {
 });
 
 // // User Registration
-// app.post('/register', async (req, res) => {
-//     const { username, password } = req.body;
-//     const hashedPassword = await bcrypt.hash(password, 10);
-//     const sql = "INSERT INTO users (username, password) VALUES (?, ?)";
-//     con.query(sql, [username, hashedPassword], (err, result) => {
-//         if (err) return res.status(500).json(err);
-//         res.json({ message: 'User registered successfully' });
-//     });
-// });
+app.post('/register', (req, res) => {
+    const { username, password } = req.body;
+    const hashedPassword = md5(password);
+    const sql = "INSERT INTO users (username, password, role ) VALUES (?, ?, user)";
+    con.query(sql, [username, hashedPassword], (err, result) => {
+        if (err) return res.status(500).json(err);
+        res.json({ message: 'User registered successfully' });
+    });
+});
 
 // // User Login
-app.get('http://localhost:3000', (req, res) => {
-    setTimeout(_ => {
+// app.get('/users', (req, res) => {
+//     setTimeout(_ => {
 
-        const sql = `
-            SELECT * FROM users        
-    `;
+//         const sql = `
+//             SELECT * FROM users        
+//     `;
 
-        con.query(sql, (err, result) => {
-            if (err) {
-                console.log(err);
-                res.status(500).json({ error: err.message });
-                return;
-            }
+//         con.query(sql, (err, result) => {
+//             if (err) {
+//                 console.log(err);
+//                 res.status(500).json({ error: err.message });
+//                 return;
+//             }
 
-            if (result.length === 0) {
-                res.status(200).json({
-                    name: 'Guest',
-                    role: 'guest',
-                    id: 0,
-                });
-                return;
-            }
+//             if (result.length === 0) {
+//                 res.status(200).json({
+//                     name: 'Guest',
+//                     role: 'guest',
+//                     id: 0,
+//                 });
+//                 return;
+//             }
 
-            res.json(result[0]);
-        });
-    }, 2000);
-});
+//             res.json(result[0]);
+//         });
+//     }, 2000);
+// });
 // app.post('/login', (req, res) => {
 //     const { username, password } = req.body;
 //     const sql = "SELECT * FROM users WHERE username = ?";
