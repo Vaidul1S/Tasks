@@ -43,6 +43,40 @@ con.connect((err) => {
 // });
 
 // // User Login
+app.get('http://localhost:3001/auth', (req, res) => {
+    setTimeout(_ => {
+
+        const token = req.cookies.token || 'no token';
+
+        const sql = `
+        SELECT u.id, u.name, u.role
+        FROM users AS u
+        INNER JOIN stories AS s
+        ON u.id = s.user_id
+        WHERE s.token = ?
+        AND s.expires > NOW()
+    `;
+
+        con.query(sql, [token], (err, result) => {
+            if (err) {
+                console.log(err);
+                res.status(500).json({ error: err.message });
+                return;
+            }
+
+            if (result.length === 0) {
+                res.status(200).json({
+                    name: 'Guest',
+                    role: 'guest',
+                    id: 0,
+                });
+                return;
+            }
+
+            res.json(result[0]);
+        });
+    }, 2000);
+});
 // app.post('/login', (req, res) => {
 //     const { username, password } = req.body;
 //     const sql = "SELECT * FROM users WHERE username = ?";
