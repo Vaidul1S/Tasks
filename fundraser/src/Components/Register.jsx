@@ -3,13 +3,14 @@ import axios from 'axios';
 
 export default function Register() {
 
-    const [newUser, setNewUser] = useState({
+    const [form, setform] = useState({
         name: '',
         password: ''
     });
+    const [newUser, setNewUser] = useState(null);
 
     const changeHandler = e => {
-        setNewUser(n => ({
+        setform(n => ({
             ...n,
             [e.target.id]: e.target.value
         }));
@@ -20,9 +21,14 @@ export default function Register() {
     };
 
     const createUser = _ => {
-        axios.post('http://localhost:3001/register', newUser, { withCredentials: true })
+        if (!form.name || !form.password) {
+            alert("Username and password cannot be empty.");
+            return;
+        };
+        
+        axios.post('http://localhost:3001/register', form, { withCredentials: true })
             .then(res => {
-                
+                console.log(res.data)
             })
             .catch(error => {
                 console.error(error);
@@ -33,9 +39,9 @@ export default function Register() {
         <section className="register">
             <h2>Register new account</h2>
             <div className="register_form">
-                <input type="text" placeholder="Username" className="register_input" id="name" value={newUser.name} onChange={changeHandler} />
-                <input type="password" placeholder="Password" className="register_input" id="password" value={newUser.password} onChange={changeHandler} />
-                <button className="button42 lime" onClick={_ => createUser(newUser)}>Sign up</button>
+                <input type="text" placeholder="Username" className="register_input" id="name" value={form.name} onChange={changeHandler} />
+                <input type="password" placeholder="Password" className="register_input" id="password" value={form.password} onChange={changeHandler} />
+                <button className="button42 lime" onClick={_ => createUser(form)}>Sign up</button>
                 <button className="button42 red" onClick={goHome}>Go back</button>
             </div>
         </section>
