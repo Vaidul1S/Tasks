@@ -43,21 +43,14 @@ con.connect((err) => {
 // });
 
 // // User Login
-app.get('http://localhost:3001/auth', (req, res) => {
+app.get('http://localhost:3000', (req, res) => {
     setTimeout(_ => {
 
-        const token = req.cookies.token || 'no token';
-
         const sql = `
-        SELECT u.id, u.name, u.role
-        FROM users AS u
-        INNER JOIN stories AS s
-        ON u.id = s.user_id
-        WHERE s.token = ?
-        AND s.expires > NOW()
+            SELECT * FROM users        
     `;
 
-        con.query(sql, [token], (err, result) => {
+        con.query(sql, (err, result) => {
             if (err) {
                 console.log(err);
                 res.status(500).json({ error: err.message });
