@@ -33,10 +33,14 @@ con.connect((err) => {
 
 // // User Registration
 app.post('/register', (req, res) => {
-    const { username, password } = req.body;
+    const { username, password, role } = req.body;
     const hashedPassword = md5(password);
-    const sql = "INSERT INTO users (username, password, role ) VALUES (?, ?, user)";
-    con.query(sql, [username, hashedPassword], (err, result) => {
+    role = 'user';
+    const sql = `
+        INSERT INTO users (username, password, role ) 
+        VALUES (?, ?, ?)
+        `;
+    con.query(sql, [username, hashedPassword, role], (err, result) => {
         if (err) return res.status(500).json(err);
         res.json({ message: 'User registered successfully' });
     });
