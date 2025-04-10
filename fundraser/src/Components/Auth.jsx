@@ -25,6 +25,6 @@ export const Auth = ({ children }) => {
             {user === null ? <h2 className="screen-message">Logging in...</h2> : children}
         </AuthContext.Provider>
     );
-}
+};
 
 export default AuthContext;
