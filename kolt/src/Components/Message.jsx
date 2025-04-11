@@ -1,4 +1,4 @@
-export default function Message(messages, setMessages) {
+export default function Message(messages) {
     
     return (
         <>
