@@ -29,11 +29,14 @@ export default function Register() {
         axios.post('http://localhost:3001/register', form, { withCredentials: true })
             .then(res => {
                 setNewUser(res.data.message);
-                console.log(res.data);                
+                setTimeout(_ => {
+                    goHome();
+                }, 3000)
+                console.log(res.data);
             })
             .catch(error => {
                 console.error(error);
-                console.log(error.data);               
+                console.log(error.data);
 
             });
     };
@@ -47,7 +50,7 @@ export default function Register() {
                 <button className="button42 lime" onClick={_ => createUser(form)}>Sign up</button>
                 <button className="button42 red" onClick={goHome}>Go back</button>
             </div>
-            {newUser !== null ? <h3>User registered successfully</h3> : <h3>Planets are loading...</h3>}
+            {newUser !== null ? <div className="modal_msg"><h1>User registered successfully, redirecting...</h1></div> : <h3>Planets are loading...</h3>}
         </section>
     );
 };
