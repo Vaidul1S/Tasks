@@ -33,17 +33,35 @@ con.connect((err) => {
 
 // // User Registration
 app.post('/register', (req, res) => {
-    const { username, password, role } = req.body;
-    const hashedPassword = md5(password);
-    role = 'user';
-    const sql = `
-        INSERT INTO users (username, password, role ) 
-        VALUES (?, ?, ?)
+    setTimeout(_ => {
+        const { name, password } = req.body;
+        const hashedPassword = md5(password);
+        const role = 'user';
+
+        let sql = `
+        SELECT * FROM users
+        WHERE name = ?
         `;
-    con.query(sql, [username, hashedPassword, role], (err, result) => {
-        if (err) return res.status(500).json(err);
-        res.json({ message: 'User registered successfully' });
-    });
+        con.query(sql, [name], (err, result) => {
+            if (err) {
+                res.status(500).json({ error: err.message });
+                return;
+            };
+            if (result.length > 0) {
+                res.status(400).json({ message: 'Username already exists' });
+                return;
+            }
+
+            sql = `
+                INSERT INTO users (name, password, role) 
+                VALUES (?, ?, ?)
+            `;
+            con.query(sql, [name, hashedPassword, role], (err, result) => {
+                if (err) return res.status(500).json(err);
+                res.json({ message: 'User registered successfully' });
+            });
+        });
+    }, 1000);
 });
 
 // // User Login
