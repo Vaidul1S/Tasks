@@ -3,14 +3,14 @@ import axios from 'axios';
 
 export default function Register() {
 
-    const [form, setform] = useState({
+    const [form, setForm] = useState({
         name: '',
         password: ''
     });
     const [newUser, setNewUser] = useState(null);
 
     const changeHandler = e => {
-        setform(n => ({
+        setForm(n => ({
             ...n,
             [e.target.id]: e.target.value
         }));
@@ -22,7 +22,10 @@ export default function Register() {
 
     const createUser = _ => {
         if (!form.name || !form.password) {
-            alert("Username and password cannot be empty.");
+            setNewUser("Username and password cannot be empty.");
+            setTimeout(_ => {
+                setNewUser(null);
+            }, 2000);
             return;
         };
 
@@ -42,6 +45,7 @@ export default function Register() {
                 setTimeout(_ => {
                     setNewUser(null);
                 }, 2000);
+                setForm({ name: '', password: '' });
             });
     };
 
