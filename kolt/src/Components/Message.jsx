@@ -6,9 +6,6 @@ export default function Message(messages) {
                 <p>{messages.messages.title}</p>
                 <p>{messages.messages.text}</p>
             </div >        
-
         </>
-
-    )
-
-}
+    );
+};
