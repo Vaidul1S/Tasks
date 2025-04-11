@@ -50,7 +50,7 @@ export default function Register() {
                 <button className="button42 lime" onClick={_ => createUser(form)}>Sign up</button>
                 <button className="button42 red" onClick={goHome}>Go back</button>
             </div>
-            {newUser !== null ? <div className="modal_msg"><h1>User registered successfully, redirecting...</h1></div> : <h3>Planets are loading...</h3>}
+            {newUser !== null ? <div className="modal_msg"><h1>User registered successfully, redirecting...</h1></div> : null}
         </section>
     );
 };
