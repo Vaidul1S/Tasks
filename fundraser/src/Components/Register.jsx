@@ -28,16 +28,20 @@ export default function Register() {
 
         axios.post('http://localhost:3001/register', form, { withCredentials: true })
             .then(res => {
-                setNewUser(res.data.message);
+                setNewUser('User registered successfully, redirecting...');
                 setTimeout(_ => {
                     goHome();
-                }, 3000)
+                }, 2000);
                 console.log(res.data);
+                setNewUser(null);
             })
             .catch(error => {
                 console.error(error);
                 console.log(error.data);
-
+                setNewUser('Username already exists');
+                setTimeout(_ => {
+                    setNewUser(null);
+                }, 2000);
             });
     };
 
@@ -50,7 +54,7 @@ export default function Register() {
                 <button className="button42 lime" onClick={_ => createUser(form)}>Sign up</button>
                 <button className="button42 red" onClick={goHome}>Go back</button>
             </div>
-            {newUser !== null ? <div className="modal_msg"><h1>User registered successfully, redirecting...</h1></div> : null}
+            {newUser !== null ? <div className="modal_msg"><h1>{newUser}</h1></div> : null}
         </section>
     );
 };
