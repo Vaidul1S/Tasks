@@ -32,7 +32,7 @@ export default function Login() {
 
         axios.post('http://localhost:3001/login', form)
             .then(res => {
-                setUser(res.data.user);
+                setLoginUser(res.data.user);
                 redirectAfterLogin();                
             })
             .catch(err => alert('Login failed'));

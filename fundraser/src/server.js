@@ -21,7 +21,7 @@ const con = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'fundraising'
+    database: 'fundraiser'
 });
 
 con.connect((err) => {
@@ -106,7 +106,7 @@ app.post('/register', (req, res) => {
 //         const token = jwt.sign({ id: user.id, username: user.username }, process.env.JWT_SECRET, { expiresIn: '1h' });
 //         res.json({ token });
 //     });
-// });
+// }); 
 
 // Create a New Fundraising Story
 app.post('/stories', (req, res) => {
