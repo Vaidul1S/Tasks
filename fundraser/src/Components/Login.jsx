@@ -56,7 +56,7 @@ export default function Login() {
             <div className="login_form">
                 <input type="text" placeholder="Username" className="login_input" value={form.name} onChange={changeHandler} />
                 <input type="password" placeholder="Password" className="login_input" value={form.password} onChange={changeHandler} />
-                <button className="button42 lime">Login</button>
+                <button className="button42 lime" onClick={_ => logingIn(form)}>Login</button>
                 <button className="button42 red" onClick={goHome}>Cancel</button>
             </div>
             {loginUser !== null ? <div className="modal_msg"><h1>{loginUser}</h1></div> : null}
