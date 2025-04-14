@@ -1,6 +1,5 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import axios from 'axios';
-import AuthContext from "./Auth";
 
 export default function Login() {
 
@@ -8,8 +7,6 @@ export default function Login() {
         name: '',
         password: ''
     });
-
-    const { setUser } = useContext(AuthContext);
 
     const changeHandler = e => {
         setForm(f => ({
@@ -22,8 +19,17 @@ export default function Login() {
         window.location.hash = '#';
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const [loginUser, setLoginUser] = useState(null);
+
+    const logingIn = (e) => {
+        if (!form.name || !form.password) {
+            setLoginUser("Username and password cannot be empty.");
+            setTimeout(_ => {
+                setLoginUser(null);
+            }, 2000);
+            return;
+        };
+
         axios.post('http://localhost:3001/login', form)
             .then(res => {
                 setUser(res.data.user);
