@@ -34,9 +34,8 @@ export default function Register() {
                 setNewUser('User registered successfully, redirecting...');
                 setTimeout(_ => {
                     goHome();
-                }, 2000);
-                console.log(res.data);
-                setNewUser(null);
+                    setNewUser(null);
+                }, 2000);            
             })
             .catch(error => {
                 console.error(error);
