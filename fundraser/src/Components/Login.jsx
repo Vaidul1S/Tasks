@@ -32,8 +32,11 @@ export default function Login() {
 
         axios.post('http://localhost:3001/login', form)
             .then(res => {
-                setLoginUser(res.data.user);
-                redirectAfterLogin();
+                setLoginUser('User loged in successfully, redirecting...');
+                setTimeout(() => {
+                    redirectAfterLogin();
+                    setLoginUser(null);
+                }, 2000);
             })
             .catch(error => {
                 console.error(error);
@@ -54,8 +57,8 @@ export default function Login() {
         <section className="login">
             <h2>Login</h2>
             <div className="login_form">
-                <input type="text" placeholder="Username" className="login_input" value={form.name} onChange={changeHandler} />
-                <input type="password" placeholder="Password" className="login_input" value={form.password} onChange={changeHandler} />
+                <input type="text" placeholder="Username" className="login_input" id="name" value={form.name} onChange={changeHandler} />
+                <input type="password" placeholder="Password" className="login_input" id="password" value={form.password} onChange={changeHandler} />
                 <button className="button42 lime" onClick={_ => logingIn(form)}>Login</button>
                 <button className="button42 red" onClick={goHome}>Cancel</button>
             </div>
