@@ -35,7 +35,6 @@ con.connect((err) => {
 app.post('/register', (req, res) => {
     setTimeout(_ => {
         const { name, password } = req.body;
-        const hashedPassword = md5(password);
         const role = 'user';
 
         let sql = `
@@ -56,7 +55,7 @@ app.post('/register', (req, res) => {
                 INSERT INTO users (name, password, role) 
                 VALUES (?, ?, ?)
             `;
-            con.query(sql, [name, hashedPassword, role], (err, result) => {
+            con.query(sql, [name, md5(password), role], (err, result) => {
                 if (err) return res.status(500).json(err);
                 res.json({ message: 'User registered successfully' });
             });
@@ -64,49 +63,59 @@ app.post('/register', (req, res) => {
     }, 1000);
 });
 
-// // User Login
-// app.get('/users', (req, res) => {
-//     setTimeout(_ => {
+// User Login
+app.get('/users', (req, res) => {
+    setTimeout(_ => {
 
-//         const sql = `
-//             SELECT * FROM users        
-//     `;
+        const sql = `
+            SELECT * FROM users        
+    `;
 
-//         con.query(sql, (err, result) => {
-//             if (err) {
-//                 console.log(err);
-//                 res.status(500).json({ error: err.message });
-//                 return;
-//             }
+        con.query(sql, (err, result) => {
+            if (err) {
+                console.log(err);
+                res.status(500).json({ error: err.message });
+                return;
+            };
 
-//             if (result.length === 0) {
-//                 res.status(200).json({
-//                     name: 'Guest',
-//                     role: 'guest',
-//                     id: 0,
-//                 });
-//                 return;
-//             }
+            if (result.length === 0) {
+                res.status(200).json({
+                    name: 'Guest',
+                    role: 'guest',
+                    id: 0,
+                });
+                return;
+            };
 
-//             res.json(result[0]);
-//         });
-//     }, 2000);
-// });
-// app.post('/login', (req, res) => {
-//     const { username, password } = req.body;
-//     const sql = "SELECT * FROM users WHERE username = ?";
-//     con.query(sql, [username], async (err, result) => {
-//         if (err) return res.status(500).json(err);
-//         if (result.length === 0) return res.status(401).json({ message: 'User not found' });
+            res.json(result[0]);
+        });
+    }, 2000);
+});
 
-//         const user = result[0];
-//         const isMatch = await bcrypt.compare(password, user.password);
-//         if (!isMatch) return res.status(401).json({ message: 'Invalid credentials' });
+app.post('/login', (req, res) => {
+    const { name, password } = req.body;
+    const sql = `
+        SELECT * FROM users 
+        WHERE name = ?
+        `;
+    con.query(sql, [name], (err, result) => {
+        if (err) {
+            res.status(500).json({ error: err.message });
+            return;
+        };
 
-//         const token = jwt.sign({ id: user.id, username: user.username }, process.env.JWT_SECRET, { expiresIn: '1h' });
-//         res.json({ token });
-//     });
-// }); 
+        if (result.length === 0) {
+            res.status(401).json({ message: 'Username not found' });
+            return;
+        };
+        
+        con.query(sql, [name, md5(password) ], (err, result) => {
+            if (err) return res.status(500).json(err);
+            res.json({ message: `Welcome back ${name}!` });
+        });
+        
+    });
+});
 
 // Create a New Fundraising Story
 app.post('/stories', (req, res) => {
