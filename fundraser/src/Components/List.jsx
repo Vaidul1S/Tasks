@@ -7,7 +7,8 @@ export default function List() {
 
     useEffect(() => {
         axios.get('http://localhost:3001/stories')
-            .then(res => setStories(res.data))
+            .then(res => {setStories(res.data)
+            console.log('story',stories)})            
             .catch(err => console.error(err));
     }, []);
 
