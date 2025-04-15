@@ -7,8 +7,9 @@ export default function List() {
 
     useEffect(() => {
         axios.get('http://localhost:3001/stories')
-            .then(res => {setStories(res.data)
-            console.log('story',stories)})            
+            .then(res => {
+                setStories(res.data)
+            })
             .catch(err => console.error(err));
     }, []);
 
@@ -25,11 +26,11 @@ export default function List() {
         }));
     };
 
-    const handleDonate = (donate) => {       
+    const handleDonate = (donate) => {
         axios.post('http://localhost:3000/donate', donate)
-            .then(() => window.location.reload())            
+            .then(() => window.location.reload())
             .catch(err => console.error(err));
-            setDonate({});
+        setDonate({});
     };
 
     return (
@@ -44,8 +45,8 @@ export default function List() {
                         <p className="story_text">Collected: ${story.collected_amount}</p>
                         {story.collected_amount < story.goal_amount && (
                             <div className="donate">
-                                <input type="text" placeholder="Your Name" className="donate_input" id="donorName" onChange={changeHandler} value={donate.donorName}/>
-                                <input type="number" placeholder="Amount" className="donate_input" id="amount" onChange={changeHandler} value={donate.amount}/>
+                                <input type="text" placeholder="Your Name" className="donate_input" id="donorName" onChange={changeHandler} value={donate.donorName} />
+                                <input type="number" placeholder="Amount" className="donate_input" id="amount" onChange={changeHandler} value={donate.amount} />
                                 <button className="button42 lime" onClick={_ => handleDonate(donate)}>Donate</button>
                             </div>
                         )}
