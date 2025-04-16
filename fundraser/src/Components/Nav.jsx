@@ -11,7 +11,6 @@ export default function Nav() {
     if (routes[page]?.hideNav) {
         return null;
     };
-console.log(user);
 
     return (
         <section className="nav">
