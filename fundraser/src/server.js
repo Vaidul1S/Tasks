@@ -96,7 +96,10 @@ app.get('/users', (req, res) => {
 
             // TODO update token expiration time after each request
 
-            result.json(result[0]);
+            res.json({
+                success: true,
+                user: result[0]
+            });
         });
     }, 1000);
 });
@@ -121,7 +124,7 @@ app.post('/login', (req, res) => {
 
         con.query(sql, [name, md5(password)], (err, result) => {
             if (err) return res.status(500).json(err);
-            res.json({ message: `Welcome back ${name}!` });
+            // res.json({ message: `Welcome back ${name}!` });
         });
 
         const token = md5(uuidv4());
