@@ -67,15 +67,15 @@ app.post('/register', (req, res) => {
 app.get('/users', (req, res) => {
     setTimeout(_ => {
 
-        const token = req.cookies.token || 'no token';
+        const token = req.cookies.token;
+        if (!token) return res.status(401).json({ message: 'No token found' });
 
         const sql = `
-            SELECT u.id, u.name, u.role
-            FROM users AS u
-            INNER JOIN sessions AS s
-            ON u.id = s.user_id
-            WHERE s.token = ?
-            AND s.expires > NOW()
+            SELECT users.id, users.name
+            FROM sessions
+            JOIN users ON sessions.user_id = users.id
+            WHERE token = ? 
+            AND expires > NOW()
         `;
 
         con.query(sql, [token], (err, result) => {
@@ -88,7 +88,7 @@ app.get('/users', (req, res) => {
             if (result.length === 0) {
                 res.status(200).json({
                     name: 'Guest',
-                    role: 'guest',                    
+                    role: 'guest',
                     id: 0,
                 });
                 return;
@@ -98,17 +98,20 @@ app.get('/users', (req, res) => {
 
             res.json(result[0]);
         });
-    }, 1000);
+    }, 500);
 });
 
 // User Login
 app.post('/login', (req, res) => {
     const { name, password } = req.body;
+
     let sql = `
         SELECT * FROM users 
         WHERE name = ?
+        AND password = ?
         `;
-    con.query(sql, [name], (err, result) => {
+
+    con.query(sql, [name, md5(password)], (err, result) => {
         if (err) {
             res.status(500).json({ error: err.message });
             return;
@@ -119,17 +122,11 @@ app.post('/login', (req, res) => {
             return;
         };
 
-        con.query(sql, [name, md5(password)], (err, result) => {
-            if (err) return res.status(500).json(err);
-            // res.json({ message: `Welcome back ${name}!` });
-        });
-
         const token = md5(uuidv4());
-        res.cookie('token', token, { httpOnly: true });
 
         sql = `
-                INSERT INTO sessions (token, user_id, expires)
-                VALUES (?, ?, ?)
+            INSERT INTO sessions (token, user_id, expires)
+            VALUES (?, ?, ?)
             `;
 
         con.query(sql, [token, result[0].id, new Date(Date.now() + 1000 * 60 * 60 * 24)], (err) => {
@@ -140,6 +137,7 @@ app.post('/login', (req, res) => {
             }
         });
 
+        res.cookie('token', token, { httpOnly: true, secure: true, sameSite: 'Strict' });
         res.json({
             success: true,
             user: result[0]
@@ -204,21 +202,31 @@ app.get('/stories', (req, res) => {
 
 // Donate to a Story
 app.post('/donate', (req, res) => {
+
     const { story_id, donor_name, amount } = req.body;
-    const sql = `
+
+    let sql = `
         INSERT INTO donations (story_id, donor_name, amount) 
         VALUES (?, ?, ?)
     `;
-    con.query(sql, [story_id, donor_name, amount], (err, result) => {
-        if (err) return res.status(500).json(err);
 
-        const sql = `
+    con.query(sql, [story_id, donor_name, amount], (err, result) => {
+        if (err) {
+            res.status(500).json({ error: err.message });
+            return;
+        };
+
+        sql = `
             UPDATE stories 
             SET collected_amount = collected_amount + ? 
             WHERE id = ?
         `;
+
         con.query(sql, [amount, story_id], (err, result) => {
-            if (err) return res.status(500).json(err);
+            if (err) {
+                res.status(500).json({ error: err.message });
+                return;
+            };
             res.json({ message: 'Donation successful' });
         });
     });

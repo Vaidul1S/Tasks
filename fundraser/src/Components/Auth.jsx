@@ -22,7 +22,7 @@ export const Auth = ({ children }) => {
             user,
             setUser
         }}>
-            {user === null ? <h2 className="screen-message">Logging in...</h2> : children}
+            {user === null ? <h2 className="screen-message">Loading...</h2> : children}
         </AuthContext.Provider>
     );
 };

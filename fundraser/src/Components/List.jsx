@@ -4,6 +4,7 @@ import axios from 'axios';
 export default function List() {
 
     const [stories, setStories] = useState([]);
+    const [donateConfirmed, setDonateConfirmed] = useState(null);
 
     useEffect(() => {
         axios.get('http://localhost:3001/stories')
@@ -13,24 +14,40 @@ export default function List() {
             .catch(err => console.error(err));
     }, []);
 
-    const [donate, setDonate] = useState({
-        storyId: '',
-        donorName: '',
-        amount: ''
-    });
+    const [donate, setDonate] = useState({});
 
-    const changeHandler = e => {
+    const changeHandler = (e, story_id) => {
+        const { id, value } = e.target;
         setDonate(d => ({
             ...d,
-            [e.target.id]: e.target.value
+            [story_id]: {
+                ...d[story_id],
+                [id]: value
+            }
         }));
     };
 
-    const handleDonate = (donate) => {
-        axios.post('http://localhost:3000/donate', donate)
-            .then(() => window.location.reload())
+    const handleDonate = (story_id) => {
+        const data = {
+            story_id,
+            ...donate[story_id]
+        };
+
+        if (!data.donor_name || !data.amount || isNaN(data.amount)) {
+            alert("Please enter your name and a valid amount.");
+            return;
+        }
+
+        axios.post('http://localhost:3001/donate', data)
+            .then(() => {
+                setDonate(prev => ({ ...prev, [story_id]: { donor_name: '', amount: '' } }));
+                setDonateConfirmed('Thank you for your generosity.');
+                setTimeout(_ => {
+                    setDonateConfirmed(null);
+                    window.location.reload();
+                }, 2000);
+            })
             .catch(err => console.error(err));
-        setDonate({});
     };
 
     return (
@@ -45,9 +62,10 @@ export default function List() {
                         <p className="story_text">Collected: ${story.collected_amount}</p>
                         {story.collected_amount < story.goal_amount && (
                             <div className="donate">
-                                <input type="text" placeholder="Your Name" className="donate_input" id="donorName" onChange={changeHandler} value={donate.donorName} />
-                                <input type="number" placeholder="Amount" className="donate_input" id="amount" onChange={changeHandler} value={donate.amount} />
-                                <button className="button42 lime" onClick={_ => handleDonate(donate)}>Donate</button>
+                                <input type="text" placeholder="Your Name" className="donate_input" id="donor_name" onChange={e => changeHandler(e, story.id)} value={donate[story.id]?.donor_name || ''} />
+                                <input type="number" placeholder="Amount" className="donate_input" id="amount" onChange={e => changeHandler(e, story.id)} value={donate[story.id]?.amount || ''} />
+                                <button className="button42 lime" onClick={_ => handleDonate(story.id)}>Donate</button>
+                                {donateConfirmed !== null ? <div className="modal_msg"><h1>{donateConfirmed}</h1></div> : null}
                             </div>
                         )}
                     </div>
