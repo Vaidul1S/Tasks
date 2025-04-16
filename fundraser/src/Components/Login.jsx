@@ -32,7 +32,7 @@ export default function Login() {
 
         axios.post('http://localhost:3001/login', form)
             .then(res => {
-                setLoginUser('User loged in successfully, redirecting...');
+                setLoginUser(`${form.name} loged in successfully, redirecting...`);
                 setTimeout(() => {
                     redirectAfterLogin();
                     setLoginUser(null);

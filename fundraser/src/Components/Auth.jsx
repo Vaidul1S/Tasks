@@ -8,7 +8,7 @@ export const Auth = ({ children }) => {
     const [user, setUser] = useState(null);
 
     useEffect(_ => {
-        axios.get('http://localhost:3001/auth', { withCredentials: true })
+        axios.get('http://localhost:3001/users', { withCredentials: true })
             .then(res => {
                 setUser(res.data);
             })
