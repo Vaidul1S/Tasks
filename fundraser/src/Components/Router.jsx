@@ -5,7 +5,7 @@ import Home from "./Home";
 import About from './About';
 import Login from './Login';
 import Register from './Register';
-// import Logout from '../Pages/Logout';
+import Logout from './Logout';
 
 const RouterContext = createContext();
 
@@ -18,7 +18,7 @@ export const Router = ({ children }) => {
         'home': {c: <Home />, title: 'Home', params: 0},
         'about': {c: <About />, title: 'About', params: 0},
         'login': {c: <Login />, title: 'Login', params: 0, hideNav: true},
-        // 'logout': {c: <Logout/>, title: 'Logout', params: 0, hideNav: true},
+        'logout': {c: <Logout/>, title: 'Logout', params: 0, hideNav: true},
         'register': {c: <Register />, title: 'Register', params: 0, hideNav: true},
     };
 
