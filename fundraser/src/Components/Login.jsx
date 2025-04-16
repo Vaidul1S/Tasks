@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from 'axios';
+import AuthContext from "./Auth";
 
 export default function Login() {
 
@@ -20,12 +21,13 @@ export default function Login() {
     };
 
     const [loginUser, setLoginUser] = useState(null);
+    const { setUser } = useContext(AuthContext);
 
     const logingIn = (e) => {
         if (!form.name || !form.password) {
             setLoginUser("Username and password cannot be empty.");
             setTimeout(_ => {
-                setLoginUser(null);
+                setLoginUser(null);                
             }, 2000);
             return;
         };
@@ -36,6 +38,7 @@ export default function Login() {
                 setTimeout(() => {
                     redirectAfterLogin();
                     setLoginUser(null);
+                    setUser(res.data.user);
                 }, 2000);
             })
             .catch(error => {

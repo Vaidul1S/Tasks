@@ -96,10 +96,7 @@ app.get('/users', (req, res) => {
 
             // TODO update token expiration time after each request
 
-            res.json({
-                success: true,
-                user: result[0]
-            });
+            res.json(result[0]);
         });
     }, 1000);
 });
@@ -149,6 +146,33 @@ app.post('/login', (req, res) => {
         });
 
     });
+});
+
+app.post('/logout', (req, res) => {
+
+    setTimeout(_ => {
+        const token = req.cookies.token || 'no-token';
+
+        const sql = `
+        DELETE FROM sessions
+        WHERE token = ?
+    `;
+
+        con.query(sql, [token], (err) => {
+            if (err) {
+                console.log(err);
+                res.status(500).json({ error: err.message });
+                return;
+            };
+
+            res.clearCookie('token');
+            res.json({
+                name: 'Guest',
+                role: 'guest',
+                id: 0
+            });
+        });
+    }, 1000);
 });
 
 // Create a New Fundraising Story
