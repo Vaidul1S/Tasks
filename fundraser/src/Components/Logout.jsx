@@ -19,7 +19,7 @@ export default function Logout() {
             .catch(error => {
                 console.error(error);
             })
-    }, []);
+    }, [setUser]);
 
     return (
         <h2 className="screen-message">Login out...</h2>

@@ -32,7 +32,7 @@ export default function Login() {
             return;
         };
 
-        axios.post('http://localhost:3001/login', form)
+        axios.post('http://localhost:3001/login', form, { withCredentials: true })
             .then(res => {
                 setLoginUser(`${form.name} loged in successfully, redirecting...`);
                 setTimeout(() => {
