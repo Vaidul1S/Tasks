@@ -63,15 +63,22 @@ app.post('/register', (req, res) => {
     }, 1000);
 });
 
-// User Login
+
 app.get('/users', (req, res) => {
     setTimeout(_ => {
 
-        const sql = `
-            SELECT * FROM users        
-    `;
+        const token = req.cookies.token || 'no token';
 
-        con.query(sql, (err, result) => {
+        const sql = `
+            SELECT u.id, u.name, u.role
+            FROM users AS u
+            INNER JOIN sessions AS s
+            ON u.id = s.user_id
+            WHERE s.token = ?
+            AND s.expires > NOW()
+        `;
+
+        con.query(sql, [token], (err, result) => {
             if (err) {
                 console.log(err);
                 res.status(500).json({ error: err.message });
@@ -81,20 +88,23 @@ app.get('/users', (req, res) => {
             if (result.length === 0) {
                 res.status(200).json({
                     name: 'Guest',
-                    role: 'guest',
+                    role: 'guest',                    
                     id: 0,
                 });
                 return;
             };
 
-            res.json(result[0]);
+            // TODO update token expiration time after each request
+
+            result.json(result[0]);
         });
-    }, 2000);
+    }, 1000);
 });
 
+// User Login
 app.post('/login', (req, res) => {
     const { name, password } = req.body;
-    const sql = `
+    let sql = `
         SELECT * FROM users 
         WHERE name = ?
         `;
@@ -108,12 +118,33 @@ app.post('/login', (req, res) => {
             res.status(401).json({ message: 'Username not found' });
             return;
         };
-        
-        con.query(sql, [name, md5(password) ], (err, result) => {
+
+        con.query(sql, [name, md5(password)], (err, result) => {
             if (err) return res.status(500).json(err);
             res.json({ message: `Welcome back ${name}!` });
         });
-        
+
+        const token = md5(uuidv4());
+        res.cookie('token', token, { httpOnly: true });
+
+        sql = `
+                INSERT INTO sessions (token, user_id, expires)
+                VALUES (?, ?, ?)
+            `;
+
+        con.query(sql, [token, result[0].id, new Date(Date.now() + 1000 * 60 * 60 * 24)], (err) => {
+            if (err) {
+                console.log(err);
+                res.status(500).json({ error: err.message });
+                return;
+            }
+        });
+
+        res.json({
+            success: true,
+            user: result[0]
+        });
+
     });
 });
 
