@@ -43,7 +43,6 @@ export default function Login() {
             })
             .catch(error => {
                 console.error(error);
-                console.log(error.data);
                 setLoginUser('User not found');
                 setTimeout(_ => {
                     setLoginUser(null);

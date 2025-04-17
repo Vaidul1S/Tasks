@@ -67,8 +67,7 @@ app.post('/register', (req, res) => {
 app.get('/users', (req, res) => {
     setTimeout(_ => {
 
-        const token = req.cookies.token;
-        if (!token) return res.status(401).json({ message: 'No token found' });
+        const token = req.cookies.token || 'no-token';
 
         const sql = `
             SELECT users.id, users.name
@@ -98,7 +97,7 @@ app.get('/users', (req, res) => {
 
             res.json(result[0]);
         });
-    }, 500);
+    }, 1000);
 });
 
 // User Login
@@ -137,7 +136,7 @@ app.post('/login', (req, res) => {
             }
         });
 
-        res.cookie('token', token, { httpOnly: true, secure: true, sameSite: 'Strict' });
+        res.cookie('token', token, { httpOnly: true, sameSite: 'Strict' });
         res.json({
             success: true,
             user: result[0]
