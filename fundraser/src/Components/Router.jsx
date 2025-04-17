@@ -6,6 +6,7 @@ import About from './About';
 import Login from './Login';
 import Register from './Register';
 import Logout from './Logout';
+import Create from './Create';
 
 const RouterContext = createContext();
 
@@ -20,6 +21,7 @@ export const Router = ({ children }) => {
         'login': {c: <Login />, title: 'Login', params: 0, hideNav: true},
         'logout': {c: <Logout/>, title: 'Logout', params: 0, hideNav: true},
         'register': {c: <Register />, title: 'Register', params: 0, hideNav: true},
+        'create': {c: <Create />, title: 'Create', params: 0},
     };
 
     const [page, setPage] = useState(_ => {

@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import axios from 'axios';
+
 export default function Create() {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
@@ -5,7 +8,7 @@ export default function Create() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3000/stories', {
+        axios.post('http://localhost:3001/stories', {
             title,
             description,
             goal_amount: goalAmount,
