@@ -22,7 +22,7 @@ export default function Nav() {
                         {user !== null && user.role === 'guest' ?
                             <li><Link to="redirect">Create Fundraising</Link></li>
                             : <li><Link to="create">Create Fundraising</Link></li>
-                        }                       
+                        }
                         <li><Link to="about">About</Link></li>
                         <li><Link to="contact">Contact</Link></li>
                         {user !== null && user.role === 'admin' ?
