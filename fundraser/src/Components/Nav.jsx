@@ -25,9 +25,6 @@ export default function Nav() {
                         }
                         <li><Link to="about">About</Link></li>
                         <li><Link to="contact">Contact</Link></li>
-                        {user !== null && user.role === 'admin' ?
-                            <li><Link to="admin">Admin Panel</Link></li> : null
-                        }
                     </ul>
                     {
                         user !== null && user.role === 'guest' ?
@@ -41,6 +38,11 @@ export default function Nav() {
                         user !== null && user.role !== 'guest' ?
                             <div className="auth user">
                                 <h3>{user.name}</h3>
+                                {user.role === 'admin' ?
+                                    <div className="auth">
+                                        <Link to="admin">Admin Panel</Link>
+                                    </div>
+                                    : null}
                                 <Link to="logout">Logout</Link>
                             </div>
                             : null
