@@ -70,7 +70,7 @@ app.get('/users', (req, res) => {
         const token = req.cookies.token || 'no-token';
 
         const sql = `
-            SELECT users.id, users.name
+            SELECT users.id, users.name, users.role
             FROM sessions
             JOIN users ON sessions.user_id = users.id
             WHERE token = ? 
@@ -256,6 +256,20 @@ app.patch('/approve/:id', (req, res) => {
     con.query(sql, [id], (err, result) => {
         if (err) return res.status(500).json(err);
         res.json({ message: 'Story approved successfully' });
+    });
+});
+
+// Admin delete story
+app.delete('/delete/:id', (req, res) => {
+    const { id } = req.params;
+    const sql = `
+        DELETE FROM stories          
+        WHERE id = ?
+        `;
+
+    con.query(sql, [id], (err, result) => {
+        if (err) return res.status(500).json(err);
+        res.json({ message: 'Story deleted successfully' });
     });
 });
 

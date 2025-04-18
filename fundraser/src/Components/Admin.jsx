@@ -24,7 +24,7 @@ export default function Admin() {
     };
 
     const deleteStory = (id) => {
-        axios.delete('http://localhost:3001/delete/${id')
+        axios.delete(`http://localhost:3001/delete/${id}`)
         .then(_ => {
             setStoryApproved('Story deleted successfully');
             setTimeout(() => {
