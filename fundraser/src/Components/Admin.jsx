@@ -23,6 +23,17 @@ export default function Admin() {
             .catch(err => console.error(err));
     };
 
+    const deleteStory = (id) => {
+        axios.delete('http://localhost:3001/delete/${id')
+        .then(_ => {
+            setStoryApproved('Story deleted successfully');
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000);
+        })
+        .catch(err => console.error(err));
+    };
+
     return (
         <section className="admin_panel">
             <h1>Welcome to admin panel</h1>
@@ -34,7 +45,10 @@ export default function Admin() {
                         <p className="story_text">Goal: ${story.goal_amount}</p>
                         <p className="story_text">Collected: ${story.collected_amount}</p>
                         {!story.approved && (
-                            <button className="button42 lime" onClick={_=> approveStory(story.id)}>Approve</button>
+                            <>
+                                <button className="button42 lime" onClick={_ => approveStory(story.id)}>Approve</button>
+                                <button className="button42 red" onClick={_ => deleteStory(story.id)}>Delete</button>
+                            </>
                         )}
                     </div>
                 ))}
