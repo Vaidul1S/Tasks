@@ -7,6 +7,8 @@ import Login from './Login';
 import Register from './Register';
 import Logout from './Logout';
 import Create from './Create';
+import Admin from './Admin';
+import Redirect from './Redirect';
 
 const RouterContext = createContext();
 
@@ -22,6 +24,8 @@ export const Router = ({ children }) => {
         'logout': {c: <Logout/>, title: 'Logout', params: 0, hideNav: true},
         'register': {c: <Register />, title: 'Register', params: 0, hideNav: true},
         'create': {c: <Create />, title: 'Create', params: 0},
+        'admin': {c: <Admin />, title: 'Admin', params: 0},
+        'redirect': {c: <Redirect />, title: 'Redirect', params: 0, hideNav: true},
     };
 
     const [page, setPage] = useState(_ => {

@@ -1,14 +1,21 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from 'axios';
+import AuthContext from "./Auth";
 
 export default function Create() {
 
+    const { user } = useContext(AuthContext);
     const [newStory, setNewStory] = useState({
         title: '',
         text: '',
-        goal_amount: ''
+        goal_amount: '',
+        user_id: user.id
     });
     const [storyUpload, setStoryUpload] = useState(null);
+
+    const goHome = _ => {
+        window.location.hash = '#';
+    };
 
     const changeHandler = e => {
         setNewStory(n => ({
@@ -30,14 +37,11 @@ export default function Create() {
             .then(res => {
                 setStoryUpload('Story submitted for approval');
                 setTimeout(() => {
-                    setStoryUpload(null);
+                    goHome();
+                    setStoryUpload(null);                    
                 }, 2000);
             })
             .catch(err => console.error(err));
-    };
-
-    const goHome = _ => {
-        window.location.hash = '#';
     };
 
     return (
@@ -48,7 +52,7 @@ export default function Create() {
                     <input type="text" placeholder="Title" className="create_input" id="title" value={newStory.title} onChange={changeHandler} />
                     <textarea placeholder="Description" className="create_input" id="text" value={newStory.text} onChange={changeHandler} />
                     <input type="number" placeholder="Goal Amount" className="create_input" id="goal_amount" value={newStory.goal_amount} onChange={changeHandler} />
-                    <button className="button42 hgreen" onClick={_=> handleSubmit(newStory)}>Create Story</button>
+                    <button className="button42 hgreen" onClick={_ => handleSubmit(newStory)}>Create Story</button>
                     <button className="button42 red" onClick={goHome}>Go back</button>
                 </div>
             </div>

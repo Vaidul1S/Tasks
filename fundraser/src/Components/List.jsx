@@ -53,9 +53,9 @@ export default function List() {
     return (
         <div className="home_content">
             <h2>They need your help</h2>
-            <div className="stories">
+            <div className="stories_list">
                 {stories.map(story => (
-                    <div key={story.id} className="p-4">
+                    <div key={story.id} className="stories">
                         <h3 className="title">{story.title}</h3>
                         <p className="story_text">{story.text}</p>
                         <p className="story_text">Goal: ${story.goal_amount}</p>
