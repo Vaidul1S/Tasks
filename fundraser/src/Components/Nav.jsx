@@ -19,10 +19,15 @@ export default function Nav() {
                     <ul>
                         <li><img src="" alt="" /></li>
                         <li><Link to="">Home</Link></li>
-                        <li><Link to="create">Create Fundraising</Link></li>
+                        {user !== null && user.role === 'guest' ?
+                            <li><Link to="redirect">Create Fundraising</Link></li>
+                            : <li><Link to="create">Create Fundraising</Link></li>
+                        }                       
                         <li><Link to="about">About</Link></li>
                         <li><Link to="contact">Contact</Link></li>
-                        <li><Link to="adminPanel">Admin Panel</Link></li>
+                        {user !== null && user.role === 'admin' ?
+                            <li><Link to="admin">Admin Panel</Link></li> : null
+                        }
                     </ul>
                     {
                         user !== null && user.role === 'guest' ?

@@ -31,7 +31,7 @@ con.connect((err) => {
     console.log('Prisijungta prie duomenų bazės!');
 });
 
-// // User Registration
+// User Registration
 app.post('/register', (req, res) => {
     setTimeout(_ => {
         const { name, password } = req.body;
@@ -174,13 +174,13 @@ app.post('/logout', (req, res) => {
 
 // Create a New Fundraising Story
 app.post('/stories', (req, res) => {
-    const { title, text, image_url, goal_amount, user_id } = req.body;
+    const { title, text, goal_amount, user_id } = req.body;
     const sql = `
         INSERT INTO stories (title, text, image_url, goal_amount, collected_amount, user_id, approved) 
-        VALUES (?, ?, ?, ?, 0, ?, 0)
+        VALUES (?, ?, 0, ?, 0, ?, 0)
     `;
 
-    con.query(sql, [title, text, image_url, goal_amount, user_id], (err, result) => {
+    con.query(sql, [title, text, goal_amount, user_id], (err, result) => {
         if (err) return res.status(500).json(err);
         res.json({ message: 'Story created successfully, pending approval' });
     });
@@ -231,15 +231,33 @@ app.post('/donate', (req, res) => {
     });
 });
 
-// // Admin Approving a Story
-// app.put('/stories/approve/:id', (req, res) => {
-//     const { id } = req.params;
-//     const sql = "UPDATE stories SET approved = 1 WHERE id = ?";
-//     con.query(sql, [id], (err, result) => {
-//         if (err) return res.status(500).json(err);
-//         res.json({ message: 'Story approved successfully' });
-//     });
-// });
+// Get pending Fundraising Stories
+app.get('/pending', (req, res) => {
+    const sql = `
+        SELECT * FROM stories 
+        WHERE approved = 0 
+        ORDER BY collected_amount < goal_amount DESC
+    `;
+    con.query(sql, (err, results) => {
+        if (err) return res.status(500).json(err);
+        res.json(results);
+    });
+});
+
+// Admin Approving a Story
+app.patch('/approve/:id', (req, res) => {
+    const { id } = req.params;
+    const sql = `
+        UPDATE stories 
+        SET approved = 1 
+        WHERE id = ?
+        `;
+
+    con.query(sql, [id], (err, result) => {
+        if (err) return res.status(500).json(err);
+        res.json({ message: 'Story approved successfully' });
+    });
+});
 
 app.listen(port, () => {
     console.log(`Fundraserio serveris darbui pasiruošęs ant ${port} porto!`)
