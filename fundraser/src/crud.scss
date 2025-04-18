@@ -179,8 +179,10 @@ nav {
 }
 
 .create {
+    background-image: url('./images/create_fund.png');
     .create_content {
         width: 100%;
+        height: 90vh;
         display: flex;
         justify-items: center;
         align-items: center;
@@ -199,7 +201,7 @@ nav {
                 width: 100%;
                 height: 50px;
                 border: none;
-                border-radius: 5px;
+                border-radius: 10px;
                 background: C.$veryGray;
                 color: C.$white;
 
