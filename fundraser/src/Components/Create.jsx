@@ -50,7 +50,7 @@ export default function Create() {
                 <h1>Create a Fundraising Story</h1>
                 <div className="create_form">
                     <input type="text" placeholder="Title" className="create_input" id="title" value={newStory.title} onChange={changeHandler} />
-                    <textarea placeholder="Description" className="create_input" id="text" value={newStory.text} onChange={changeHandler} />
+                    <input type='text' placeholder="Description" className="create_input" id="text" value={newStory.text} onChange={changeHandler} />
                     <input type="number" placeholder="Goal Amount" className="create_input" id="goal_amount" value={newStory.goal_amount} onChange={changeHandler} />
                     <button className="button42 hgreen" onClick={_ => handleSubmit(newStory)}>Create Story</button>
                     <button className="button42 red" onClick={goHome}>Go back</button>
