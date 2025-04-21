@@ -146,13 +146,13 @@ sql = `
 
 con.query(sql, (err) => {
     if (err) throw err;
-    console.log('Lentelė authors sukurta!');
+    console.log('Table Users created!');
 });
 
 sql = `
     CREATE TABLE sessions (
     id int(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    author_id int(10) UNSIGNED NOT NULL,
+    user_id int(10) UNSIGNED NOT NULL,
     token char(32) NOT NULL,
     expires datetime NOT NULL
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -160,25 +160,25 @@ sql = `
 
 con.query(sql, (err) => {
     if (err) throw err;
-    console.log('Lentelė sessions sukurta!');
+    console.log('Table sessions created!');
 });
 
 sql = `
-    CREATE TABLE posts (
+    CREATE TABLE stories (
     id int(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    author_id int(10) UNSIGNED NOT NULL,
-    content text NOT NULL,
+    title varchar(255) NOT NULL,    
+    text text NOT NULL,
+    goal_amount decimal(10,2) NOT NULL,    
+    collected_amount decimal(10,2) NOT NULL,
+    user_id int(10) UNSIGNED NOT NULL,
+    approved int(1) NOT NULL
     image_url varchar(100) NOT NULL,
-    likes text NOT NULL,
-    title varchar(255) NOT NULL,
-    date date NOT NULL,
-    comments int(10) UNSIGNED NOT NULL
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
  `;
 
 con.query(sql, (err) => {
     if (err) throw err;
-    console.log('Lentelė posts sukurta!');
+    console.log('Table Stories created!');
 });
 
 sql = `
