@@ -236,7 +236,6 @@ app.get('/pending', (req, res) => {
     const sql = `
         SELECT * FROM stories 
         WHERE approved = 0 
-        ORDER BY collected_amount < goal_amount DESC
     `;
     con.query(sql, (err, results) => {
         if (err) return res.status(500).json(err);
