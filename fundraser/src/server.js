@@ -262,15 +262,23 @@ app.patch('/approve/:id', (req, res) => {
 // Admin delete story
 app.delete('/delete/:id', (req, res) => {
     const { id } = req.params;
-    const sql = `
-        DELETE FROM stories          
-        WHERE id = ?
+    let sql = `
+        DELETE FROM donations
+        WHERE story_id = ?       
         `;
 
     con.query(sql, [id], (err, result) => {
-        if (err) return res.status(500).json(err);
-        res.json({ message: 'Story deleted successfully' });
+        if (err) return res.status(500).json(err);        
     });
+
+    sql = `
+        DELETE FROM stories          
+        WHERE id = ?
+        `;
+        con.query(sql, [id], (err, result) => {
+            if (err) return res.status(500).json(err);
+            res.json({ message: 'Story deleted successfully' });
+        });
 });
 
 app.listen(port, () => {

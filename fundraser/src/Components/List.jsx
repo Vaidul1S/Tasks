@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from 'axios';
+import AuthContext from "./Auth";
 
 export default function List() {
 
     const [stories, setStories] = useState([]);
     const [donateConfirmed, setDonateConfirmed] = useState(null);
+    const { user } = useContext(AuthContext);
 
     useEffect(() => {
         axios.get('http://localhost:3001/stories')
@@ -43,7 +45,19 @@ export default function List() {
                 setDonate(prev => ({ ...prev, [story_id]: { donor_name: '', amount: '' } }));
                 setDonateConfirmed('Thank you for your generosity.');
                 setTimeout(_ => {
+                    window.location.reload();
                     setDonateConfirmed(null);
+                }, 2000);
+                
+            })
+            .catch(err => console.error(err));
+    };
+
+    const deleteStory = (id) => {
+        axios.delete(`http://localhost:3001/delete/${id}`)
+            .then(_ => {
+                setDonateConfirmed('Story deleted successfully');
+                setTimeout(() => {
                     window.location.reload();
                 }, 2000);
             })
@@ -51,7 +65,7 @@ export default function List() {
     };
 
     return (
-        <div className="home_content">
+        <div className="list_content">
             <h2>They need your help</h2>
             <div className="stories_list">
                 {stories.map(story => (
@@ -65,12 +79,17 @@ export default function List() {
                                 <input type="text" placeholder="Your Name" className="donate_input" id="donor_name" onChange={e => changeHandler(e, story.id)} value={donate[story.id]?.donor_name || ''} />
                                 <input type="number" placeholder="Amount" className="donate_input" id="amount" onChange={e => changeHandler(e, story.id)} value={donate[story.id]?.amount || ''} />
                                 <button className="button42 lime" onClick={_ => handleDonate(story.id)}>Donate</button>
-                                {donateConfirmed !== null ? <div className="modal_msg"><h1>{donateConfirmed}</h1></div> : null}
                             </div>
                         )}
+                        {
+                            user !== null && user.role === 'admin' ?
+                                <button className="button42 red" onClick={_ => deleteStory(story.id)}>Delete</button>
+                                : null
+                        }
                     </div>
                 ))}
             </div>
+            {donateConfirmed !== null ? <div className="modal_msg"><h1>{donateConfirmed}</h1></div> : null}
         </div>
     );
 };
