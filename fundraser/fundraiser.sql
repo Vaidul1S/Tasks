@@ -39,7 +39,7 @@ CREATE TABLE `donations` (
 --
 
 INSERT INTO `donations` (`id`, `story_id`, `donor_name`, `amount`) VALUES
-(22, 4, 'Gaga', 10000.00);
+(1, 1, 'Baba', 1000.00);
 
 -- --------------------------------------------------------
 
@@ -59,9 +59,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `expires`, `token`) VALUES
-(37, 10, '2025-04-17', '5a0e892393e7a62ff54fcf42fc357c86'),
-(43, 1, '2025-04-18', 'f8bbd1404051223789af8f8ef9c6c2bd'),
-(56, 10, '2025-04-19', 'cd4b304b0b8503241cde5d2dc6e476ad');
+(1, 10, '2025-04-19', 'cd4b304b0b8503241cde5d2dc6e476ad');
 
 -- --------------------------------------------------------
 
@@ -85,9 +83,9 @@ CREATE TABLE `stories` (
 --
 
 INSERT INTO `stories` (`id`, `title`, `text`, `goal_amount`, `collected_amount`, `user_id`, `approved`, `image_url`) VALUES
-(4, 'Save children', 'Give us some money and we will look what we can do.', 200000.00, 12000.00, 10, 1, '0'),
-(5, 'Save children again', 'Give us some money and we will look what we can do.', 200000.00, 0.00, 10, 1, '0'),
-(13, 'Help us save Ukrainian pets', 'Fundraising for pets whom lost home and owners because of war. ', 1000000.00, 0.00, 1, 1, '0');
+(1, 'Save children', 'Give us some money and we will look what we can do.', 200000.00, 1000.00, 10, 1, '0'),
+(2, 'Save children again', 'Give us some money and we will look what we can do.', 200000.00, 0.00, 10, 1, '0'),
+(3, 'Help us save Ukrainian pets', 'Fundraising for pets whom lost home and owners because of war. ', 1000000.00, 0.00, 1, 1, '0');
 
 -- --------------------------------------------------------
 
