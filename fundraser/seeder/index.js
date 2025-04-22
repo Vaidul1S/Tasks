@@ -1,116 +1,12 @@
 import { users } from './users.js';
-import { posts } from './posts.js';
+import { stories } from './stories.js';
+import { donations } from './donations.js';
 import mysql from 'mysql';
-import { faker } from '@faker-js/faker';
 import md5 from 'md5';
-
-function rand(min, max) {
-    const minCeiled = Math.ceil(min);
-    const maxFloored = Math.floor(max);
-    return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
-}
-const usersCount = users.length;
 
 users.forEach(user => {
     user.password = md5('123');
-    user.email = faker.internet.email();
 });
-
-// add author_id to posts
-posts.forEach(post => {
-    post.author_id = users[rand(0, usersCount - 1)].id;
-});
-
-// add likes array to posts
-posts.forEach(post => {
-    post.likes = { l: [], d: [] };
-    const likesCount = rand(0, usersCount);
-    for (let i = 0; i < likesCount; i++) {
-        let likeId;
-        do {
-            likeId = users[rand(0, usersCount - 1)].id;
-        } while (post.likes.l.includes(likeId));
-        post.likes.l.push(likeId);
-    }
-    users.forEach(user => {
-        if (!post.likes.l.includes(user.id)) {
-            rand(0, 2) || (post.likes.d.push(user.id));
-        }
-    });
-});
-
-// posts likes to JSON
-posts.forEach(post => {
-    post.likes = JSON.stringify(post.likes);
-});
-
-
-let lastCommentId = 1;
-const comments = [];
-const postCommentsCount = new Map();
-
-// comments to posts and comments
-// posts.forEach(post => {
-//     postCommentsCount.set(post.id, 0);
-//     if (rand(0, 8)) {
-//         const commentsCount = rand(0, 10);
-//         for (let i = 0; i < commentsCount; i++) {
-//             const comment = {
-//                 id: lastCommentId++,
-//                 post_id: post.id,
-//                 comment_id: null,
-//                 author_id: users[rand(0, usersCount - 1)].id,
-//                 content: faker.lorem.paragraph(),
-//             };
-//             comments.push(comment);
-//             postCommentsCount.set(post.id, postCommentsCount.get(post.id) + 1);
-//             if (rand(0, 8)) {
-//                 const repliesCount = rand(0, 5);
-//                 for (let j = 0; j < repliesCount; j++) {
-//                     const reply = {
-//                         id: lastCommentId++,
-//                         comment_id: comment.id,
-//                         post_id: null,
-//                         author_id: users[rand(0, usersCount - 1)].id,
-//                         content: faker.lorem.paragraph(),
-//                     };
-//                     comments.push(reply);
-//                     postCommentsCount.set(post.id, postCommentsCount.get(post.id) + 1);
-//                 }
-//             }
-//         }
-//     }
-// });
-
-// // add likes array to comments
-// comments.forEach(comment => {
-//     comment.likes = { l: [], d: [] };
-//     const likesCount = rand(0, usersCount);
-//     for (let i = 0; i < likesCount; i++) {
-//         let likeId;
-//         do {
-//             likeId = users[rand(0, usersCount - 1)].id;
-//         } while (comment.likes.l.includes(likeId));
-//         comment.likes.l.push(likeId);
-//     }
-//     users.forEach(user => {
-//         if (!comment.likes.l.includes(user.id)) {
-//             rand(0, 2) || (comment.likes.d.push(user.id));
-//         }
-//     });
-// });
-
-// // comments likes to JSON
-// comments.forEach(comment => {
-//     comment.likes = JSON.stringify(comment.likes);
-// });
-
-// // add comments count to posts
-// posts.forEach(post => {
-//     post.comments = postCommentsCount.get(post.id);
-// });
-
-
 
 let sql;
 const con = mysql.createConnection({
@@ -122,21 +18,21 @@ const con = mysql.createConnection({
 
 con.connect(_ => console.log('Prisijungta prie duomenų bazės!'));
 
+con.query('DROP TABLE IF EXISTS donations;'), (err) => {
+    if (err) throw err;
+}
+con.query('DROP TABLE IF EXISTS sessions;'), (err) => {
+    if (err) throw err;
+}
 con.query('DROP TABLE IF EXISTS stories;'), (err) => {
     if (err) throw err;
 }
 con.query('DROP TABLE IF EXISTS users;'), (err) => {
     if (err) throw err;
 }
-con.query('DROP TABLE IF EXISTS sessions;'), (err) => {
-    if (err) throw err;
-}
-con.query('DROP TABLE IF EXISTS donation;'), (err) => {
-    if (err) throw err;
-}
 
 sql = `
-    CREATE TABLE user (
+    CREATE TABLE users (
     id int(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name varchar(100) NOT NULL,
     role enum('admin', 'user') NOT NULL,
@@ -168,11 +64,11 @@ sql = `
     id int(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     title varchar(255) NOT NULL,    
     text text NOT NULL,
-    goal_amount decimal(10,2) NOT NULL,    
-    collected_amount decimal(10,2) NOT NULL,
+    goal_amount decimal(12,2) NOT NULL,    
+    collected_amount decimal(12,2) NOT NULL,
     user_id int(10) UNSIGNED NOT NULL,
-    approved int(1) NOT NULL
-    image_url varchar(100) NOT NULL,
+    approved int(1) NOT NULL,
+    image_url varchar(100) NOT NULL
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
  `;
 
@@ -182,86 +78,82 @@ con.query(sql, (err) => {
 });
 
 sql = `
-    CREATE TABLE comments (
+    CREATE TABLE donations (
     id int(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    post_id int(10) UNSIGNED DEFAULT NULL,
-    comment_id int(10) UNSIGNED DEFAULT NULL,
-    content text NOT NULL,
-    author_id int(10) UNSIGNED NOT NULL,
-    likes text NOT NULL
+    story_id int(10) UNSIGNED DEFAULT NULL,
+    donor_name varchar(100) NOT NULL,
+    amount decimal(12,2) NOT NULL
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
  `;
 
 con.query(sql, (err) => {
     if (err) throw err;
-    console.log('Lentelė comments sukurta!');
+    console.log('Table Donations created!');
 });
 
 sql = `
-    ALTER TABLE comments
-    ADD CONSTRAINT comments_ibfk_1 FOREIGN KEY (author_id) REFERENCES authors (id),
-    ADD CONSTRAINT comments_ibfk_2 FOREIGN KEY (post_id) REFERENCES posts (id) ON DELETE CASCADE,
-    ADD CONSTRAINT comments_ibfk_3 FOREIGN KEY (comment_id) REFERENCES comments (id) ON DELETE CASCADE;
+    ALTER TABLE stories
+    ADD CONSTRAINT stories_ibfk_1 FOREIGN KEY (user_id) REFERENCES users (id);
 `;
 
 con.query(sql, (err) => {
     if (err) throw err;
-    console.log('Sukurti raktai tarp lentelių!');
+    console.log('Table keys created!');
 });
 
 sql = `
-    ALTER TABLE posts
-    ADD CONSTRAINT posts_ibfk_1 FOREIGN KEY (author_id) REFERENCES authors (id);
+    ALTER TABLE donations
+    ADD CONSTRAINT donations_ibfk_1 FOREIGN KEY (story_id) REFERENCES stories (id);
 `;
 
 con.query(sql, (err) => {
     if (err) throw err;
-    console.log('Sukurti raktai tarp lentelių!');
+    console.log('Table keys created!');
 });
 
 sql = `
     ALTER TABLE sessions
-    ADD CONSTRAINT sessions_ibfk_1 FOREIGN KEY (author_id) REFERENCES authors (id);
+    ADD CONSTRAINT sessions_ibfk_1 FOREIGN KEY (user_id) REFERENCES users (id);
 `;
- 
+
 con.query(sql, (err) => {
     if (err) throw err;
-    console.log('Sukurti raktai tarp lentelių!');
+    console.log('Table keys created!');
 });
 
 sql = `
-    INSERT INTO authors
-    (id, name, avatar, role, karma, email, password)
+    INSERT INTO users
+    (id, name, password, role )
     VALUES ?
 `;
 
-con.query(sql, [users.map(user => [user.id, user.name, user.avatar, user.role, user.karma, user.email, user.password])], (err) => {
+con.query(sql, [users.map(user => [user.id, user.name, user.password, user.role])], (err) => {
     if (err) throw err;
-    console.log('Duomenys įterpti į lentelę authors!');
-});
-
-
-sql = `
-    INSERT INTO posts
-    (id, author_id, content, image_url, likes, title, date, comments)
-    VALUES ?
-`;
-
-con.query(sql, [posts.map(post => [post.id, post.author_id, post.content, post.img_url, post.likes, post.title, post.date, post.comments])], (err) => {
-    if (err) throw err;
-    console.log('Duomenys įterpti į lentelę posts!');
+    console.log('Data inserted into table Users!');
 });
 
 
 sql = `
-    INSERT INTO comments
-    (id, post_id, comment_id, content, author_id, likes)
+    INSERT INTO stories
+    (id, title, text, goal_amount, collected_amount, user_id, approved, image_url)
     VALUES ?
 `;
 
-con.query(sql, [comments.map(comment => [comment.id, comment.post_id, comment.comment_id, comment.content, comment.author_id, comment.likes])], (err) => {
+con.query(sql, [stories.map(story => [story.id, story.title, story.text, story.goal_amount, story.collected_amount, story.user_id, story.approved, story.image_url])], (err) => {
     if (err) throw err;
-    console.log('Duomenys įterpti į lentelę comments!');
+    console.log('Data inserted into table Stories!');
+});
+
+
+sql = `
+    INSERT INTO donations
+    (id, story_id, donor_name, amount)
+    VALUES ?
+`;
+
+con.query(sql, [donations.map(donate => [donate.id, donate.story_id, donate.donor_name, donate.amount])], (err) => {
+    if (err) throw err;
+    console.log('Data inserted into table Donations!');
 });
 
 
