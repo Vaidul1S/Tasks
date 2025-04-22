@@ -10,7 +10,7 @@
 }
 
 body {
-    background-color: C.$gray;
+    background-image: url('./images/clouds.jpg');
     color: C.$white;
     font-family: Inter, -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
     font-size: 15px;
@@ -30,6 +30,19 @@ section {
         width: 100%;
         max-width: V.$l;
         padding: 0 V.$p;
+    }
+}
+
+.home {
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        .home_title {
+            font-size: 34px;
+        }
     }
 }
 
