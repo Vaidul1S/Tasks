@@ -48,7 +48,7 @@ export default function List() {
                     window.location.reload();
                     setDonateConfirmed(null);
                 }, 2000);
-                
+
             })
             .catch(err => console.error(err));
     };
@@ -74,6 +74,9 @@ export default function List() {
                         <p className="story_text">{story.text}</p>
                         <p className="story_text">Goal: ${story.goal_amount}</p>
                         <p className="story_text">Collected: ${story.collected_amount}</p>
+                        <div className="progress-bar">
+                            <div className="progress" style={{ '--progress': `${((story.collected_amount * 100)/story.goal_amount)}%` }}></div>
+                        </div>
                         {story.collected_amount < story.goal_amount && (
                             <div className="donate">
                                 <input type="text" placeholder="Your Name" className="donate_input" id="donor_name" onChange={e => changeHandler(e, story.id)} value={donate[story.id]?.donor_name || ''} />
