@@ -71,8 +71,8 @@ CREATE TABLE `stories` (
   `id` int(10) UNSIGNED NOT NULL,
   `title` varchar(32) NOT NULL,
   `text` varchar(255) NOT NULL,
-  `goal_amount` decimal(10,2) NOT NULL,
-  `collected_amount` decimal(10,2) NOT NULL,
+  `goal_amount` decimal(12,2) NOT NULL,
+  `collected_amount` decimal(12,2) NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
   `approved` tinyint(1) NOT NULL,
   `image_url` varchar(255) NOT NULL
@@ -83,7 +83,7 @@ CREATE TABLE `stories` (
 --
 
 INSERT INTO `stories` (`id`, `title`, `text`, `goal_amount`, `collected_amount`, `user_id`, `approved`, `image_url`) VALUES
-(1, 'Save children', 'Give us some money and we will look what we can do.', 200000.00, 1000.00, 10, 1, '0'),
+(1, 'Red Cross', 'Give us some money and we will look what we can do.', 200000.00, 1000.00, 10, 1, '0'),
 (2, 'Save children again', 'Give us some money and we will look what we can do.', 200000.00, 0.00, 10, 1, '0'),
 (3, 'Help us save Ukrainian pets', 'Fundraising for pets whom lost home and owners because of war. ', 1000000.00, 0.00, 1, 1, '0');
 
