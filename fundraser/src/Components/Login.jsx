@@ -57,12 +57,12 @@ export default function Login() {
 
     return (
         <section className="login">
-            <h2>Login</h2>
-            <div className="login_form">
+            <h1>Login</h1>
+            <div className="form">
                 <input type="text" placeholder="Username" className="login_input" id="name" value={form.name} onChange={changeHandler} />
                 <input type="password" placeholder="Password" className="login_input" id="password" value={form.password} onChange={changeHandler} />
                 <button className="button42 lime" onClick={_ => logingIn(form)}>Login</button>
-                <button className="button42 red" onClick={goHome}>Cancel</button>
+                <button className="button42 red" onClick={goHome}>Go back</button>
             </div>
             {loginUser !== null ? <div className="modal_msg"><h1>{loginUser}</h1></div> : null}
         </section>
