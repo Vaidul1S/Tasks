@@ -58,12 +58,17 @@ section {
     }
 
     .stories_list {
+        .stories {
+            margin-bottom: 50px;
+        }
+
         .progress-bar {
             width: 100%;
             max-width: 350px;
             height: 12px;
             border: 1px C.$cadet solid;
             border-radius: 12px;
+            margin: 20px 0;
 
             .progress {
                 width: var(--progress);
