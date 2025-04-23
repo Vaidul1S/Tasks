@@ -36,7 +36,10 @@ export default function List() {
         };
 
         if (!data.donor_name || !data.amount || isNaN(data.amount)) {
-            alert("Please enter your name and a valid amount.");
+            setDonateConfirmed("Please enter your name and a valid amount.");
+            setTimeout(_ => {
+                setDonateConfirmed(null);
+            }, 2000);
             return;
         }
 
@@ -65,34 +68,37 @@ export default function List() {
     };
 
     return (
-        <div className="list_content">
-            <h2>They need your help</h2>
-            <div className="stories_list">
-                {stories.map(story => (
-                    <div key={story.id} className="stories">
-                        <h3 className="title">{story.title}</h3>
-                        <p className="story_text">{story.text}</p>
-                        <p className="story_text">Goal: ${story.goal_amount}</p>
-                        <p className="story_text">Collected: ${story.collected_amount}</p>
-                        <div className="progress-bar">
-                            <div className="progress" style={{ '--progress': `${((story.collected_amount * 100)/story.goal_amount)}%` }}></div>
-                        </div>
-                        {story.collected_amount < story.goal_amount && (
-                            <div className="donate">
-                                <input type="text" placeholder="Your Name" className="donate_input" id="donor_name" onChange={e => changeHandler(e, story.id)} value={donate[story.id]?.donor_name || ''} />
-                                <input type="number" placeholder="Amount" className="donate_input" id="amount" onChange={e => changeHandler(e, story.id)} value={donate[story.id]?.amount || ''} />
-                                <button className="button42 lime" onClick={_ => handleDonate(story.id)}>Donate</button>
+        <>
+            <div className="list_content">
+                <h2>They need your help</h2>
+                <div className="stories_list">
+                    {stories.map(story => (
+                        <div key={story.id} className="stories">
+                            <h3 className="title">{story.title}</h3>
+                            <p className="story_text">{story.text}</p>
+                            <p className="story_text">Goal: ${story.goal_amount}</p>
+                            <p className="story_text">Collected: ${story.collected_amount}</p>
+                            <div className="progress-bar">
+                                <div className="progress" style={{ '--progress': `${((story.collected_amount * 100) / story.goal_amount)}%` }}></div>
                             </div>
-                        )}
-                        {
-                            user !== null && user.role === 'admin' ?
-                                <button className="button42 red" onClick={_ => deleteStory(story.id)}>Delete</button>
-                                : null
-                        }
-                    </div>
-                ))}
+                            {story.collected_amount < story.goal_amount && (
+                                <div className="donate">
+                                    <input type="text" placeholder="Your Name" className="donate_input" id="donor_name" onChange={e => changeHandler(e, story.id)} value={donate[story.id]?.donor_name || ''} />
+                                    <input type="number" placeholder="Amount" className="donate_input" id="amount" onChange={e => changeHandler(e, story.id)} value={donate[story.id]?.amount || ''} />
+                                    <button className="button42 lime" onClick={_ => handleDonate(story.id)}>Donate</button>
+                                </div>
+                            )}
+                            {
+                                user !== null && user.role === 'admin' ?
+                                    <button className="button42 red" onClick={_ => deleteStory(story.id)}>Delete</button>
+                                    : null
+                            }
+                        </div>
+                    ))}
+                </div>
             </div>
             {donateConfirmed !== null ? <div className="modal_msg"><h1>{donateConfirmed}</h1></div> : null}
-        </div>
+        </>
+
     );
 };

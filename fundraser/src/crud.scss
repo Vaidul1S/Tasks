@@ -228,12 +228,23 @@ nav {
 
 .modal_msg {
     position: absolute;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: C.$gray;
+    color: C.$tang;
+    h1 {
+        font-size: 40px;
+        font-weight: bold;
+        color: C.$tang;
+        margin: 100px 0 20px 20px;
+        text-align: center;
+
+    }
 }
 
 .page404 {
@@ -282,5 +293,18 @@ nav {
                 width: 200px;
             }
         }
+    }
+}
+
+.about {
+    padding: 0 20px;
+    h1 {
+        font-size:34px;
+    }
+    .about_content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
     }
 }
