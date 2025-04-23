@@ -50,8 +50,8 @@ export default function Register() {
 
     return (
         <section className="register">
-            <h2>Register new account</h2>
-            <div className="register_form">
+            <h1>Register new account</h1>
+            <div className="form">
                 <input type="text" placeholder="Username" className="register_input" id="name" value={form.name} onChange={changeHandler} />
                 <input type="password" placeholder="Password" className="register_input" id="password" value={form.password} onChange={changeHandler} />
                 <button className="button42 lime" onClick={_ => createUser(form)}>Sign up</button>
