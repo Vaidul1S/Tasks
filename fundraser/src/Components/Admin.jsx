@@ -10,14 +10,14 @@ export default function Admin() {
         axios.get('http://localhost:3001/pending')
             .then(res => setStories(res.data))
             .catch(err => console.error(err));
-    }, []);
+    }, [storyApproved]);
 
     const approveStory = (id) => {
         axios.patch(`http://localhost:3001/approve/${id}`)
             .then(_ => {
                 setStoryApproved('Story approved successfully');
                 setTimeout(() => {
-                    window.location.reload();
+                    setStoryApproved(null);
                 }, 5000);
             })
             .catch(err => console.error(err));
@@ -28,7 +28,7 @@ export default function Admin() {
             .then(_ => {
                 setStoryApproved('Story deleted successfully');
                 setTimeout(() => {
-                    window.location.reload();
+                    setStoryApproved(null);
                 }, 5000);
             })
             .catch(err => console.error(err));
@@ -51,7 +51,6 @@ export default function Admin() {
                                     <button className="button42 red" onClick={_ => deleteStory(story.id)}>Delete</button>
                                 </>
                             )}
-                            
                         </div>
                     ))}
                     {stories.length === 0 ? <div className="pending"><h3>There is no pending stories</h3></div> : null}

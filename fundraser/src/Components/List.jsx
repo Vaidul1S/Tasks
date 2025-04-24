@@ -14,7 +14,7 @@ export default function List() {
                 setStories(res.data)
             })
             .catch(err => console.error(err));
-    }, []);
+    }, [donateConfirmed]);
 
     const [donate, setDonate] = useState({});
 
@@ -48,7 +48,6 @@ export default function List() {
                 setDonate(prev => ({ ...prev, [story_id]: { donor_name: '', amount: '' } }));
                 setDonateConfirmed('Thank you for your generosity.');
                 setTimeout(_ => {
-                    window.location.reload();
                     setDonateConfirmed(null);
                 }, 5000);
 
@@ -61,7 +60,7 @@ export default function List() {
             .then(_ => {
                 setDonateConfirmed('Story deleted successfully');
                 setTimeout(() => {
-                    window.location.reload();
+                    setDonateConfirmed(null);
                 }, 5000);
             })
             .catch(err => console.error(err));
