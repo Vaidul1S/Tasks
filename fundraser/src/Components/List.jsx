@@ -39,7 +39,7 @@ export default function List() {
             setDonateConfirmed("Please enter your name and a valid amount.");
             setTimeout(_ => {
                 setDonateConfirmed(null);
-            }, 3000);
+            }, 5000);
             return;
         }
 
@@ -50,7 +50,7 @@ export default function List() {
                 setTimeout(_ => {
                     window.location.reload();
                     setDonateConfirmed(null);
-                }, 3000);
+                }, 5000);
 
             })
             .catch(err => console.error(err));
@@ -62,7 +62,7 @@ export default function List() {
                 setDonateConfirmed('Story deleted successfully');
                 setTimeout(() => {
                     window.location.reload();
-                }, 3000);
+                }, 5000);
             })
             .catch(err => console.error(err));
     };

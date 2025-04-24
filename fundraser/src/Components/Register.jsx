@@ -25,7 +25,7 @@ export default function Register() {
             setNewUser("Username and password cannot be empty.");
             setTimeout(_ => {
                 setNewUser(null);
-            }, 3000);
+            }, 5000);
             return;
         };
 
@@ -35,7 +35,7 @@ export default function Register() {
                 setTimeout(_ => {
                     goHome();
                     setNewUser(null);
-                }, 3000);
+                }, 5000);
             })
             .catch(error => {
                 console.error(error);
@@ -43,7 +43,7 @@ export default function Register() {
                 setNewUser('Username already exists');
                 setTimeout(_ => {
                     setNewUser(null);
-                }, 3000);
+                }, 5000);
                 setForm({ name: '', password: '' });
             });
     };
