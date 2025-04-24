@@ -39,7 +39,7 @@ export default function List() {
             setDonateConfirmed("Please enter your name and a valid amount.");
             setTimeout(_ => {
                 setDonateConfirmed(null);
-            }, 2000);
+            }, 3000);
             return;
         }
 
@@ -50,7 +50,7 @@ export default function List() {
                 setTimeout(_ => {
                     window.location.reload();
                     setDonateConfirmed(null);
-                }, 2000);
+                }, 3000);
 
             })
             .catch(err => console.error(err));
@@ -62,7 +62,7 @@ export default function List() {
                 setDonateConfirmed('Story deleted successfully');
                 setTimeout(() => {
                     window.location.reload();
-                }, 2000);
+                }, 3000);
             })
             .catch(err => console.error(err));
     };
@@ -85,7 +85,7 @@ export default function List() {
                                 <div className="donate">
                                     <input type="text" placeholder="Your Name" className="donate_input" id="donor_name" onChange={e => changeHandler(e, story.id)} value={donate[story.id]?.donor_name || ''} />
                                     <input type="number" placeholder="Amount" className="donate_input" id="amount" onChange={e => changeHandler(e, story.id)} value={donate[story.id]?.amount || ''} />
-                                    <button className="button42 lime" onClick={_ => handleDonate(story.id)}>Donate</button>
+                                    <button className="button42 tang" onClick={_ => handleDonate(story.id)}>Donate</button>
                                 </div>
                             )}
                             {
@@ -97,7 +97,7 @@ export default function List() {
                     ))}
                 </div>
             </div>
-            {donateConfirmed !== null ? <div className="modal_msg"><h1>{donateConfirmed}</h1></div> : null}
+            {donateConfirmed !== null ? <div className="modal_msg"><h2>{donateConfirmed}</h2></div> : null}
         </>
 
     );

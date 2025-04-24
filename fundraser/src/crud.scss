@@ -50,7 +50,7 @@ section {
     }
 }
 
-.list_content {
+.list_content, .admin_panel {
     width: 90%;
 
     h2 {
@@ -229,21 +229,22 @@ nav {
 
 .modal_msg {
     position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100vh;
+    right: 0;
+    bottom: 0;
+    width: 300px;
+    height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: C.$gray;
     color: C.$tang;
+    border-radius: 10px;
+    margin: 5px;
 
-    h1 {
-        font-size: 40px;
+    h2 {
+        // font-size: auto;
         font-weight: bold;
         color: C.$tang;
-        margin: 100px 0 20px 20px;
         text-align: center;
 
     }
@@ -254,45 +255,69 @@ nav {
 }
 
 .create {
-    background-image: url('./images/background.png');
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 
     .create_content {
         width: 100%;
-        height: 90vh;
         display: flex;
-        justify-items: center;
+        justify-content: center;
         align-items: center;
+        text-align: center;
         flex-direction: column;
-        color: C.$tang;
+
+        h1 {
+            font-size: 40px;
+            font-weight: bold;
+            margin: 100px 0;
+            text-align: center;
+
+        }
 
         .create_form {
             width: 90%;
             display: flex;
+            justify-content: center;
             align-items: center;
             flex-direction: column;
-            gap: 20px;
+            row-gap: 20px;
+            padding: 20px;
 
             .create_input {
-                outline: none;
                 width: 100%;
-                height: 50px;
+                max-width: 800px;
+                padding: 10px;
+                font-size: 18px;
+                outline: none;
                 border: none;
                 border-radius: 10px;
-                background: C.$veryGray;
-                color: C.$white;
-
-                &::placeholder {
-                    color: C.$white;
-                    opacity: 0.6;
-                }
+                min-height: 40px;
+                opacity: 0.5;
 
                 &:hover {
-                    background-color: color.adjust(C.$veryGray, $lightness: 10%);
+                    background-color: color.adjust(C.$veryGray, $lightness: 30%);
                 }
             }
 
-            button {
-                width: 200px;
+            .create_text {
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                height: 160px;
+                width: 100%;
+                max-width: 800px;
+                padding: 10px;
+                font-size: 22px;
+                outline: none;
+                border: none;
+                border-radius: 10px;
+                min-height: 40px;
+                opacity: 0.5;
+
+                &:hover {
+                    background-color: color.adjust(C.$veryGray, $lightness: 30%);
+                }
             }
         }
     }

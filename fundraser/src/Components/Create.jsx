@@ -38,25 +38,30 @@ export default function Create() {
                 setStoryUpload('Story submitted for approval');
                 setTimeout(() => {
                     goHome();
-                    setStoryUpload(null);                    
+                    setStoryUpload(null);
                 }, 2000);
             })
             .catch(err => console.error(err));
     };
 
     return (
-        <section className="create">
-            <div className="create_content">
-                <h1>Create a Fundraising Story</h1>
-                <div className="create_form">
-                    <input type="text" placeholder="Title" className="create_input" id="title" value={newStory.title} onChange={changeHandler} />
-                    <input type='text' placeholder="Description" className="create_input" id="text" value={newStory.text} onChange={changeHandler} />
-                    <input type="number" placeholder="Goal Amount" className="create_input" id="goal_amount" value={newStory.goal_amount} onChange={changeHandler} />
-                    <button className="button42 hgreen" onClick={_ => handleSubmit(newStory)}>Create Story</button>
-                    <button className="button42 red" onClick={goHome}>Go back</button>
+        <>
+            <section className="create">
+                <div className="create_content">
+                    <h1>Create a Fundraising Story</h1>
+                    <div className="create_form">
+                        <input type="text" placeholder="Title" className="create_input" id="title" value={newStory.title} onChange={changeHandler} />
+                        <textarea placeholder="Description" className="create_text" id="text" value={newStory.text} onChange={changeHandler} />
+                        <input type="number" placeholder="Goal Amount" className="create_input" id="goal_amount" value={newStory.goal_amount} onChange={changeHandler} />
+                        <div>
+                            <button className="button42 tang" onClick={_ => handleSubmit(newStory)}>Create Story</button>
+                            <button className="button42 tang" onClick={goHome}>Go back</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            {storyUpload !== null ? <div className="modal_msg"><h1>{storyUpload}</h1></div> : null}
-        </section>
+            </section>
+            {storyUpload !== null ? <div className="modal_msg"><h2>{storyUpload}</h2></div> : null}
+        </>
+
     );
 };
