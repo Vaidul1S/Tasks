@@ -29,7 +29,7 @@ export default function Create() {
             setStoryUpload("Title, description and goal amount fields cannot be empty.");
             setTimeout(_ => {
                 setStoryUpload(null);
-            }, 2000);
+            }, 5000);
             return;
         };
 
@@ -39,7 +39,7 @@ export default function Create() {
                 setTimeout(() => {
                     goHome();
                     setStoryUpload(null);
-                }, 2000);
+                }, 5000);
             })
             .catch(err => console.error(err));
     };

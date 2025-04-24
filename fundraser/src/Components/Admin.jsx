@@ -18,7 +18,7 @@ export default function Admin() {
                 setStoryApproved('Story approved successfully');
                 setTimeout(() => {
                     window.location.reload();
-                }, 2000);
+                }, 5000);
             })
             .catch(err => console.error(err));
     };
@@ -29,7 +29,7 @@ export default function Admin() {
                 setStoryApproved('Story deleted successfully');
                 setTimeout(() => {
                     window.location.reload();
-                }, 2000);
+                }, 5000);
             })
             .catch(err => console.error(err));
     };
@@ -51,8 +51,10 @@ export default function Admin() {
                                     <button className="button42 red" onClick={_ => deleteStory(story.id)}>Delete</button>
                                 </>
                             )}
+                            
                         </div>
                     ))}
+                    {storyApproved === null ? <div className="pending"><h3>No pending stories</h3></div> : null}
                 </div>
             </section>
             {storyApproved !== null ? <div className="modal_msg"><h2>{storyApproved}</h2></div> : null}

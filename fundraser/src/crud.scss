@@ -18,7 +18,7 @@ body {
     line-height: 1.5;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    overflow-x: hidden;    
 }
 
 section {
@@ -111,6 +111,9 @@ section {
             }
         }
     }
+}
+.pending {
+    width: 100%;    
 }
 
 .screen-message {
@@ -242,7 +245,7 @@ nav {
     color: C.$tang;
     border-radius: 10px;
     margin: 5px;
-    animation: wroom 0.7s ease-in-out;
+    animation: slide 5s ease-in-out;
 
     h2 {
         // font-size: auto;
@@ -253,12 +256,21 @@ nav {
     }
 }
 
-@keyframes wroom {
+@keyframes slide {
     0% {
         transform: translateX(100%);
     }    
-    100% {
+    25% {
         transform: translateX(0%);
+    }
+    50% {
+        transform: translateX(0%);
+    }
+    75% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(100%);
     }
 }
 

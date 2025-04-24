@@ -28,7 +28,7 @@ export default function Login() {
             setLoginUser("Username and password cannot be empty.");
             setTimeout(_ => {
                 setLoginUser(null);
-            }, 3000);
+            }, 5000);
             return;
         };
 
@@ -39,14 +39,14 @@ export default function Login() {
                     redirectAfterLogin();
                     setLoginUser(null);
                     setUser(res.data.user);
-                }, 3000);
+                }, 5000);
             })
             .catch(error => {
                 console.error(error);
                 setLoginUser('User not found');
                 setTimeout(_ => {
                     setLoginUser(null);
-                }, 3000);
+                }, 5000);
                 setForm({ name: '', password: '' });
             });
     };
