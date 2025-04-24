@@ -27,7 +27,7 @@ export default function Login() {
         if (!form.name || !form.password) {
             setLoginUser("Username and password cannot be empty.");
             setTimeout(_ => {
-                setLoginUser(null);                
+                setLoginUser(null);
             }, 2000);
             return;
         };
@@ -56,15 +56,21 @@ export default function Login() {
     };
 
     return (
-        <section className="login">
-            <h1>Login</h1>
-            <div className="form">
-                <input type="text" placeholder="Username" className="login_input" id="name" value={form.name} onChange={changeHandler} />
-                <input type="password" placeholder="Password" className="login_input" id="password" value={form.password} onChange={changeHandler} />
-                <button className="button42 lime" onClick={_ => logingIn(form)}>Login</button>
-                <button className="button42 red" onClick={goHome}>Go back</button>
-            </div>
-            {loginUser !== null ? <div className="modal_msg"><h1>{loginUser}</h1></div> : null}
-        </section>
+        <>
+            <section className="login">
+                <h1>Login</h1>
+                <div className="form">
+                    <input type="text" placeholder="Username" className="login_input" id="name" value={form.name} onChange={changeHandler} />
+                    <input type="password" placeholder="Password" className="login_input" id="password" value={form.password} onChange={changeHandler} />
+                    <div>
+                        <button className="button42 tang" onClick={_ => logingIn(form)}>Login</button>
+                        <button className="button42 tang" onClick={goHome}>Go back</button>
+                    </div>
+                </div>
+
+            </section>
+            {loginUser !== null ? <div className="modal_msg"><h2>{loginUser}</h2></div> : null}
+        </>
+
     );
 };

@@ -166,26 +166,26 @@ button {
     transition: box-shadow .2s;
     &.lime {
         background-color: C.$lime;
-
+        opacity: 0.8;
         &:hover {
-            background-color: color.adjust(C.$lime, $lightness: -15%);
+            background-color: color.adjust(C.$lime, $lightness: -10%);
             box-shadow: C.$lime 0 3px 8px;
         }        
     }
     &.red {
         background-color: C.$red;
-
+        opacity: 0.8;
         &:hover {
-            background-color: color.adjust(C.$red, $lightness: -15%);
+            background-color: color.adjust(C.$red, $lightness: -10%);
             box-shadow: C.$red 0 3px 8px;
         }
     }    
-    &.hgreen {
-        background-color: C.$hgreen;
-
+    &.tang {
+        background-color: C.$tang;
+        opacity: 0.8;
         &:hover {
-            background-color: color.adjust(C.$hgreen, $lightness: -15%);
-            box-shadow: C.$lime 0 3px 8px;
+            background-color: color.adjust(C.$tang, $lightness: 10%);
+            box-shadow: C.$tang 0 3px 8px;
         }
     }   
 }
