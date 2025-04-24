@@ -54,7 +54,7 @@ export default function Admin() {
                             
                         </div>
                     ))}
-                    {storyApproved === null ? <div className="pending"><h3>No pending stories</h3></div> : null}
+                    {stories.length === 0 ? <div className="pending"><h3>There is no pending stories</h3></div> : null}
                 </div>
             </section>
             {storyApproved !== null ? <div className="modal_msg"><h2>{storyApproved}</h2></div> : null}
