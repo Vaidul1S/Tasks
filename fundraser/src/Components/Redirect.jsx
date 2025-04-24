@@ -8,7 +8,7 @@ export default function Redirect() {
         setRedirect('Please login or sign up.');
         setTimeout(_ => {
             window.location.hash = '#';
-        }, 3000);
+        }, 5000);
     },[]);
 
     return(
