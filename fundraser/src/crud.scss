@@ -60,10 +60,8 @@ section {
     }
 
     .stories_list {
-        width: 100%;
 
         .stories {
-            width: 100%;
             margin-bottom: 50px;
         }
 
@@ -252,7 +250,7 @@ nav {
     animation: slide 5s ease-in-out;
 
     h2 {
-        // font-size: auto;
+        font-size: 20px;
         font-weight: bold;
         color: C.$tang;
         text-align: center;
