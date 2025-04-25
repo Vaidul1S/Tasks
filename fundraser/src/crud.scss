@@ -18,7 +18,7 @@ body {
     line-height: 1.5;
     margin: 0;
     padding: 0;
-    overflow-x: hidden;    
+    overflow-x: hidden;
 }
 
 section {
@@ -61,6 +61,7 @@ section {
 
     .stories_list {
         width: 100%;
+
         .stories {
             width: 100%;
             margin-bottom: 50px;
@@ -114,8 +115,9 @@ section {
         }
     }
 }
+
 .pending {
-    width: 100%;    
+    width: 100%;
 }
 
 .screen-message {
@@ -261,16 +263,20 @@ nav {
 @keyframes slide {
     0% {
         transform: translateX(100%);
-    }    
+    }
+
     25% {
         transform: translateX(0%);
     }
+
     50% {
         transform: translateX(0%);
     }
+
     75% {
         transform: translateX(0%);
     }
+
     100% {
         transform: translateX(100%);
     }
@@ -281,24 +287,23 @@ nav {
     height: 100vh;
     position: fixed;
     left: 0;
-    top: 0;    
+    top: 0;
     display: flex;
     justify-content: center;
     text-align: center;
     flex-direction: column;
-    background-color: C.$white;
-    opacity: 0.2;    
-    
+    background-color: C.$white05;
+
     .confirm_content {
         width: 50%;
-        min-width: 300px;
+        min-width: 280px;
         margin: auto;
         background-color: C.$veryGray;
         border-radius: 10px;
         padding: 20px;
-        opacity: 1;
+
     }
-    
+
 }
 
 .page404 {
