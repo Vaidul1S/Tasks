@@ -91,14 +91,14 @@ export default function List() {
                             )}
                             {
                                 user !== null && user.role === 'admin' ?
-                                    <button className="button42 red" onClick={_ => setDeleteStory(story.id)}>Delete</button>
+                                    <button className="button42 red" onClick={_ => setDeleteStory(story)}>Delete</button>
                                     : null
                             }
                             {deleteStory !== null ?
                                 <div className="confirm_msg">
-                                    <h2>Are you sure?</h2>
+                                    <h2>Are you sure you want to delete {deleteStory.title}?</h2>
                                     <div>
-                                    <button className="button42 red" onClick={_ => destroyStory(story.id)}>Delete</button>
+                                    <button className="button42 red" onClick={_ => destroyStory(deleteStory.id)}>Delete</button>
                                     <button className="button42 tang" onClick={_ => setDeleteStory(null)}>Cancel</button>
                                     </div>
                                 </div> : null}
