@@ -96,10 +96,12 @@ export default function List() {
                             }
                             {deleteStory !== null ?
                                 <div className="confirm_msg">
-                                    <h2>Are you sure you want to delete {deleteStory.title}?</h2>
-                                    <div>
-                                    <button className="button42 red" onClick={_ => destroyStory(deleteStory.id)}>Delete</button>
-                                    <button className="button42 tang" onClick={_ => setDeleteStory(null)}>Cancel</button>
+                                    <div className="confirm_content">
+                                        <h2>Are you sure you want to delete {deleteStory.title} fundraiser?</h2>
+                                        <div>
+                                            <button className="button42 red" onClick={_ => destroyStory(deleteStory.id)}>Delete</button>
+                                            <button className="button42 tang" onClick={_ => setDeleteStory(null)}>Cancel</button>
+                                        </div>
                                     </div>
                                 </div> : null}
                         </div>
