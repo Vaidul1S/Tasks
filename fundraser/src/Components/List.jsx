@@ -6,6 +6,7 @@ export default function List() {
 
     const [stories, setStories] = useState([]);
     const [donateConfirmed, setDonateConfirmed] = useState(null);
+    const [deleteStory, setDeleteStory] = useState(null);
     const { user } = useContext(AuthContext);
 
     useEffect(() => {
@@ -55,10 +56,11 @@ export default function List() {
             .catch(err => console.error(err));
     };
 
-    const deleteStory = (id) => {
+    const destroyStory = (id) => {
         axios.delete(`http://localhost:3001/delete/${id}`)
             .then(_ => {
                 setDonateConfirmed('Story deleted successfully');
+                setDeleteStory(null);
                 setTimeout(() => {
                     setDonateConfirmed(null);
                 }, 5000);
@@ -89,9 +91,17 @@ export default function List() {
                             )}
                             {
                                 user !== null && user.role === 'admin' ?
-                                    <button className="button42 red" onClick={_ => deleteStory(story.id)}>Delete</button>
+                                    <button className="button42 red" onClick={_ => setDeleteStory(story.id)}>Delete</button>
                                     : null
                             }
+                            {deleteStory !== null ?
+                                <div className="confirm_msg">
+                                    <h2>Are you sure?</h2>
+                                    <div>
+                                    <button className="button42 red" onClick={_ => destroyStory(story.id)}>Delete</button>
+                                    <button className="button42 tang" onClick={_ => setDeleteStory(null)}>Cancel</button>
+                                    </div>
+                                </div> : null}
                         </div>
                     ))}
                 </div>
