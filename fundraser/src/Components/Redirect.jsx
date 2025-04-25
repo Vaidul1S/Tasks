@@ -8,12 +8,12 @@ export default function Redirect() {
         setRedirect('Please login or sign up.');
         setTimeout(_ => {
             window.location.hash = '#';
-        }, 5000);
+        }, 3000);
     },[]);
 
     return(
         <>
-        {redirect !== null ? <div className="modal_msg"><h2>{redirect}</h2></div> : null}
+        {redirect !== null ? <div className="screen-message"><h2>{redirect}</h2></div> : null}
         </>
     );
 };
