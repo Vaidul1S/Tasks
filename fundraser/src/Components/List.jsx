@@ -68,10 +68,27 @@ export default function List() {
             .catch(err => console.error(err));
     };
 
+    const orderByGoal = _ => {
+        setStories(s => [...s].sort((a,b) => b.goal_amount - a.goal_amount));
+    };
+
+    const orderById = _ => {
+        setStories(s => [...s].sort((a,b) => a.id - b.id));
+    };
+
+    const orderByTitle = _ => {
+        setStories(s => [...s].sort((a,b) => a.title.localeCompare(b.title)));
+    };
+
     return (
         <>
             <div className="list_content">
                 <h2>They need your help</h2>
+                <div>
+                                <button className="button91 tang" onClick={orderByTitle}>By title</button>
+                                <button className="button91 tang" onClick={orderByGoal}>By goal</button>
+                                <button className="button91 tang" onClick={orderById}>Default</button>
+                            </div>
                 <div className="stories_list">
                     {stories.map(story => (
                         <div key={story.id} className="stories">
