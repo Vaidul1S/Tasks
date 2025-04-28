@@ -85,9 +85,9 @@ export default function List() {
             <div className="list_content">
                 <h2>They need your help</h2>
                 <div>
-                                <button className="button91 tang" onClick={orderByTitle}>By title</button>
-                                <button className="button91 tang" onClick={orderByGoal}>By goal</button>
-                                <button className="button91 tang" onClick={orderById}>Default</button>
+                                <button className="button42 cadet" onClick={orderByTitle}>By title</button>
+                                <button className="button42 cadet" onClick={orderByGoal}>By goal</button>
+                                <button className="button42 cadet" onClick={orderById}>Default</button>
                             </div>
                 <div className="stories_list">
                     {stories.map(story => (
