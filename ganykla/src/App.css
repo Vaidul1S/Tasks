@@ -125,7 +125,7 @@ input[type="checkbox"]:checked+label {
 }
 
 .sheeps {
-  border: lime 2px dashed;
+  border: black 2px dashed;
   border-radius: 3px;
   width: 700px;
   height: 60vh;
@@ -146,7 +146,7 @@ input[type="checkbox"]:checked+label {
 }
 
 .cows {
-  border: lime 2px dashed;
+  border: black 2px dashed;
   border-radius: 3px;
   width: 700px;
   height: 60vh;
