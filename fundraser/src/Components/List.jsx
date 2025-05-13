@@ -69,15 +69,15 @@ export default function List() {
     };
 
     const orderByGoal = _ => {
-        setStories(s => [...s].sort((a,b) => b.goal_amount - a.goal_amount));
+        setStories(s => [...s].sort((a, b) => b.goal_amount - a.goal_amount));
     };
 
     const orderById = _ => {
-        setStories(s => [...s].sort((a,b) => a.id - b.id));
+        setStories(s => [...s].sort((a, b) => a.id - b.id));
     };
 
     const orderByTitle = _ => {
-        setStories(s => [...s].sort((a,b) => a.title.localeCompare(b.title)));
+        setStories(s => [...s].sort((a, b) => a.title.localeCompare(b.title)));
     };
 
     return (
@@ -86,10 +86,10 @@ export default function List() {
                 <h2>They need your help</h2>
                 <h3 className="order">Order stories by</h3>
                 <div>
-                                <button className="button42 cadet" onClick={orderByTitle}>Title</button>
-                                <button className="button42 cadet" onClick={orderByGoal}>Goal</button>
-                                <button className="button42 cadet" onClick={orderById}>Add date</button>
-                            </div>
+                    <button className="button42 cadet" onClick={orderByTitle}>Title</button>
+                    <button className="button42 cadet" onClick={orderByGoal}>Goal</button>
+                    <button className="button42 cadet" onClick={orderById}>Add date</button>
+                </div>
                 <div className="stories_list">
                     {stories.map(story => (
                         <div key={story.id} className="stories">
