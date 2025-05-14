@@ -267,17 +267,17 @@ app.delete('/delete/:id', (req, res) => {
         `;
 
     con.query(sql, [id], (err, result) => {
-        if (err) return res.status(500).json(err);        
+        if (err) return res.status(500).json(err);
     });
 
     sql = `
         DELETE FROM stories          
         WHERE id = ?
         `;
-        con.query(sql, [id], (err, result) => {
-            if (err) return res.status(500).json(err);
-            res.json({ message: 'Story deleted successfully' });
-        });
+    con.query(sql, [id], (err, result) => {
+        if (err) return res.status(500).json(err);
+        res.json({ message: 'Story deleted successfully' });
+    });
 });
 
 app.listen(port, () => {
