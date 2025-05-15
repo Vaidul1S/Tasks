@@ -13,7 +13,7 @@ import Karve from './Components/Karve';
 // Pastaba: karvė avių ganyklos pusėje lieka karve, o avis- avimi. Nemutuojam! Perbėgusios avys ir karvės yra dedamos į bandos galą. 
 
 
-function App() {
+export default function App() {
 
     const [ganykla, setGanykla] = useState(JSON.parse(localStorage.getItem('ganykla')) ?? [])
 
@@ -41,11 +41,11 @@ function App() {
                 kind: 'cow'
             }]);
         }
-    }
+    };
 
     const iSkerdykla = _ => {
         setGanykla([]);
-    }
+    };
 
     const perbegimas = (id, gardas) => {
 
@@ -57,7 +57,7 @@ function App() {
             setGanykla(g => g.filter(g => g.gardas === 'karvide' ? g.id !== id : g));
         }
 
-    }
+    };
 
     return (
         <div className="app">
@@ -93,7 +93,4 @@ function App() {
             </header>
         </div>
     );
-}
-
-export default App;
-
+};
