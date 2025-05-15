@@ -1,5 +1,5 @@
-export default function Ganykla({avys, karves}) {
-    
+export default function Ganykla({ avys, karves }) {
+
     return (
         <>
             <div className="ganykla">
@@ -14,7 +14,7 @@ export default function Ganykla({avys, karves}) {
                 </div>
 
             </div>
-            
+
         </>
-    )
-}
+    );
+};
