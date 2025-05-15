@@ -63,7 +63,7 @@ app.post('/register', (req, res) => {
     }, 1000);
 });
 
-
+// Check User
 app.get('/users', (req, res) => {
     setTimeout(_ => {
 
@@ -92,9 +92,6 @@ app.get('/users', (req, res) => {
                 });
                 return;
             };
-
-            // TODO update token expiration time after each request
-
             res.json(result[0]);
         });
     }, 1000);
@@ -145,6 +142,7 @@ app.post('/login', (req, res) => {
     });
 });
 
+// User Logout
 app.post('/logout', (req, res) => {
 
     setTimeout(_ => {

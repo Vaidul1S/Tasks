@@ -42,7 +42,7 @@ export default function List() {
                 setDonateConfirmed(null);
             }, 5000);
             return;
-        }
+        };
 
         axios.post('http://localhost:3001/donate', data)
             .then(() => {
