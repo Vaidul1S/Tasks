@@ -15,7 +15,7 @@ import Karve from './Components/Karve';
 
 export default function App() {
 
-    const [ganykla, setGanykla] = useState(JSON.parse(localStorage.getItem('ganykla')) ?? [])
+    const [ganykla, setGanykla] = useState(JSON.parse(localStorage.getItem('ganykla')) ?? []);
 
     const localStore = useCallback(_ => {
         localStorage.setItem('ganykla', JSON.stringify(ganykla));
