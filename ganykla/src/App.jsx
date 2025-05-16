@@ -55,7 +55,7 @@ export default function App() {
         } else {
             setGanykla(g => [...g, { id: id, kind: 'cow' && id.includes('K') ? 'cow' : 'sheep', gardas: 'avide' }]);
             setGanykla(g => g.filter(g => g.gardas === 'karvide' ? g.id !== id : g));
-        }
+        };
 
     };
 
@@ -63,7 +63,6 @@ export default function App() {
         <div className="app">
             <header className="app-header">
                 <h3>Sveiki, atvykę į ganyklą.</h3>
-
                 <div className="ganykla">
                     <div>
                         <h4>Avidės</h4>
@@ -73,7 +72,6 @@ export default function App() {
                             }
                         </div>
                     </div>
-
                     <div>
                         <h4>Karvidės</h4>
                         <div className="cows">
@@ -82,14 +80,12 @@ export default function App() {
                             }
 
                         </div>
-
                     </div>
                 </div>
                 <div>
                     <button className="button27 green" onClick={iGanykla}>Į ganyklą</button>
                     <button className="button27 red" onClick={iSkerdykla}>Į skerdyklą</button>
                 </div>
-
             </header>
         </div>
     );
