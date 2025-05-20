@@ -14,17 +14,17 @@ export default function Create({ setPaspirtukas, setMessages }) {
         } else {
             nextId = parseInt(nextId, 10);
         }
-        localStorage.setItem("nextId", nextId + 1); 
+        localStorage.setItem("nextId", nextId + 1);
         return nextId;
     };
 
     const handleState = id => {
         setState(s => s === id ? '' : id);
     };
-    
+
     const addScooter = _ => {
-        
-        if (state === '') {            
+
+        if (state === '') {
             return setMessages({
                 type: 'danger', title: 'Neteisingi duomenys!', text: 'Pasirinkite būseną!'
             });
@@ -34,22 +34,22 @@ export default function Create({ setPaspirtukas, setMessages }) {
         let selectedDate = new Date(date)
         let year = today.getFullYear() - selectedDate.getFullYear();
         let month = today.getMonth() - selectedDate.getMonth();
-        let day =  today.getDate() - selectedDate.getDate();
-                
-        if (isNaN(selectedDate)  || year < 0 || month < 0 || (month === 0 && day < 0)) { 
+        let day = today.getDate() - selectedDate.getDate();
+
+        if (isNaN(selectedDate) || year < 0 || month < 0 || (month === 0 && day < 0)) {
             return setMessages({
-                type: 'danger', title: 'Neteisingi duomenys!', text: 'Pasirinkite datą (data negali būti ateityje)!'                
+                type: 'danger', title: 'Neteisingi duomenys!', text: 'Pasirinkite datą (data negali būti ateityje)!'
             });
         };
-        
-        if (rida === '' || rida < 0) {            
+
+        if (rida === '' || rida < 0) {
             return setMessages({
                 type: 'danger', title: 'Neteisingi duomenys!', text: 'Įveskite ridą (rida negali būti neigiama)!'
             });
         };
 
-        const newScooter = {    
-            id: getNextId(),        
+        const newScooter = {
+            id: getNextId(),
             code: rand(10000000, 99999999),
             state: state,
             date: date,
@@ -62,7 +62,7 @@ export default function Create({ setPaspirtukas, setMessages }) {
         setRida('');
         setMessages({
             type: 'success', title: 'Valio!', text: 'Paspirtukas sėkmingai pridėtas!'
-        });        
+        });
     };
 
     return (
