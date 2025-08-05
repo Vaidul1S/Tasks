@@ -156,8 +156,6 @@ con.query(sql, [donations.map(donate => [donate.id, donate.story_id, donate.dono
     console.log('Data inserted into table Donations!');
 });
 
-
-
 con.end(err => {
     if (err) throw err;
     console.log('Atsijungta nuo duomenų bazės!');
