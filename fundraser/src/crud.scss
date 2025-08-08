@@ -60,6 +60,7 @@ section {
     h2 {
         font-size: 26px;
     }
+
     .order {
         font-size: 22px;
     }
@@ -116,6 +117,7 @@ section {
                 height: 40px;
                 margin-right: 20px;
                 opacity: 0.5;
+                padding: 0 10px;
             }
         }
     }
@@ -157,7 +159,7 @@ nav {
 
         li {
             a {
-                color: C.$tang;
+                color: C.$gray;
                 text-decoration: none;
 
                 &:hover {
@@ -173,7 +175,7 @@ nav {
         gap: 20px;
 
         a {
-            color: C.$tang;
+            color: C.$gray;
             text-decoration: none;
 
             &:hover {
@@ -186,7 +188,7 @@ nav {
             align-items: center;
 
             h3 {
-                color: C.$tang;
+                color: C.$cadet;
                 font-weight: bold;
             }
         }
