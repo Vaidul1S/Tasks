@@ -10,9 +10,22 @@
 }
 
 body {
-    background-image: url('./images/clouds.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-image: linear-gradient(
+    320deg,
+    hsl(0deg 0% 0%) 0%,
+    hsl(0deg 100% 13%) 16%,
+    hsl(7deg 100% 15%) 28%,
+    hsl(17deg 100% 18%) 36%,
+    hsl(23deg 100% 21%) 43%,
+    hsl(27deg 100% 24%) 49%,
+    hsl(30deg 100% 27%) 55%,
+    hsl(33deg 100% 31%) 61%,
+    hsl(34deg 100% 35%) 67%,
+    hsl(36deg 100% 38%) 74%,
+    hsl(37deg 100% 42%) 82%,
+    hsl(38deg 100% 46%) 91%,
+    hsl(39deg 100% 50%) 100%
+  );
     color: C.$white;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 15px;
