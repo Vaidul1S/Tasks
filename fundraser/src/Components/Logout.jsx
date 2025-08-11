@@ -22,6 +22,6 @@ export default function Logout() {
     }, [setUser]);
 
     return (
-        <h2 className="screen-message">Login out...</h2>
+        <div className="screen-message"><h2>Login out...</h2></div>
     );
 };

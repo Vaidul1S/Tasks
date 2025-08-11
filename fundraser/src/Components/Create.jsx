@@ -25,13 +25,19 @@ export default function Create() {
     };
 
     const handleSubmit = (e) => {
-        if (!newStory.title || !newStory.text || !newStory.goal_amount) {
-            setStoryUpload("Title, description and goal amount fields cannot be empty.");
-            setTimeout(_ => {
-                setStoryUpload(null);
-            }, 5000);
+        if (!newStory.title) {
+            setStoryUpload("Please enter title, field cannot be empty.");
+            setTimeout(_ => setStoryUpload(null), 3000);
             return;
-        };
+        } else if (!newStory.text) {
+            setStoryUpload("Please add description, field cannot be empty.");
+            setTimeout(_ => setStoryUpload(null), 3000);
+            return;
+        } else if (!newStory.goal_amount) {
+            setStoryUpload("Please add goal amount, field cannot be empty.");
+            setTimeout(_ => setStoryUpload(null), 3000);
+            return;
+        }
 
         axios.post('http://localhost:3001/stories', newStory, { withCredentials: true })
             .then(res => {
@@ -42,30 +48,31 @@ export default function Create() {
                     goal_amount: '',
                     user_id: user.id
                 });
-                setTimeout(() => {                    
+                setTimeout(() => {
                     setStoryUpload(null);
-                }, 5000);
+                }, 3000);
             })
             .catch(err => console.error(err));
     };
 
     return (
         <>
-            <section className="create">
-                <div className="create_content">
-                    <h1>Create a Fundraising Story</h1>
-                    <div className="create_form">
-                        <input type="text" placeholder="Title" className="create_input" id="title" value={newStory.title} onChange={changeHandler} />
-                        <textarea placeholder="Description" className="create_text" id="text" value={newStory.text} onChange={changeHandler} />
-                        <input type="number" placeholder="Goal Amount €" className="create_input" id="goal_amount" value={newStory.goal_amount} onChange={changeHandler} />
-                        <div>
-                            <button className="button42 tang" onClick={_ => handleSubmit(newStory)}>Create Story</button>
-                            <button className="button42 tang" onClick={goHome}>Go back</button>
+            {storyUpload !== null ? <div className="screen-message"><h2>{storyUpload}</h2></div> :
+                <section className="create">
+                    <div className="create_content">
+                        <h1>Create a Fundraising Story</h1>
+                        <div className="create_form">
+                            <input type="text" placeholder="Title" className="create_input" id="title" value={newStory.title} onChange={changeHandler} />
+                            <textarea placeholder="Description" className="create_text" id="text" value={newStory.text} onChange={changeHandler} />
+                            <input type="number" placeholder="Goal Amount €" className="create_input" id="goal_amount" value={newStory.goal_amount} onChange={changeHandler} />
+                            <div>
+                                <button className="button42 tang" onClick={_ => handleSubmit(newStory)}>Create Story</button>
+                                <button className="button42 tang" onClick={goHome}>Go back</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
-            {storyUpload !== null ? <div className="modal_msg"><h2>{storyUpload}</h2></div> : null}
+                </section>
+            }
         </>
 
     );

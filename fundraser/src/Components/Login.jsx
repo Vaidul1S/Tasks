@@ -39,14 +39,14 @@ export default function Login() {
                     redirectAfterLogin();
                     setLoginUser(null);
                     setUser(res.data.user);
-                }, 5000);
+                }, 3000);
             })
             .catch(error => {
                 console.error(error);
                 setLoginUser('User not found');
                 setTimeout(_ => {
                     setLoginUser(null);
-                }, 5000);
+                }, 3000);
                 setForm({ name: '', password: '' });
             });
     };
@@ -57,19 +57,19 @@ export default function Login() {
 
     return (
         <>
-            <section className="login">
-                <h1>Login</h1>
-                <div className="form">
-                    <input type="text" placeholder="Username" className="login_input" id="name" value={form.name} onChange={changeHandler} />
-                    <input type="password" placeholder="Password" className="login_input" id="password" value={form.password} onChange={changeHandler} />
-                    <div>
-                        <button className="button42 tang" onClick={_ => logingIn(form)}>Login</button>
-                        <button className="button42 tang" onClick={goHome}>Go back</button>
+            {loginUser !== null ? <div className="screen-message"><h2>{loginUser}</h2></div> :
+                <section className="login">
+                    <h1>Login</h1>
+                    <div className="form">
+                        <input type="text" placeholder="Username" className="login_input" id="name" value={form.name} onChange={changeHandler} />
+                        <input type="password" placeholder="Password" className="login_input" id="password" value={form.password} onChange={changeHandler} />
+                        <div>
+                            <button className="button42 tang" onClick={_ => logingIn(form)}>Login</button>
+                            <button className="button42 tang" onClick={goHome}>Go back</button>
+                        </div>
                     </div>
-                </div>
-
-            </section>
-            {loginUser !== null ? <div className="modal_msg"><h2>{loginUser}</h2></div> : null}
+                </section>
+            }
         </>
 
     );
