@@ -104,7 +104,7 @@ export default function List() {
                                 <div className="donate">
                                     <input type="text" placeholder="Your Name" className="donate_input" id="donor_name" onChange={e => changeHandler(e, story.id)} value={donate[story.id]?.donor_name || ''} />
                                     <input type="number" placeholder="Amount" className="donate_input" id="amount" onChange={e => changeHandler(e, story.id)} value={donate[story.id]?.amount || ''} />
-                                    <button className="button42 tang" onClick={_ => handleDonate(story.id)}>Donate</button>
+                                    <button className="button42 cadet" onClick={_ => handleDonate(story.id)}>Donate</button>
                                 </div>
                             )}
                             {

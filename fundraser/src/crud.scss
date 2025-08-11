@@ -211,15 +211,15 @@ nav {
 .login,
 .register {
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     text-align: center;
-
+    height: 100vh;
     h1 {
         font-size: 40px;
         font-weight: bold;
-        margin: 100px 0;
         text-align: center;
+        margin-top: 100px;
 
     }
 
@@ -327,6 +327,7 @@ nav {
 }
 
 .page404 {
+    height: 100vh;
     font-size: 32px;
 }
 
@@ -400,6 +401,7 @@ nav {
 }
 
 .about {
+    height: 100vh;
     padding: 0 20px;
 
     h1 {
