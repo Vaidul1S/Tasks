@@ -69,7 +69,7 @@ section {
 .list_content,
 .admin_panel {
     width: 90%;
-    height: 100vmax;
+    height: 100%;
 
     h2 {
         font-size: 26px;
@@ -135,6 +135,9 @@ section {
             }
         }
     }
+}
+.admin_panel {
+    height: 100vh;
 }
 
 .pending {
