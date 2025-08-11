@@ -95,8 +95,8 @@ export default function List() {
                         <div key={story.id} className="stories">
                             <h3 className="title">{story.title}</h3>
                             <p className="story_text">{story.text}</p>
-                            <p className="story_text">Goal: ${story.goal_amount}</p>
-                            <p className="story_text">Collected: ${story.collected_amount}</p>
+                            <p className="story_text">Goal: {story.goal_amount.toLocaleString("fi-FI", {style:"currency", currency:"EUR"})}</p>
+                            <p className="story_text">Collected: {story.collected_amount.toLocaleString("fi-FI", {style:"currency", currency:"EUR"})}</p>
                             <div className="progress-bar">
                                 <div className="progress" style={{ '--progress': `${((story.collected_amount * 100) / story.goal_amount)}%` }}></div>
                             </div>

@@ -47,8 +47,8 @@ export default function Admin() {
                         <div key={story.id} className="stories">
                             <h3 className="title">{story.title}</h3>
                             <p className="story_text">{story.text}</p>
-                            <p className="story_text">Goal: ${story.goal_amount}</p>
-                            <p className="story_text">Collected: ${story.collected_amount}</p>
+                            <p className="story_text"><b>Goal:</b> {story.goal_amount.toLocaleString("fi-FI", {style:"currency", currency:"EUR"})}</p>
+                            <p className="story_text"><b>Collected:</b> {story.collected_amount.toLocaleString("fi-FI", {style:"currency", currency:"EUR"})}</p>
                             {!story.approved && (
                                 <>
                                     <button className="button42 lime" onClick={_ => setApprovedStory(story)}>Approve</button>
