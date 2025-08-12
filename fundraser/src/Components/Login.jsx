@@ -25,10 +25,8 @@ export default function Login() {
 
     const logingIn = (e) => {
         if (!form.name || !form.password) {
-            setLoginUser("Username and password cannot be empty.");
-            setTimeout(_ => {
-                setLoginUser(null);
-            }, 5000);
+            setLoginUser("Please fill all fields.");
+            setTimeout(_ => setLoginUser(null), 3000);
             return;
         };
 
@@ -43,7 +41,7 @@ export default function Login() {
             })
             .catch(error => {
                 console.error(error);
-                setLoginUser('User not found');
+                setLoginUser('User not found, check your spelling.');
                 setTimeout(_ => {
                     setLoginUser(null);
                 }, 3000);

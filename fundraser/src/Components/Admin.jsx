@@ -19,9 +19,7 @@ export default function Admin() {
             .then(_ => {
                 setStoryApproved('Story approved successfully');
                 setApprovedStory(null);
-                setTimeout(() => {
-                    setStoryApproved(null);
-                }, 5000);
+                setTimeout(() => setStoryApproved(null), 3000);
             })
             .catch(err => console.error(err));
     };
@@ -31,9 +29,7 @@ export default function Admin() {
             .then(_ => {
                 setStoryApproved('Story deleted successfully');
                 setDeleteStory(null);
-                setTimeout(() => {
-                    setStoryApproved(null);
-                }, 5000);
+                setTimeout(() => setStoryApproved(null), 3000);
             })
             .catch(err => console.error(err));
     };
@@ -58,7 +54,7 @@ export default function Admin() {
                             {deleteStory !== null ?
                                 <div className="confirm_msg">
                                     <div className="confirm_content">
-                                        <h2>Are you sure you want to delete {deleteStory.title} fundraiser?</h2>
+                                        <h2>Are you sure you want to delete "{deleteStory.title}" fundraiser?</h2>
                                         <div>
                                             <button className="button42 red" onClick={_ => destroyStory(deleteStory.id)}>Delete</button>
                                             <button className="button42 tang" onClick={_ => setDeleteStory(null)}>Cancel</button>
@@ -68,7 +64,7 @@ export default function Admin() {
                             {approvedStory !== null ?
                                 <div className="confirm_msg">
                                     <div className="confirm_content">
-                                        <h2>Confirm {approvedStory.title} fundraiser approval?</h2>
+                                        <h2>Approve "{approvedStory.title}" fundraiser?</h2>
                                         <div>
                                             <button className="button42 lime" onClick={_ => approveStory(approvedStory.id)}>Approve</button>
                                             <button className="button42 tang" onClick={_ => setApprovedStory(null)}>Cancel</button>

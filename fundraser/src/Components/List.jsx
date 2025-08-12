@@ -36,11 +36,11 @@ export default function List() {
             ...donate[story_id]
         };
 
-        if (!data.donor_name || !data.amount || isNaN(data.amount)) {
+        if (!data.donor_name || !data.amount || isNaN(data.amount) || data.amount <= 0) {
             setDonateConfirmed("Please enter your name and a valid amount.");
             setTimeout(_ => {
                 setDonateConfirmed(null);
-            }, 5000);
+            }, 3000);
             return;
         };
 
@@ -50,7 +50,7 @@ export default function List() {
                 setDonateConfirmed('Thank you for your generosity.');
                 setTimeout(_ => {
                     setDonateConfirmed(null);
-                }, 5000);
+                }, 3000);
 
             })
             .catch(err => console.error(err));
@@ -63,7 +63,7 @@ export default function List() {
                 setDeleteStory(null);
                 setTimeout(() => {
                     setDonateConfirmed(null);
-                }, 5000);
+                }, 3000);
             })
             .catch(err => console.error(err));
     };
@@ -115,7 +115,7 @@ export default function List() {
                             {deleteStory !== null ?
                                 <div className="confirm_msg">
                                     <div className="confirm_content">
-                                        <h2>Are you sure you want to delete {deleteStory.title} fundraiser?</h2>
+                                        <h2>Are you sure you want to delete "{deleteStory.title}" fundraiser?</h2>
                                         <div>
                                             <button className="button42 red" onClick={_ => destroyStory(deleteStory.id)}>Delete</button>
                                             <button className="button42 tang" onClick={_ => setDeleteStory(null)}>Cancel</button>

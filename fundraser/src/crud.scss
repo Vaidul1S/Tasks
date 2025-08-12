@@ -6,7 +6,7 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+    box-sizing: border-box;    
 }
 
 body {
@@ -26,7 +26,7 @@ body {
     hsl(137deg 100% 42%) 87%,
     hsl(120deg 100% 42%) 100%
   );
-    color: C.$white;
+    color: C.$greenish;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 15px;
     font-weight: 400;
@@ -69,8 +69,6 @@ section {
 .list_content,
 .admin_panel {
     width: 90%;
-    height: 100%;
-    
 
     h2 {
         font-size: 26px;
@@ -139,7 +137,6 @@ section {
 }
 .admin_panel {
     height: 100vh;
-    position: fixed;
 
 }
 
@@ -172,7 +169,7 @@ section {
     height: 100vh;
     font-size: 20px;
     font-weight: 100;
-    color: C.$white;
+    color: C.$greenish;
     margin: 0;
 }
 
@@ -189,7 +186,7 @@ nav {
         gap: 20px;
         padding: 10px;
         flex-wrap: wrap;
-        color: C.$white;
+        color: C.$greenish;
         font-size: 20px;
         font-weight: bold;
         list-style: none;
@@ -290,16 +287,16 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: C.$gray;
-    color: C.$tang;
+    background-color: C.$cadet;
     border-radius: 10px;
     margin: 5px;
-    animation: slide 5s ease-in-out;
+    padding: 5px;
+    animation: slide 3s ease-in-out;
 
     h2 {
         font-size: 20px;
         font-weight: bold;
-        color: C.$tang;
+        color: C.$white;
         text-align: center;
 
     }
@@ -343,7 +340,8 @@ nav {
         width: 50%;
         min-width: 280px;
         margin: auto;
-        background-color: C.$veryGray;
+        background-color: C.$gray;
+        color: C.$white;
         border-radius: 10px;
         padding: 20px;
 
@@ -352,15 +350,13 @@ nav {
 }
 
 .page404 {
-    height: 100vh;
     font-size: 32px;
-    position: fixed;
+    height: 100vh;
 }
 
 .create {
-    position: fixed;
-    width: 100%;
     height: 100vh;
+    width: 100%;
     display: flex;
     align-items: center;
     text-align: center;
@@ -431,7 +427,6 @@ nav {
 .about {
     height: 100vh;
     padding: 0 20px;
-    position: fixed;
 
     h1 {
         font-size: 34px;

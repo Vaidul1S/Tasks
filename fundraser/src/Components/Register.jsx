@@ -21,11 +21,17 @@ export default function Register() {
     };
 
     const createUser = _ => {
-        if (!form.name || !form.password) {
-            setNewUser("Username and password cannot be empty.");
-            setTimeout(_ => {
-                setNewUser(null);
-            }, 5000);
+        if (!form.name) {
+            setNewUser("Enter a username!");
+            setTimeout(_ => setNewUser(null), 3000);
+            return;
+        } else if (!form.password) {
+            setNewUser("Enter a password!");
+            setTimeout(_ => setNewUser(null), 3000);
+            return;
+        } else if (form.password !== form.repeat_password) {
+            setNewUser("Passwords do not match, check your spelling!");
+            setTimeout(_ => setNewUser(null), 3000);
             return;
         };
 
@@ -35,33 +41,33 @@ export default function Register() {
                 setTimeout(_ => {
                     goHome();
                     setNewUser(null);
-                }, 5000);
+                }, 3000);
             })
             .catch(error => {
                 console.error(error);
                 console.log(error.data);
                 setNewUser('Username already exists');
-                setTimeout(_ => {
-                    setNewUser(null);
-                }, 5000);
+                setTimeout(_ => setNewUser(null), 3000);
                 setForm({ name: '', password: '' });
             });
     };
 
     return (
         <>
-            <section className="register">
-                <h1>Register new account</h1>
-                <div className="form">
-                    <input type="text" placeholder="Username" className="register_input" id="name" value={form.name} onChange={changeHandler} />
-                    <input type="password" placeholder="Password" className="register_input" id="password" value={form.password} onChange={changeHandler} />
-                    <div>
-                        <button className="button42 tang" onClick={_ => createUser(form)}>Sign up</button>
-                        <button className="button42 tang" onClick={goHome}>Go back</button>
+            {newUser !== null ? <div className="screen-message"><h2>{newUser}</h2></div> :
+                <section className="register">
+                    <h1>Register new account</h1>
+                    <div className="form">
+                        <input type="text" placeholder="Enter Username" className="register_input" id="name" value={form.name} onChange={changeHandler} />
+                        <input type="password" placeholder="Enter Password" className="register_input" id="password" value={form.password} onChange={changeHandler} />
+                        <input type="password" placeholder="Repeat Password" className="register_input" id="repeat_password" value={form.repeat_password} onChange={changeHandler} />
+                        <div>
+                            <button className="button42 tang" onClick={_ => createUser(form)}>Sign up</button>
+                            <button className="button42 tang" onClick={goHome}>Go back</button>
+                        </div>
                     </div>
-                </div>
-            </section>
-            {newUser !== null ? <div className="modal_msg"><h2>{newUser}</h2></div> : null}
+                </section>
+            }
         </>
 
     );

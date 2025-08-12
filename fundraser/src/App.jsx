@@ -10,7 +10,7 @@ export default function App() {
     return (
         <Router>
             <Auth>
-                <Wrapper>
+                <Wrapper classname="appa">
                     <Nav />
                     <Main />
                 </Wrapper>

@@ -48,9 +48,7 @@ export default function Create() {
                     goal_amount: '',
                     user_id: user.id
                 });
-                setTimeout(() => {
-                    setStoryUpload(null);
-                }, 3000);
+                setTimeout(() => setStoryUpload(null), 3000);
             })
             .catch(err => console.error(err));
     };
