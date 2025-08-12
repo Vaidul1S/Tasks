@@ -136,7 +136,7 @@ section {
     }
 }
 .admin_panel {
-    height: 100vh;
+    height: 93vh;
 
 }
 
@@ -161,7 +161,6 @@ section {
     hsl(137deg 100% 42%) 87%,
     hsl(120deg 100% 42%) 100%
   );
-    position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -236,7 +235,7 @@ nav {
     justify-content: start;
     align-items: center;
     text-align: center;
-    height: 100vh;
+    height: 93vh;
     h1 {
         font-size: 40px;
         font-weight: bold;
@@ -351,11 +350,11 @@ nav {
 
 .page404 {
     font-size: 32px;
-    height: 100vh;
+    height: 93vh;
 }
 
 .create {
-    height: 100vh;
+    height: 93vh;
     width: 100%;
     display: flex;
     align-items: center;
@@ -425,7 +424,7 @@ nav {
 }
 
 .about {
-    height: 100vh;
+    height: 93vh;
     padding: 0 20px;
 
     h1 {
