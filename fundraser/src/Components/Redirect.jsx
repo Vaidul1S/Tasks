@@ -5,7 +5,7 @@ export default function Redirect() {
     const [redirect, setRedirect] = useState(null);
 
     useEffect(_=> {
-        setRedirect('Please login or sign up.');
+        setRedirect('To create fundraising, please login or sign up.');
         setTimeout(_ => {
             window.location.hash = '#';
         }, 3000);

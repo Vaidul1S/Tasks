@@ -41,7 +41,7 @@ export default function Create() {
 
         axios.post('http://localhost:3001/stories', newStory, { withCredentials: true })
             .then(res => {
-                setStoryUpload('Story submitted for approval');
+                setStoryUpload("Story submitted for admin's approval.");
                 setNewStory({
                     title: '',
                     text: '',
