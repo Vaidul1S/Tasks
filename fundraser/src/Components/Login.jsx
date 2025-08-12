@@ -26,25 +26,25 @@ export default function Login() {
     const logingIn = (e) => {
         if (!form.name || !form.password) {
             setLoginUser("Please fill all fields.");
-            setTimeout(_ => setLoginUser(null), 3000);
+            setTimeout(_ => setLoginUser(null), 2000);
             return;
         };
 
         axios.post('http://localhost:3001/login', form, { withCredentials: true })
             .then(res => {
-                setLoginUser(`${form.name} loged in successfully, redirecting...`);
+                setLoginUser(`Welcome back ${form.name}, redirecting...`);
                 setTimeout(() => {
                     redirectAfterLogin();
                     setLoginUser(null);
                     setUser(res.data.user);
-                }, 3000);
+                }, 2000);
             })
             .catch(error => {
                 console.error(error);
                 setLoginUser('User not found, check your spelling.');
                 setTimeout(_ => {
                     setLoginUser(null);
-                }, 3000);
+                }, 2000);
                 setForm({ name: '', password: '' });
             });
     };

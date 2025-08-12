@@ -13,8 +13,10 @@ export default function Logout() {
     useEffect(_ => {
         axios.post('http://localhost:3001/logout', {}, { withCredentials: true })
             .then(res => {
-                setUser(res.data);
-                redirectAfterLogout();
+                setTimeout(() => {
+                    setUser(res.data);
+                    redirectAfterLogout();
+                }, 2000);
             })
             .catch(error => {
                 console.error(error);
@@ -22,6 +24,6 @@ export default function Logout() {
     }, [setUser]);
 
     return (
-        <div className="screen-message"><h2>Login out...</h2></div>
+        <div className="screen-message"><h2>We hope you had good time. Login out...</h2></div>
     );
 };
