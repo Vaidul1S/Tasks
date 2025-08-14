@@ -83,7 +83,7 @@ export default function List() {
     return (
         <>
             <div className="list_content">
-                <h2>They need your help</h2>
+                <h2>Active fundraisers: They need your help!</h2>
                 <h3 className="order">Order stories by</h3>
                 <div>
                     <button className="button42 cadet" onClick={orderByTitle}>Title</button>

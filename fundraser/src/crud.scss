@@ -380,9 +380,13 @@ nav {
         h1 {
             font-size: 40px;
             font-weight: bold;
-            margin: 50px 0;
+            margin: 10px 0;
             text-align: center;
 
+        }
+        p {
+            font-size: 18px;
+            padding: 0 20px;
         }
 
         .create_form {
@@ -443,5 +447,9 @@ nav {
         font-size: 34px;
         text-align: center;
     }
+    p {
+            font-size: 18px;
+            padding: 0 20px;
+        }
 
 }

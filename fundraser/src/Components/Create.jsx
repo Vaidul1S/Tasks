@@ -59,6 +59,7 @@ export default function Create() {
                 <section className="create">
                     <div className="create_content">
                         <h1>Create a Fundraising Story</h1>
+                        <p>Partner with us to create your new campaign and manage donations seamlessly. We're excited to support your fundraising journey and welcome you to the our community!</p>
                         <div className="create_form">
                             <input type="text" placeholder="Title" className="create_input" id="title" value={newStory.title} onChange={changeHandler} />
                             <textarea placeholder="Description" className="create_text" id="text" value={newStory.text} onChange={changeHandler} />

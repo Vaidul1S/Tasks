@@ -20,10 +20,10 @@ export default function Nav() {
                         <li><img src="" alt="" /></li>
                         <li><Link to="">Home</Link></li>
                         {user !== null && user.role === 'guest' ?
-                            <li><Link to="redirect">Create Fundraising</Link></li>
-                            : <li><Link to="create">Create Fundraising</Link></li>
+                            <li><Link to="redirect">Start a Fundraising</Link></li>
+                            : <li><Link to="create">Start a Fundraising</Link></li>
                         }
-                        <li><Link to="about">About</Link></li>
+                        <li><Link to="about">How It Works</Link></li>
                         <li><Link to="contact">Contact</Link></li>
                     </ul>
                     {
