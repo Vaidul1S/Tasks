@@ -38,6 +38,7 @@ export default function Admin() {
         <>
             <section className="admin_panel">
                 <h2>Welcome to admin panel</h2>
+                <h3>Pending stories</h3>
                 <div className="stories_list">
                     {stories.map(story => (
                         <div key={story.id} className="stories">
