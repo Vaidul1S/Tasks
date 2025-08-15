@@ -141,11 +141,14 @@ section {
             flex-wrap: wrap;
 
             .donate_input {
+                font-family: 'SERIMI';
+                font-size: 20px;
+                letter-spacing: 1.5px;
                 outline: none;
                 border: none;
                 border-radius: 10px;
                 height: 40px;
-                margin-right: 20px;
+                margin: 5px 20px 5px 0;
                 opacity: 0.5;
                 padding: 0 10px;
             }

@@ -1,5 +1,10 @@
 @use "sass:color";
 @use 'colors.scss' as C;
+@font-face {
+  font-family: 'SERIMI';
+  src: url('./fonts/SERIMI_.woff2') format('woff2');
+}
+
 
 button {
     background-color: C.$cadet;
@@ -8,7 +13,8 @@ button {
     color: #fff;
     cursor: pointer;
     display: inline-block;
-    font-family: system-ui, -apple-system, system-ui, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    font-family: 'SERIMI';
+    letter-spacing: 1.5px;
     font-size: 18px;
     font-weight: 600;
     outline: 0;
@@ -137,7 +143,8 @@ button {
     color: #FFFFFF;
     cursor: pointer;
     display: inline-block;
-    font-family: Inter, -apple-system, system-ui, Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: 'SERIMI';
+    letter-spacing: 1.5px;
     height: 40px;
     line-height: 40px;
     outline: 0;
