@@ -383,6 +383,7 @@ nav {
 .page404 {
     font-size: 32px;
     height: 93vh;
+    padding: 0 10px;
 }
 
 .create {
@@ -391,6 +392,7 @@ nav {
     display: flex;
     align-items: center;
     text-align: center;
+    padding: 0 10px;
 
     .create_content {
         width: 100%;
@@ -399,7 +401,6 @@ nav {
         align-items: center;
         text-align: center;
         flex-direction: column;
-        margin-top: 8vh;
 
         h1 {
             font-size: 40px;
@@ -412,7 +413,7 @@ nav {
         p {
             font-size: 18px;
             padding: 0 20px;
-            font-weight: bold;
+            text-align: justify;
         }
 
         .create_form {
@@ -470,7 +471,7 @@ nav {
     justify-content: start;
     align-items: center;
     text-align: justify;
-    padding: 0 20px;
+    padding: 0 10px;
 
     h1 {
         font-size: 34px;
