@@ -42,6 +42,7 @@ body {
             hsl(120deg 100% 42%) 100%);
     color: C.$greenish;
     font-family: 'SERIMI';
+    letter-spacing: 1.5px;
     font-size: 15px;
     line-height: 1.5;
     margin: 0;
@@ -290,7 +291,9 @@ nav {
             width: 90%;
             max-width: 500px;
             padding: 10px;
-            font-size: 18px;
+            font-family: 'SERIMI';
+            font-size: 22px;
+            letter-spacing: 1.5px;
             outline: none;
             border: none;
             border-radius: 10px;
@@ -421,7 +424,9 @@ nav {
                 width: 100%;
                 max-width: 800px;
                 padding: 10px;
-                font-size: 18px;
+                font-family: 'SERIMI';
+                font-size: 22px;
+                letter-spacing: 1.5px;
                 outline: none;
                 border: none;
                 border-radius: 10px;
@@ -434,12 +439,13 @@ nav {
             }
 
             .create_text {
-                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                font-family: 'SERIMI';
                 height: 160px;
                 width: 100%;
                 max-width: 800px;
                 padding: 10px;
                 font-size: 22px;
+                letter-spacing: 1.5px;
                 outline: none;
                 border: none;
                 border-radius: 10px;
