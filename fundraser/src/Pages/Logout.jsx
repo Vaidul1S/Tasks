@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import AuthContext from "./Auth";
+import AuthContext from "../Contexts/Auth";
 import axios from "axios";
 
 export default function Logout() {

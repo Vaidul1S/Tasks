@@ -1,11 +1,11 @@
 import { useEffect, useState, createContext } from 'react';
 import Wrapper from '../Components/Wrapper';
 import Page404 from '../Components/Page404';
-import Home from "../Components/Home";
+import Home from "../Pages/Home";
 import About from '../Components/About';
-import Login from '../Components/Login';
-import Register from '../Components/Register';
-import Logout from '../Components/Logout';
+import Login from '../Pages/Login';
+import Register from '../Pages/Register';
+import Logout from '../Pages/Logout';
 import Create from '../Components/Create';
 import Admin from '../Components/Admin';
 import Redirect from '../Components/Redirect';
