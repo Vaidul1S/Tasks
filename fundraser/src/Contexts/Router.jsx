@@ -1,14 +1,14 @@
 import { useEffect, useState, createContext } from 'react';
-import Wrapper from './Wrapper';
-import Page404 from './Page404';
-import Home from "./Home";
-import About from './About';
-import Login from './Login';
-import Register from './Register';
-import Logout from './Logout';
-import Create from './Create';
-import Admin from './Admin';
-import Redirect from './Redirect';
+import Wrapper from '../Components/Wrapper';
+import Page404 from '../Components/Page404';
+import Home from "../Components/Home";
+import About from '../Components/About';
+import Login from '../Components/Login';
+import Register from '../Components/Register';
+import Logout from '../Components/Logout';
+import Create from '../Components/Create';
+import Admin from '../Components/Admin';
+import Redirect from '../Components/Redirect';
 
 const RouterContext = createContext();
 
