@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import RouterContext from "../Contexts/Router";
-import Page404 from "./Page404";
+import Page404 from "../Pages/Page404";
 
 export default function Main() {
 

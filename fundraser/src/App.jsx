@@ -1,7 +1,7 @@
 import { Router } from "./Contexts/Router";
 import Wrapper from "./Components/Wrapper";
 import Nav from "./Components/Nav";
-import './crud.scss';
+import './styles/crud.scss';
 import Main from "./Components/Main";
 import { Auth } from "./Contexts/Auth";
 
