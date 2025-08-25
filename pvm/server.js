@@ -29,3 +29,6 @@ app.get('/read', (req,res) =>{
 app.listen(port, () => {
     console.log(`PVM saskaita darbui pasiruošus ant ${port} porto!`)
   });
+
+
+//   frontas - http://localhost:5005/read.html
