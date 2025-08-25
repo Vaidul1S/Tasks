@@ -1,142 +1,183 @@
-  .container {
-    width: 100%;
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  span {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  p {
+    margin: 5px 120px;
+  }
+
+  .apmoketi {
+    font-weight: 600;
+  }
+
+  .rekvizitai {
+    padding: 30px;
+    width: 90%;
     display: flex;
-    flex-direction: column;
-    padding: 0 20px;
+    justify-content: space-evenly;
 
-    h1 {
-      text-align: center;
+    h3 {
+      font-weight: 600;
       margin-bottom: 20px;
+
     }
 
-    span {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    p {
+    div {
       margin: 5px 0;
     }
 
-    .apmoketi {
+    .atributes {
       font-weight: 600;
+      margin-right: 2%;
     }
 
-    .rekvizitai {
-      margin-top: 60px;
-      width: 90%;
-      display: flex;
-      justify-content: space-between;
+    .seller {
+      padding-right: 10%;
 
       h3 {
-        font-weight: 600;
-        margin-bottom: 20px;
-
+        visibility: hidden;
       }
-
-      div {
-        margin: 5px 0;
-      }
-
-      .atributes {
-        font-weight: 600;
-        margin-right: 2%;
-      }
-
-      .seller {
-        padding-right: 10%;
-
-        h3 {
-          visibility: hidden;
-        }
-      }
-
-      .buyer {
-        h3 {
-          visibility: hidden;
-        }
-      }
-
     }
 
-    .saskaita {
-      width: 100%;
-      margin: 70px 0;
-
-      div {
-        width: 100%;
-        margin-bottom: 50px;
-        border-spacing: 0;
+    .buyer {
+      h3 {
+        visibility: hidden;
       }
     }
 
   }
 
+  .saskaita {
+    width: 90%;
+    margin: 70px auto;
 
-.container .saskaita table tr td {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1764705882);
-  padding: 4px;
-}
+    .table {
+      margin-bottom: 30px;
 
-.container .saskaita table tr .right {
-  text-align: end;
-}
+      .list {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        border-bottom: 1px solid rgba(250, 245, 245, 0.176);
+        padding: 4px;
 
-.container .saskaita table .first {
-  background-color: rgba(109, 51, 109, 0.2549019608);
-}
+        div {
+          padding: 4px;
+        }
 
-.container .saskaita table .first td {
-  border: 0;
-  font-weight: 600;
-}
+        div:nth-child(1) {
+          text-align: end;
+          width: 3%;
+        }
 
-.container .saskaita .total {
-  display: flex;
-  justify-content: space-between;
-}
+        div:nth-child(2) {
+          text-align: start;
+          width: 35%;
+        }
 
-.container .saskaita .total .buha {
-  display: flex;
-  justify-content: end;
-  align-items: end;
-}
+        div:nth-child(3) {
+          text-align: end;
+          width: 4%;
+        }
 
-.container .saskaita .total .buha .sas {
-  font-weight: 600;
-}
+        div:nth-child(4) {
+          text-align: end;
+          width: 6%;
+        }
 
-.container .saskaita .total .buha .bu {
-  margin-left: 50px;
-  border-bottom: 1px solid black;
-  padding: 0 20px;
-}
+        div:nth-child(5) {
+          text-align: end;
+          width: 6%;
+        }
 
-.container .saskaita .total .sums div {
-  display: flex;
-  flex-direction: row;
-  justify-content: end;
-}
+        div:nth-child(6) {
+          text-align: end;
+          width: 6%;
+        }
 
-.container .saskaita .total .sums div .text {
-  width: 160px;
-  margin: 14px 10px 0 10px;
-  display: flex;
-  justify-content: start;
-}
+        div:nth-child(7) {
+          text-align: end;
+          width: 6%;
+        }
 
-.container .saskaita .total .sums div .galutine {
-  font-weight: 600;
-}
+        div:nth-child(8) {
+          text-align: end;
+          width: 6%;
+        }
 
-.container .saskaita .total .sums div .data {
-  width: 80px;
-  text-align: end;
-  margin-top: 14px;
-}
+        div:nth-child(9) {
+          text-align: end;
+          width: 6%;
+        }
+      }
 
-.container .saskaita .total .sums div .viso {
-  font-weight: 600;
+      .list:nth-child(1) {
+        background-color: rgba(109, 51, 109, 0.2549019608);
+      }
+    }
+
+    .total {
+      display: flex;
+      justify-content: space-between;
+
+      .buha {
+        display: flex;
+        justify-content: end;
+        align-items: end;
+
+        .sas {
+          font-weight: 600;
+        }
+
+        .bu {
+          margin-left: 50px;
+          border-bottom: 1px solid black;
+          padding: 0 20px;
+        }
+      }
+
+      .sums {
+        div {
+          display: flex;
+          flex-direction: row;
+          justify-content: end;
+
+          .text {
+            width: 250px;
+            margin: 14px 10px 0 10px;
+            display: flex;
+            justify-content: start;
+          }
+
+          .galutine {
+            font-weight: 600;
+          }
+
+          .data {
+            width: 80px;
+            text-align: end;
+            margin-top: 14px;
+          }
+
+          .viso {
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
 }
 
 .bebras {

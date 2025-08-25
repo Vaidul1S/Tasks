@@ -36,7 +36,7 @@ export default function Invoice() {
         totalVAT += vatAmount;
 
         return (
-            <div key={index} className="first">
+            <div key={index} className="list">
                 <div>{`00${index + 1}`}</div>
                 <div>{description}</div>
                 <div className="right">{quantity}</div>
@@ -97,8 +97,8 @@ export default function Invoice() {
             </div>
 
             <div className="saskaita">
-                <div id="data-list">
-                    <div className="first">
+                <div className="table">
+                    <div className="list">
                         <div>Kodas</div>
                         <div>Prekės pavadimas</div>
                         <div className="right">Kiekis (vnt)</div>
@@ -109,7 +109,7 @@ export default function Invoice() {
                         <div className="right">PVM suma €</div>
                         <div className="right">Suma €</div>
                     </div>
-
+                    {itemRows}
                 </div>
                 <div className="total">
                     <div className="buha">
