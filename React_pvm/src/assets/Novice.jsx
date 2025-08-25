@@ -1,15 +1,15 @@
 
 
-export default function Notice() {
+export default function Novice() {
 
     return (
-        <div classname="container">
+        <div className="container">
             <h1>PVM sąskaita faktūra</h1>
-            <span data-nr>Nr:</span>
-            <p data-dokData>Dok. data:</p>
-            <p classname="apmoketi" data-apmoketi>Apmokėti iki:</p>
-            <div classname="rekvizitai">
-                <div classname="atributes">
+            <span id="data-nr">Nr:</span>
+            <p id="data-dokData">Dok. data:</p>
+            <p className="apmoketi" id="data-apmoketi">Apmokėti iki:</p>
+            <div className="rekvizitai">
+                <div className="atributes">
                     <h3>Pardavėjas</h3>
                     <div>Įmonės pavadinimas:</div>
                     <div>Adresas:</div>
@@ -18,7 +18,7 @@ export default function Notice() {
                     <div>Tel.:</div>
                     <div>Email:</div>
                 </div>
-                <div classname="seller" data-seller>
+                <div className="seller" id="data-seller">
                     <h3>---</h3>
                     <div></div>
                     <div></div>
@@ -27,7 +27,7 @@ export default function Notice() {
                     <div></div>
                     <div></div>
                 </div>
-                <div classname="atributes">
+                <div className="atributes">
                     <h3>Pirkėjas</h3>
                     <div>Įmonės pavadinimas:</div>
                     <div>Adresas:</div>
@@ -36,7 +36,7 @@ export default function Notice() {
                     <div>Tel.:</div>
                     <div>Email:</div>
                 </div>
-                <div classname="buyer" data-buyer>
+                <div className="buyer" id="data-buyer">
                     <h3>---</h3>
                     <div></div>
                     <div></div>
@@ -47,42 +47,42 @@ export default function Notice() {
                 </div>
             </div>
 
-            <div classname="saskaita">
-                <table data-list>
-                    <tr classname="first">
-                        <td>Kodas</td>
-                        <td>Prekės pavadimas</td>
-                        <td classname="right">Kiekis (vnt)</td>
-                        <td classname="right">Kaina € (be nuolaidos)</td>
-                        <td classname="right">Nuolaida</td>
-                        <td classname="right">Kaina € (po nuolaidos)</td>
-                        <td classname="right">PVM %</td>
-                        <td classname="right">PVM suma €</td>
-                        <td classname="right">Suma €</td>
-                    </tr>
-
-                </table>
-                <div classname="total">
-                    <div classname="buha">
-                        <div classname="sas">Sąskaitą išrašė:</div>
-                        <div classname="bu">B. Babrauskas</div>
+            <div className="saskaita">
+                <div id="data-list">
+                    <div className="first">
+                        <div>Kodas</div>
+                        <div>Prekės pavadimas</div>
+                        <div className="right">Kiekis (vnt)</div>
+                        <div className="right">Kaina € (be nuolaidos)</div>
+                        <div className="right">Nuolaida</div>
+                        <div className="right">Kaina € (po nuolaidos)</div>
+                        <div className="right">PVM %</div>
+                        <div className="right">PVM suma €</div>
+                        <div className="right">Suma €</div>
                     </div>
-                    <div classname="sums">
+
+                </div>
+                <div className="total">
+                    <div className="buha">
+                        <div className="sas">Sąskaitą išrašė:</div>
+                        <div className="bu">B. Babrauskas</div>
+                    </div>
+                    <div className="sums">
                         <div>
-                            <div classname="text">Tarpinė suma:</div>
-                            <div classname="data" data-tarpine></div>
+                            <div className="text">Tarpinė suma:</div>
+                            <div className="data" id="data-tarpine"></div>
                         </div>
                         <div>
-                            <div classname="text">Transportavimo išlaidos:</div>
-                            <div classname="data" data-pristatymas></div>
+                            <div className="text">Transportavimo išlaidos:</div>
+                            <div className="data" id="data-pristatymas"></div>
                         </div>
                         <div>
-                            <div classname="text">Viso PVM (21%):</div>
-                            <div classname="data visoPvm" data-visoPvm></div>
+                            <div className="text">Viso PVM (21%):</div>
+                            <div className="data visoPvm" id="data-visoPvm"></div>
                         </div>
                         <div>
-                            <div classname="text galutine">Galutinė suma:</div>
-                            <div classname="data viso" data-viso></div>
+                            <div className="text galutine">Galutinė suma:</div>
+                            <div className="data viso" id="data-viso"></div>
                         </div>
                     </div>
                 </div>
