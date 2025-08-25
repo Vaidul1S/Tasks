@@ -136,6 +136,8 @@ export default function Invoice() {
                     </div>
                 </div>
             </div>
+            <div class="bebras"><img src="/src/assets/bebras1.svg" alt="Bebras" /></div>
+            <div class="thanks">Dėkojame už Jūsų užsakymą. Tikimės, kad esate patenkinti mūsų paslaugomis.</div>
         </div>
     )
 }
