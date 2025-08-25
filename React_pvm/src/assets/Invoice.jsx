@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
 
-
 export default function Invoice() {
 
     const [invoice, setInvoice] = useState(null);
@@ -17,74 +16,47 @@ export default function Invoice() {
     const { number, date, due_date, company, items, shippingPrice } = invoice;
     const { buyer, seller } = company;
 
-    
-                // const {number, date, due_date, company, items, shippingPrice} = data;
+    let subtotal = 0;
+    let totalVAT = 0;
 
-                // const {buyer, seller} = company;
-                // let i = 0;
-                // pirkejas.forEach(div => {
-                // const {name, address, code, vat, phone, email} = buyer;
-                // const Buyer = Object.values(buyer);                 
-                //     div.innerText = Buyer[i];
-                //     i++;            
-                // });
+    const itemRows = items.map((item, index) => {
+        const { description, discount, price, quantity } = item;
 
-                // let j = 0;
-                // pardavejas.forEach(div => {
-                // const {name, address, code, vat, phone, email} = seller;
-                // const Seller = Object.values(seller);                   
-                //     div.innerText = Seller[j];
-                //     j++;            
-                // })
-                // let k = 1;
-                // let afterDiscount;
-                // let pvmSuma;
-                // let sum;
-                // let tarpineSuma = 0;
-                // let visoPvm = 0;
-                // items.forEach(item => {
-                //     const {description, discount, price, quantity} = item;
-                //     const Discount = Object.values(discount);
-                //     let type = '';
-                //     if (Discount[0] === 'percentage') {
-                //         type = `${Discount[1]} %`;
-                //         afterDiscount = price - ((price / 100) * Discount[1]);
-                //     } else if (Discount[0] === 'fixed') {
-                //         type = `${Discount[1]} €`;                
-                //         afterDiscount = price - Discount[1];
-                //     } else {
-                //         afterDiscount = price;
-                //     };
-                //     pvmSuma = (afterDiscount * 0.21) * quantity;
-                //     sum = afterDiscount * quantity + pvmSuma;
-                //     tarpineSuma += sum;
-                //     visoPvm += pvmSuma;
-                //     const preke = `<tr>
-                //                 <td>00${k}</td>
-                //                 <td>${description}</td>
-                //                 <td class="right">${quantity}</td>                        
-                //                 <td class="right">${price.toFixed(2)}</td>
-                //                 <td class="right">${type}</td>                        
-                //                 <td class="right">${afterDiscount.toFixed(2)}</td>
-                //                 <td class="right">21 %</td>
-                //                 <td class="right">${pvmSuma.toFixed(2)}</td>
-                //                 <td class="right">${sum.toFixed(2)}</td>
-                //             </tr>`
-                //         list.innerHTML += preke;
-                //         k++;
-                // })
+        let afterDiscount = price;
+        if (discount.type === 'percentage') {
+            afterDiscount = price - (price * discount.value / 100);
+        } else if (discount.type === 'fixed') {
+            afterDiscount = price - discount.value;
+        }
 
-                // tarpine.innerText = tarpineSuma.toFixed(2) + ' €';
-                // visoPVM.innerText = (visoPvm + (shippingPrice * 0.21)).toFixed(2) + ' €';
-                // viso.innerText = (tarpineSuma + shippingPrice).toFixed(2) + ' €';
-    
+        const vatAmount = afterDiscount * 0.21 * quantity;
+        const total = afterDiscount * quantity + vatAmount;
+
+        subtotal += total;
+        totalVAT += vatAmount;
+
+        return (
+            <div key={index} className="first">
+                <div>{`00${index + 1}`}</div>
+                <div>{description}</div>
+                <div className="right">{quantity}</div>
+                <div className="right">{price.toFixed(2)}</div>
+                <div className="right">{discount.type === 'percentage' ? `${discount.value}%` : discount.type === 'fixed' ? `${discount.value} €` : '-'}</div>
+                <div className="right">{afterDiscount.toFixed(2)}</div>
+                <div className="right">21%</div>
+                <div className="right">{vatAmount.toFixed(2)}</div>
+                <div className="right">{total.toFixed(2)}</div>
+            </div>
+        );
+    });
+
 
     return (
         <div className="container">
             <h1>PVM sąskaita faktūra</h1>
-            <span id="data-nr">Nr:{temp.number}</span>
-            <p id="data-dokData">Dok. data: {temp.date}</p>
-            <p className="apmoketi" id="data-apmoketi">Apmokėti iki: {temp.due_date}</p>
+            <span id="data-nr">Nr:{number}</span>
+            <p id="data-dokData">Dok. data: {date}</p>
+            <p className="apmoketi" id="data-apmoketi">Apmokėti iki: {due_date}</p>
             <div className="rekvizitai">
                 <div className="atributes">
                     <h3>Pardavėjas</h3>
@@ -97,12 +69,12 @@ export default function Invoice() {
                 </div>
                 <div className="seller" id="data-seller">
                     <h3>---</h3>
-                    <div>{temp.company.seller.name}</div>
-                    <div>{temp.company.seller.address}</div>
-                    <div>{temp.company.seller.code}</div>
-                    <div>{temp.company.seller.vat}</div>
-                    <div>{temp.company.seller.phone}</div>
-                    <div>{temp.company.seller.email}</div>
+                    <div>{seller.name}</div>
+                    <div>{seller.address}</div>
+                    <div>{seller.code}</div>
+                    <div>{seller.vat}</div>
+                    <div>{seller.phone}</div>
+                    <div>{seller.email}</div>
                 </div>
                 <div className="atributes">
                     <h3>Pirkėjas</h3>
@@ -115,12 +87,12 @@ export default function Invoice() {
                 </div>
                 <div className="buyer" id="data-buyer">
                     <h3>---</h3>
-                    <div>{temp.company.buyer.name}</div>
-                    <div>{temp.company.buyer.address}</div>
-                    <div>{temp.company.buyer.code}</div>
-                    <div>{temp.company.buyer.vat}</div>
-                    <div>{temp.company.buyer.phone}</div>
-                    <div>{temp.company.buyer.email}</div>
+                    <div>{buyer.name}</div>
+                    <div>{buyer.address}</div>
+                    <div>{buyer.code}</div>
+                    <div>{buyer.vat}</div>
+                    <div>{buyer.phone}</div>
+                    <div>{buyer.email}</div>
                 </div>
             </div>
 
@@ -147,19 +119,19 @@ export default function Invoice() {
                     <div className="sums">
                         <div>
                             <div className="text">Tarpinė suma:</div>
-                            <div className="data" id="data-tarpine"></div>
+                            <div className="data" id="data-tarpine">{subtotal.toFixed(2)} €</div>
                         </div>
                         <div>
                             <div className="text">Transportavimo išlaidos:</div>
-                            <div className="data" id="data-pristatymas">{temp.shippingPrice}</div>
+                            <div className="data" id="data-pristatymas">{shippingPrice.toFixed(2)} €</div>
                         </div>
                         <div>
                             <div className="text">Viso PVM (21%):</div>
-                            <div className="data visoPvm" id="data-visoPvm"></div>
+                            <div className="data visoPvm" id="data-visoPvm">{(totalVAT + shippingPrice * 0.21).toFixed(2)} €</div>
                         </div>
                         <div>
                             <div className="text galutine">Galutinė suma:</div>
-                            <div className="data viso" id="data-viso"></div>
+                            <div className="data viso" id="data-viso">{(subtotal + shippingPrice).toFixed(2)} €</div>
                         </div>
                     </div>
                 </div>
