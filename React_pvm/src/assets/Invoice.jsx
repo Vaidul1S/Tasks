@@ -131,8 +131,8 @@ export default function Invoice() {
             <div className="saskaita">
                 <div className="table">
                     <div className="list">
-                        <div>Kodas</div>
-                        <div>Prekės pavadimas</div>
+                        <div className="cell">Kodas</div>
+                        <div className="cell">Prekės pavadimas</div>
                         <div className="cell">Kiekis (vnt)</div>
                         <div className="cell">Kaina € (be nuolaidos)</div>
                         <div className="cell">Nuolaida</div>

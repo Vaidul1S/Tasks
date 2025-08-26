@@ -71,11 +71,14 @@
         display: flex;
         justify-content: space-between;
         flex-direction: row;
-        border-bottom: 1px solid rgba(250, 245, 245, 0.176);
+        border-bottom: 1px solid #faf5f500;
         padding: 4px;
 
         .cell {
-          padding: 4px;
+          background-color: transparent;
+          color: black;
+          border: none;
+          padding: 4px;          
         }
 
         .cell:nth-child(1) {
@@ -86,21 +89,25 @@
         .cell:nth-child(2) {
           text-align: start;
           width: 35%;
+          cursor: pointer;
         }
 
         .cell:nth-child(3) {
           text-align: end;
           width: 4%;
+          cursor: pointer;
         }
 
         .cell:nth-child(4) {
           text-align: end;
           width: 6%;
+          cursor: pointer;
         }
 
         .cell:nth-child(5) {
           text-align: end;
           width: 6%;
+          cursor: pointer;
         }
 
         .cell:nth-child(6) {
