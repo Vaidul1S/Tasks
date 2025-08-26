@@ -81,7 +81,7 @@ export default function Invoice() {
                 <div className="cell">{total.toFixed(2)}</div>
             </div>
         );
-    });   
+    });
 
     return (
         <div className="container">
@@ -151,19 +151,19 @@ export default function Invoice() {
                     <div className="sums">
                         <div>
                             <div className="text">Tarpinė suma:</div>
-                            <div className="data" id="data-tarpine">{subtotal.toFixed(2)} €</div>
+                            <div className="data" id="data-tarpine">{subtotal.toLocaleString("fi-FI", {style:"currency", currency:"EUR"})}</div>
                         </div>
                         <div>
                             <div className="text">Transportavimo išlaidos:</div>
-                            <div className="data" id="data-pristatymas">{shippingPrice.toFixed(2)} €</div>
+                            <div className="data" id="data-pristatymas">{shippingPrice.toLocaleString("fi-FI", {style:"currency", currency:"EUR"})}</div>
                         </div>
                         <div>
                             <div className="text">Viso PVM (21%):</div>
-                            <div className="data visoPvm" id="data-visoPvm">{(totalVAT + shippingPrice * 0.21).toFixed(2)} €</div>
+                            <div className="data visoPvm" id="data-visoPvm">{(totalVAT + shippingPrice * 0.21).toLocaleString("fi-FI", {style:"currency", currency:"EUR"})}</div>
                         </div>
                         <div>
                             <div className="text galutine">Galutinė suma:</div>
-                            <div className="data viso" id="data-viso">{(subtotal + shippingPrice).toFixed(2)} €</div>
+                            <div className="data viso" id="data-viso">{(subtotal + shippingPrice).toLocaleString("fi-FI", {style:"currency", currency:"EUR"})}</div>
                         </div>
                     </div>
                 </div>

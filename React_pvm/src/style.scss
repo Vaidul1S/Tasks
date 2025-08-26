@@ -2,7 +2,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 
   h1 {
     text-align: center;
@@ -71,14 +71,17 @@
         display: flex;
         justify-content: space-between;
         flex-direction: row;
-        border-bottom: 1px solid #faf5f500;
+        border-bottom: 1px solid #00000030;
         padding: 4px;
 
         .cell {
           background-color: transparent;
           color: black;
           border: none;
-          padding: 4px;          
+          padding: 4px;
+          font-family: Georgia, 'Times New Roman', Times, serif;
+          font-size: 1em;
+
         }
 
         .cell:nth-child(1) {
@@ -88,7 +91,7 @@
 
         .cell:nth-child(2) {
           text-align: start;
-          width: 35%;
+          width: 40%;
           cursor: pointer;
         }
 
@@ -194,12 +197,24 @@
   right: 100px;
   top: 50px;
   z-index: 1;
+  // animation: logo-spin infinite 2s linear;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .bebras img {
   -o-object-fit: scale-down;
   object-fit: scale-down;
   width: 200px;
+
 }
 
 .thanks {
