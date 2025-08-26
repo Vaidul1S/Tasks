@@ -16,6 +16,19 @@ export default function Invoice() {
     const { number, date, due_date, company, items, shippingPrice } = invoice;
     const { buyer, seller } = company;
 
+    const editInvoice = (path, value) => {
+        setInvoice(inv => {
+            const updated = { ...inv };
+            const keys = path.split('.');
+            let obj = updated;
+            for (let i = 0; i < keys.length - 1; i++) {
+                obj = obj[keys[i]];
+            }
+            obj[keys[keys.length - 1]] = value;
+            return updated;
+        });
+    };
+
     let subtotal = 0;
     let totalVAT = 0;
 
@@ -37,19 +50,38 @@ export default function Invoice() {
 
         return (
             <div key={index} className="list">
-                <div>{`00${index + 1}`}</div>
-                <div>{description}</div>
-                <div className="right">{quantity}</div>
-                <div className="right">{price.toFixed(2)}</div>
-                <div className="right">{discount.type === 'percentage' ? `${discount.value}%` : discount.type === 'fixed' ? `${discount.value} €` : '-'}</div>
-                <div className="right">{afterDiscount.toFixed(2)}</div>
-                <div className="right">21%</div>
-                <div className="right">{vatAmount.toFixed(2)}</div>
-                <div className="right">{total.toFixed(2)}</div>
+                <div className="cell">{`00${index + 1}`}</div>
+                <input
+                    className="cell"
+                    type="text"
+                    value={description}
+                    onChange={(e) => editInvoice(`items.${index}.description`, e.target.value)}
+                />
+                <input
+                    className="cell"
+                    type="text"
+                    value={quantity}
+                    onChange={(e) => editInvoice(`items.${index}.quantity`, Number(e.target.value))}
+                />
+                <input
+                    className="cell"
+                    type="text"
+                    value={price}
+                    onChange={(e) => editInvoice(`items.${index}.price`, Number(e.target.value))}
+                />
+                <input
+                    className="cell"
+                    type="text"
+                    value={discount.type === 'percentage' ? `${discount.value}%` : discount.type === 'fixed' ? `${discount.value} €` : ''}
+                    readOnly
+                />
+                <div className="cell">{afterDiscount.toFixed(2)}</div>
+                <div className="cell">21%</div>
+                <div className="cell">{vatAmount.toFixed(2)}</div>
+                <div className="cell">{total.toFixed(2)}</div>
             </div>
         );
-    });
-
+    });   
 
     return (
         <div className="container">
@@ -101,13 +133,13 @@ export default function Invoice() {
                     <div className="list">
                         <div>Kodas</div>
                         <div>Prekės pavadimas</div>
-                        <div className="right">Kiekis (vnt)</div>
-                        <div className="right">Kaina € (be nuolaidos)</div>
-                        <div className="right">Nuolaida</div>
-                        <div className="right">Kaina € (po nuolaidos)</div>
-                        <div className="right">PVM %</div>
-                        <div className="right">PVM suma €</div>
-                        <div className="right">Suma €</div>
+                        <div className="cell">Kiekis (vnt)</div>
+                        <div className="cell">Kaina € (be nuolaidos)</div>
+                        <div className="cell">Nuolaida</div>
+                        <div className="cell">Kaina € (po nuolaidos)</div>
+                        <div className="cell">PVM %</div>
+                        <div className="cell">PVM suma €</div>
+                        <div className="cell">Suma €</div>
                     </div>
                     {itemRows}
                 </div>
@@ -136,8 +168,8 @@ export default function Invoice() {
                     </div>
                 </div>
             </div>
-            <div class="bebras"><img src="/src/assets/bebras1.svg" alt="Bebras" /></div>
-            <div class="thanks">Dėkojame už Jūsų užsakymą. Tikimės, kad esate patenkinti mūsų paslaugomis.</div>
+            <div className="bebras"><img src="/src/assets/bebras1.svg" alt="Bebras" /></div>
+            <div className="thanks">Dėkojame už Jūsų užsakymą. Tikimės, kad esate patenkinti mūsų paslaugomis.</div>
         </div>
     )
 }

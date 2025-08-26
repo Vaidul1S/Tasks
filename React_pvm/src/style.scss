@@ -74,51 +74,51 @@
         border-bottom: 1px solid rgba(250, 245, 245, 0.176);
         padding: 4px;
 
-        div {
+        .cell {
           padding: 4px;
         }
 
-        div:nth-child(1) {
+        .cell:nth-child(1) {
           text-align: end;
           width: 3%;
         }
 
-        div:nth-child(2) {
+        .cell:nth-child(2) {
           text-align: start;
           width: 35%;
         }
 
-        div:nth-child(3) {
+        .cell:nth-child(3) {
           text-align: end;
           width: 4%;
         }
 
-        div:nth-child(4) {
+        .cell:nth-child(4) {
           text-align: end;
           width: 6%;
         }
 
-        div:nth-child(5) {
+        .cell:nth-child(5) {
           text-align: end;
           width: 6%;
         }
 
-        div:nth-child(6) {
+        .cell:nth-child(6) {
           text-align: end;
           width: 6%;
         }
 
-        div:nth-child(7) {
+        .cell:nth-child(7) {
           text-align: end;
           width: 6%;
         }
 
-        div:nth-child(8) {
+        .cell:nth-child(8) {
           text-align: end;
           width: 6%;
         }
 
-        div:nth-child(9) {
+        .cell:nth-child(9) {
           text-align: end;
           width: 6%;
         }
