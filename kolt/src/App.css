@@ -74,6 +74,7 @@ label {
   outline: none;
   padding: 10px 0;
   margin: 10px 30px;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .container {
@@ -95,6 +96,7 @@ label {
 
 input[type="checkbox"]:checked+label {
   color: lime;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .state {
