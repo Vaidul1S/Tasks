@@ -72,7 +72,7 @@ export default function Invoice() {
                 <input
                     className="cell"
                     type="text"
-                    value={discount.type === 'percentage' ? `${discount.value}`+' %' : discount.type === 'fixed' ? `${discount.value}` +' €' : ''}
+                    value={discount.type === 'percentage' ? `${discount.value} %` : discount.type === 'fixed' ? `${discount.value} €` : ''}
                     onChange={(e) => editInvoice(`items.${index}.discount.value`, Number(e.target.value))}
                 />
                 <div className="cell">{afterDiscount.toFixed(2)}</div>
