@@ -73,7 +73,10 @@ export default function Invoice() {
                     className="cell"
                     type="text"
                     value={discount.type === 'percentage' ? `${discount.value} %` : discount.type === 'fixed' ? `${discount.value} €` : ''}
-                    onChange={(e) => editInvoice(`items.${index}.discount.value`, Number(e.target.value))}
+                    onChange={(e) => {
+                        const numericValue = parseFloat(e.target.value.replace(/[^\d.,-]/g, ""));
+                        editInvoice(`items.${index}.discount.value`, isNaN(numericValue) ? 0 : numericValue);
+                    }}
                 />
                 <div className="cell">{afterDiscount.toFixed(2)}</div>
                 <div className="cell">21%</div>
