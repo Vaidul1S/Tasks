@@ -15,7 +15,7 @@ export default function Invoice() {
 
     const { number, date, due_date, company, items, shippingPrice } = invoice;
     const { buyer, seller } = company;
-
+    
     const editInvoice = (path, value) => {
         setInvoice(inv => {
             const updated = { ...inv };
