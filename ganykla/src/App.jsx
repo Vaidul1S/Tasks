@@ -64,6 +64,7 @@ export default function App() {
             <header className="app-header">
                 <h2>Sveiki, atvykę į ganyklą.</h2>
                 <div className="ganykla">
+                    
                     <div>
                         <h4>Avidės</h4>
                         <div className="sheeps">
@@ -72,6 +73,7 @@ export default function App() {
                             }
                         </div>
                     </div>
+
                     <div>
                         <h4>Karvidės</h4>
                         <div className="cows">
@@ -81,6 +83,7 @@ export default function App() {
 
                         </div>
                     </div>
+
                 </div>
                 <div>
                     <button className="button27 green" onClick={iGanykla}>Į ganyklą</button>
