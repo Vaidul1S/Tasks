@@ -85,7 +85,7 @@ export default function App() {
                     </div>
 
                 </div>
-                <div>
+                <div className='buttons'>
                     <button className="button27 green" onClick={iGanykla}>Į ganyklą</button>
                     <button className="button27 red" onClick={iSkerdykla}>Į skerdyklą</button>
                 </div>
