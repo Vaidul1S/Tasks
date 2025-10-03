@@ -117,14 +117,14 @@ button {
     &:hover {
         background-color: #f5f5dc28;
         box-shadow: #00000040 0 8px 15px;
-        transform: translateY(-2px);
+        transform: translateY(2px);
     }
     &.green {
         background-color: green;
         &:hover {
             background-color: darkgreen;
             box-shadow: #00000040 0 8px 15px;
-            transform: translateY(-2px);
+            transform: translateY(3px);
         }
     }
     &.red {
@@ -132,7 +132,7 @@ button {
         &:hover {
             background-color: darkred;
             box-shadow: #00000040 0 8px 15px;
-            transform: translateY(-2px);
+            transform: translateY(3px);
         }
     }
 }
