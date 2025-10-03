@@ -9,17 +9,6 @@ body {
   text-align: center;
 }
 
-.app-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 2s linear;
-  }
-}
-
 .app-header {
   background-image: url("./Components/farm.webp");
   background-size: cover;
@@ -38,69 +27,6 @@ body {
 
 }
 
-.app-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-input {
-  margin: 20px;
-  font-size: 24px;
-  outline: none;
-  background-color: transparent;
-  border: solid white 1px;
-  border-radius: 5px;
-  padding: 5px 10px;
-  color: white;
-}
-
-input.lime {
-  margin: 20px;
-  font-size: 24px;
-  outline: none;
-  background-color: transparent;
-  border: solid lime 1px;
-  border-radius: 5px;
-  padding: 5px 10px;
-  color: lime;
-}
-
-select {
-  margin: 20px;
-  font-size: 20px;
-  padding: 10px 20px;
-  background-color: transparent;
-  color: purple;
-  border: solid purple 1px;
-  border-radius: 5px;
-}
-
-/* input[type="checkbox"] {
-  display: none;
-} */
-
-label {
-  color: white;
-  cursor: pointer;
-  padding-right: 20px;
-  font-family: monospace;
-  user-select: none;
-  font-weight: 800;
-}
-
-input[type="checkbox"]:checked+label {
-  color: darkblue;
-}
-
 .ganykla {
   display: flex;
   flex-direction: row;
@@ -116,16 +42,6 @@ input[type="checkbox"]:checked+label {
   flex-wrap: wrap;
   justify-content: center;
   align-content: flex-start;
-
-  div {
-    display: flex;
-    justify-content: center;
-    align-items: last baseline;
-    color: red;
-    font-size: 16px;
-    font-weight: 700;
-    cursor: pointer;
-  }
 }
 
 .cows {
@@ -137,19 +53,16 @@ input[type="checkbox"]:checked+label {
   flex-wrap: wrap;
   justify-content: center;
   align-content: flex-start;
-
-  div {
-    display: flex;
-    justify-content: center;
-    align-items: last baseline;
-    color: red;
-    font-size: 16px;
-    font-weight: 700;
-    cursor: pointer;
-  }
 }
 
 .sheep {
+  display: flex;
+  justify-content: center;
+  align-items: last baseline;
+  color: red;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
   width: 80px;
   height: 80px;
   margin: 10px;
@@ -160,6 +73,13 @@ input[type="checkbox"]:checked+label {
 }
 
 .cow {
+  display: flex;
+  justify-content: center;
+  align-items: last baseline;
+  color: red;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
   width: 80px;
   height: 80px;
   margin: 10px;
