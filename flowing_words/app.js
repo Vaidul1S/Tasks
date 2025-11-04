@@ -34,10 +34,5 @@ function movePhrases() {
 
     requestAnimationFrame(movePhrases);
 }
-// phrases.forEach(phrase => {
-//     const el = document.getElementById(phrase.id);
-//     el.style.left = `${phrase.x}px`;
-//     el.style.top = `${phrase.y}px`;
-// });
 
 movePhrases();
