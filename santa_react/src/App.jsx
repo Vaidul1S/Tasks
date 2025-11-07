@@ -9,9 +9,9 @@ function App() {
   return (
     <>
       <div>        
-        <a href="https://react.dev" target="_blank">
+        <h1>Secret Santa</h1>
           <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        
       </div>
       
     </>
