@@ -1,6 +1,7 @@
 import reactLogo from './assets/react.svg';
 import './App.css';
 import './buttons.scss';
+import './style.scss';
 import Santa from './assets/Santa';
 
 export default function App() {
