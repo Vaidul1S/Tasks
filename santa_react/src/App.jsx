@@ -1,4 +1,4 @@
-import reactLogo from './assets/react.svg';
+import logo from './assets/03.svg';
 import './App.css';
 import './buttons.scss';
 import './style.scss';
@@ -10,7 +10,7 @@ export default function App() {
     <>
       <div>        
         <h1>Secret Santa</h1>
-          <img src={reactLogo} className="logo react" alt="React logo" />
+          <img src={logo} className="logo react" alt="React logo" />
           <Santa/>
       </div>
       
