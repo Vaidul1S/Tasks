@@ -10,7 +10,9 @@ export default function App() {
     <>
       <div>        
         <h1>Secret Santa</h1>
-          <img src={logo} className="logo react" alt="React logo" />
+          <img src={logo} className="logo react" alt="logo" />
+          <img src={logo} className="logo react" alt="logo" />
+          <img src={logo} className="logo react" alt="logo" />
           <Santa/>
       </div>
       
