@@ -45,6 +45,10 @@ export default function Santa() {
     function giver(name) {
         if(!pairs.includes(name)){
             setPair(p => p = "Wrong name!")
+            console.log(pairs);            
+        } else {
+            return console.log(name);
+            
         }
     };
 
@@ -90,7 +94,7 @@ export default function Santa() {
         <>
             <form action="" className="formContainer">
                 <h3>With restrictions</h3>
-                <input className="input2" type="text" placeholder="Įvesti vardą" onChange={_ => giver(e.target.value)}></input>
+                <input className="input2" type="text" placeholder="Įvesti vardą" onChange={e => giver(e.target)}></input>
                 <p className="text">Vardas turi būti iš didžiosios raidės ir su lietuviškom raidėm.</p>
                 <button className="button27 green" onClick={_ => showPair(giver)}>OK</button>
                 <h2 className="result">{pair}</h2>
