@@ -2,14 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import { poolRestriction } from "./functtions/pool";
 import { pairs } from "./functtions/pairs";
 
-export default function Santa() {    
+export default function Santa() {
 
     const input = useRef(null);
     const [pair, setPair] = useState(null);
     const [name, setName] = useState("");
 
     useEffect(_ => {
-        if(!localStorage.getItem('santa')) {
+        if (!localStorage.getItem('santa')) {
             localStorage.setItem('santa', JSON.stringify(null));
         }
     }, []);
@@ -22,10 +22,15 @@ export default function Santa() {
         let ivestis;
 
         if (name.trim().length < 1) {
-            setPair("Please enter a name!");
-            return;[]
+            setPair("Please enter a valid name!");
+            return;
         } else {
             ivestis = name;
+        }
+
+        if(!pairs.flat().includes(ivestis)){
+            setPair("Tokia varda nera!");
+            return;
         }
 
 
@@ -39,7 +44,7 @@ export default function Santa() {
         } else {
             poolRestriction.forEach(e => {
                 if (e.includes(ivestis)) {
-                    
+
                     setPair("Nešnipiniek!");
 
                 }
