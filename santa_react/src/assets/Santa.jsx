@@ -12,7 +12,7 @@ export default function Santa() {
         if(!localStorage.getItem('santa')) {
             localStorage.setItem('santa', JSON.stringify(null));
         }
-    });
+    }, []);
 
     const addName = name => {
         setName(name);
@@ -23,6 +23,7 @@ export default function Santa() {
 
         if (name.trim().length < 1) {
             setPair("Please enter a name!");
+            return;[]
         } else {
             ivestis = name;
         }
@@ -38,8 +39,8 @@ export default function Santa() {
         } else {
             poolRestriction.forEach(e => {
                 if (e.includes(ivestis)) {
-                    result.style.color = 'red';
-                    result.innerHTML = "Nešnipiniek!";
+                    
+                    setPair("Nešnipiniek!");
 
                 }
             });
@@ -59,12 +60,13 @@ export default function Santa() {
             localStorage.setItem('santa', JSON.stringify(poolIndex));
         }
 
+        setName("");
 
     };
 
     return (
         <>
-            <form action="" className="formContainer">
+            <div className="formContainer">
                 <h3>With restrictions</h3>
                 <input className="input"
                     type="text"
@@ -74,9 +76,9 @@ export default function Santa() {
                     onChange={e => addName(e.target.value)}
                 ></input>
                 <p className="text">Vardas turi būti iš didžiosios raidės ir su lietuviškom raidėm.</p>
-                <button className="button27 green" onClick={_ => showPair(giver)}>OK</button>
+                <button type="submit" className="button27 green" onClick={_ => showPair(name)}>OK</button>
                 <h2 className="result">{pair}</h2>
-            </form>
+            </div>
         </>
     )
 }
