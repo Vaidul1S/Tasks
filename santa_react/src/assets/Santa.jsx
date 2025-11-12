@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { poolRestriction } from "./pool";
 
 export default function Santa() {
 
     const [pair, setPair] = useState("");
+    const [name, setName] = useState("");
+    const input = useRef(null);
 
     function shuffle(array) {
         for (let i = array.length - 1; i > 0; i--) {
@@ -42,15 +44,9 @@ export default function Santa() {
 
     const pairs = makeSecretSanta(poolRestriction);
 
-    function giver(name) {
-        if(!pairs.flat().includes(name)) {
-            setPair("Wrong name!")                 
-        } else {
-            setPair(name)
-            console.log(name);
-            
-        }
-    };
+    const addName = name => {
+        setName(n => name);
+    }
 
     function showPair(giver) {
         let ivestis = giver;
@@ -94,7 +90,7 @@ export default function Santa() {
         <>
             <form action="" className="formContainer">
                 <h3>With restrictions</h3>
-                <input className="input" type="text" placeholder="Įvesti vardą" onChange={e => giver(e.target)}></input>
+                <input className="input" type="text" placeholder="Įvesti vardą" onChange={addName} ref={input} value={name}></input>
                 <p className="text">Vardas turi būti iš didžiosios raidės ir su lietuviškom raidėm.</p>
                 <button className="button27 green" onClick={_ => showPair(giver)}>OK</button>
                 <h2 className="result">{pair}</h2>
