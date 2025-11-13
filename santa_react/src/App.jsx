@@ -3,6 +3,7 @@ import './App.css';
 import './buttons.scss';
 import './style.scss';
 import Santa from './assets/Santa';
+import MakePool from './assets/MakePool';
 
 export default function App() {
 
@@ -15,6 +16,8 @@ export default function App() {
           <img src={logo} className="logo react" alt="logo" />
           <Santa/>
       </div>
+
+      <MakePool/>
       
     </>
   )

@@ -39,7 +39,7 @@ export default function MakePool() {
                 />
             </div>
 
-            {fams.map((family, i) => (
+            {fams.map((fam, i) => (
                 <div key={i} >
                     <h3 >Family {i + 1}</h3>
 
@@ -48,7 +48,7 @@ export default function MakePool() {
                         <input
                             type="number"
                             min="0"
-                            value={family.length}
+                            value={fam.length}
                             onChange={(e) => members(i, Number(e.target.value))}
                         />
                     </div>
@@ -68,6 +68,11 @@ export default function MakePool() {
                     ))}
                 </div>
             ))}
+
+            <div >
+                <h3>Resulting Array:</h3>
+                <pre>{JSON.stringify(fams, null, 2)}</pre>
+            </div>
         </>
     )
 }
