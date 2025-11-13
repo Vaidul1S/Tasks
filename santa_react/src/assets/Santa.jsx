@@ -79,7 +79,7 @@ export default function Santa() {
                     ref={input}
                     value={name}
                     onChange={e => addName(e.target.value)}
-                ></input>
+                />
                 <p className="text">Vardas turi būti iš didžiosios raidės ir su lietuviškom raidėm.</p>
                 <button type="submit" className="button27 green" onClick={_ => showPair(name)}>OK</button>
                 <h2 className="result">{pair}</h2>
