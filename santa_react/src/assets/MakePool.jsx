@@ -1,11 +1,11 @@
-import { useState } from "react"
+import { useState } from "react";
 
 export default function MakePool() {
 
     const [fams, setFams] = useState([]);
 
     const famNumb = (count) => {
-        const newFam = Array.from({ length: count }, (_, i) => families[i] || []);
+        const newFam = Array.from({ length: count }, (_, i) => fams[i] || []);
         setFams(newFam);
     };
 
@@ -41,10 +41,10 @@ export default function MakePool() {
 
             {fams.map((fam, i) => (
                 <div key={i} >
-                    <h3 >Family {i + 1}</h3>
+                    <h3>Family {i + 1}</h3>
 
                     <div>
-                        <label >Number of Members:</label>
+                        <label>Number of Members:</label>
                         <input
                             type="number"
                             min="0"
@@ -55,7 +55,7 @@ export default function MakePool() {
 
                     {fams.map((member, j) => (
                         <div key={j}>
-                            <label >
+                            <label>
                                 Member {j + 1} Name:
                             </label>
                             <input
@@ -75,4 +75,4 @@ export default function MakePool() {
             </div>
         </>
     )
-}
+};
