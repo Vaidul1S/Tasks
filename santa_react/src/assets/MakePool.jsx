@@ -31,10 +31,43 @@ export default function MakePool() {
     return (
         <>
             <div>
-                <h1>Make Pool</h1>
-                <input type="text" placeholder="Enter a number of families" value={fams} />
-                <button type="submit" className="button27 blue" onClick={_ => setFams(famsNumb)}></button>
+                <label>Number of Families:</label>
+                <input
+                    type="number"
+                    min="0"
+                    onChange={(e) => famNumb(Number(e.target.value))}
+                />
             </div>
+
+            {fams.map((family, i) => (
+                <div key={i} >
+                    <h3 >Family {i + 1}</h3>
+
+                    <div>
+                        <label >Number of Members:</label>
+                        <input
+                            type="number"
+                            min="0"
+                            value={family.length}
+                            onChange={(e) => members(i, Number(e.target.value))}
+                        />
+                    </div>
+
+                    {fams.map((member, j) => (
+                        <div key={j}>
+                            <label >
+                                Member {j + 1} Name:
+                            </label>
+                            <input
+                                type="text"
+                                value={member}
+                                onChange={(e) => membersNames(i, j, e.target.value)}
+                                placeholder="Enter name"
+                            />
+                        </div>
+                    ))}
+                </div>
+            ))}
         </>
     )
 }
