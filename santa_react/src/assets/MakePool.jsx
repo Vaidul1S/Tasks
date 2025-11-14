@@ -10,9 +10,9 @@ export default function MakePool() {
     };
 
     const members = (famIndex, count) => {
-        setFamilies((prev) => {
+        setFams((prev) => {
             const newFam = [...prev];
-            newFamilies[famIndex] = Array.from(
+            newFam[famIndex] = Array.from(
                 { length: count },
                 (_, i) => newFam[famIndex]?.[i] || ""
             );
@@ -21,7 +21,7 @@ export default function MakePool() {
     };
 
     const membersNames = (famIndex, memberIndex, name) => {
-        setFamilies((prev) => {
+        setFams((prev) => {
             const newFam = [...prev];
             newFam[famIndex][memberIndex] = name;
             return newFam;
@@ -31,37 +31,35 @@ export default function MakePool() {
     return (
         <>
             <div>
-                <label>Number of Families:</label>
+                <label>Number of Families: </label>
                 <input
                     type="number"
                     min="0"
-                    onChange={(e) => famNumb(Number(e.target.value))}
+                    onChange={e => famNumb(Number(e.target.value))}
                 />
             </div>
 
             {fams.map((fam, i) => (
-                <div key={i} >
+                <div key={i}>
                     <h3>Family {i + 1}</h3>
 
                     <div>
-                        <label>Number of Members:</label>
+                        <label>Number of Members: </label>
                         <input
                             type="number"
                             min="0"
                             value={fam.length}
-                            onChange={(e) => members(i, Number(e.target.value))}
+                            onChange={e => members(i, Number(e.target.value))}
                         />
                     </div>
 
-                    {fams.map((member, j) => (
+                    {fam.map((member, j) => (
                         <div key={j}>
-                            <label>
-                                Member {j + 1} Name:
-                            </label>
+                            <label>Member {j + 1} Name: </label>
                             <input
                                 type="text"
                                 value={member}
-                                onChange={(e) => membersNames(i, j, e.target.value)}
+                                onChange={e => membersNames(i, j, e.target.value)}
                                 placeholder="Enter name"
                             />
                         </div>
@@ -71,7 +69,8 @@ export default function MakePool() {
 
             <div >
                 <h3>Resulting Array:</h3>
-                <pre>{JSON.stringify(fams, null, 2)}</pre>
+                <pre>{JSON.stringify(fams)}</pre>
+                <button className="button27 dblue">Create</button>
             </div>
         </>
     )
