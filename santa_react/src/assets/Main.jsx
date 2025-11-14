@@ -8,8 +8,8 @@ export default function Main() {
     const { page, parameters, setShowComponent } = useContext(RouterContext);
 
     const routes = {
-        santa: { c: <Santa />, title: 'Santa', params: 0 },        
-        makePool: { c: <MakePool />, title: 'MakePool', params: 0 },        
+        santa: { c: <Santa />, title: 'Santa', params: 0 },
+        makePool: { c: <MakePool />, title: 'MakePool', params: 0 },
     };
 
     const route = _ => {
@@ -37,4 +37,4 @@ export default function Main() {
             {route()}
         </main>
     )
-}
+};
