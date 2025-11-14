@@ -32,3 +32,19 @@
         text-shadow: 2px -1px 5px #ff0000, 2px -1px 5px #0000ff;
     }
 }
+
+.top-menu {
+    display: flex;
+    justify-content: center;
+    margin-left: -3rem;
+    ul {
+        display: flex;        
+        gap: 50px;
+        flex-direction: row;
+        li {
+            list-style: none;            
+            color: white;
+            font-size: 40px;
+        }
+    }
+}

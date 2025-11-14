@@ -10,17 +10,14 @@ import Logo from './assets/Logo';
 export default function App() {
 
   return (
-    <>
 
+    <Router>
+      <Wraper>
+        <Nav />
+        <Logo />
+        <Main />
+      </Wraper>
+    </Router>
 
-      <Router>
-        <Wraper>
-          <Nav />
-          <Logo />
-          <Main />
-        </Wraper>
-      </Router>
-
-    </>
   )
 };
