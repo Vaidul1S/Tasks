@@ -1,4 +1,4 @@
-import logo from './assets/03.svg';
+import logo from './assets/images/03.svg';
 import './App.css';
 import './buttons.scss';
 import './style.scss';
