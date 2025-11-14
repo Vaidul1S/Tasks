@@ -1,3 +1,6 @@
+import { useEffect, useState, createContext } from 'react';
+import Wraper from "./Wraper";
+import Page404 from "./Page404";
 const RouterContext = createContext();
 
 export const Router = ({ children }) => {
