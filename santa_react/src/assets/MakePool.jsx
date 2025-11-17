@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { writeFile } from 'fs/promises';
+import fs from 'fs';
 
 export default function MakePool() {
 
@@ -30,7 +30,7 @@ export default function MakePool() {
     };
 
     const saveArray = array => {
-        writeFile('output.txt', array);
+        fs.writeFileSync('output.txt', array);
     }
 
     return (

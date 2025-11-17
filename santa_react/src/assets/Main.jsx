@@ -2,6 +2,7 @@ import { useContext } from "react";
 import RouterContext from "./Router";
 import Santa from "./Santa";
 import MakePool from "./MakePool";
+import Home from "./Home";
 
 export default function Main() {
 
@@ -10,6 +11,7 @@ export default function Main() {
     const routes = {
         santa: { c: <Santa />, title: 'Santa', params: 0 },
         makePool: { c: <MakePool />, title: 'MakePool', params: 0 },
+        '': { c: <Home />, title: 'Home', params: 0 },
     };
 
     const route = _ => {
