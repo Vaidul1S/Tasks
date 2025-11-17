@@ -1,15 +1,23 @@
+@font-face {
+    font-family: 'RougeScript';
+    src: url(./assets/fonts/RougeScript-Regular.ttf);
+}
+
+#root {
+    font-family: 'RougeScript';
+}
+
+h1 {
+    font-size: 80px;
+    color: white;
+    margin-top: 15px;
+}
+
 .formContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
-    h2 {
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-        font-size: 28px;
-        color: white;
-        margin-top: 15px;
-    }
 
     input {
         margin: 20px 0 0 0;
@@ -37,14 +45,24 @@
     display: flex;
     justify-content: center;
     margin-left: -3rem;
+
     ul {
-        display: flex;        
+        display: flex;
         gap: 50px;
         flex-direction: row;
+
         li {
-            list-style: none;            
-            color: white;
+            list-style: none;
             font-size: 40px;
+
+            a {
+                color: white;
+
+                &:hover {
+                    color: pink;
+                    filter: drop-shadow(0 0 1em #d58df7aa);
+                }
+            }
         }
     }
 }
