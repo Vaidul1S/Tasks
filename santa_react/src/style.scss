@@ -1,10 +1,14 @@
 @font-face {
     font-family: 'RougeScript';
-    src: url(./assets/fonts/RougeScript-Regular.ttf);
+    src: url(./assets/fonts/RougeScript.ttf);
+}
+@font-face {
+    font-family: 'Gluten';
+    src: url(./assets/fonts/Gluten.ttf);
 }
 
 #root {
-    font-family: 'RougeScript';
+    font-family: 'Gluten';
 }
 
 h1 {
@@ -64,5 +68,22 @@ h1 {
                 }
             }
         }
+    }
+}
+
+.numb {
+    width: 4rem;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.fams {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 50px;
+    .fam {
+        display: flex;
+        flex-direction: column;
     }
 }

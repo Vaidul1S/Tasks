@@ -33,40 +33,44 @@ export default function MakePool() {
             <div>
                 <label>Number of Families: </label>
                 <input
+                    className="numb"
                     type="number"
                     min="0"
                     onChange={e => famNumb(Number(e.target.value))}
                 />
             </div>
 
-            {fams.map((fam, i) => (
-                <div key={i}>
-                    <h3>Family {i + 1}</h3>
+            <div className="fams">
+                {fams.map((fam, i) => (
+                    <div key={i}>
+                        <h3>Family {i + 1}</h3>
 
-                    <div>
-                        <label>Number of Members: </label>
-                        <input
-                            type="number"
-                            min="0"
-                            value={fam.length}
-                            onChange={e => members(i, Number(e.target.value))}
-                        />
-                    </div>
-
-                    {fam.map((member, j) => (
-                        <div key={j}>
-                            <label>Member {j + 1} Name: </label>
+                        <div>
+                            <label>Number of Members: </label>
                             <input
-                                type="text"
-                                value={member}
-                                onChange={e => membersNames(i, j, e.target.value)}
-                                placeholder="Enter name"
+                                className="numb"
+                                type="number"
+                                min="0"
+                                value={fam.length}
+                                onChange={e => members(i, Number(e.target.value))}
                             />
                         </div>
-                    ))}
-                </div>
-            ))}
 
+                        {fam.map((member, j) => (
+                            <div className="fam" key={j}>
+                                <label>Member {j + 1} Name: </label>
+                                <input
+                                    className="text"
+                                    type="text"
+                                    value={member}
+                                    onChange={e => membersNames(i, j, e.target.value)}
+                                    placeholder="Enter name"
+                                />
+                            </div>
+                        ))}
+                    </div>
+                ))}
+            </div>
             <div >
                 <h3>Resulting Array:</h3>
                 <pre>{JSON.stringify(fams)}</pre>
