@@ -1,10 +1,11 @@
 import { useState } from "react";
+import { writeFile } from 'fs/promises';
 
 export default function MakePool() {
 
     const [fams, setFams] = useState([]);
 
-    const famNumb = (count) => {
+    const famNumb = count => {
         const newFam = Array.from({ length: count }, (_, i) => fams[i] || []);
         setFams(newFam);
     };
@@ -27,6 +28,10 @@ export default function MakePool() {
             return newFam;
         });
     };
+
+    const saveArray = array => {
+        writeFile('output.txt', array);
+    }
 
     return (
         <>
@@ -74,7 +79,7 @@ export default function MakePool() {
             <div >
                 <h3>Resulting Array:</h3>
                 <pre>{JSON.stringify(fams)}</pre>
-                <button className="button27 dblue">Create</button>
+                <button className="button27 dblue" onClick={_ => saveArray(fams)}>Create</button>
             </div>
         </>
     )
