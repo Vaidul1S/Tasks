@@ -1,8 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function MakePool() {
 
     const [fams, setFams] = useState([]);
+
+    useEffect(_ => {
+            if (!localStorage.getItem('families')) {
+                localStorage.setItem('families', JSON.stringify(null));
+            }
+        }, [setFams]);
 
     const famNumb = count => {
         const newFam = Array.from({ length: count }, (_, i) => fams[i] || []);
@@ -29,7 +35,13 @@ export default function MakePool() {
     };
 
     const saveArray = _ => {
-        setFams([]);
+        if (fams[0][0] == undefined){
+            return;
+        } else {
+            localStorage.setItem('families', JSON.stringify(fams));         
+            setFams([]);
+        }
+        
     }
 
     return (
@@ -55,7 +67,7 @@ export default function MakePool() {
                                 className="numb"
                                 type="number"
                                 min="0"
-                                value={fam.length}
+                                
                                 onChange={e => members(i, Number(e.target.value))}
                             />
                         </div>
