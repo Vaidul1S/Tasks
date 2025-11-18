@@ -37,7 +37,7 @@ export default function Santa() {
         if (localStorage.getItem('santa').includes(ivestis) || JSON.parse(localStorage.getItem('santa')) == null) {
             pairs.forEach(pair => {
                 if (ivestis == pair[0]) {
-                    setPair(pair[0] + ' -> 🎁 ' + pair[1]);
+                    setPair(pair[0] + ' 🎁 -> ' + pair[1]);
                 }
             });
 
@@ -72,7 +72,7 @@ export default function Santa() {
     return (
         <>
             <div className="formContainer">
-                <h3>With restrictions</h3>
+                {/* <h3>With restrictions</h3> */}
                 <input className="input"
                     type="text"
                     placeholder="Įvesti vardą"
