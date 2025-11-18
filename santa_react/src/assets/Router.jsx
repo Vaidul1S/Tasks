@@ -31,12 +31,7 @@ export const Router = ({ children }) => {
 
     useEffect(_ => {
         setShowComponent(null);
-    }, [parameters, page])
-
-    useEffect(_ => {
-        console.log('hash', page);
-
-    }, [page]);
+    }, [parameters, page]);    
 
     return (
         <RouterContext.Provider value={{ page, parameters, setShowComponent }}>

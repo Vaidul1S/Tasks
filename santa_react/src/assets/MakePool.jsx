@@ -1,5 +1,4 @@
 import { useState } from "react";
-import fs from 'fs';
 
 export default function MakePool() {
 
@@ -29,8 +28,8 @@ export default function MakePool() {
         });
     };
 
-    const saveArray = array => {
-        fs.writeFileSync('output.txt', array);
+    const saveArray = _ => {
+        setFams([]);
     }
 
     return (
@@ -79,7 +78,7 @@ export default function MakePool() {
             <div >
                 <h3>Resulting Array:</h3>
                 <pre>{JSON.stringify(fams)}</pre>
-                <button className="button27 dblue" onClick={_ => saveArray(fams)}>Create</button>
+                <button className="button27 dblue" onClick={saveArray}>Create</button>
             </div>
         </>
     )
