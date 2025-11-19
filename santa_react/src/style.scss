@@ -11,11 +11,18 @@
     font-family: 'Gluten';
 }
 
-h1 {
+.h1 {
     font-size: 80px;
     color: white;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+.striped{
+    background-size: 16px;
+    background-clip: text;
+    color: transparent;
+    background-color: #01bd01;
+    background-image: -webkit-linear-gradient(10deg, red 25%, transparent 25%, transparent 50%, red 50%, blue 75%, transparent 75%, transparent);
 }
 
 .formContainer {
@@ -25,7 +32,7 @@ h1 {
     flex-direction: column;
 
     input {
-        margin: 20px 0 0 0;
+        margin: 0;
         padding: 15px 20px;
         font-size: 24px;
         border: none;

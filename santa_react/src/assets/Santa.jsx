@@ -29,7 +29,7 @@ export default function Santa() {
         }
 
         if(!pairs.flat().includes(ivestis)){
-            setPair("Tokia varda nera!");
+            setPair("Toki varda niera!");
             return;
         }
 
@@ -81,7 +81,7 @@ export default function Santa() {
                     onChange={e => addName(e.target.value)}
                 />
                 <p className="text">Vardas turi būti iš didžiosios raidės ir su lietuviškom raidėm.</p>
-                <button type="submit" className="button27 green" onClick={_ => showPair(name)}>OK</button>
+                <button type="submit" className="button27 green" onClick={_ => showPair(name)}>Rodyti</button>
                 <h2 className="result">{pair}</h2>
             </div>
         </>
