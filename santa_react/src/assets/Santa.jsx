@@ -29,6 +29,7 @@ export default function Santa() {
         }
 
         if(!pairs.flat().includes(ivestis)){
+            setName("");
             setPair("Toki varda niera!");
             return;
         }
