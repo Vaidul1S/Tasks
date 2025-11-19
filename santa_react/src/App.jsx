@@ -1,6 +1,6 @@
-import './App.css';
-import './buttons.scss';
-import './style.scss';
+import './assets/styles/App.css';
+import './assets/styles/buttons.scss';
+import './assets/styles/style.scss';
 import { Router } from './assets/Router';
 import Wraper from './assets/Wraper';
 import Nav from './assets/Nav';
