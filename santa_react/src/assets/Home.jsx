@@ -1,6 +1,6 @@
 export default function Home() {
 
-    return(
+    return (
         <h2>Linksmų Kalėdų</h2>
     )
-}
+};

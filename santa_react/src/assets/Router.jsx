@@ -31,7 +31,7 @@ export const Router = ({ children }) => {
 
     useEffect(_ => {
         setShowComponent(null);
-    }, [parameters, page]);    
+    }, [parameters, page]);
 
     return (
         <RouterContext.Provider value={{ page, parameters, setShowComponent }}>
