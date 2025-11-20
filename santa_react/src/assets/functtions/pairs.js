@@ -8,8 +8,8 @@ function shuffle(array) {
     return array;
 };
 
-function makeSecretSanta(groups) {
-    const people = groups.flat();
+function makeSecretSanta(pool) {
+    const people = pool.flat();
 
     while (true) {
         const givers = shuffle([...people]);
@@ -21,10 +21,10 @@ function makeSecretSanta(groups) {
             const giver = givers[i];
             const receiver = receivers[i];
 
-            const groupG = groups.find(g => g.includes(giver));
-            const groupR = groups.find(g => g.includes(receiver));
+            const givers_family = pool.find(g => g.includes(giver));
+            const receivers_family = pool.find(g => g.includes(receiver));
 
-            if (giver === receiver || groupG === groupR) {
+            if (giver === receiver || givers_family === receivers_family) {
                 valid = false;
                 break;
             }
