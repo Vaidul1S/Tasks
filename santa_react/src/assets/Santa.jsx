@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { poolRestriction } from "./functtions/pool";
+import { pool } from "./functtions/pool";
 import { pairs } from "./functtions/pairs";
 
 export default function Santa() {
@@ -43,7 +43,7 @@ export default function Santa() {
             });
 
         } else {
-            poolRestriction.forEach(e => {
+            pool.forEach(e => {
                 if (e.includes(ivestis)) {
 
                     setPair("Nešnipiniek!");
@@ -54,7 +54,7 @@ export default function Santa() {
 
         if (JSON.parse(localStorage.getItem('santa')) == null) {
             let poolIndex;
-            poolRestriction.forEach(e => {
+            pool.forEach(e => {
                 if (e.indexOf(ivestis) >= 0) {
                     poolIndex = e;
                 };
@@ -73,7 +73,6 @@ export default function Santa() {
     return (
         <>
             <div className="formContainer">
-                {/* <h3>With restrictions</h3> */}
                 <input className="input"
                     type="text"
                     placeholder="Įvesti vardą"

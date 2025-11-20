@@ -1,4 +1,4 @@
-import { poolRestriction } from "./pool";
+import { pool } from "./pool";
 
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -35,4 +35,4 @@ function makeSecretSanta(groups) {
     }
 };
 
-export const pairs = makeSecretSanta(poolRestriction);
+export const pairs = makeSecretSanta(pool);
