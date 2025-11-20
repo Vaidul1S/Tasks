@@ -29,7 +29,13 @@ function makeSecretSanta(pool) {
             if (giver === receiver || givers_family === receivers_family) {
                 valid = false;
                 break;
-            }
+            } else if (giver === 'Vaidas' && receiver === 'Radvilė') {
+                valid = false;
+                break;
+            } else if (giver === 'Ramunė' && receiver === 'Dovydas') {
+                valid = false;
+                break;
+            } 
             pairs.push([giver, receiver]);
         }
 
