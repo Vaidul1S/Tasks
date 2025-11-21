@@ -1,14 +1,13 @@
 @use "sass:color";
 @use 'colors.scss' as C;
 
-button {
+.button {
     background-color: C.$cadet;
     border: 0;
     border-radius: 56px;
     color: #ffffff;
     cursor: pointer;
     display: inline-block;
-    font-family: system-ui, -apple-system, system-ui, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
     font-size: 18px;
     font-weight: 600;
     outline: 0;
@@ -90,14 +89,13 @@ button {
 .button27 {
     width: 200px;
     appearance: none;
-    background-color: #000000;
+    background-color: C.$cadet;
     border-radius: 30px;
     box-sizing: border-box;
     color: white;
     cursor: pointer;
     display: inline-block;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 600;
     margin: 0;
     min-height: 60px;
@@ -114,7 +112,7 @@ button {
     margin: 10px;
 
     &:hover {
-        background-color: #f5f5dc28;
+        background-color: color.adjust(C.$cadet, $lightness: -5%);
         box-shadow: #00000040 0 8px 15px;
         transform: translateY(2px);
     }
@@ -141,14 +139,12 @@ button {
 }
 
 .button42 {
-    background-color: initial;
     background-image: linear-gradient(-180deg, #FF7E31, #E62C03);
     border-radius: 6px;
     box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
     color: #FFFFFF;
     cursor: pointer;
     display: inline-block;
-    font-family: Inter, -apple-system, system-ui, Roboto, "Helvetica Neue", Arial, sans-serif;
     height: 40px;
     line-height: 40px;
     outline: 0;

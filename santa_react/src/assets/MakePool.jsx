@@ -89,7 +89,7 @@ export default function MakePool() {
             <div >
                 <h3>Resulting Array:</h3>
                 <pre>{JSON.stringify(fams)}</pre>
-                <button className="button27 dblue" onClick={saveArray}>Create</button>
+                <button className="button27" onClick={saveArray}>Save Array</button>
             </div>
         </>
     )
