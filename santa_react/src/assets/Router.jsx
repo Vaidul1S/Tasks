@@ -1,6 +1,10 @@
 import { useEffect, useState, createContext } from 'react';
 import Wraper from "./Wraper";
 import Page404 from "./Page404";
+import Home from "./Home";
+import Santa from "./Santa";
+import MakePool from "./MakePool";
+
 const RouterContext = createContext();
 
 export const Router = ({ children }) => {
