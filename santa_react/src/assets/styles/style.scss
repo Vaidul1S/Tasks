@@ -17,12 +17,17 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+.xmas {
+    font-size: 3.5rem;
+}
+
 .striped{
     background-size: 16px;
     background-clip: text;
     color: transparent;
     background-color: #01bd01;
-    background-image: -webkit-linear-gradient(10deg, red 25%, transparent 25%, transparent 50%, red 50%, blue 75%, transparent 75%, transparent);
+    background-image: -webkit-linear-gradient(30deg, red 25%, transparent 25%, transparent 50%, red 50%, blue 75%, transparent 75%, transparent);
 }
 
 .formContainer {

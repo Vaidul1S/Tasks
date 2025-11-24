@@ -1,6 +1,6 @@
 export default function Home() {
 
     return (
-        <h2>Linksmų Kalėdų</h2>
+        <h2 className="xmas">Linksmų Kalėdų</h2>
     )
 };
