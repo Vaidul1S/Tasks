@@ -5,6 +5,8 @@ const RouterContext = createContext();
 
 export const Router = ({ children }) => {
 
+    const showComponentList = { error404: <Page404 /> }
+
     const [page, setPage] = useState(_ => {
         let hash = window.location.hash.replace('#', '');
         hash = hash.split('/').shift();
@@ -16,9 +18,7 @@ export const Router = ({ children }) => {
         return hash
     });
 
-    const [showComponent, setShowComponent] = useState(null);
-
-    const showComponentList = { error404: <Page404 /> }
+    const [showComponent, setShowComponent] = useState(null);    
 
     useEffect(_ => {
         window.addEventListener('hashchange', _ => {
