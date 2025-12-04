@@ -28,7 +28,7 @@ export default function Santa() {
             ivestis = name;
         }
 
-        if(!pairs.flat().includes(ivestis)){
+        if (!pairs.flat().includes(ivestis)) {
             setName("");
             setPair("Toki varda niera!");
             return;
