@@ -64,7 +64,7 @@ export default function App() {
             <header className="app-header">
                 <h2>Sveiki, atvykę į ganyklą.</h2>
                 <div className="ganykla">
-                    
+
                     <div>
                         <h4>Avidės</h4>
                         <div className="sheeps">
