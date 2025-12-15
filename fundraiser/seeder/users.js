@@ -6,4 +6,5 @@ export const users = [
     { id: 6, name: 'Petras', role: 'user' },
     { id: 7, name: 'Barsukas', role: 'user' },
     { id: 8, name: 'Tigras', role: 'user' },
+    { id: 13, name: 'admin', role: 'admin' },
 ];
