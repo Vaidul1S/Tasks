@@ -11,7 +11,6 @@ const phrases = [
     { id: 'phrase10', x: 350, y: 350, dx: 1, dy: -2 },
     { id: 'phrase11', x: 400, y: 150, dx: -4, dy: 1 },
     { id: 'phrase12', x: 200, y: 400, dx: 1, dy: -1 },
-
 ];
 
 function movePhrases() {
