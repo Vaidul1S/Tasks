@@ -132,7 +132,6 @@ con.query(sql, [users.map(user => [user.id, user.name, user.password, user.role]
     console.log('Data inserted into table Users!');
 });
 
-
 sql = `
     INSERT INTO stories
     (id, title, text, goal_amount, collected_amount, user_id, approved, image_url)
@@ -143,7 +142,6 @@ con.query(sql, [stories.map(story => [story.id, story.title, story.text, story.g
     if (err) throw err;
     console.log('Data inserted into table Stories!');
 });
-
 
 sql = `
     INSERT INTO donations
