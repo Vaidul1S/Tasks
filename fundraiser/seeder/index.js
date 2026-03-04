@@ -16,7 +16,7 @@ const con = mysql.createConnection({
     database: 'fundraiser'
 });
 
-con.connect(_ => console.log('Prisijungta prie duomenų bazės!'));
+con.connect(_ => console.log('Connected to database!'));
 
 con.query('DROP TABLE IF EXISTS donations;'), (err) => {
     if (err) throw err;
@@ -158,5 +158,5 @@ con.query(sql, [donations.map(donate => [donate.id, donate.story_id, donate.dono
 
 con.end(err => {
     if (err) throw err;
-    console.log('Atsijungta nuo duomenų bazės!');
+    console.log('Disconnected from database!');
 });
