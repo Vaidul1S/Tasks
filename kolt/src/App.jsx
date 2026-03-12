@@ -28,7 +28,7 @@ export default function App() {
             setShowMsg(null)
         }, 3000);
 
-    }, [messages]);    
+    }, [messages]);
 
     useEffect(_ => {
         localStore();
@@ -49,15 +49,15 @@ export default function App() {
     }, [editedPaspirtukas]);
 
     const orderByDate = _ => {
-        setScooters(s => [...s].sort((a,b) => new Date(b.date) - new Date(a.date)));
+        setScooters(s => [...s].sort((a, b) => new Date(b.date) - new Date(a.date)));
     };
 
     const orderByKm = _ => {
-        setScooters(s => [...s].sort((a,b) => a.rida - b.rida));
+        setScooters(s => [...s].sort((a, b) => a.rida - b.rida));
     };
 
     const orderById = _ => {
-        setScooters(s => [...s].sort((a,b) => a.id - b.id));
+        setScooters(s => [...s].sort((a, b) => a.id - b.id));
     };
 
     return (
