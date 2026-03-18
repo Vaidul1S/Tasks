@@ -119,7 +119,7 @@ input[type="checkbox"]:checked+label {
   align-items: start;
   flex-direction: column;
   margin-top: 10px;
-  border-bottom: 1px dashed rgba(255, 255, 255, 0.24);  
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.24);
 }
 
 .card-content {
@@ -186,15 +186,16 @@ span {
   background-color: pink;
   padding: 0 50px;
   border-radius: 5px;
-  animation: slide 1s ease;  
+  animation: slide 1s ease;
 }
 
 @keyframes slide {
   0% {
-      transform: translateY(100%);
-  }    
+    transform: translateY(100%);
+  }
+
   100% {
-      transform: translateY(0%);
+    transform: translateY(0%);
   }
 }
 
