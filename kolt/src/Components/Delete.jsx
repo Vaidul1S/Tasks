@@ -19,8 +19,8 @@ export default function Delete({ deleteModal, setDeleteModal, setScooters, setMe
                     <p>Paspirtuko id: <strong>{deleteModal.code}</strong></p>
                 </div>
                 <div className="modal-footer">
-                    <button type="button" className="button91 ecru" onClick={_ =>setDeleteModal(null)}>Grįžti</button>
-                    <button type="button" className="button91 red" onClick={_ =>deleteScooter(deleteModal)}>Ištrinti</button>
+                    <button type="button" className="button91 ecru" onClick={_ => setDeleteModal(null)}>Grįžti</button>
+                    <button type="button" className="button91 red" onClick={_ => deleteScooter(deleteModal)}>Ištrinti</button>
                 </div>
             </div>
         </div>

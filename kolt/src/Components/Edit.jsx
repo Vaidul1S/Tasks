@@ -28,12 +28,12 @@ export default function Edit({ editModal, setEditModal, setEditedPaspirtukas, se
         let selectedDate = new Date(editedDate)
         let year = selectedDate.getFullYear() - oldDate.getFullYear();
         let month = selectedDate.getMonth() - oldDate.getMonth();
-        let day =  selectedDate.getDate() - oldDate.getDate();
+        let day = selectedDate.getDate() - oldDate.getDate();
 
-        const today = new Date();        
+        const today = new Date();
         let yearT = today.getFullYear() - selectedDate.getFullYear();
         let monthT = today.getMonth() - selectedDate.getMonth();
-        let dayT =  today.getDate() - selectedDate.getDate();
+        let dayT = today.getDate() - selectedDate.getDate();
 
         if (isNaN(selectedDate) || year < 0 || month < 0 || (month === 0 && day < 0) || yearT < 0 || monthT < 0 || (monthT === 0 && dayT < 0)) {
             return setMessages({
