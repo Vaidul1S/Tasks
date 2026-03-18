@@ -5,7 +5,7 @@ export default function Stats({ scooters }) {
     const [scooterCount, setScooterCount] = useState(0);
     const [scooterKm, setScooterKm] = useState(0);
 
-    
+
     useEffect(_ => {
         setScooterCount(scooters.length);
         let total = 0;
