@@ -433,8 +433,9 @@ h2 {
     display: none;
     flex-direction: column;
     opacity: 0;
-    transition: opacity 3.5s; 
+    transition: opacity 3.5s;
 }
+
 .active {
     display: flex;
     opacity: 1;
@@ -627,6 +628,7 @@ h2 {
     top: 41px;
     left: 536px;
 }
+
 /* ---------------------------------------------------------------Mobile--------------------------------------------------------------- */
 
 .purpleCollabMobile {
@@ -660,6 +662,7 @@ h2 {
     background-color: white;
     color: rgba(154, 84, 188, 1);
 }
+
 /* ---------------------------------------------------------------Map--------------------------------------------------------------- */
 
 .art {
