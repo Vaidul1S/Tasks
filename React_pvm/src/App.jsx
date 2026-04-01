@@ -4,13 +4,11 @@ import Invoice from './assets/Invoice.jsx';
 
 export default function App() {
 
-
   return (
     <>
       <Invoice />
-
     </>
   )
-}
+};
 
 
