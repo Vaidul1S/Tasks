@@ -28,7 +28,7 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .logo.react {
-    animation: logo-spin infinite 3s linear;
+    animation: logo-spin infinite 4s linear;
   }
 }
 
