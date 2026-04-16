@@ -35,7 +35,7 @@ function makeSecretSanta(pool) {
             } else if (giver === 'Ramunė' && receiver === 'Dovydas') {
                 valid = false;
                 break;
-            } 
+            }
             pairs.push([giver, receiver]);
         }
 
