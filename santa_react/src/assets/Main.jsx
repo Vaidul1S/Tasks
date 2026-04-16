@@ -7,8 +7,8 @@ export default function Main() {
     const { page, parameters, routes } = useContext(RouterContext);
 
     const route = _ => {
-        return routes?.[page]?.c ?? <Page404/>;
-    };    
+        return routes?.[page]?.c ?? <Page404 />;
+    };
 
     return (
         <main>
