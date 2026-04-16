@@ -66,7 +66,6 @@ export default function MakePool() {
                                 className="numb"
                                 type="number"
                                 min="0"
-
                                 onChange={e => members(i, Number(e.target.value))}
                             />
                         </div>
