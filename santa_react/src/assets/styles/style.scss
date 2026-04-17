@@ -2,6 +2,7 @@
     font-family: 'RougeScript';
     src: url(../fonts/RougeScript.ttf);
 }
+
 @font-face {
     font-family: 'Gluten';
     src: url(../fonts/Gluten.ttf);
@@ -15,12 +16,12 @@
 @font-face {
     font-family: 'RubikBeastly';
     src: url(../fonts/RubikBeastly.ttf);
-} 
+}
 
 @font-face {
     font-family: 'RubikStorm';
     src: url(../fonts/RubikStorm.ttf);
-} 
+}
 
 #root {
     font-family: 'Gluten';
@@ -37,7 +38,7 @@
     font-size: 3.5rem;
 }
 
-.striped{
+.striped {
     background-size: 16px;
     background-clip: text;
     color: transparent;
@@ -111,6 +112,7 @@
     flex-direction: row;
     justify-content: space-between;
     gap: 50px;
+
     .fam {
         display: flex;
         flex-direction: column;
