@@ -5,8 +5,12 @@ import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Fonts } from '@/constants/theme';
+import { useState } from 'react';
 
 export default function TabTwoScreen() {
+
+const [score, setScore] = useState(0);
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#21d809', dark: '#09c9c9' }}
