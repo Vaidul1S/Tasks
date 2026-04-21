@@ -12,7 +12,7 @@ export default function HomeScreen() {
       headerImage={
         <Image
           source={require('@/assets/images/flag_map.jpg')}
-          style={styles.reactLogo}
+          style={styles.background}
         />
       }>
       <ThemedView style={styles.titleContainer}>
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     gap: 8,
     marginBottom: 8,
   },
-  reactLogo: {
+  background: {
     flex: 1,       
     top: 0,
     left: 0,    
