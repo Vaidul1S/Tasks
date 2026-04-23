@@ -16,7 +16,7 @@ export default function HomeScreen() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Fun With Flags!</ThemedText>
+        <ThemedText type="title" style={styles.text}>Fun With Flags!</ThemedText>
         
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
-    fontFamily: 'SpaceMono'
+    
   },
   stepContainer: {
     gap: 8,
@@ -45,4 +45,8 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,    
   },
+  text: {
+    fontFamily: 'SpaceMono',
+    fontSize: 30,
+  }
 });
