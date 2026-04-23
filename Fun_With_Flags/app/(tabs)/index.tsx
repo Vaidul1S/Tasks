@@ -16,12 +16,11 @@ export default function HomeScreen() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title" style={styles.text}>Fun With Flags!</ThemedText>
+        <ThemedText type="title" style={styles.title}>Fun With Flags!</ThemedText>
         
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Guess a Country</ThemedText>
-        <ThemedText type="defaultSemiBold">Guess a country by flag from four choices.</ThemedText>
+      <ThemedView style={styles.stepContainer}>        
+        <ThemedText type="subtitle" style={styles.text}>Guess a country by flag from four choices.</ThemedText>
 
       </ThemedView>
 
@@ -39,14 +38,21 @@ const styles = StyleSheet.create({
   stepContainer: {
     gap: 8,
     marginBottom: 8,
+    
   },
   background: {
     flex: 1,       
     top: 0,
     left: 0,    
   },
-  text: {
+  title: {
     fontFamily: 'SpaceMono',
     fontSize: 30,
+    textAlign: 'center',
+  },
+  text: {
+    fontFamily: 'SpaceMono',
+    fontSize: 20,
+    textAlign: 'center',
   }
 });
