@@ -1,16 +1,17 @@
 import { Image } from 'expo-image';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
 import { countries } from './countries';
 import { ThemedView } from '@/components/themed-view';
 import { ThemedText } from '@/components/themed-text';
+import { ScrollView } from 'react-native';
 
-export default function Card(){
+export default function Card() {
 
     return (
-        <ThemedView>
-            <Image/>
-            <ThemedText>{countries.map(c => c + "\n ")}</ThemedText>
-        </ThemedView>        
-        
+        <ScrollView headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}>
+            <ThemedView>
+                <Image />
+                <ThemedText>{countries.map(c => "\t" + c + "\n ")}</ThemedText>
+            </ThemedView>
+        </ScrollView>
     );
 }
