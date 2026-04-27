@@ -12,10 +12,11 @@ export default function HomeScreen() {
   const [count, setCount] = useState(0);
 
   let el = 0;
-  for(let i = 0; i >= countries; i++)
-  {
-    el += i;
-  }
+  // countries.forEach(item => {
+    
+  //     el += 1;
+  //   }
+  // );
   setCount(c => c + el);
 
   return (
