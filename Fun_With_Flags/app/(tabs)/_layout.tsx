@@ -32,9 +32,9 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="Card"
+        name="sheet"
         options={{
-          title: 'All',
+          title: 'Cheat Sheet',
           tabBarIcon: ({ color }) => <AntDesign name="book" size={24} color={color} />,
         }}
       />

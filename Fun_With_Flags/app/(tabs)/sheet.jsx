@@ -5,7 +5,7 @@ import { ThemedText } from '@/components/themed-text';
 import { ScrollView, SafeAreaView, StyleSheet} from 'react-native';
 import { flags } from './flags';
 
-export default function Card() {
+export default function sheet() {
 
     return (
         <ScrollView headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}>
