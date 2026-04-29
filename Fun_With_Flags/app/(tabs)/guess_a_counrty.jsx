@@ -1,6 +1,6 @@
 import { ScrollView } from "react-native";
 import { Image } from 'expo-image';
-import { ThemedText } from '@/components/themed-text';
+import { ThemedText, StyleSheet} from '@/components/themed-text';
 
 export default function guess_a_country(){
 
@@ -14,3 +14,13 @@ export default function guess_a_country(){
         </ScrollView>
     )
 }
+
+const styles = StyleSheet.create({
+    image:{
+        width:190,
+        heigh: 100,
+    },
+    option:{
+        fontsize: 20,
+    },
+})
