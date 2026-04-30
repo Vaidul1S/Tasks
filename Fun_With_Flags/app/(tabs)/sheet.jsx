@@ -3,7 +3,7 @@ import { countries } from './countries';
 import { ThemedView } from '@/components/themed-view';
 import { ThemedText } from '@/components/themed-text';
 import { ScrollView, SafeAreaView, StyleSheet } from 'react-native';
-import { flags } from './flags';
+import { flags } from '../..assets/data/flags';
 
 export default function sheet() {
 
