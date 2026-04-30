@@ -1,6 +1,7 @@
 import { ScrollView, StyleSheet } from "react-native";
 import { Image } from 'expo-image';
 import { ThemedText } from '@/components/themed-text';
+import { ThemedView } from '@/components/themed-view';
 import { useState } from "react";
 import { flags } from '../../assets/data/flags.js';
 
@@ -12,11 +13,12 @@ export default function game() {
     const flag = flags[pick];
 
     return (
-        <ScrollView>
-            <ScrollView style={styles.container}>
-                <Image style={styles.image} source={{ uri: flag.flag, }} />
-            </ScrollView>
-
+        <ScrollView style={styles.body}>
+            <ThemedView >
+                <ScrollView style={styles.container}>
+                    <Image style={styles.image} source={{ uri: flag.flag, }} />
+                </ScrollView>
+            </ThemedView>
             <ThemedText style={styles.option}>1. {flag.name}</ThemedText>
             <ThemedText style={styles.option}>2. </ThemedText>
             <ThemedText style={styles.option}>3. </ThemedText>
@@ -27,17 +29,21 @@ export default function game() {
 }
 
 const styles = StyleSheet.create({
-    container:{
+    body: {
+        alignSelf: 'center',
+
+    },
+    container: {
         flex: 1,
         objectFit: 'contain',
-        position: 'relative',
+        position: 'static',
+        width: 400,
         height: 300,
     },
     image: {
         width: 190,
         heigh: 100,
         flex: 1,
-        position: 'relative',
         objectFit: 'contain',
     },
     option: {
