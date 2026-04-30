@@ -1,26 +1,53 @@
 import { ScrollView, StyleSheet } from "react-native";
 import { Image } from 'expo-image';
-import { ThemedText} from '@/components/themed-text';
+import { ThemedText } from '@/components/themed-text';
+import { useState } from "react";
+import { flags } from '../../assets/data/flags.js';
 
-export default function game(){
+export default function game() {
 
-    return(
+    const [score, setScore] = useState(0);
+
+    let pick = Math.floor(Math.random() * flags.length);
+    const flag = flags[pick];
+
+    return (
         <ScrollView>
-            <Image style={styles.image}/>
-            <ThemedText style={styles.option}>1. </ThemedText>
+            <ScrollView style={styles.container}>
+                <Image style={styles.image} source={{ uri: flag.flag, }} />
+            </ScrollView>
+
+            <ThemedText style={styles.option}>1. {flag.name}</ThemedText>
             <ThemedText style={styles.option}>2. </ThemedText>
             <ThemedText style={styles.option}>3. </ThemedText>
             <ThemedText style={styles.option}>4. </ThemedText>
+            <ThemedText style={styles.score}>Score: {score}</ThemedText>
         </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
-    image:{
-        width:190,
-        heigh: 100,
+    container:{
+        flex: 1,
+        objectFit: 'contain',
+        position: 'relative',
+        height: 300,
     },
-    option:{
+    image: {
+        width: 190,
+        heigh: 100,
+        flex: 1,
+        position: 'relative',
+        objectFit: 'contain',
+    },
+    option: {
         fontsize: 20,
+        margin: (0, 10),
+        paddingLeft: 30,
+    },
+    score: {
+        fontsize: 40,
+        alignSelf: 'flex-end',
+        margin: 30,
     },
 })

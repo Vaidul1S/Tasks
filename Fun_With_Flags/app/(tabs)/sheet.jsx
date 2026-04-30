@@ -36,13 +36,11 @@ const styles = StyleSheet.create({
         flex: 1,
         objectFit: 'contain',
         position: 'relative',
-
         height: 50,
     },
     image: {
         width: 95,
-        height: 50,
-        position: '',
+        height: 50,        
         flex: 1,
         objectFit: 'contain',
     },
