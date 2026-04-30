@@ -1,9 +1,9 @@
 import { Image } from 'expo-image';
-import { countries } from './countries';
+import { countries } from '../../assets/data/countries.js';
 import { ThemedView } from '@/components/themed-view';
 import { ThemedText } from '@/components/themed-text';
 import { ScrollView, SafeAreaView, StyleSheet } from 'react-native';
-import { flags } from '../..assets/data/flags';
+import { flags } from '../../assets/data/flags.js';
 
 export default function sheet() {
 

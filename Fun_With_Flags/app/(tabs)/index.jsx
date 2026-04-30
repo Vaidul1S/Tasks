@@ -1,6 +1,6 @@
 import { Image } from 'expo-image';
 import { StyleSheet } from 'react-native';
-import { countries } from './countries.js';
+import { countries } from '../../assets/data/countries';
 
 import ParallaxScrollView from '@/components/parallax-scroll-view';
 import { ThemedText } from '@/components/themed-text';
