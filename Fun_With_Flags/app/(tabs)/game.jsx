@@ -9,6 +9,7 @@ export default function game() {
     const [score, setScore] = useState(0);
     const [mistakes, setMistakes] = useState(0);
     const [guess, setGuess] = useState('Take a guess');
+    const [question, setQuestion] = useState(1);
 
     let pick = Math.floor(Math.random() * flags.length);
     const flag = flags[pick];
@@ -16,30 +17,33 @@ export default function game() {
     let option2 = Math.floor(Math.random() * flags.length);
     let option3 = Math.floor(Math.random() * flags.length);
     let options = [flag.name, flags[option1].name, flags[option2].name, flags[option3].name];
-    options.sort(function(){return 0.5 - Math.random()});
+    options.sort(function () { return 0.5 - Math.random() });
 
-    
-    const submitGuess = e =>{
-        if (e == flag.name){
+
+    const submitGuess = e => {
+        if (e == flag.name) {
             setScore(s => s + 1);
-            setGuess('Correct!');            
+            setGuess('Correct!');
         } else {
             setMistakes(m => m + 1);
-            setGuess('Wrong!');            
+            setGuess('Wrong!');
         }
+        setQuestion(q => q + 1);
     }
     return (
         <ScrollView >
             <ThemedView style={styles.body}>
+                <Text style={styles.score}>Guess a Country!</Text>
+                <Text style={styles.question}>Question #{question}</Text>
                 <ScrollView style={styles.container}>
-                    <Image style={{width: 380, height: 220}} source={{ uri: flag.flag, }} resizeMode={'contain'}/>                    
+                    <Image style={{ width: 380, height: 220 }} source={{ uri: flag.flag, }} resizeMode={'contain'} />
                 </ScrollView>
 
-                <TouchableOpacity onPress={_=> submitGuess(options[0])}><Text style={styles.option}>1. {options[0]}</Text></TouchableOpacity>
-                <TouchableOpacity onPress={_=> submitGuess(options[1])}><Text style={styles.option}>2. {options[1]}</Text></TouchableOpacity>
-                <TouchableOpacity onPress={_=> submitGuess(options[2])}><Text style={styles.option}>3. {options[2]}</Text></TouchableOpacity>
-                <TouchableOpacity onPress={_=> submitGuess(options[3])}><Text style={styles.option}>4. {options[3]}</Text></TouchableOpacity>
-                <Text style={guess == 'Correct!' ? styles.guess : styles.guess2}>{guess}</Text>
+                <TouchableOpacity onPress={_ => submitGuess(options[0])}><Text style={styles.option}>1. {options[0]}</Text></TouchableOpacity>
+                <TouchableOpacity onPress={_ => submitGuess(options[1])}><Text style={styles.option}>2. {options[1]}</Text></TouchableOpacity>
+                <TouchableOpacity onPress={_ => submitGuess(options[2])}><Text style={styles.option}>3. {options[2]}</Text></TouchableOpacity>
+                <TouchableOpacity onPress={_ => submitGuess(options[3])}><Text style={styles.option}>4. {options[3]}</Text></TouchableOpacity>
+                <Text style={guess == 'Correct!' ? styles.guess1 : styles.guess2}>{guess}</Text>
                 <Text style={styles.score}>Score: {score}</Text>
 
             </ThemedView>
@@ -49,14 +53,14 @@ export default function game() {
 
 const styles = StyleSheet.create({
     body: {
-        alignSelf: 'center',        
+        alignSelf: 'center',
     },
     container: {
-        flex: 1,            
+        flex: 1,
         height: 300,
         padding: 10,
         alignSelf: 'center',
-    },    
+    },
     option: {
         fontFamily: 'monospace',
         fontSize: '18px',
@@ -74,18 +78,25 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-end',
         margin: 30,
     },
-    guess:{
+    guess1: {
         fontFamily: 'monospace',
         textAlign: 'center',
-        fontSize: '24px',
+        fontSize: '26px',
         padding: 15,
         color: 'lime',
     },
-    guess2:{
+    guess2: {
         fontFamily: 'monospace',
         textAlign: 'center',
-        fontSize: '24px',
-        padding: 15,
+        fontSize: '26px',
+        paddingTop: 15,
         color: 'red',
+    },
+    question: {
+        fontFamily: 'monospace',
+        fontSize: '18px',
+        color: 'white',        
+        textAlign: 'center',
+        paddingBottom: 8,
     },
 })
