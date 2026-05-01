@@ -50,16 +50,17 @@ const styles = StyleSheet.create({
         flex: 1,            
         height: 300,
         padding: 10,
-        alignContent: 'center',
+        alignSelf: 'center',
     },    
     option: {
         fontFamily: 'monospace',
-        fontSize: '20px',
+        fontSize: '18px',
         color: 'white',
         margin: (0, 15),
-        paddingLeft: 120,
-        border: '2px, solid, white',
+        textAlign: 'center',
+        border: '1.5px, solid, #ffffff80',
         borderRadius: '25px',
+        padding: 8
     },
     score: {
         fontFamily: 'monospace',
