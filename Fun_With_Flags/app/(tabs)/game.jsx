@@ -28,7 +28,7 @@ export default function game() {
         <ScrollView >
             <ThemedView style={styles.body}>
                 <ScrollView style={styles.container}>
-                    <Image style={{width: 380, height: 220}} source={{ uri: flag.flag, }} resizeMode={'cover'}/>
+                    <Image style={{width: 380, height: 220}} source={{ uri: flag.flag, }} resizeMode={'contain'}/>
                 </ScrollView>
 
                 <TouchableOpacity onPress={_=> submitGuess(options[0])}><Text style={styles.option}>1. {options[0]}</Text></TouchableOpacity>
@@ -44,24 +44,27 @@ export default function game() {
 
 const styles = StyleSheet.create({
     body: {
-        alignSelf: 'center',
-        color: 'white',
+        alignSelf: 'center',        
     },
     container: {
-        flex: 1,        
-        width: 400,
+        flex: 1,            
         height: 300,
         padding: 10,
+        alignContent: 'center',
     },    
     option: {
-        fontsize: 20,
+        fontFamily: 'monospace',
+        fontSize: '20px',
+        color: 'white',
         margin: (0, 15),
-        paddingLeft: 30,
-        border: '1px',
-        borderRadius: '50%',
+        paddingLeft: 120,
+        border: '2px, solid, white',
+        borderRadius: '25px',
     },
     score: {
-        fontsize: 60,
+        fontFamily: 'monospace',
+        fontSize: '40px',
+        color: 'white',
         alignSelf: 'flex-end',
         margin: 30,
     },

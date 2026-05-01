@@ -13,7 +13,7 @@ export default function sheet() {
                 <ThemedView style={styles.flag}>
                     <ThemedText key={flags.name}>{f.name}</ThemedText>
                     <SafeAreaView style={styles.container}>
-                        <Image style={styles.image} source={{ uri: f.flag, }} />
+                        <Image style={styles.image} source={{ uri: f.flag, }} resizeMode={'contain'}/>
                     </SafeAreaView>
                 </ThemedView>
             )}
@@ -33,15 +33,12 @@ const styles = StyleSheet.create({
         backgroundColor: 'none',
     },
     container: {
-        flex: 1,
-        objectFit: 'contain',
-        position: 'relative',
-        height: 50,
+        flex: 1,           
+        height: 60,
+       
     },
-    image: {
-        width: 95,
-        height: 50,        
+    image: {       
+        width: 120,             
         flex: 1,
-        objectFit: 'contain',
-    },
+    }        
 })
