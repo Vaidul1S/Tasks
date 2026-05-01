@@ -7,7 +7,6 @@ import { flags } from '../../assets/data/flags.js';
 export default function game() {
 
     const [score, setScore] = useState(0);
-    const [mistakes, setMistakes] = useState(0);
     const [guess, setGuess] = useState('Take a guess');
     const [question, setQuestion] = useState(1);
 
@@ -25,7 +24,6 @@ export default function game() {
             setScore(s => s + 1);
             setGuess('Correct!');
         } else {
-            setMistakes(m => m + 1);
             setGuess('Wrong!');
         }
         setQuestion(q => q + 1);
@@ -95,7 +93,7 @@ const styles = StyleSheet.create({
     question: {
         fontFamily: 'monospace',
         fontSize: '18px',
-        color: 'white',        
+        color: 'white',
         textAlign: 'center',
         paddingBottom: 8,
     },
