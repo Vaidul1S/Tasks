@@ -8,6 +8,7 @@ export default function game() {
 
     const [score, setScore] = useState(0);
     const [mistakes, setMistakes] = useState(0);
+    const [guess, setGuess] = useState('Take a guess');
 
     let pick = Math.floor(Math.random() * flags.length);
     const flag = flags[pick];
@@ -17,24 +18,28 @@ export default function game() {
     let options = [flag.name, flags[option1].name, flags[option2].name, flags[option3].name];
     options.sort(function(){return 0.5 - Math.random()});
 
+    
     const submitGuess = e =>{
         if (e == flag.name){
             setScore(s => s + 1);
+            setGuess('Correct!');            
         } else {
             setMistakes(m => m + 1);
+            setGuess('Wrong!');            
         }
     }
     return (
         <ScrollView >
             <ThemedView style={styles.body}>
                 <ScrollView style={styles.container}>
-                    <Image style={{width: 380, height: 220}} source={{ uri: flag.flag, }} resizeMode={'contain'}/>
+                    <Image style={{width: 380, height: 220}} source={{ uri: flag.flag, }} resizeMode={'contain'}/>                    
                 </ScrollView>
 
                 <TouchableOpacity onPress={_=> submitGuess(options[0])}><Text style={styles.option}>1. {options[0]}</Text></TouchableOpacity>
                 <TouchableOpacity onPress={_=> submitGuess(options[1])}><Text style={styles.option}>2. {options[1]}</Text></TouchableOpacity>
                 <TouchableOpacity onPress={_=> submitGuess(options[2])}><Text style={styles.option}>3. {options[2]}</Text></TouchableOpacity>
                 <TouchableOpacity onPress={_=> submitGuess(options[3])}><Text style={styles.option}>4. {options[3]}</Text></TouchableOpacity>
+                <Text style={guess == 'Correct!' ? styles.guess : styles.guess2}>{guess}</Text>
                 <Text style={styles.score}>Score: {score}</Text>
 
             </ThemedView>
@@ -68,5 +73,19 @@ const styles = StyleSheet.create({
         color: 'white',
         alignSelf: 'flex-end',
         margin: 30,
+    },
+    guess:{
+        fontFamily: 'monospace',
+        textAlign: 'center',
+        fontSize: '24px',
+        padding: 15,
+        color: 'lime',
+    },
+    guess2:{
+        fontFamily: 'monospace',
+        textAlign: 'center',
+        fontSize: '24px',
+        padding: 15,
+        color: 'red',
     },
 })
