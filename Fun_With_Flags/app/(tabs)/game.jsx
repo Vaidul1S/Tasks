@@ -1,7 +1,7 @@
 import { ScrollView, StyleSheet, TouchableOpacity, Text, Modal } from "react-native";
 import { Image } from 'expo-image';
 import { ThemedView } from '@/components/themed-view';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { flags } from '../../assets/data/flags.js';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
@@ -11,8 +11,9 @@ export default function game() {
     const [guess, setGuess] = useState('Take a guess');
     const [question, setQuestion] = useState(1);
     const [gameOn, setGameOn] = useState(false);
-    const [lives, setLives] = useState(0);   
-    const [gameOver, setGameOver] = useState(false); 
+    const [lives, setLives] = useState(0);
+    const [gameOver, setGameOver] = useState(false);
+    const [length, setLength] = useState(0);
 
     let pick = Math.floor(Math.random() * flags.length);
     const flag = flags[pick];
@@ -28,37 +29,48 @@ export default function game() {
             setGuess('Correct!');
         } else {
             setGuess('Wrong!');
-            if(lives > 0){
+            if (lives > 0) {
                 setLives(l => l - 1);
             }
         }
-        setQuestion(q => q + 1);
+        setQuestion(q => q + 1);        
     };
 
     const startTheGame = e => {
-        if(e == 20){
-            setQuestion(20);
+        if (e == 20) {
+            setLength(20);
             setGameOn(true);
-        } else if (e == 50){
-            setQuestion(50);
+        } else if (e == 50) {
+            setLength(50);
             setGameOn(true);
-        } else if (e == 3){
+        } else if (e == 3) {
             setLives(3);
             setGameOn(true);
-        } else if (e == 5){
+        } else if (e == 5) {
             setLives(5);
             setGameOn(true);
         }
     };
 
+    const playAgain = _ => {
+        setGameOn(false);
+        setGameOver(false);
+    };
+
+    useEffect(()=>{
+        if(gameOn && lives == 0){
+            setGameOver(true);
+        }
+    },[submitGuess]);
+
     return (
         <SafeAreaProvider>
             <ThemedView style={styles.game}>
                 <Text style={styles.title}>Shall we play a game?</Text>
-                <TouchableOpacity onPress={_=> startTheGame(20)} style={styles.menu}>Game of 20</TouchableOpacity>
-                <TouchableOpacity onPress={_=> startTheGame(50)} style={styles.menu}>Game of 50</TouchableOpacity>
-                <TouchableOpacity onPress={_=> startTheGame(3)} style={styles.menu}>3 Lives</TouchableOpacity>
-                <TouchableOpacity onPress={_=> startTheGame(5)} style={styles.menu}>5 Lives</TouchableOpacity>
+                <TouchableOpacity onPress={_ => startTheGame(20)} style={styles.menu}>Game of 20</TouchableOpacity>
+                <TouchableOpacity onPress={_ => startTheGame(50)} style={styles.menu}>Game of 50</TouchableOpacity>
+                <TouchableOpacity onPress={_ => startTheGame(3)} style={styles.menu}>3 Lives</TouchableOpacity>
+                <TouchableOpacity onPress={_ => startTheGame(5)} style={styles.menu}>5 Lives</TouchableOpacity>
 
             </ThemedView>
 
@@ -70,14 +82,22 @@ export default function game() {
 
                     <ScrollView style={styles.container}>
                         <Image style={{ width: 380, height: 220 }} source={{ uri: flag.flag, }} resizeMode={'contain'} />
-                    </ScrollView>                    
+                    </ScrollView>
                     <TouchableOpacity onPress={_ => submitGuess(options[0])}><Text style={styles.option}>1. {options[0]}</Text></TouchableOpacity>
                     <TouchableOpacity onPress={_ => submitGuess(options[1])}><Text style={styles.option}>2. {options[1]}</Text></TouchableOpacity>
                     <TouchableOpacity onPress={_ => submitGuess(options[2])}><Text style={styles.option}>3. {options[2]}</Text></TouchableOpacity>
                     <TouchableOpacity onPress={_ => submitGuess(options[3])}><Text style={styles.option}>4. {options[3]}</Text></TouchableOpacity>
-                    <Text style={guess == 'Correct!' ? styles.guess1 : styles.guess2}>{guess}</Text>                    
+                    <Text style={guess == 'Correct!' ? styles.guess1 : styles.guess2}>{guess}</Text>
                     <Text style={styles.score}>Score: {score}</Text>
 
+                </ThemedView>
+            </Modal>
+
+            <Modal visible={gameOver} style={styles.modal}>
+                <ThemedView style={styles.game}>
+                    <Text style={styles.title}>Game Over</Text>
+                    <Text style={styles.question}>You guees {score} correct out of {question} questions.</Text>
+                    <TouchableOpacity onPress={playAgain} style={styles.menu}>To Menu</TouchableOpacity>
                 </ThemedView>
             </Modal>
         </SafeAreaProvider>
@@ -93,7 +113,7 @@ const styles = StyleSheet.create({
     title: {
         fontFamily: 'monospace',
         fontSize: '44px',
-        color: 'white',        
+        color: 'white',
         margin: 30,
     },
     menu: {
@@ -158,7 +178,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         paddingBottom: 8,
     },
-    lives:{
+    lives: {
         fontFamily: 'monospace',
         fontSize: '30px',
         color: 'lime',
