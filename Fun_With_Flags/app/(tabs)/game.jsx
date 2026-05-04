@@ -13,7 +13,7 @@ export default function game() {
     const [gameOn, setGameOn] = useState(false);
     const [lives, setLives] = useState(0);
     const [gameOver, setGameOver] = useState(false);
-    const [length, setLength] = useState(1);
+    const [length, setLength] = useState();
 
     let pick = Math.floor(Math.random() * flags.length);
     const flag = flags[pick];
@@ -75,9 +75,9 @@ export default function game() {
     },[length]);
 
     return (
-        <SafeAreaProvider>
+        <SafeAreaProvider style={styles.body}>
             <ThemedView style={styles.game}>
-                <Text style={styles.title}>Shall we play a game?</Text>
+                <Text style={styles.title}>Choose game mode?</Text>
                 <TouchableOpacity onPress={_ => startTheGame(20)} style={styles.menu}>Game of 20</TouchableOpacity>
                 <TouchableOpacity onPress={_ => startTheGame(50)} style={styles.menu}>Game of 50</TouchableOpacity>
                 <TouchableOpacity onPress={_ => startTheGame(3)} style={styles.menu}>3 Lives</TouchableOpacity>
@@ -86,7 +86,7 @@ export default function game() {
             </ThemedView>
 
             <Modal visible={gameOn} style={styles.modal} >
-                <ThemedView style={styles.body}>
+                <ThemedView style={styles.game}>
                     <Text style={styles.lives}>Lives: {lives}</Text>
                     <Text style={styles.score}>Guess a Country!</Text>
                     <Text style={styles.question}>Question #{question}</Text>
@@ -121,6 +121,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignSelf: 'center',
         justifyContent: 'center',
+        width: '600px',
     },
     title: {
         fontFamily: 'monospace',
@@ -140,10 +141,12 @@ const styles = StyleSheet.create({
         padding: 10
     },
     modal: {
-        flex: 1,     
+        flex: 1,   
+        alignSelf: 'center',             
     },
     body: {
-        alignSelf: 'center',
+        width: '600px',
+        alignSelf: 'center', 
     },
     container: {
         flex: 1,
