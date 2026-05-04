@@ -13,7 +13,7 @@ export default function game() {
     const [gameOn, setGameOn] = useState(false);
     const [lives, setLives] = useState(0);
     const [gameOver, setGameOver] = useState(false);
-    const [length, setLength] = useState(0);
+    const [length, setLength] = useState(1);
 
     let pick = Math.floor(Math.random() * flags.length);
     const flag = flags[pick];
@@ -26,30 +26,35 @@ export default function game() {
     const submitGuess = e => {
         if (e == flag.name) {
             setScore(s => s + 1);
-            setGuess('Correct!');
+            setGuess('Correct!');            
         } else {
             setGuess('Wrong!');
             if (lives > 0) {
                 setLives(l => l - 1);
             }
         }
+        if(length > 0){
+            setLength(l => l - 1);
+        }
         setQuestion(q => q + 1);        
     };
 
+    const reset = _ =>{
+        setQuestion(1);
+        setScore(0);
+        setGameOn(true);
+    }
     const startTheGame = e => {
         if (e == 20) {
-            setLength(20);
-            setGameOn(true);
+            setLength(20);                
         } else if (e == 50) {
             setLength(50);
-            setGameOn(true);
         } else if (e == 3) {
-            setLives(3);
-            setGameOn(true);
+            setLives(3); 
         } else if (e == 5) {
-            setLives(5);
-            setGameOn(true);
+            setLives(5); 
         }
+        reset();
     };
 
     const playAgain = _ => {
@@ -61,7 +66,13 @@ export default function game() {
         if(gameOn && lives == 0){
             setGameOver(true);
         }
-    },[submitGuess]);
+    },[lives]);
+
+    useEffect(()=>{
+        if(gameOn && length == 0){
+            setGameOver(true);
+        }
+    },[length]);
 
     return (
         <SafeAreaProvider>
@@ -96,7 +107,8 @@ export default function game() {
             <Modal visible={gameOver} style={styles.modal}>
                 <ThemedView style={styles.game}>
                     <Text style={styles.title}>Game Over</Text>
-                    <Text style={styles.question}>You guees {score} correct out of {question} questions.</Text>
+                    <Text style={styles.over}>You made {score} correct answers out of {question - 1} questions.</Text>
+                    <Text style={styles.over}>Good luck next time.</Text>
                     <TouchableOpacity onPress={playAgain} style={styles.menu}>To Menu</TouchableOpacity>
                 </ThemedView>
             </Modal>
@@ -115,6 +127,7 @@ const styles = StyleSheet.create({
         fontSize: '44px',
         color: 'white',
         margin: 30,
+        textAlign: 'center',
     },
     menu: {
         fontFamily: 'monospace',
@@ -127,7 +140,7 @@ const styles = StyleSheet.create({
         padding: 10
     },
     modal: {
-        flex: 1,
+        flex: 1,     
     },
     body: {
         alignSelf: 'center',
@@ -185,4 +198,11 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-start',
         padding: (40, 20),
     },
+    over: {
+        fontFamily: 'monospace',
+        fontSize: '18px',
+        color: 'white',
+        textAlign: 'center',
+        padding: 25,
+    }
 })
