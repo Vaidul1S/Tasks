@@ -33,6 +33,7 @@ export default function game() {
             <ThemedView style={styles.body}>
                 <Text style={styles.score}>Guess a Country!</Text>
                 <Text style={styles.question}>Question #{question}</Text>
+
                 <ScrollView style={styles.container}>
                     <Image style={{ width: 380, height: 220 }} source={{ uri: flag.flag, }} resizeMode={'contain'} />
                 </ScrollView>
@@ -74,21 +75,23 @@ const styles = StyleSheet.create({
         fontSize: '40px',
         color: 'white',
         alignSelf: 'flex-end',
-        margin: 30,
+        margin: 30,        
     },
     guess1: {
         fontFamily: 'monospace',
         textAlign: 'center',
-        fontSize: '26px',
+        fontSize: '30px',
         padding: 15,
         color: 'lime',
+        fontWeight: 800,
     },
     guess2: {
         fontFamily: 'monospace',
         textAlign: 'center',
-        fontSize: '26px',
+        fontSize: '30px',
         paddingTop: 15,
         color: 'red',
+        fontWeight: 800,
     },
     question: {
         fontFamily: 'monospace',
