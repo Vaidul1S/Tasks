@@ -8,10 +8,10 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 export default function game() {
 
     const [score, setScore] = useState(0);
-    const [guess, setGuess] = useState('Take a guess');
+    const [guess, setGuess] = useState('Choose your answer');
     const [question, setQuestion] = useState(1);
     const [gameOn, setGameOn] = useState(false);
-    const [lives, setLives] = useState(0);
+    const [lives, setLives] = useState();
     const [gameOver, setGameOver] = useState(false);
     const [length, setLength] = useState();
 
@@ -26,33 +26,34 @@ export default function game() {
     const submitGuess = e => {
         if (e == flag.name) {
             setScore(s => s + 1);
-            setGuess('Correct!');            
+            setGuess('Correct!');
         } else {
             setGuess('Wrong!');
             if (lives > 0) {
                 setLives(l => l - 1);
             }
         }
-        if(length > 0){
+        if (length > 0) {
             setLength(l => l - 1);
         }
-        setQuestion(q => q + 1);        
+        setQuestion(q => q + 1);
     };
 
-    const reset = _ =>{
+    const reset = _ => {
         setQuestion(1);
         setScore(0);
         setGameOn(true);
+        setGuess('Choose your answer');
     }
     const startTheGame = e => {
         if (e == 20) {
-            setLength(20);                
+            setLength(20);
         } else if (e == 50) {
             setLength(50);
         } else if (e == 3) {
-            setLives(3); 
+            setLives(3);
         } else if (e == 5) {
-            setLives(5); 
+            setLives(5);
         }
         reset();
     };
@@ -62,17 +63,21 @@ export default function game() {
         setGameOver(false);
     };
 
-    useEffect(()=>{
-        if(gameOn && lives == 0){
-            setGameOver(true);
-        }
-    },[lives]);
+    const backToMenu = _ => {
+        setGameOver(true);
+    }
 
-    useEffect(()=>{
-        if(gameOn && length == 0){
+    useEffect(() => {
+        if (gameOn && lives == 0) {
             setGameOver(true);
         }
-    },[length]);
+    }, [lives]);
+
+    useEffect(() => {
+        if (gameOn && length == 0) {
+            setGameOver(true);
+        }
+    }, [length]);
 
     return (
         <SafeAreaProvider style={styles.body}>
@@ -87,8 +92,9 @@ export default function game() {
 
             <Modal visible={gameOn} style={styles.modal} >
                 <ThemedView style={styles.game}>
+                    <TouchableOpacity onPress={backToMenu} style={styles.back}>Back to Menu</TouchableOpacity>
                     <Text style={styles.lives}>Lives: {lives}</Text>
-                    <Text style={styles.score}>Guess a Country!</Text>
+                    <Text style={styles.title}>Guess a Country!</Text>
                     <Text style={styles.question}>Question #{question}</Text>
 
                     <ScrollView style={styles.container}>
@@ -127,7 +133,7 @@ const styles = StyleSheet.create({
         fontFamily: 'monospace',
         fontSize: '44px',
         color: 'white',
-        margin: 30,
+        margin: 25,
         textAlign: 'center',
     },
     menu: {
@@ -141,12 +147,12 @@ const styles = StyleSheet.create({
         padding: 10
     },
     modal: {
-        flex: 1,   
-        alignSelf: 'center',             
+        flex: 1,
+        alignSelf: 'center',
     },
     body: {
         width: '600px',
-        alignSelf: 'center', 
+        alignSelf: 'center',
     },
     container: {
         flex: 1,
@@ -199,7 +205,7 @@ const styles = StyleSheet.create({
         fontSize: '30px',
         color: 'lime',
         alignSelf: 'flex-start',
-        padding: (40, 20),
+        paddingLeft: 20,
     },
     over: {
         fontFamily: 'monospace',
@@ -207,5 +213,16 @@ const styles = StyleSheet.create({
         color: 'white',
         textAlign: 'center',
         padding: 25,
-    }
+    },
+    back: {
+        fontFamily: 'monospace',
+        fontSize: '14px',
+        color: 'white',
+        margin: (0, 5),
+        textAlign: 'center',
+        border: '1.5px, solid, #ffffff80',
+        borderRadius: '25px',
+        padding: 8,
+        width: '150px',
+    },
 })
