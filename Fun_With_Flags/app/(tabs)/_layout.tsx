@@ -34,7 +34,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="game"
         options={{
-          title: 'Game',
+          title: 'Play',
           tabBarIcon: ({ color }) => <Entypo name="game-controller" size={24} color="white" />,
         }}
       />

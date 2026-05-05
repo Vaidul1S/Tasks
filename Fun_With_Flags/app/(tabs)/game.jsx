@@ -85,7 +85,7 @@ export default function game() {
     return (
         <SafeAreaProvider style={styles.body}>
             <ThemedView style={styles.game}>
-                <Text style={styles.title}>Choose game mode?</Text>
+                <Text style={styles.title}>Choose game mode:</Text>
                 <TouchableOpacity onPress={_ => startTheGame(20)} style={styles.menu}>Game of 20</TouchableOpacity>
                 <TouchableOpacity onPress={_ => startTheGame(50)} style={styles.menu}>Game of 50</TouchableOpacity>
                 <TouchableOpacity onPress={_ => startTheGame(3)} style={styles.menu}>3 Lives</TouchableOpacity>
@@ -127,20 +127,20 @@ export default function game() {
 
 const styles = StyleSheet.create({
     body: {
-        width: '600px',
+        width: '410px',
         alignSelf: 'center',
     },
     game: {
         flex: 1,
         alignSelf: 'center',
         justifyContent: 'center',
-        width: '600px',
+        width: '410px',
     },
     title: {
         fontFamily: 'papyrus',
-        fontSize: '44px',
+        fontSize: '40px',
         color: 'white',
-        margin: 25,
+        margin: 10,
         textAlign: 'center',
     },
     menu: {
@@ -158,8 +158,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
     },    
     container: {
-        flex: 1,
-        height: 300,
+        flex: 1,        
         padding: 10,
         alignSelf: 'center',
     },
@@ -167,7 +166,7 @@ const styles = StyleSheet.create({
         fontFamily: 'papyrus',
         fontSize: '18px',
         color: 'white',
-        margin: (0, 15),
+        margin: (0, 10),
         textAlign: 'center',
         border: '1.5px, solid, #ffffff80',
         borderRadius: '25px',
@@ -178,7 +177,7 @@ const styles = StyleSheet.create({
         fontSize: '40px',
         color: 'white',
         alignSelf: 'flex-end',
-        margin: 30,
+        margin: 20,
     },
     guess1: {
         fontFamily: 'papyrus',
@@ -205,7 +204,7 @@ const styles = StyleSheet.create({
     },
     lives: {
         fontFamily: 'papyrus',
-        fontSize: '30px',
+        fontSize: '25px',
         color: 'lime',
         alignSelf: 'flex-start',
         paddingLeft: 20,
