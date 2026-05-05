@@ -97,7 +97,7 @@ export default function game() {
             </ThemedView>
 
             <Modal visible={gameOn} style={styles.modal} animationType="fade" transparent={true}>
-                <ThemedView style={styles.game}>
+                <ThemedView style={styles.card}>
                     <TouchableOpacity onPress={forfeit} style={styles.back}>Forfeit</TouchableOpacity>
                     {lives > 0 ? <Text style={styles.lives}>Lives: {lives}</Text> : null}
                     <Text style={styles.title}>Guess a Country!</Text>
@@ -137,6 +137,12 @@ const styles = StyleSheet.create({
         flex: 1,
         alignSelf: 'center',
         justifyContent: 'center',
+        width: '410px',        
+    },
+    card: {
+        flex: 1,
+        alignSelf: 'center',
+        justifyContent: 'space-between',
         width: '410px',        
     },
     title: {
