@@ -11,9 +11,9 @@ export default function game() {
     const [guess, setGuess] = useState('Choose your answer');
     const [question, setQuestion] = useState(1);
     const [gameOn, setGameOn] = useState(false);
-    const [lives, setLives] = useState();
+    const [lives, setLives] = useState(null);
     const [gameOver, setGameOver] = useState(false);
-    const [length, setLength] = useState();
+    const [length, setLength] = useState(null);
 
     let pick = Math.floor(Math.random() * flags.length);
     const flag = flags[pick];
@@ -63,18 +63,21 @@ export default function game() {
         setGameOver(false);
     };
 
-    const backToMenu = _ => {
-        setGameOver(true);
+    const forfeit = _ => {
+        setLives(null);
+        setGameOver(true);        
     }
 
     useEffect(() => {
         if (gameOn && lives == 0) {
+            setGameOn(false);
             setGameOver(true);
         }
     }, [lives]);
 
     useEffect(() => {
         if (gameOn && length == 0) {
+            setGameOn(false);
             setGameOver(true);
         }
     }, [length]);
@@ -90,10 +93,10 @@ export default function game() {
 
             </ThemedView>
 
-            <Modal visible={gameOn} style={styles.modal} >
+            <Modal visible={gameOn} style={styles.modal} animationType="fade" transparent={true}>
                 <ThemedView style={styles.game}>
-                    <TouchableOpacity onPress={backToMenu} style={styles.back}>Back to Menu</TouchableOpacity>
-                    <Text style={styles.lives}>Lives: {lives}</Text>
+                    <TouchableOpacity onPress={forfeit} style={styles.back}>Forfeit</TouchableOpacity>
+                    {lives > 0 ? <Text style={styles.lives}>Lives: {lives}</Text> : null}
                     <Text style={styles.title}>Guess a Country!</Text>
                     <Text style={styles.question}>Question #{question}</Text>
 
@@ -110,7 +113,7 @@ export default function game() {
                 </ThemedView>
             </Modal>
 
-            <Modal visible={gameOver} style={styles.modal}>
+            <Modal visible={gameOver} style={styles.modal} animationType="fade" transparent={true}>
                 <ThemedView style={styles.game}>
                     <Text style={styles.title}>Game Over</Text>
                     <Text style={styles.over}>You made {score} correct answers out of {question - 1} questions.</Text>
@@ -123,6 +126,10 @@ export default function game() {
 }
 
 const styles = StyleSheet.create({
+    body: {
+        width: '600px',
+        alignSelf: 'center',
+    },
     game: {
         flex: 1,
         alignSelf: 'center',
@@ -149,11 +156,7 @@ const styles = StyleSheet.create({
     modal: {
         flex: 1,
         alignSelf: 'center',
-    },
-    body: {
-        width: '600px',
-        alignSelf: 'center',
-    },
+    },    
     container: {
         flex: 1,
         height: 300,
@@ -218,11 +221,11 @@ const styles = StyleSheet.create({
         fontFamily: 'monospace',
         fontSize: '14px',
         color: 'white',
-        margin: (0, 5),
+        margin: (0, 8),
         textAlign: 'center',
         border: '1.5px, solid, #ffffff80',
         borderRadius: '25px',
         padding: 8,
-        width: '150px',
+        width: '100px',
     },
 })
