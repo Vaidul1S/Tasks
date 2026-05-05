@@ -160,9 +160,8 @@ const styles = StyleSheet.create({
         flex: 1,
         alignSelf: 'center',
     },
-    container: {
-        flex: 1,
-        height: 220,        
+    container: {        
+        height: 250,        
         alignContent: 'center',
         justifyContent: 'center',
         flexWrap: 'wrap',
@@ -196,7 +195,7 @@ const styles = StyleSheet.create({
         fontFamily: 'papyrus',
         textAlign: 'center',
         fontSize: '30px',
-        paddingTop: 15,
+        padding: 15,
         color: 'red',
         fontWeight: 800,
     },
