@@ -12,6 +12,7 @@ export const unstable_settings = {
 const [loaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
     BrightAura: require('../assets/fonts/BrightAura.ttf'),
+    papyrus: require('../assets/fonts/papyrus.ttf'),
   });
 
 export default function RootLayout() {
