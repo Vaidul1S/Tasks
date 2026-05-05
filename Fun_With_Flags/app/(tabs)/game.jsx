@@ -165,6 +165,7 @@ const styles = StyleSheet.create({
         height: 220,        
         alignContent: 'center',
         justifyContent: 'center',
+        flexWrap: 'wrap',
     },
     option: {
         fontFamily: 'papyrus',
