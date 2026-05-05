@@ -65,7 +65,7 @@ export default function game() {
 
     const forfeit = _ => {
         setLives(null);
-        setGameOver(true);        
+        setGameOver(true);
     }
 
     useEffect(() => {
@@ -85,6 +85,9 @@ export default function game() {
     return (
         <SafeAreaProvider style={styles.body}>
             <ThemedView style={styles.game}>
+                <ThemedView style={styles.container}>
+                    <Image style={{ width: 350, height: 220, alignSelf: 'center' }} source={require('@/assets/images/world.png')} resizeMode={'contain'} />
+                </ThemedView>
                 <Text style={styles.title}>Choose game mode:</Text>
                 <TouchableOpacity onPress={_ => startTheGame(20)} style={styles.menu}>Game of 20</TouchableOpacity>
                 <TouchableOpacity onPress={_ => startTheGame(50)} style={styles.menu}>Game of 50</TouchableOpacity>
@@ -100,9 +103,9 @@ export default function game() {
                     <Text style={styles.title}>Guess a Country!</Text>
                     <Text style={styles.question}>Question #{question}</Text>
 
-                    <ScrollView style={styles.container}>
+                    <ThemedView style={styles.container}>
                         <Image style={{ width: 380, height: 220 }} source={{ uri: flag.flag, }} resizeMode={'contain'} />
-                    </ScrollView>
+                    </ThemedView>
                     <TouchableOpacity onPress={_ => submitGuess(options[0])}><Text style={styles.option}>1. {options[0]}</Text></TouchableOpacity>
                     <TouchableOpacity onPress={_ => submitGuess(options[1])}><Text style={styles.option}>2. {options[1]}</Text></TouchableOpacity>
                     <TouchableOpacity onPress={_ => submitGuess(options[2])}><Text style={styles.option}>3. {options[2]}</Text></TouchableOpacity>
@@ -134,7 +137,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignSelf: 'center',
         justifyContent: 'center',
-        width: '410px',
+        width: '410px',        
     },
     title: {
         fontFamily: 'papyrus',
@@ -156,11 +159,12 @@ const styles = StyleSheet.create({
     modal: {
         flex: 1,
         alignSelf: 'center',
-    },    
+    },
     container: {
-        flex: 1,        
-        padding: 10,
-        alignSelf: 'center',
+        flex: 1,
+        height: 220,        
+        alignContent: 'center',
+        justifyContent: 'center',
     },
     option: {
         fontFamily: 'papyrus',
