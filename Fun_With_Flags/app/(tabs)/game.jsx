@@ -137,13 +137,13 @@ const styles = StyleSheet.create({
         flex: 1,
         alignSelf: 'center',
         justifyContent: 'center',
-        width: '410px',        
+        width: '410px',
     },
     card: {
         flex: 1,
         alignSelf: 'center',
         justifyContent: 'space-between',
-        width: '410px',        
+        width: '410px',
     },
     title: {
         fontFamily: 'papyrus',
@@ -166,8 +166,8 @@ const styles = StyleSheet.create({
         flex: 1,
         alignSelf: 'center',
     },
-    container: {        
-        height: 250,        
+    container: {
+        height: 250,
         alignContent: 'center',
         justifyContent: 'center',
         flexWrap: 'wrap',
