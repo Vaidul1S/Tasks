@@ -118,7 +118,7 @@ export default function game() {
             </Modal>
 
             <Modal visible={gameOver} style={styles.modal} animationType="fade" transparent={true}>
-                <ThemedView style={styles.game}>
+                <ThemedView style={styles.gameOver}>
                     <Text style={styles.title}>Game Over</Text>
                     <Text style={styles.over}>You made {score} correct answers out of {question - 1} questions.</Text>
                     <Text style={styles.over}>Good luck next time.</Text>
@@ -133,18 +133,26 @@ const styles = StyleSheet.create({
     body: {
         width: '410px',
         alignSelf: 'center',
+        backgroundColor: '#446b7762',
     },
     game: {
         flex: 1,
         alignSelf: 'center',
         justifyContent: 'center',
-        width: '410px',          
+        width: '410px',
+        backgroundColor: 'transperent',
     },
     card: {
         flex: 1,
         alignSelf: 'center',
         justifyContent: 'space-between',
         width: '410px',
+    },
+    gameOver: {
+        flex: 1,
+        alignSelf: 'center',
+        justifyContent: 'center',
+        width: '410px',        
     },
     title: {
         fontFamily: 'papyrus',

@@ -12,9 +12,9 @@ export default function sheet() {
         <ScrollView style={styles.sheet}>
             {flags.map(f =>
                 <ThemedView style={styles.list}>
-                    <ThemedText key={flags.name}>{f.name}</ThemedText>
+                    <ThemedText key={flags.name} style={styles.text}>{f.name} </ThemedText>
                     <SafeAreaView style={styles.container}>
-                        <Image style={styles.image} source={{ uri: f.flag, }} resizeMode={'contain'} />
+                        <Image style={{ width: 140, height: 80, alignSelf: 'center' }} source={{ uri: f.flag, }} resizeMode={'contain'} />
                     </SafeAreaView>
                 </ThemedView>
             )}
@@ -25,25 +25,30 @@ export default function sheet() {
 
 const styles = StyleSheet.create({
     sheet:{
-        alignSelf: 'center',
+        flex: 1,
+        alignSelf: 'center',    
+        padding: 10,
+        width: 410,
+        backgroundColor: '#446b7762',
     },
     list: {
-        flexDirection: "row",
-        left: 30,
-        gap: 30,
-        alignItems: 'center',
-        margin: 7,
-        width: 410,
-        backgroundColor: 'transperent',
+        flexDirection: "column",       
+        alignContent: 'center',               
+        margin: 10,        
+        backgroundColor: 'transperent',        
+    },
+    text:{
+        textAlign: 'center',
+        fontSize: 20,
+        paddingBottom: 5,
+        fontFamily: 'papyrus',
+    },
+    container: {        
+        height: 80,
+        alignContent: 'center',
+        justifyContent: 'center',
         flexWrap: 'wrap',
+        backgroundColor: 'transperent',
     },
-    container: {
-        flex: 1,
-        height: 60,
-
-    },
-    image: {
-        width: 120,
-        flex: 1,
-    }
+    
 })
