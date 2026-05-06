@@ -8,7 +8,8 @@ import { flags } from '../../assets/data/flags.js';
 export default function sheet() {
 
     return (
-        <ScrollView >
+
+        <ScrollView style={styles.sheet}>
             {flags.map(f =>
                 <ThemedView style={styles.list}>
                     <ThemedText key={flags.name}>{f.name}</ThemedText>
@@ -17,20 +18,24 @@ export default function sheet() {
                     </SafeAreaView>
                 </ThemedView>
             )}
-
         </ScrollView>
+
     );
 }
 
 const styles = StyleSheet.create({
+    sheet:{
+        alignSelf: 'center',
+    },
     list: {
         flexDirection: "row",
         left: 30,
         gap: 30,
         alignItems: 'center',
         margin: 7,
-        width: 400,
-        backgroundColor: 'none',
+        width: 410,
+        backgroundColor: 'transperent',
+        flexWrap: 'wrap',
     },
     container: {
         flex: 1,
