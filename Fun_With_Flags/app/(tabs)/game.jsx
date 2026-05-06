@@ -65,6 +65,7 @@ export default function game() {
 
     const forfeit = _ => {
         setLives(null);
+        setGameOn(false);
         setGameOver(true);
     }
 
@@ -138,6 +139,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         justifyContent: 'center',
         width: '410px',
+        backgroundColor: '#b802a052',
     },
     card: {
         flex: 1,
@@ -171,6 +173,7 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         justifyContent: 'center',
         flexWrap: 'wrap',
+        backgroundColor: '#b802a052',
     },
     option: {
         fontFamily: 'papyrus',
