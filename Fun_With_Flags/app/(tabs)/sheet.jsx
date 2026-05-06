@@ -8,9 +8,9 @@ import { flags } from '../../assets/data/flags.js';
 export default function sheet() {
 
     return (
-        <ScrollView headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}>
+        <ScrollView >
             {flags.map(f =>
-                <ThemedView style={styles.flag}>
+                <ThemedView style={styles.list}>
                     <ThemedText key={flags.name}>{f.name}</ThemedText>
                     <SafeAreaView style={styles.container}>
                         <Image style={styles.image} source={{ uri: f.flag, }} resizeMode={'contain'} />
@@ -23,7 +23,7 @@ export default function sheet() {
 }
 
 const styles = StyleSheet.create({
-    flag: {
+    list: {
         flexDirection: "row",
         left: 30,
         gap: 30,

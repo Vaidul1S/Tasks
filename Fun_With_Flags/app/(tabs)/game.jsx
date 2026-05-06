@@ -138,8 +138,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignSelf: 'center',
         justifyContent: 'center',
-        width: '410px',
-        backgroundColor: '#b802a052',
+        width: '410px',          
     },
     card: {
         flex: 1,
@@ -173,7 +172,7 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         justifyContent: 'center',
         flexWrap: 'wrap',
-        backgroundColor: '#b802a052',
+        backgroundColor: 'transperent',
     },
     option: {
         fontFamily: 'papyrus',

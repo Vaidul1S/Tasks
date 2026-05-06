@@ -28,14 +28,14 @@ export default function TabLayout() {
         name="sheet"
         options={{
           title: 'Cheat Sheet',
-          tabBarIcon: ({ color }) => <Entypo name="open-book" size={24} color="white" />,
+          tabBarIcon: ({ color }) => <Entypo name="open-book" size={24} color={color} />,
         }}
       />
       <Tabs.Screen
         name="game"
         options={{
           title: 'Play',
-          tabBarIcon: ({ color }) => <Entypo name="game-controller" size={24} color="white" />,
+          tabBarIcon: ({ color }) => <Entypo name="game-controller" size={24} color={color} />,
         }}
       />
     </Tabs>
