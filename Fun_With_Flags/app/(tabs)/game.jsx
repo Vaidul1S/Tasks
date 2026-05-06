@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignSelf: 'center',
         justifyContent: 'center',
-        width: '410px',        
+        width: '410px',
     },
     title: {
         fontFamily: 'papyrus',

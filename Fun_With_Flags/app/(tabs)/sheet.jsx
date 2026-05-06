@@ -24,31 +24,31 @@ export default function sheet() {
 }
 
 const styles = StyleSheet.create({
-    sheet:{
+    sheet: {
         flex: 1,
-        alignSelf: 'center',    
+        alignSelf: 'center',
         padding: 10,
         width: 410,
         backgroundColor: '#446b7762',
     },
     list: {
-        flexDirection: "column",       
-        alignContent: 'center',               
-        margin: 10,        
-        backgroundColor: 'transperent',        
+        flexDirection: "column",
+        alignContent: 'center',
+        margin: 10,
+        backgroundColor: 'transperent',
     },
-    text:{
+    text: {
         textAlign: 'center',
         fontSize: 20,
         paddingBottom: 5,
         fontFamily: 'papyrus',
     },
-    container: {        
+    container: {
         height: 80,
         alignContent: 'center',
         justifyContent: 'center',
         flexWrap: 'wrap',
         backgroundColor: 'transperent',
     },
-    
+
 })
