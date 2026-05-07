@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, TouchableOpacity, Text, Modal } from "react-native";
+import { ScrollView, StyleSheet, TouchableOpacity, Modal } from "react-native";
 import { Image } from 'expo-image';
 import { ThemedView } from '@/components/themed-view';
 import { ThemedText } from '@/components/themed-text';
@@ -103,28 +103,33 @@ export default function game() {
             <Modal visible={gameOn} style={styles.modal} animationType="fade" transparent={true}>
                 <ThemedView style={styles.card}>
                     <TouchableOpacity onPress={forfeit}><ThemedText style={styles.back}>Forfeit</ThemedText></TouchableOpacity>
-                    {lives > 0 ? <Text style={styles.lives}>Lives: {lives}</Text> : null}
-                    <Text style={styles.title}>Guess a Country!</Text>
-                    <Text style={styles.question}>Question #{question}</Text>
+                    {lives > 0 ? <ThemedText style={styles.lives}>Lives: {lives}</ThemedText> : null}
+                    <ThemedView style={{ height: 50 }}>
+                        <Image style={{ width: 50, height: 50 }} source={require('@/assets/images/heart.svg')} contentFit={'contain'} />
+                    </ThemedView>
+
+
+                    <ThemedText style={styles.title}>Guess a Country!</ThemedText>
+                    <ThemedText style={styles.question}>Question #{question}</ThemedText>
 
                     <ThemedView style={styles.container}>
                         <Image style={{ width: 380, height: 220 }} source={{ uri: flag.flag, }} contentFit={'contain'} />
                     </ThemedView>
-                    <TouchableOpacity onPress={_ => submitGuess(options[0])}><Text style={styles.option}>1. {options[0]}</Text></TouchableOpacity>
-                    <TouchableOpacity onPress={_ => submitGuess(options[1])}><Text style={styles.option}>2. {options[1]}</Text></TouchableOpacity>
-                    <TouchableOpacity onPress={_ => submitGuess(options[2])}><Text style={styles.option}>3. {options[2]}</Text></TouchableOpacity>
-                    <TouchableOpacity onPress={_ => submitGuess(options[3])}><Text style={styles.option}>4. {options[3]}</Text></TouchableOpacity>
-                    <Text style={guess == 'Correct!' ? styles.guess1 : styles.guess2}>{guess}</Text>
-                    <Text style={styles.score}>Score: {score}</Text>
+                    <TouchableOpacity onPress={_ => submitGuess(options[0])}><ThemedText style={styles.option}>1. {options[0]}</ThemedText></TouchableOpacity>
+                    <TouchableOpacity onPress={_ => submitGuess(options[1])}><ThemedText style={styles.option}>2. {options[1]}</ThemedText></TouchableOpacity>
+                    <TouchableOpacity onPress={_ => submitGuess(options[2])}><ThemedText style={styles.option}>3. {options[2]}</ThemedText></TouchableOpacity>
+                    <TouchableOpacity onPress={_ => submitGuess(options[3])}><ThemedText style={styles.option}>4. {options[3]}</ThemedText></TouchableOpacity>
+                    <ThemedText style={guess == 'Correct!' ? styles.guess1 : styles.guess2}>{guess}</ThemedText>
+                    <ThemedText style={styles.score}>Score: {score}</ThemedText>
 
                 </ThemedView>
             </Modal>
 
             <Modal visible={gameOver} style={styles.modal} animationType="fade" transparent={true}>
                 <ThemedView style={styles.gameOver}>
-                    <Text style={styles.title}>Game Over</Text>
-                    <Text style={styles.over}>You made {score} correct answers out of {question - 1} questions.</Text>
-                    <Text style={styles.over}>Good luck next time.</Text>
+                    <ThemedText style={styles.title}>Game Over</ThemedText>
+                    <ThemedText style={styles.over}>You made {score} correct answers out of {question - 1} questions.</ThemedText>
+                    <ThemedText style={styles.over}>Good luck next time.</ThemedText>
                     <TouchableOpacity onPress={playAgain}><ThemedText style={styles.menu}>To Menu</ThemedText></TouchableOpacity>
                 </ThemedView>
             </Modal>
