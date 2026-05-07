@@ -100,7 +100,7 @@ export default function game() {
 
             <Modal visible={gameOn} style={styles.modal} animationType="fade" transparent={true}>
                 <ThemedView style={styles.card}>
-                    <TouchableOpacity onPress={forfeit} style={styles.back}>Forfeit</TouchableOpacity>
+                    <TouchableOpacity onPress={forfeit}><ThemedText style={styles.back}>Forfeit</ThemedText></TouchableOpacity>
                     {lives > 0 ? <Text style={styles.lives}>Lives: {lives}</Text> : null}
                     <Text style={styles.title}>Guess a Country!</Text>
                     <Text style={styles.question}>Question #{question}</Text>
@@ -123,7 +123,7 @@ export default function game() {
                     <Text style={styles.title}>Game Over</Text>
                     <Text style={styles.over}>You made {score} correct answers out of {question - 1} questions.</Text>
                     <Text style={styles.over}>Good luck next time.</Text>
-                    <TouchableOpacity onPress={playAgain} style={styles.menu}>To Menu</TouchableOpacity>
+                    <TouchableOpacity onPress={playAgain}><ThemedText style={styles.menu}>To Menu</ThemedText></TouchableOpacity>
                 </ThemedView>
             </Modal>
         </SafeAreaProvider>
@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         border: '1.5px, dashed, #ffffff80',
         borderRadius: '25px',
-        padding: 7
+        padding: 8
     },
     modal: {
         flex: 1,
