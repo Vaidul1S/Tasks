@@ -24,8 +24,8 @@ export default function HomeScreen() {
 
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle" style={styles.text}>Guess a country by flag from four choices.</ThemedText>
-        <ThemedText type="subtitle" style={styles.text}>{count} countries</ThemedText>
+        <ThemedText type="subtitle" style={styles.text}>Guess a country by the flag.</ThemedText>
+        <ThemedText type="subtitle" style={styles.text}>List of {count} countries.</ThemedText>
 
       </ThemedView>
 
@@ -50,13 +50,13 @@ const styles = StyleSheet.create({
     left: 0,
   },
   title: {
-    fontFamily: 'SpaceMono',
-    fontSize: 30,
+    fontFamily: 'papyrus',
+    fontSize: 34,
     textAlign: 'center',
   },
   text: {
-    fontFamily: 'SpaceMono',
-    fontSize: 20,
+    fontFamily: 'papyrus',
+    fontSize: 28,
     textAlign: 'center',
   }
 });
