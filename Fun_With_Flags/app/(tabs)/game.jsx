@@ -15,9 +15,10 @@ export default function game() {
     const [lives, setLives] = useState(null);
     const [gameOver, setGameOver] = useState(false);
     const [length, setLength] = useState(null);
+    const [pick, setPick] = useState(Math.floor(Math.random() * flags.length));
 
-    let pick = Math.floor(Math.random() * flags.length);
     const flag = flags[pick];
+
     let option1 = Math.floor(Math.random() * flags.length);
     let option2 = Math.floor(Math.random() * flags.length);
     let option3 = Math.floor(Math.random() * flags.length);
@@ -38,6 +39,7 @@ export default function game() {
             setLength(l => l - 1);
         }
         setQuestion(q => q + 1);
+        setPick(Math.floor(Math.random() * flags.length));
     };
 
     const reset = _ => {
@@ -163,14 +165,16 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     menu: {
+        width: '60%',
         fontFamily: 'papyrus',
         fontSize: '24px',
         color: 'white',
         margin: (0, 20),
         textAlign: 'center',
-        border: '1.5px, dashed, #ffffff80',
-        borderRadius: '25px',
-        padding: 8
+        alignSelf: 'center',
+        backgroundColor: '#446b77',
+        borderRadius: '15px',
+        padding: 12,
     },
     modal: {
         flex: 1,
@@ -184,14 +188,16 @@ const styles = StyleSheet.create({
         backgroundColor: 'transperent',
     },
     option: {
+        width: '90%',
         fontFamily: 'papyrus',
-        fontSize: '18px',
+        fontSize: 20,
         color: 'white',
         margin: (0, 10),
         textAlign: 'center',
-        border: '1.5px, solid, #ffffff80',
-        borderRadius: '25px',
-        padding: 8
+        alignSelf: 'center',
+        backgroundColor: '#446b77',
+        borderRadius: '15px',
+        padding: (0, 8),
     },
     score: {
         fontFamily: 'papyrus',

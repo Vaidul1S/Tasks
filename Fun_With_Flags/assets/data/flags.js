@@ -37,7 +37,7 @@ export const flags = [
   { name: "China", flag: "https://flagcdn.com/w320/cn.png" },
   { name: "Colombia", flag: "https://flagcdn.com/w320/co.png" },
   { name: "Comoros", flag: "https://flagcdn.com/w320/km.png" },
-  { name: "Congo (Congo-Brazzaville)", flag: "https://flagcdn.com/w320/cg.png" },
+  { name: "Congo", flag: "https://flagcdn.com/w320/cg.png" },
   { name: "Costa Rica", flag: "https://flagcdn.com/w320/cr.png" },
   { name: "Croatia", flag: "https://flagcdn.com/w320/hr.png" },
   { name: "Cuba", flag: "https://flagcdn.com/w320/cu.png" },
