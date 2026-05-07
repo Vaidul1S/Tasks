@@ -104,8 +104,8 @@ export default function game() {
                 <ThemedView style={styles.card}>
                     <TouchableOpacity onPress={forfeit}><ThemedText style={styles.back}>Forfeit</ThemedText></TouchableOpacity>
                     {lives > 0 ? <ThemedText style={styles.lives}>Lives: {lives}</ThemedText> : null}
-                    <ThemedView style={{ height: 50 }}>
-                        <Image style={{ width: 50, height: 50 }} source={require('@/assets/images/heart.svg')} contentFit={'contain'} />
+                    <ThemedView style={{ height: 70 }}>
+                        <Image style={{ width: 70, height: 70 }} source={require('@/assets/images/heart.svg')} contentFit={'contain'} />
                     </ThemedView>
 
 
@@ -128,7 +128,8 @@ export default function game() {
             <Modal visible={gameOver} style={styles.modal} animationType="fade" transparent={true}>
                 <ThemedView style={styles.gameOver}>
                     <ThemedText style={styles.title}>Game Over</ThemedText>
-                    <ThemedText style={styles.over}>You made {score} correct answers out of {question - 1} questions.</ThemedText>
+                    <ThemedText style={styles.over}>You made <ThemedText style={styles.result}>{score}</ThemedText> correct answers
+                        <br/> out of <ThemedText style={styles.result}>{question - 1}</ThemedText> questions.</ThemedText>
                     <ThemedText style={styles.over}>Good luck next time.</ThemedText>
                     <TouchableOpacity onPress={playAgain}><ThemedText style={styles.menu}>To Menu</ThemedText></TouchableOpacity>
                 </ThemedView>
@@ -215,7 +216,7 @@ const styles = StyleSheet.create({
         fontFamily: 'papyrus',
         textAlign: 'center',
         fontSize: '30px',
-        padding: 15,
+        padding: 12,
         color: 'lime',
         fontWeight: 800,
     },
@@ -223,7 +224,7 @@ const styles = StyleSheet.create({
         fontFamily: 'papyrus',
         textAlign: 'center',
         fontSize: '30px',
-        padding: 15,
+        padding: 12,
         color: 'red',
         fontWeight: 800,
     },
@@ -243,10 +244,15 @@ const styles = StyleSheet.create({
     },
     over: {
         fontFamily: 'papyrus',
-        fontSize: '18px',
+        fontSize: '24px',
         color: 'white',
         textAlign: 'center',
         padding: 25,
+    },
+    result: {
+        fontFamily: 'papyrus',
+        fontSize: '24px',
+        color: 'lime',
     },
     back: {
         fontFamily: 'papyrus',
