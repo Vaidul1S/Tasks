@@ -11,8 +11,8 @@ export default function sheet() {
 
         <ScrollView style={styles.sheet}>
             {flags.map(f =>
-                <ThemedView style={styles.list}>
-                    <ThemedText key={flags.name} style={styles.text}>{f.name} </ThemedText>
+                <ThemedView style={styles.list} key={flags.name}>
+                    <ThemedText style={styles.text}>{f.name} </ThemedText>
                     <SafeAreaView style={styles.container}>
                         <Image style={{ width: 140, height: 80, alignSelf: 'center' }} source={{ uri: f.flag, }} resizeMode={'contain'} />
                     </SafeAreaView>

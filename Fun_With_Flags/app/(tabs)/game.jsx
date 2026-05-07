@@ -1,6 +1,7 @@
 import { ScrollView, StyleSheet, TouchableOpacity, Text, Modal } from "react-native";
 import { Image } from 'expo-image';
 import { ThemedView } from '@/components/themed-view';
+import { ThemedText } from '@/components/themed-text';
 import { useEffect, useState } from "react";
 import { flags } from '../../assets/data/flags.js';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -87,13 +88,13 @@ export default function game() {
         <SafeAreaProvider style={styles.body}>
             <ThemedView style={styles.game}>
                 <ThemedView style={styles.container}>
-                    <Image style={{ width: 350, height: 220, alignSelf: 'center' }} source={require('@/assets/images/world.png')} resizeMode={'contain'} />
+                    <Image style={{ width: 350, height: 220, alignSelf: 'center' }} source={require('@/assets/images/world.png')} contentFit={'contain'} />
                 </ThemedView>
-                <Text style={styles.title}>Choose game mode:</Text>
-                <TouchableOpacity onPress={_ => startTheGame(20)} style={styles.menu}>Game of 20</TouchableOpacity>
-                <TouchableOpacity onPress={_ => startTheGame(50)} style={styles.menu}>Game of 50</TouchableOpacity>
-                <TouchableOpacity onPress={_ => startTheGame(3)} style={styles.menu}>3 Lives</TouchableOpacity>
-                <TouchableOpacity onPress={_ => startTheGame(5)} style={styles.menu}>5 Lives</TouchableOpacity>
+                <ThemedText style={styles.title}>Choose game mode:</ThemedText>
+                <TouchableOpacity onPress={_ => startTheGame(20)}><ThemedText style={styles.menu}>Game of 20</ThemedText></TouchableOpacity>
+                <TouchableOpacity onPress={_ => startTheGame(50)}><ThemedText style={styles.menu}>Game of 50</ThemedText></TouchableOpacity>
+                <TouchableOpacity onPress={_ => startTheGame(3)}><ThemedText style={styles.menu}>3 Lives</ThemedText></TouchableOpacity>
+                <TouchableOpacity onPress={_ => startTheGame(5)}><ThemedText style={styles.menu}>5 Lives</ThemedText></TouchableOpacity>
 
             </ThemedView>
 
@@ -105,7 +106,7 @@ export default function game() {
                     <Text style={styles.question}>Question #{question}</Text>
 
                     <ThemedView style={styles.container}>
-                        <Image style={{ width: 380, height: 220 }} source={{ uri: flag.flag, }} resizeMode={'contain'} />
+                        <Image style={{ width: 380, height: 220 }} source={{ uri: flag.flag, }} contentFit={'contain'} />
                     </ThemedView>
                     <TouchableOpacity onPress={_ => submitGuess(options[0])}><Text style={styles.option}>1. {options[0]}</Text></TouchableOpacity>
                     <TouchableOpacity onPress={_ => submitGuess(options[1])}><Text style={styles.option}>2. {options[1]}</Text></TouchableOpacity>
@@ -169,7 +170,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         border: '1.5px, dashed, #ffffff80',
         borderRadius: '25px',
-        padding: 10
+        padding: 7
     },
     modal: {
         flex: 1,
