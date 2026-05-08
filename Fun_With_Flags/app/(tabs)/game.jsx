@@ -103,10 +103,15 @@ export default function game() {
             <Modal visible={gameOn} style={styles.modal} animationType="fade" transparent={true}>
                 <ThemedView style={styles.card}>
                     <TouchableOpacity onPress={forfeit}><ThemedText style={styles.back}>Forfeit</ThemedText></TouchableOpacity>
-                    {lives > 0 ? <ThemedText style={styles.lives}>Lives: {lives}</ThemedText> : null}
-                    <ThemedView style={{ height: 70 }}>
-                        <Image style={{ width: 70, height: 70 }} source={require('@/assets/images/heart.svg')} contentFit={'contain'} />
-                    </ThemedView>
+                    {lives > 0 ? 
+                    <ThemedView style={{ height: 60, flexDirection: "row", alignSelf: 'center', }}>
+                        <ThemedText style={styles.lives}>Lives:</ThemedText>
+                        {lives > 0 ? <Image style={{ width: 60, height: 60 }} source={require('@/assets/images/heart.svg')} contentFit={'contain'} /> : null}
+                        {lives > 1 ? <Image style={{ width: 60, height: 60 }} source={require('@/assets/images/heart.svg')} contentFit={'contain'} /> : null}
+                        {lives > 2 ? <Image style={{ width: 60, height: 60 }} source={require('@/assets/images/heart.svg')} contentFit={'contain'} /> : null}                        
+                        {lives > 3 ? <Image style={{ width: 60, height: 60 }} source={require('@/assets/images/heart.svg')} contentFit={'contain'} /> : null}                        
+                        {lives > 4 ? <Image style={{ width: 60, height: 60 }} source={require('@/assets/images/heart.svg')} contentFit={'contain'} /> : null}                        
+                    </ThemedView> : null}
 
 
                     <ThemedText style={styles.title}>Guess a Country!</ThemedText>
@@ -239,7 +244,7 @@ const styles = StyleSheet.create({
         fontFamily: 'papyrus',
         fontSize: '25px',
         color: 'lime',
-        alignSelf: 'flex-start',
+        alignSelf: 'center',
         paddingLeft: 20,
     },
     over: {
@@ -248,6 +253,7 @@ const styles = StyleSheet.create({
         color: 'white',
         textAlign: 'center',
         padding: 25,
+        lineHeight: 'none',
     },
     result: {
         fontFamily: 'papyrus',
