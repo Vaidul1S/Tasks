@@ -77,6 +77,7 @@ export default function game() {
         if (gameOn && lives == 0) {
             setGameOn(false);
             setGameOver(true);
+            setHighScore(score);
         }
     }, [lives]);
 
@@ -84,17 +85,19 @@ export default function game() {
         if (gameOn && length == 0) {
             setGameOn(false);
             setGameOver(true);
+            setHighScore(score);
         }
     }, [length]);
 
-    const [highScores, setHighScores] = useState([]);
+    const [highScore, setHighScore] = useState([]);
+    const [showHighScore, setShowHighScore] = useState(false);
 
     useEffect(() => {
     const loadData = async () => {
       try {
         const data = await AsyncStorage.getItem('fwf');
         if (data) {
-          setHighScores(JSON.parse(data));
+          setHighScore(JSON.parse(data));
         }
       } catch (err) {
         console.error("Failed to load data", err);
@@ -106,13 +109,13 @@ export default function game() {
   useEffect(() => {
     const storeData = async () => {
       try {
-        await AsyncStorage.setItem('fwf', JSON.stringify(pool));
+        await AsyncStorage.setItem('fwf', JSON.stringify(score));
       } catch (err) {
         console.error("Failed to save data", err);
       }
     };
     storeData();
-  }, [highScores]);
+  }, [highScore]);
 
     return (
         <SafeAreaProvider style={styles.body}>
@@ -163,6 +166,14 @@ export default function game() {
                     <ThemedText style={styles.over}>You made <ThemedText style={styles.result}>{score}</ThemedText> correct answers
                         <br /> out of <ThemedText style={styles.result}>{question - 1}</ThemedText> questions.</ThemedText>
                     <ThemedText style={styles.over}>Good luck next time.</ThemedText>
+                    <TouchableOpacity onPress={playAgain}><ThemedText style={styles.menu}>To Menu</ThemedText></TouchableOpacity>
+                </ThemedView>
+            </Modal>
+
+            <Modal visible={showHighScore} style={styles.modal} animationType="fade" transparent={true}>
+                <ThemedView style={styles.gameOver}>
+                    <ThemedText style={styles.title}>High Scores</ThemedText>
+                    {highScore.map(h => <ThemedView><ThemedText>{h}</ThemedText></ThemedView>)}
                     <TouchableOpacity onPress={playAgain}><ThemedText style={styles.menu}>To Menu</ThemedText></TouchableOpacity>
                 </ThemedView>
             </Modal>
