@@ -5,6 +5,7 @@ import { ThemedText } from '@/components/themed-text';
 import { useEffect, useState } from "react";
 import { flags } from '../../assets/data/flags.js';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function game() {
 
@@ -86,6 +87,33 @@ export default function game() {
         }
     }, [length]);
 
+    const [highScores, setHighScores] = useState([]);
+
+    useEffect(() => {
+    const loadData = async () => {
+      try {
+        const data = await AsyncStorage.getItem('fwf');
+        if (data) {
+          setHighScores(JSON.parse(data));
+        }
+      } catch (err) {
+        console.error("Failed to load data", err);
+      }
+    };
+    loadData();
+  }, []);
+
+  useEffect(() => {
+    const storeData = async () => {
+      try {
+        await AsyncStorage.setItem('fwf', JSON.stringify(pool));
+      } catch (err) {
+        console.error("Failed to save data", err);
+      }
+    };
+    storeData();
+  }, [highScores]);
+
     return (
         <SafeAreaProvider style={styles.body}>
             <ThemedView style={styles.game}>
@@ -103,16 +131,15 @@ export default function game() {
             <Modal visible={gameOn} style={styles.modal} animationType="fade" transparent={true}>
                 <ThemedView style={styles.card}>
                     <TouchableOpacity onPress={forfeit}><ThemedText style={styles.back}>Forfeit</ThemedText></TouchableOpacity>
-                    {lives > 0 ? 
-                    <ThemedView style={{ height: 60, flexDirection: "row", alignSelf: 'center', }}>
-                        <ThemedText style={styles.lives}>Lives:</ThemedText>
-                        {lives > 0 ? <Image style={{ width: 60, height: 60 }} source={require('@/assets/images/heart.svg')} contentFit={'contain'} /> : null}
-                        {lives > 1 ? <Image style={{ width: 60, height: 60 }} source={require('@/assets/images/heart.svg')} contentFit={'contain'} /> : null}
-                        {lives > 2 ? <Image style={{ width: 60, height: 60 }} source={require('@/assets/images/heart.svg')} contentFit={'contain'} /> : null}                        
-                        {lives > 3 ? <Image style={{ width: 60, height: 60 }} source={require('@/assets/images/heart.svg')} contentFit={'contain'} /> : null}                        
-                        {lives > 4 ? <Image style={{ width: 60, height: 60 }} source={require('@/assets/images/heart.svg')} contentFit={'contain'} /> : null}                        
-                    </ThemedView> : null}
-
+                    {lives > 0 ?
+                        <ThemedView style={{ height: 60, flexDirection: "row", alignSelf: 'center', }}>
+                            <ThemedText style={styles.lives}>Lives:</ThemedText>
+                            {lives > 0 ? <Image style={{ width: 60, height: 60 }} source={require('@/assets/images/heart.svg')} contentFit={'contain'} /> : null}
+                            {lives > 1 ? <Image style={{ width: 60, height: 60 }} source={require('@/assets/images/heart.svg')} contentFit={'contain'} /> : null}
+                            {lives > 2 ? <Image style={{ width: 60, height: 60 }} source={require('@/assets/images/heart.svg')} contentFit={'contain'} /> : null}
+                            {lives > 3 ? <Image style={{ width: 60, height: 60 }} source={require('@/assets/images/heart.svg')} contentFit={'contain'} /> : null}
+                            {lives > 4 ? <Image style={{ width: 60, height: 60 }} source={require('@/assets/images/heart.svg')} contentFit={'contain'} /> : null}
+                        </ThemedView> : null}
 
                     <ThemedText style={styles.title}>Guess a Country!</ThemedText>
                     <ThemedText style={styles.question}>Question #{question}</ThemedText>
@@ -134,7 +161,7 @@ export default function game() {
                 <ThemedView style={styles.gameOver}>
                     <ThemedText style={styles.title}>Game Over</ThemedText>
                     <ThemedText style={styles.over}>You made <ThemedText style={styles.result}>{score}</ThemedText> correct answers
-                        <br/> out of <ThemedText style={styles.result}>{question - 1}</ThemedText> questions.</ThemedText>
+                        <br /> out of <ThemedText style={styles.result}>{question - 1}</ThemedText> questions.</ThemedText>
                     <ThemedText style={styles.over}>Good luck next time.</ThemedText>
                     <TouchableOpacity onPress={playAgain}><ThemedText style={styles.menu}>To Menu</ThemedText></TouchableOpacity>
                 </ThemedView>
