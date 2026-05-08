@@ -65,6 +65,8 @@ export default function game() {
     const playAgain = _ => {
         setGameOn(false);
         setGameOver(false);
+        setShowHighScore(false);
+        
     };
 
     const forfeit = _ => {
@@ -77,7 +79,7 @@ export default function game() {
         if (gameOn && lives == 0) {
             setGameOn(false);
             setGameOver(true);
-            setHighScore(score);
+            setHighScore(h => h + {score, question});
         }
     }, [lives]);
 
@@ -85,7 +87,7 @@ export default function game() {
         if (gameOn && length == 0) {
             setGameOn(false);
             setGameOver(true);
-            setHighScore(score);
+            setHighScore(h => h + {score, question});
         }
     }, [length]);
 
@@ -93,29 +95,29 @@ export default function game() {
     const [showHighScore, setShowHighScore] = useState(false);
 
     useEffect(() => {
-    const loadData = async () => {
-      try {
-        const data = await AsyncStorage.getItem('fwf');
-        if (data) {
-          setHighScore(JSON.parse(data));
-        }
-      } catch (err) {
-        console.error("Failed to load data", err);
-      }
-    };
-    loadData();
-  }, []);
+        const loadData = async () => {
+            try {
+                const data = await AsyncStorage.getItem('fwf');
+                if (data) {
+                    setHighScore(JSON.parse(data));
+                }
+            } catch (err) {
+                console.error("Failed to load data", err);
+            }
+        };
+        loadData();
+    }, []);
 
-  useEffect(() => {
-    const storeData = async () => {
-      try {
-        await AsyncStorage.setItem('fwf', JSON.stringify(score));
-      } catch (err) {
-        console.error("Failed to save data", err);
-      }
-    };
-    storeData();
-  }, [highScore]);
+    useEffect(() => {
+        const storeData = async () => {
+            try {
+                await AsyncStorage.setItem('fwf', JSON.stringify({score, question}));
+            } catch (err) {
+                console.error("Failed to save data", err);
+            }
+        };
+        storeData();
+    }, [highScore]);
 
     return (
         <SafeAreaProvider style={styles.body}>
@@ -128,6 +130,7 @@ export default function game() {
                 <TouchableOpacity onPress={_ => startTheGame(50)}><ThemedText style={styles.menu}>Game of 50</ThemedText></TouchableOpacity>
                 <TouchableOpacity onPress={_ => startTheGame(3)}><ThemedText style={styles.menu}>3 Lives</ThemedText></TouchableOpacity>
                 <TouchableOpacity onPress={_ => startTheGame(5)}><ThemedText style={styles.menu}>5 Lives</ThemedText></TouchableOpacity>
+                <TouchableOpacity onPress={_ => setShowHighScore(true)}><ThemedText style={styles.menu}>Records</ThemedText></TouchableOpacity>
 
             </ThemedView>
 
@@ -173,7 +176,7 @@ export default function game() {
             <Modal visible={showHighScore} style={styles.modal} animationType="fade" transparent={true}>
                 <ThemedView style={styles.gameOver}>
                     <ThemedText style={styles.title}>High Scores</ThemedText>
-                    {highScore.map(h => <ThemedView><ThemedText>{h}</ThemedText></ThemedView>)}
+                    <ThemedView style={styles.over}><ThemedText style={styles.question}>{highScore.score} of {highScore.question}</ThemedText></ThemedView>
                     <TouchableOpacity onPress={playAgain}><ThemedText style={styles.menu}>To Menu</ThemedText></TouchableOpacity>
                 </ThemedView>
             </Modal>
