@@ -19,6 +19,7 @@ export default function game() {
     const [pick, setPick] = useState(Math.floor(Math.random() * flags.length));
     const [highScore, setHighScore] = useState([]);
     const [showHighScore, setShowHighScore] = useState(false);
+    const [type, setType] = useState(null);
 
     const flag = flags[pick];
 
@@ -79,12 +80,16 @@ export default function game() {
     const startTheGame = e => {
         if (e == 20) {
             setLength(20);
+            setType('20 quesions');
         } else if (e == 50) {
             setLength(50);
+            setType('50 quesions');
         } else if (e == 3) {
             setLives(3);
+            setType('3 lives');
         } else if (e == 5) {
             setLives(5);
+            setType('5 lives');
         }
         reset();
     };
@@ -106,7 +111,7 @@ export default function game() {
         if (gameOn && lives == 0) {
             setGameOn(false);
             setGameOver(true);
-            setHighScore(h => [...h, {score, question}]);
+            setHighScore(h => [...h, {score, question, type}]);
         }
     }, [lives]);
 
@@ -114,7 +119,7 @@ export default function game() {
         if (gameOn && length == 0) {
             setGameOn(false);
             setGameOver(true);
-            setHighScore(h => [...h, {score, question}]);
+            setHighScore(h => [...h, {score, question, type}]);
         }
     }, [length]);        
 
@@ -180,7 +185,7 @@ export default function game() {
                 <ThemedView style={styles.gameOver}>
                     <ThemedText style={styles.title}>High Scores</ThemedText>
                     <ThemedView style={styles.over}>
-                        {highScore.map(h => <ThemedText style={styles.question}>{h.score} of {h.question}</ThemedText>)}
+                        {highScore.map(h => <ThemedText style={styles.question}>{h.score} of {h.question} ({h.type})</ThemedText>)}
                         </ThemedView>                    
                     <TouchableOpacity onPress={rRecords}><ThemedText style={styles.menu}>Reset Records</ThemedText></TouchableOpacity>
                     <TouchableOpacity onPress={playAgain}><ThemedText style={styles.menu}>To Menu</ThemedText></TouchableOpacity>
