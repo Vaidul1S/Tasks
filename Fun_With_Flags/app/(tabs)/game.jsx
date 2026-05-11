@@ -79,7 +79,7 @@ export default function game() {
         if (gameOn && lives == 0) {
             setGameOn(false);
             setGameOver(true);
-            setHighScore(h => h + {score, question});
+            setHighScore(h => [...h, {score, question}]);
         }
     }, [lives]);
 
@@ -87,7 +87,7 @@ export default function game() {
         if (gameOn && length == 0) {
             setGameOn(false);
             setGameOver(true);
-            setHighScore(h => h + {score, question});
+            setHighScore(h => [...h, {score, question}]);
         }
     }, [length]);
 
