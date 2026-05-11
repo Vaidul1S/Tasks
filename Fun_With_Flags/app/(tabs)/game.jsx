@@ -98,7 +98,7 @@ export default function game() {
         setGameOn(false);
         setGameOver(false);
         setShowHighScore(false);
-        
+
     };
 
     const forfeit = _ => {
@@ -111,7 +111,7 @@ export default function game() {
         if (gameOn && lives == 0) {
             setGameOn(false);
             setGameOver(true);
-            setHighScore(h => [...h, {score, question, type}]);
+            setHighScore(h => [...h, { score, question, type }]);
         }
     }, [lives]);
 
@@ -119,11 +119,11 @@ export default function game() {
         if (gameOn && length == 0) {
             setGameOn(false);
             setGameOver(true);
-            setHighScore(h => [...h, {score, question, type}]);
+            setHighScore(h => [...h, { score, question, type }]);
         }
-    }, [length]);        
+    }, [length]);
 
-    const rRecords = _ =>{
+    const rRecords = _ => {
         setHighScore([]);
     }
 
@@ -185,8 +185,8 @@ export default function game() {
                 <ThemedView style={styles.gameOver}>
                     <ThemedText style={styles.title}>High Scores</ThemedText>
                     <ThemedView style={styles.over}>
-                        {highScore.map(h => <ThemedText style={styles.question}>{h.score} of {h.question} ({h.type})</ThemedText>)}
-                        </ThemedView>                    
+                        {highScore.map(h => <ThemedText style={styles.question}>{h.score} of {h.question} (mode: {h.type})</ThemedText>)}
+                    </ThemedView>
                     <TouchableOpacity onPress={rRecords}><ThemedText style={styles.menu}>Reset Records</ThemedText></TouchableOpacity>
                     <TouchableOpacity onPress={playAgain}><ThemedText style={styles.menu}>To Menu</ThemedText></TouchableOpacity>
                 </ThemedView>
@@ -322,5 +322,5 @@ const styles = StyleSheet.create({
         borderRadius: '25px',
         padding: 8,
         width: '100px',
-    },    
+    },
 })
