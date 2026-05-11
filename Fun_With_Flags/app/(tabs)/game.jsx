@@ -118,6 +118,10 @@ export default function game() {
         }
     }, [length]);        
 
+    const rRecords = _ =>{
+        setHighScore([]);
+    }
+
     return (
         <SafeAreaProvider style={styles.body}>
             <ThemedView style={styles.game}>
@@ -177,7 +181,8 @@ export default function game() {
                     <ThemedText style={styles.title}>High Scores</ThemedText>
                     <ThemedView style={styles.over}>
                         {highScore.map(h => <ThemedText style={styles.question}>{h.score} of {h.question}</ThemedText>)}
-                        </ThemedView>
+                        </ThemedView>                    
+                    <TouchableOpacity onPress={rRecords}><ThemedText style={styles.menu}>Reset Records</ThemedText></TouchableOpacity>
                     <TouchableOpacity onPress={playAgain}><ThemedText style={styles.menu}>To Menu</ThemedText></TouchableOpacity>
                 </ThemedView>
             </Modal>
@@ -312,5 +317,5 @@ const styles = StyleSheet.create({
         borderRadius: '25px',
         padding: 8,
         width: '100px',
-    },
+    },    
 })
