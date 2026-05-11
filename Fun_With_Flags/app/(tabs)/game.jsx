@@ -11,12 +11,14 @@ export default function game() {
 
     const [score, setScore] = useState(0);
     const [guess, setGuess] = useState('Choose your answer');
-    const [question, setQuestion] = useState(1);
+    const [question, setQuestion] = useState(0);
     const [gameOn, setGameOn] = useState(false);
     const [lives, setLives] = useState(null);
     const [gameOver, setGameOver] = useState(false);
     const [length, setLength] = useState(null);
     const [pick, setPick] = useState(Math.floor(Math.random() * flags.length));
+    const [highScore, setHighScore] = useState([]);
+    const [showHighScore, setShowHighScore] = useState(false);
 
     const flag = flags[pick];
 
@@ -25,6 +27,31 @@ export default function game() {
     let option3 = Math.floor(Math.random() * flags.length);
     let options = [flag.name, flags[option1].name, flags[option2].name, flags[option3].name];
     options.sort(function () { return 0.5 - Math.random() });
+
+    useEffect(() => {
+        const loadData = async () => {
+            try {
+                const data = await AsyncStorage.getItem('fwf');
+                if (data) {
+                    setHighScore(JSON.parse(data));
+                }
+            } catch (err) {
+                console.error("Failed to load data", err);
+            }
+        };
+        loadData();
+    }, []);
+
+    useEffect(() => {
+        const storeData = async () => {
+            try {
+                await AsyncStorage.setItem('fwf', JSON.stringify(highScore));
+            } catch (err) {
+                console.error("Failed to save data", err);
+            }
+        };
+        storeData();
+    }, [highScore]);
 
     const submitGuess = e => {
         if (e == flag.name) {
@@ -44,7 +71,7 @@ export default function game() {
     };
 
     const reset = _ => {
-        setQuestion(1);
+        setQuestion(0);
         setScore(0);
         setGameOn(true);
         setGuess('Choose your answer');
@@ -89,35 +116,7 @@ export default function game() {
             setGameOver(true);
             setHighScore(h => [...h, {score, question}]);
         }
-    }, [length]);
-
-    const [highScore, setHighScore] = useState([]);
-    const [showHighScore, setShowHighScore] = useState(false);
-
-    useEffect(() => {
-        const loadData = async () => {
-            try {
-                const data = await AsyncStorage.getItem('fwf');
-                if (data) {
-                    setHighScore(JSON.parse(data));
-                }
-            } catch (err) {
-                console.error("Failed to load data", err);
-            }
-        };
-        loadData();
-    }, []);
-
-    useEffect(() => {
-        const storeData = async () => {
-            try {
-                await AsyncStorage.setItem('fwf', JSON.stringify({score, question}));
-            } catch (err) {
-                console.error("Failed to save data", err);
-            }
-        };
-        storeData();
-    }, [highScore]);
+    }, [length]);        
 
     return (
         <SafeAreaProvider style={styles.body}>
@@ -148,7 +147,7 @@ export default function game() {
                         </ThemedView> : null}
 
                     <ThemedText style={styles.title}>Guess a Country!</ThemedText>
-                    <ThemedText style={styles.question}>Question #{question}</ThemedText>
+                    <ThemedText style={styles.question}>Question #{question + 1}</ThemedText>
 
                     <ThemedView style={styles.container}>
                         <Image style={{ width: 380, height: 220 }} source={{ uri: flag.flag, }} contentFit={'contain'} />
@@ -167,7 +166,7 @@ export default function game() {
                 <ThemedView style={styles.gameOver}>
                     <ThemedText style={styles.title}>Game Over</ThemedText>
                     <ThemedText style={styles.over}>You made <ThemedText style={styles.result}>{score}</ThemedText> correct answers
-                        <br /> out of <ThemedText style={styles.result}>{question - 1}</ThemedText> questions.</ThemedText>
+                        <br /> out of <ThemedText style={styles.result}>{question}</ThemedText> questions.</ThemedText>
                     <ThemedText style={styles.over}>Good luck next time.</ThemedText>
                     <TouchableOpacity onPress={playAgain}><ThemedText style={styles.menu}>To Menu</ThemedText></TouchableOpacity>
                 </ThemedView>
@@ -176,7 +175,9 @@ export default function game() {
             <Modal visible={showHighScore} style={styles.modal} animationType="fade" transparent={true}>
                 <ThemedView style={styles.gameOver}>
                     <ThemedText style={styles.title}>High Scores</ThemedText>
-                    <ThemedView style={styles.over}><ThemedText style={styles.question}>{highScore.score} of {highScore.question}</ThemedText></ThemedView>
+                    <ThemedView style={styles.over}>
+                        {highScore.map(h => <ThemedText style={styles.question}>{h.score} of {h.question}</ThemedText>)}
+                        </ThemedView>
                     <TouchableOpacity onPress={playAgain}><ThemedText style={styles.menu}>To Menu</ThemedText></TouchableOpacity>
                 </ThemedView>
             </Modal>
