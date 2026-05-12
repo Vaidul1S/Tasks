@@ -123,7 +123,7 @@ export default function game() {
         }
     }, [length]);
 
-    const rRecords = _ => {
+    const eraseRecords = _ => {
         setHighScore([]);
     }
 
@@ -187,7 +187,7 @@ export default function game() {
                     <ThemedView style={styles.over}>
                         {highScore.map(h => <ThemedText style={styles.question}>{h.score} of {h.question} (mode: {h.type})</ThemedText>)}
                     </ThemedView>
-                    <TouchableOpacity onPress={rRecords}><ThemedText style={styles.menu}>Reset Records</ThemedText></TouchableOpacity>
+                    <TouchableOpacity onPress={eraseRecords}><ThemedText style={styles.menu}>Reset Records</ThemedText></TouchableOpacity>
                     <TouchableOpacity onPress={playAgain}><ThemedText style={styles.menu}>To Menu</ThemedText></TouchableOpacity>
                 </ThemedView>
             </Modal>

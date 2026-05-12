@@ -27,7 +27,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="sheet"
         options={{
-          title: 'Cheat Sheet',
+          title: 'List Sheet',
           tabBarIcon: ({ color }) => <Entypo name="open-book" size={24} color={color} />,
         }}
       />
