@@ -114,7 +114,9 @@ export default function game() {
         if (gameOn && lives == 0) {
             setGameOn(false);
             setGameOver(true);
-            setHighScore(h => [...h, { score, question, type }]);
+            if (!highScore.find(h => h.type == type) || highScore.some(h => h.type == type && h.score < score)) {
+                setHighScore(h => [...h, { score, question, type }]);
+            };
         }
     }, [lives]);
 
@@ -122,7 +124,9 @@ export default function game() {
         if (gameOn && length == 0) {
             setGameOn(false);
             setGameOver(true);
-            setHighScore(h => [...h, { score, question, type }]);
+            if (!highScore.find(h => h.type == type) || highScore.some(h => h.type == type && h.score < score)) {
+                setHighScore(h => [...h, { score, question, type }]);
+            };
         }
     }, [length]);
 
