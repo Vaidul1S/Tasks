@@ -189,7 +189,7 @@ export default function game() {
                 <ThemedView style={styles.gameOver}>
                     <ThemedText style={styles.title}>High Scores</ThemedText>
                     <ThemedView style={styles.over}>
-                        {highScore.map(h => <ThemedText style={styles.question}>{h.score} of {h.question} (mode: {h.type})</ThemedText>)}
+                        {highScore.map(h => <ThemedText key={h.score} style={styles.question}>{h.score} of {h.question} (mode: {h.type})</ThemedText>)}
                     </ThemedView>
                     <TouchableOpacity onPress={eraseRecords}><ThemedText style={styles.menu}>Reset Records</ThemedText></TouchableOpacity>
                     <TouchableOpacity onPress={playAgain}><ThemedText style={styles.menu}>To Menu</ThemedText></TouchableOpacity>
