@@ -90,6 +90,9 @@ export default function game() {
         } else if (e == 5) {
             setLives(5);
             setType('5 lives');
+        } else if (e == 1) {
+            setLives(1);
+            setType('Ultimate');
         }
         reset();
     };
@@ -134,10 +137,11 @@ export default function game() {
                     <Image style={{ width: 350, height: 220, alignSelf: 'center' }} source={require('@/assets/images/world.png')} contentFit={'contain'} />
                 </ThemedView>
                 <ThemedText style={styles.title}>Choose game mode:</ThemedText>
-                <TouchableOpacity onPress={_ => startTheGame(20)}><ThemedText style={styles.menu}>Game of 20</ThemedText></TouchableOpacity>
-                <TouchableOpacity onPress={_ => startTheGame(50)}><ThemedText style={styles.menu}>Game of 50</ThemedText></TouchableOpacity>
+                <TouchableOpacity onPress={_ => startTheGame(20)}><ThemedText style={styles.menu}>20 Quesions</ThemedText></TouchableOpacity>
+                <TouchableOpacity onPress={_ => startTheGame(50)}><ThemedText style={styles.menu}>50 Quesions</ThemedText></TouchableOpacity>
                 <TouchableOpacity onPress={_ => startTheGame(3)}><ThemedText style={styles.menu}>3 Lives</ThemedText></TouchableOpacity>
                 <TouchableOpacity onPress={_ => startTheGame(5)}><ThemedText style={styles.menu}>5 Lives</ThemedText></TouchableOpacity>
+                <TouchableOpacity onPress={_ => startTheGame(1)}><ThemedText style={styles.ulti}>Ultimate</ThemedText></TouchableOpacity>
                 <TouchableOpacity onPress={_ => setShowHighScore(true)}><ThemedText style={styles.menu}>Records</ThemedText></TouchableOpacity>
 
             </ThemedView>
@@ -236,6 +240,18 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         alignSelf: 'center',
         backgroundColor: '#446b77',
+        borderRadius: '15px',
+        padding: 12,
+    },
+    ulti: {
+        width: '60%',
+        fontFamily: 'papyrus',
+        fontSize: '24px',
+        color: 'white',
+        margin: (0, 20),
+        textAlign: 'center',
+        alignSelf: 'center',
+        backgroundColor: '#694477',
         borderRadius: '15px',
         padding: 12,
     },
