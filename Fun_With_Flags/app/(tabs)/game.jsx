@@ -76,7 +76,8 @@ export default function game() {
         setScore(0);
         setGameOn(true);
         setGuess('Choose your answer');
-    }
+    };
+
     const startTheGame = e => {
         if (e == 20) {
             setLength(20);
@@ -108,13 +109,13 @@ export default function game() {
         setLives(null);
         setGameOn(false);
         setGameOver(true);
-    }
+    };
 
     useEffect(() => {
         if (gameOn && lives == 0) {
             setGameOn(false);
             setGameOver(true);
-            if (!highScore.find(h => h.type == type) || highScore.some(h => h.type == type && h.score < score)) {
+            if (!highScore.find(h => h.type === type) || highScore.some(h => h.type === type && h.score < score)) {
                 setHighScore(h => [...h, { score, question, type }]);
             };
         }
@@ -124,7 +125,7 @@ export default function game() {
         if (gameOn && length == 0) {
             setGameOn(false);
             setGameOver(true);
-            if (!highScore.find(h => h.type == type) || highScore.some(h => h.type == type && h.score < score)) {
+            if (!highScore.find(h => h.type === type) || highScore.some(h => h.type === type && h.score < score)) {
                 setHighScore(h => [...h, { score, question, type }]);
             };
         }
@@ -132,7 +133,7 @@ export default function game() {
 
     const eraseRecords = _ => {
         setHighScore([]);
-    }
+    };
 
     return (
         <SafeAreaProvider style={styles.body}>
@@ -173,7 +174,8 @@ export default function game() {
                     <TouchableOpacity onPress={_ => submitGuess(options[1])}><ThemedText style={styles.option}>2. {options[1]}</ThemedText></TouchableOpacity>
                     <TouchableOpacity onPress={_ => submitGuess(options[2])}><ThemedText style={styles.option}>3. {options[2]}</ThemedText></TouchableOpacity>
                     <TouchableOpacity onPress={_ => submitGuess(options[3])}><ThemedText style={styles.option}>4. {options[3]}</ThemedText></TouchableOpacity>
-                    <ThemedText style={guess == 'Correct!' ? styles.guess1 : styles.guess2}>{guess}</ThemedText>
+                    {guess == "Choose your answer" ? <ThemedText style={styles.guess}>{guess}</ThemedText> 
+                    : <ThemedText style={guess == 'Correct!' ? styles.guess1 : styles.guess2}>{guess}</ThemedText>}                    
                     <ThemedText style={styles.score}>Score: {score}</ThemedText>
 
                 </ThemedView>
@@ -201,7 +203,7 @@ export default function game() {
             </Modal>
         </SafeAreaProvider>
     )
-}
+};
 
 const styles = StyleSheet.create({
     body: {
@@ -240,7 +242,7 @@ const styles = StyleSheet.create({
         fontFamily: 'papyrus',
         fontSize: '24px',
         color: 'white',
-        margin: (0, 20),
+        margin: (0, 15),
         textAlign: 'center',
         alignSelf: 'center',
         backgroundColor: '#446b77',
@@ -252,7 +254,7 @@ const styles = StyleSheet.create({
         fontFamily: 'papyrus',
         fontSize: '24px',
         color: 'white',
-        margin: (0, 20),
+        margin: (0, 15),
         textAlign: 'center',
         alignSelf: 'center',
         backgroundColor: '#694477',
@@ -288,6 +290,14 @@ const styles = StyleSheet.create({
         color: 'white',
         alignSelf: 'flex-end',
         margin: 20,
+    },
+    guess: {
+        fontFamily: 'papyrus',
+        textAlign: 'center',
+        fontSize: '30px',
+        padding: 12,
+        color: 'white',
+        fontWeight: 800,
     },
     guess1: {
         fontFamily: 'papyrus',
