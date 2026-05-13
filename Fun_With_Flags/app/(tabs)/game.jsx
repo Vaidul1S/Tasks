@@ -149,7 +149,7 @@ export default function game() {
                 <TouchableOpacity onPress={_ => startTheGame(3)}><ThemedText style={styles.menu}>3 Lives</ThemedText></TouchableOpacity>
                 <TouchableOpacity onPress={_ => startTheGame(5)}><ThemedText style={styles.menu}>5 Lives</ThemedText></TouchableOpacity>
                 <TouchableOpacity onPress={_ => startTheGame(1)}><ThemedText style={styles.ulti}>Ultimate</ThemedText></TouchableOpacity>
-                <TouchableOpacity onPress={_ => setShowHighScore(true)}><ThemedText style={styles.menu}>Records</ThemedText></TouchableOpacity>
+                <TouchableOpacity onPress={_ => setShowHighScore(true)}><ThemedText style={styles.option}>Records</ThemedText></TouchableOpacity>
 
             </ThemedView>
 
@@ -169,10 +169,12 @@ export default function game() {
                     <ThemedView style={styles.container}>
                         <Image style={{ width: 380, height: 220 }} source={{ uri: flag.flag, }} contentFit={'contain'} />
                     </ThemedView>
-                    <TouchableOpacity onPress={_ => submitGuess(options[0])}><ThemedText style={styles.option}>1. {options[0]}</ThemedText></TouchableOpacity>
-                    <TouchableOpacity onPress={_ => submitGuess(options[1])}><ThemedText style={styles.option}>2. {options[1]}</ThemedText></TouchableOpacity>
-                    <TouchableOpacity onPress={_ => submitGuess(options[2])}><ThemedText style={styles.option}>3. {options[2]}</ThemedText></TouchableOpacity>
-                    <TouchableOpacity onPress={_ => submitGuess(options[3])}><ThemedText style={styles.option}>4. {options[3]}</ThemedText></TouchableOpacity>
+                    {options.map((option, index) => (
+                        <TouchableOpacity key={index} onPress={() => submitGuess(option)}>
+                            <ThemedText style={styles.option}>{index + 1}. {option}</ThemedText>
+                        </TouchableOpacity>
+                    ))}
+
                     {guess == "Choose your answer" ? <ThemedText style={styles.guess}>{guess}</ThemedText>
                         : <ThemedText style={guess == 'Correct!' ? styles.guess1 : styles.guess2}>{guess}</ThemedText>}
                     <ThemedText style={styles.score}>Score: {score}</ThemedText>
