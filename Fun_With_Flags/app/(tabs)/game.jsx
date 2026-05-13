@@ -116,6 +116,7 @@ export default function game() {
             setGameOn(false);
             setGameOver(true);
             if (!highScore.find(h => h.type === type) || highScore.some(h => h.type === type && h.score < score)) {
+                setHighScore(h => h.filter(h => h.type !== type));
                 setHighScore(h => [...h, { score, question, type }]);
             };
         }
@@ -126,6 +127,7 @@ export default function game() {
             setGameOn(false);
             setGameOver(true);
             if (!highScore.find(h => h.type === type) || highScore.some(h => h.type === type && h.score < score)) {
+                setHighScore(h => h.filter(h => h.type !== type));
                 setHighScore(h => [...h, { score, question, type }]);
             };
         }
