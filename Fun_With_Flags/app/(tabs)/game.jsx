@@ -150,7 +150,7 @@ export default function game() {
                 <TouchableOpacity onPress={_ => startTheGame(3)}><ThemedText style={styles.menu}>3 Lives</ThemedText></TouchableOpacity>
                 <TouchableOpacity onPress={_ => startTheGame(5)}><ThemedText style={styles.menu}>5 Lives</ThemedText></TouchableOpacity>
                 <TouchableOpacity onPress={_ => startTheGame(1)}><ThemedText style={styles.ulti}>Ultimate</ThemedText></TouchableOpacity>
-                <TouchableOpacity onPress={_ => setShowHighScore(true)}><ThemedText style={styles.option}>Records</ThemedText></TouchableOpacity>
+                <TouchableOpacity onPress={_ => setShowHighScore(true)}><ThemedText style={styles.records}> Records </ThemedText></TouchableOpacity>
 
             </ThemedView>
 
@@ -285,6 +285,18 @@ const styles = StyleSheet.create({
         backgroundColor: '#446b77',
         borderRadius: '15px',
         padding: (0, 8),
+    },
+    records: {
+        
+        fontFamily: 'papyrus',
+        fontSize: 16,
+        color: 'white',
+        marginTop: 40,
+        textAlign: 'center',
+        alignSelf: 'center',
+        backgroundColor: '#446b77',
+        borderRadius: '15px',
+        padding: 8,
     },
     score: {
         fontFamily: 'papyrus',
