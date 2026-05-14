@@ -1,6 +1,6 @@
 import { Image } from 'expo-image';
 import { StyleSheet } from 'react-native';
-import { countries } from '../../assets/data/countries';
+import { flags } from '../../assets/data/flags';
 
 import ParallaxScrollView from '@/components/parallax-scroll-view';
 import { ThemedText } from '@/components/themed-text';
@@ -8,7 +8,7 @@ import { ThemedView } from '@/components/themed-view';
 
 export default function HomeScreen() {
 
-  const count = countries.length;  
+  const count = flags.length;  
 
   return (
     <ParallaxScrollView

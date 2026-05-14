@@ -11,11 +11,11 @@ export default function sheet() {
 
         <ScrollView style={styles.sheet}>
             {flags.map(f =>
-                <ThemedView style={styles.list} key={flags.name}>
+                <ThemedView key={f.name} style={styles.list} >
                     <ThemedText style={styles.text}>{f.name} </ThemedText>
-                    <SafeAreaView style={styles.container}>
-                        <Image style={{ width: 140, height: 80, alignSelf: 'center' }} source={flags[f.flag]} resizeMode={'contain'} />
-                    </SafeAreaView>
+                    <ThemedView  style={styles.container}>
+                        <Image style={{ width: 140, height: 80, alignSelf: 'center' }} source={flags[f.flag]} contentFit={'contain'} />
+                    </ThemedView>
                 </ThemedView>
             )}
         </ScrollView>
