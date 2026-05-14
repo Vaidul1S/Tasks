@@ -22,11 +22,12 @@ export default function game() {
     const [type, setType] = useState(null);
 
     const flag = flags[pick];
-
-    let option1 = Math.floor(Math.random() * flags.length);
-    let option2 = Math.floor(Math.random() * flags.length);
-    let option3 = Math.floor(Math.random() * flags.length);
-    let options = [flag.name, flags[option1].name, flags[option2].name, flags[option3].name];
+    const options = [
+        flag.name,
+        flags[Math.floor(Math.random() * flags.length)].name,
+        flags[Math.floor(Math.random() * flags.length)].name,
+        flags[Math.floor(Math.random() * flags.length)].name
+    ];
     options.sort(function () { return 0.5 - Math.random() });
 
     useEffect(() => {
