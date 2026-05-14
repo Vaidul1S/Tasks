@@ -14,7 +14,7 @@ export default function sheet() {
                 <ThemedView style={styles.list} key={flags.name}>
                     <ThemedText style={styles.text}>{f.name} </ThemedText>
                     <SafeAreaView style={styles.container}>
-                        <Image style={{ width: 140, height: 80, alignSelf: 'center' }} source={{ uri: f.flag, }} resizeMode={'contain'} />
+                        <Image style={{ width: 140, height: 80, alignSelf: 'center' }} source={flags[f.flag]} resizeMode={'contain'} />
                     </SafeAreaView>
                 </ThemedView>
             )}

@@ -150,7 +150,7 @@ export default function game() {
                 <TouchableOpacity onPress={_ => startTheGame(3)}><ThemedText style={styles.menu}>3 Lives</ThemedText></TouchableOpacity>
                 <TouchableOpacity onPress={_ => startTheGame(5)}><ThemedText style={styles.menu}>5 Lives</ThemedText></TouchableOpacity>
                 <TouchableOpacity onPress={_ => startTheGame(1)}><ThemedText style={styles.ulti}>Ultimate</ThemedText></TouchableOpacity>
-                <TouchableOpacity onPress={_ => setShowHighScore(true)}><ThemedText style={styles.records}> Records </ThemedText></TouchableOpacity>
+                <TouchableOpacity onPress={_ => setShowHighScore(true)}><ThemedText style={styles.records}> Records</ThemedText></TouchableOpacity>
 
             </ThemedView>
 
@@ -168,7 +168,7 @@ export default function game() {
                     <ThemedText style={styles.question}>Question #{question + 1}</ThemedText>
 
                     <ThemedView style={styles.container}>
-                        <Image style={{ width: 380, height: 220 }} source={{ uri: flag.flag, }} contentFit={'contain'} />
+                        <Image style={{ width: 380, height: 220 }} source={flag.flag} contentFit={'contain'} />
                     </ThemedView>
                     {options.map((option, index) => (
                         <TouchableOpacity key={index} onPress={() => submitGuess(option)}>
