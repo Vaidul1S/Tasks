@@ -14,7 +14,7 @@ export default function sheet() {
                 <ThemedView key={f.name} style={styles.list} >
                     <ThemedText style={styles.text}>{f.name} </ThemedText>
                     <ThemedView  style={styles.container}>
-                        <Image style={{ width: 140, height: 80, alignSelf: 'center' }} source={flags[f.flag]} contentFit={'contain'} />
+                        <Image style={{ width: 140, height: 80, alignSelf: 'center' }} source={f.flag} contentFit={'contain'} />
                     </ThemedView>
                 </ThemedView>
             )}
