@@ -144,7 +144,7 @@ export default function game() {
                 <ThemedView style={styles.container}>
                     <Image style={{ width: 350, height: 220, alignSelf: 'center' }} source={require('@/assets/images/world.png')} contentFit={'contain'} />
                 </ThemedView>
-                <ThemedText style={styles.title}>Choose game mode:</ThemedText>
+                <ThemedText style={styles.title}>Fun With Flags!</ThemedText>
                 <TouchableOpacity onPress={_ => startTheGame(20)}><ThemedText style={styles.menu}>20 Quesions</ThemedText></TouchableOpacity>
                 <TouchableOpacity onPress={_ => startTheGame(50)}><ThemedText style={styles.menu}>50 Quesions</ThemedText></TouchableOpacity>
                 <TouchableOpacity onPress={_ => startTheGame(3)}><ThemedText style={styles.menu}>3 Lives</ThemedText></TouchableOpacity>
@@ -237,6 +237,7 @@ const styles = StyleSheet.create({
         fontSize: '40px',
         color: 'white',
         margin: 10,
+        paddingBottom: 20,
         textAlign: 'center',
     },
     menu: {
