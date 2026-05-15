@@ -287,7 +287,7 @@ const styles = StyleSheet.create({
         padding: (0, 8),
     },
     records: {
-        
+
         fontFamily: 'papyrus',
         fontSize: 16,
         color: 'white',

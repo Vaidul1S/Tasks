@@ -2,7 +2,7 @@ import { Image } from 'expo-image';
 import { countries } from '../../assets/data/countries.js';
 import { ThemedView } from '@/components/themed-view';
 import { ThemedText } from '@/components/themed-text';
-import { ScrollView, SafeAreaView, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import { flags } from '../../assets/data/flags.js';
 
 export default function sheet() {
@@ -13,7 +13,7 @@ export default function sheet() {
             {flags.map(f =>
                 <ThemedView key={f.name} style={styles.list} >
                     <ThemedText style={styles.text}>{f.name} </ThemedText>
-                    <ThemedView  style={styles.container}>
+                    <ThemedView style={styles.container}>
                         <Image style={{ width: 140, height: 80, alignSelf: 'center' }} source={f.flag} contentFit={'contain'} />
                     </ThemedView>
                 </ThemedView>
