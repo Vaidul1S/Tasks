@@ -20,6 +20,7 @@ export default function game() {
     const [highScore, setHighScore] = useState([]);
     const [showHighScore, setShowHighScore] = useState(false);
     const [type, setType] = useState(null);
+    const [newRecord, setNewRecord] = useState(false);
 
     const flag = flags[pick];
     const options = [
@@ -103,7 +104,7 @@ export default function game() {
         setGameOn(false);
         setGameOver(false);
         setShowHighScore(false);
-
+        setNewRecord(false);
     };
 
     const forfeit = _ => {
@@ -119,6 +120,7 @@ export default function game() {
             if (!highScore.find(h => h.type === type) || highScore.some(h => h.type === type && h.score < score)) {
                 setHighScore(h => h.filter(h => h.type !== type));
                 setHighScore(h => [...h, { score, question, type }]);
+                setNewRecord(true);
             };
         }
     }, [lives]);
@@ -130,6 +132,7 @@ export default function game() {
             if (!highScore.find(h => h.type === type) || highScore.some(h => h.type === type && h.score < score)) {
                 setHighScore(h => h.filter(h => h.type !== type));
                 setHighScore(h => [...h, { score, question, type }]);
+                setNewRecord(true);
             };
         }
     }, [length]);
@@ -186,6 +189,8 @@ export default function game() {
             <Modal visible={gameOver} style={styles.modal} animationType="fade" transparent={true}>
                 <ThemedView style={styles.gameOver}>
                     <ThemedText style={styles.title}>Game Over</ThemedText>
+                    {newRecord ? <ThemedText style={styles.newrecord}>New Record!!!</ThemedText> : null}
+
                     <ThemedText style={styles.over}>You made <ThemedText style={styles.result}>{score}</ThemedText> correct answers
                         <br /> out of <ThemedText style={styles.result}>{question}</ThemedText> questions.</ThemedText>
                     <ThemedText style={styles.over}>Good luck next time.</ThemedText>
@@ -348,6 +353,14 @@ const styles = StyleSheet.create({
         fontFamily: 'papyrus',
         fontSize: '24px',
         color: 'white',
+        textAlign: 'center',
+        padding: 25,
+        lineHeight: 'none',
+    },
+    newrecord: {
+        fontFamily: 'papyrus',
+        fontSize: '24px',
+        color: 'lime',
         textAlign: 'center',
         padding: 25,
         lineHeight: 'none',
