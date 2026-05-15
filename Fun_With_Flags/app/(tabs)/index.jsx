@@ -1,6 +1,7 @@
 import { Image } from 'expo-image';
 import { StyleSheet } from 'react-native';
 import { flags } from '../../assets/data/flags';
+import { Link } from 'expo-router';
 
 import ParallaxScrollView from '@/components/parallax-scroll-view';
 import { ThemedText } from '@/components/themed-text';
@@ -8,7 +9,7 @@ import { ThemedView } from '@/components/themed-view';
 
 export default function HomeScreen() {
 
-  const count = flags.length;  
+  const count = flags.length;
 
   return (
     <ParallaxScrollView
@@ -22,13 +23,16 @@ export default function HomeScreen() {
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title" style={styles.title}>Fun With Flags!</ThemedText>
 
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle" style={styles.text}>Guess a country by the flag.</ThemedText>
-        <ThemedText type="subtitle" style={styles.text}>List of {count} countries.</ThemedText>
 
-      </ThemedView>
+        <ThemedView style={styles.stepContainer}>
+          <ThemedText type="subtitle" style={styles.text}>Guess a country by the flag.</ThemedText>
+          <ThemedText type="subtitle" style={styles.text}>List of {count} countries.</ThemedText>
 
+          <Link style={styles.link} href='https://github.com/Vaidul1S' target='_blank'>GitHub</Link>
+          <ThemedText style={styles.text}>&copy; Vaidul1s {new Date().getFullYear()}</ThemedText>
+
+        </ThemedView>
+      </ThemedView>
     </ParallaxScrollView>
   );
 }
@@ -40,8 +44,8 @@ const styles = StyleSheet.create({
 
   },
   stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+    height: '70%',
+    justifyContent: 'space-between',
 
   },
   background: {
@@ -53,10 +57,18 @@ const styles = StyleSheet.create({
     fontFamily: 'papyrus',
     fontSize: 34,
     textAlign: 'center',
+    margin: 30,
   },
   text: {
     fontFamily: 'papyrus',
     fontSize: 28,
     textAlign: 'center',
+  },
+  link: {
+    fontFamily: 'papyrus',
+    fontSize: 20,
+    textAlign: 'center',
+    color: 'white',    
+    marginTop: 300,
   }
 });
