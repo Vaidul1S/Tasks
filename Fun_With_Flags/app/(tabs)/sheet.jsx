@@ -1,5 +1,4 @@
 import { Image } from 'expo-image';
-import { countries } from '../../assets/data/countries.js';
 import { ThemedView } from '@/components/themed-view';
 import { ThemedText } from '@/components/themed-text';
 import { ScrollView, StyleSheet } from 'react-native';
