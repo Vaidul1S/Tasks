@@ -20,7 +20,7 @@ export default function HomeScreen() {
           style={styles.background}
         />
       }>
-      <ThemedView style={styles.titleContainer}>
+      <ThemedView style={styles.container}>
         <ThemedText type="title" style={styles.title}>Fun With Flags!</ThemedText>
 
 
@@ -28,8 +28,8 @@ export default function HomeScreen() {
           <ThemedText type="subtitle" style={styles.text}>Guess a country by the flag.</ThemedText>
           <ThemedText type="subtitle" style={styles.text}>List of {count} countries.</ThemedText>
 
-          <Link style={styles.link} href='https://github.com/Vaidul1S' target='_blank'>GitHub</Link>
-          <ThemedText style={styles.text}>&copy; Vaidul1s {new Date().getFullYear()}</ThemedText>
+          <Link style={styles.link} href='https://github.com/Vaidul1S' target='_blank'>GitHub
+            <br />&copy; Vaidul1s {new Date().getFullYear()}</Link>
 
         </ThemedView>
       </ThemedView>
@@ -38,13 +38,13 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
+  container: {
+    flex: 1,
     flexDirection: 'column',
     gap: 8,
 
   },
-  stepContainer: {
-    height: '70%',
+  stepContainer: {    
     justifyContent: 'space-between',
 
   },
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     fontFamily: 'papyrus',
     fontSize: 20,
     textAlign: 'center',
-    color: 'white',    
+    color: 'white',
     marginTop: 300,
   }
 });
