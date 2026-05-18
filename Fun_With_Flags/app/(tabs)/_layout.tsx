@@ -17,13 +17,14 @@ export default function TabLayout() {
         headerShown: false,
         tabBarButton: HapticTab,
       }}>
+
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Credits',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          title: 'Play',
+          tabBarIcon: ({ color }) => <Entypo name="game-controller" size={24} color={color} />,
         }}
-      />      
+      />
       <Tabs.Screen
         name="sheet"
         options={{
@@ -32,12 +33,13 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="game"
+        name="credits"
         options={{
-          title: 'Play',
-          tabBarIcon: ({ color }) => <Entypo name="game-controller" size={24} color={color} />,
+          title: 'Credits',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
         }}
       />
+
     </Tabs>
   );
 }
