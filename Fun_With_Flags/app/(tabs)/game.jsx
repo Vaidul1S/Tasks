@@ -254,7 +254,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         alignSelf: 'center',
         backgroundColor: '#446b77',
-        borderRadius: '15px',
+        borderRadius: '20px',
         padding: 12,
     },
     ulti: {
@@ -266,7 +266,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         alignSelf: 'center',
         backgroundColor: '#694477',
-        borderRadius: '15px',
+        borderRadius: '20px',
         padding: 12,
     },
     modal: {
@@ -289,7 +289,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         alignSelf: 'center',
         backgroundColor: '#446b77',
-        borderRadius: '15px',
+        borderRadius: '20px',
         padding: (0, 8),
     },
     records: {
@@ -301,7 +301,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         alignSelf: 'center',
         backgroundColor: '#446b77',
-        borderRadius: '15px',
+        borderRadius: '20px',
         padding: 8,
     },
     score: {
@@ -377,7 +377,7 @@ const styles = StyleSheet.create({
         margin: (0, 8),
         textAlign: 'center',
         border: '1.5px, solid, #ffffff80',
-        borderRadius: '25px',
+        borderRadius: '20px',
         padding: 8,
         width: '100px',
     },
