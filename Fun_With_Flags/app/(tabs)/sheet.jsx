@@ -23,10 +23,10 @@ export default function sheet() {
 }
 
 const styles = StyleSheet.create({
-    sheet: {        
+    sheet: {
         alignSelf: 'center',
         padding: 10,
-        width: 410,        
+        width: 410,
         backgroundColor: '#446b7762',
     },
     list: {
