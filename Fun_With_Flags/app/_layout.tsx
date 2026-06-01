@@ -9,9 +9,7 @@ import { useColorScheme } from '@/hooks/use-color-scheme';
 export const unstable_settings = {
   anchor: '(tabs)',
 };
-const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-    BrightAura: require('../assets/fonts/BrightAura.ttf'),
+const [loaded] = useFonts({    
     papyrus: require('../assets/fonts/papyrus.ttf'),
   });
 
