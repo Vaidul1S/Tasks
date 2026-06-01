@@ -1,8 +1,7 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
-
+import AntDesign from '@expo/vector-icons/AntDesign';
 import { HapticTab } from '@/components/haptic-tab';
-import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import Entypo from '@expo/vector-icons/Entypo';
@@ -36,7 +35,7 @@ export default function TabLayout() {
         name="credits"
         options={{
           title: 'Credits',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          tabBarIcon: ({ color }) => <AntDesign name="copyright" size={28} color={color} />,
         }}
       />
 
