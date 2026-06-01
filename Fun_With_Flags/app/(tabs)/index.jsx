@@ -214,6 +214,7 @@ export default function game() {
 const styles = StyleSheet.create({
     body: {
         width: '410px',
+        height: '100vh',
         alignSelf: 'center',
         backgroundColor: '#446b7762',
     },
