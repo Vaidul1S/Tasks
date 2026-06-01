@@ -4,7 +4,6 @@ import { ThemedView } from '@/components/themed-view';
 import { ThemedText } from '@/components/themed-text';
 import { useEffect, useState } from "react";
 import { flags } from '../../assets/data/flags.js';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function game() {
@@ -142,7 +141,7 @@ export default function game() {
     };
 
     return (
-        <SafeAreaProvider style={styles.body}>
+        <ThemedView style={styles.body}>
             <ThemedView style={styles.game}>
                 <ThemedView style={styles.container}>
                     <Image style={{ width: 350, height: 220, alignSelf: 'center' }} source={require('@/assets/images/world.png')} contentFit={'contain'} />
@@ -208,7 +207,7 @@ export default function game() {
                     <TouchableOpacity onPress={playAgain}><ThemedText style={styles.menu}>To Menu</ThemedText></TouchableOpacity>
                 </ThemedView>
             </Modal>
-        </SafeAreaProvider>
+        </ThemedView>
     )
 };
 
