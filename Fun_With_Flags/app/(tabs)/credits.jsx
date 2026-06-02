@@ -2,8 +2,6 @@ import { Image } from 'expo-image';
 import { StyleSheet, ScrollView } from 'react-native';
 import { flags } from '../../assets/data/flags';
 import { Link } from 'expo-router';
-
-import ParallaxScrollView from '@/components/parallax-scroll-view';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 
