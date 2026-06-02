@@ -72,6 +72,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     color: 'white',
-    marginTop: 300,
+    marginTop: 150,
+  },
+  image: {
+    width: 150,
+    height: 150,
+    borderRadius: 100,
+    alignSelf: 'center',
   },
 });
