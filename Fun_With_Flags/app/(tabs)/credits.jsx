@@ -12,7 +12,7 @@ export default function Credits() {
   const count = flags.length;
 
   return (
-    <ScrollView style={{ height: '100vh' }}>
+    <ScrollView style={{ height: '100vh', backgroundColor: '#446b7762' }}>
 
       <Image
         source={require('@/assets/images/flag_map.jpg')}
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    // backgroundColor: 'transperent',
+    backgroundColor: 'transperent',
   },  
   background: {
     flex: 1,
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     color: 'white',
-    marginTop: 210,
+    marginTop: 210,    
   },
   image: {
     width: 100,
