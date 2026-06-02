@@ -13,7 +13,7 @@ export default function Credits() {
 
   return (
     <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
+      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}      
       headerImage={
         <Image
           source={require('@/assets/images/flag_map.jpg')}
@@ -72,12 +72,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     color: 'white',
-    marginTop: 150,
+    marginTop: 170,
   },
   image: {
-    width: 150,
-    height: 150,
+    width: 100,
+    height: 100,
     borderRadius: 100,
-    alignSelf: 'center',
+    
   },
 });
