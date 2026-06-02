@@ -29,6 +29,9 @@ export default function Credits() {
           <ThemedText type="subtitle" style={styles.text}>List of {count} countries.</ThemedText>
 
           <Link style={styles.link} href='https://github.com/Vaidul1S' target='_blank'>GitHub
+            <br /> <Image
+              source={require("../../assets/images/gg.jpg")}
+              style={styles.image} />
             <br />&copy; Vaidul1s {new Date().getFullYear()}</Link>
 
         </ThemedView>
@@ -44,7 +47,7 @@ const styles = StyleSheet.create({
     gap: 8,
 
   },
-  stepContainer: {    
+  stepContainer: {
     justifyContent: 'space-between',
 
   },
@@ -70,5 +73,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'white',
     marginTop: 300,
-  }
+  },
 });
