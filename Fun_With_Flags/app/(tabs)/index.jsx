@@ -1,7 +1,5 @@
-import { ScrollView, StyleSheet, TouchableOpacity, Modal } from "react-native";
+import { ScrollView, StyleSheet, TouchableOpacity, Modal, View, Text } from "react-native";
 import { Image } from 'expo-image';
-import { ThemedView } from '@/components/themed-view';
-import { ThemedText } from '@/components/themed-text';
 import { useEffect, useState } from "react";
 import { flags } from '../../assets/data/flags.js';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -141,73 +139,73 @@ export default function game() {
     };
 
     return (
-        <ThemedView style={styles.body}>
-            <ThemedView style={styles.game}>
-                <ThemedView style={styles.container}>
+        <View style={styles.body}>
+            <View style={styles.game}>
+                <View style={styles.container}>
                     <Image style={{ width: 350, height: 220, alignSelf: 'center' }} source={require('@/assets/images/world.png')} contentFit={'contain'} />
-                </ThemedView>
-                <ThemedText style={styles.title}>Fun With Flags!</ThemedText>
-                <TouchableOpacity style={styles.touches} onPress={_ => startTheGame(20)}><ThemedText style={styles.menu}>20 Quesions</ThemedText></TouchableOpacity>
-                <TouchableOpacity style={styles.touches} onPress={_ => startTheGame(50)}><ThemedText style={styles.menu}>50 Quesions</ThemedText></TouchableOpacity>
-                <TouchableOpacity style={styles.touches} onPress={_ => startTheGame(3)}><ThemedText style={styles.menu}>3 Lives</ThemedText></TouchableOpacity>
-                <TouchableOpacity style={styles.touches} onPress={_ => startTheGame(5)}><ThemedText style={styles.menu}>5 Lives</ThemedText></TouchableOpacity>
-                <TouchableOpacity style={styles.touches} onPress={_ => startTheGame(1)}><ThemedText style={styles.ulti}>Ultimate</ThemedText></TouchableOpacity>
-                <TouchableOpacity style={styles.touches} onPress={_ => setShowHighScore(true)}><ThemedText style={styles.records}> Records</ThemedText></TouchableOpacity>
+                </View>
+                <Text style={styles.title}>Fun With Flags!</Text>
+                <TouchableOpacity style={styles.touches} onPress={_ => startTheGame(20)}><Text style={styles.menu}>20 Quesions</Text></TouchableOpacity>
+                <TouchableOpacity style={styles.touches} onPress={_ => startTheGame(50)}><Text style={styles.menu}>50 Quesions</Text></TouchableOpacity>
+                <TouchableOpacity style={styles.touches} onPress={_ => startTheGame(3)}><Text style={styles.menu}>3 Lives</Text></TouchableOpacity>
+                <TouchableOpacity style={styles.touches} onPress={_ => startTheGame(5)}><Text style={styles.menu}>5 Lives</Text></TouchableOpacity>
+                <TouchableOpacity style={styles.touches} onPress={_ => startTheGame(1)}><Text style={styles.ulti}>Ultimate</Text></TouchableOpacity>
+                <TouchableOpacity style={styles.touches} onPress={_ => setShowHighScore(true)}><Text style={styles.records}> Records</Text></TouchableOpacity>
 
-            </ThemedView>
+            </View>
 
-            <Modal visible={gameOn} style={styles.modal} animationType="fade" transparent={true}>
-                <ThemedView style={styles.card}>
-                    <TouchableOpacity onPress={forfeit}><ThemedText style={styles.forfeit}>Forfeit</ThemedText></TouchableOpacity>
+            <Modal visible={gameOn} style={styles.modal} animationType="slide" transparent={false}>
+                <View style={styles.card}>
+                    <TouchableOpacity onPress={forfeit}><Text style={styles.forfeit}>Forfeit</Text></TouchableOpacity>
                     {lives > 0 ?
-                        <ThemedView style={{ height: 60, flexDirection: "row", alignSelf: 'center', }}>
-                            <ThemedText style={styles.lives}>Lives:</ThemedText>
+                        <View style={{ height: 60, flexDirection: "row", alignSelf: 'center', }}>
+                            <Text style={styles.lives}>Lives:</Text>
                             {Array.from({ length: lives }).map((_, index) => (
                                 <Image key={index} style={{ width: 60, height: 60 }} source={require("@/assets/images/heart.svg")} contentFit="contain" />))}
-                        </ThemedView> : null}
+                        </View> : null}
 
-                    <ThemedText style={styles.title}>Guess a Country!</ThemedText>
-                    <ThemedText style={styles.question}>Question #{question + 1}</ThemedText>
+                    <Text style={styles.title}>Guess a Country!</Text>
+                    <Text style={styles.question}>Question #{question + 1}</Text>
 
-                    <ThemedView style={styles.container}>
+                    <View style={styles.container}>
                         <Image style={{ width: 380, height: 220 }} source={flag.flag} contentFit={'contain'} />
-                    </ThemedView>
+                    </View>
                     {options.map((option, index) => (
                         <TouchableOpacity key={index} onPress={() => submitGuess(option)}>
-                            <ThemedText style={styles.option}>{index + 1}. {option}</ThemedText>
+                            <Text style={styles.option}>{index + 1}. {option}</Text>
                         </TouchableOpacity>
                     ))}
 
-                    {guess == "Choose your answer" ? <ThemedText style={styles.guess}>{guess}</ThemedText>
-                        : <ThemedText style={guess == 'Correct!' ? styles.guess1 : styles.guess2}>{guess}</ThemedText>}
-                    <ThemedText style={styles.score}>Score: {score}</ThemedText>
+                    {guess == "Choose your answer" ? <Text style={styles.guess}>{guess}</Text>
+                        : <Text style={guess == 'Correct!' ? styles.guess1 : styles.guess2}>{guess}</Text>}
+                    <Text style={styles.score}>Score: {score}</Text>
 
-                </ThemedView>
+                </View>
             </Modal>
 
-            <Modal visible={gameOver} style={styles.modal} animationType="fade" transparent={true}>
-                <ThemedView style={styles.gameOver}>
-                    <ThemedText style={styles.title}>Game Over</ThemedText>
-                    {newRecord ? <ThemedText style={styles.newrecord}>New Record!!!</ThemedText> : null}
+            <Modal visible={gameOver} style={styles.modal} animationType="fade" transparent={false} >
+                <View style={styles.gameOver}>
+                    <Text style={styles.title}>Game Over</Text>
+                    {newRecord ? <Text style={styles.newrecord}>New Record!!!</Text> : null}
 
-                    <ThemedText style={styles.over}>You made <ThemedText style={styles.result}>{score}</ThemedText> correct answers
-                        <br /> out of <ThemedText style={styles.result}>{question}</ThemedText> questions.</ThemedText>
-                    <ThemedText style={styles.over}>Good luck next time.</ThemedText>
-                    <TouchableOpacity onPress={playAgain}><ThemedText style={styles.menu}>To Menu</ThemedText></TouchableOpacity>
-                </ThemedView>
+                    <Text style={styles.over}>You made <Text style={styles.result}>{score}</Text> correct answers
+                        <br /> out of <Text style={styles.result}>{question}</Text> questions.</Text>
+                    <Text style={styles.over}>Good luck next time.</Text>
+                    <TouchableOpacity onPress={playAgain}><Text style={styles.menu}>To Menu</Text></TouchableOpacity>
+                </View>
             </Modal>
 
-            <Modal visible={showHighScore} style={styles.modal} animationType="fade" transparent={true}>
-                <ThemedView style={styles.gameOver}>
-                    <ThemedText style={styles.title}>High Scores</ThemedText>
-                    <ThemedView style={styles.over}>
-                        {highScore.map(h => <ThemedText key={h.score} style={styles.question}>{h.score} of {h.question} (mode: {h.type})</ThemedText>)}
-                    </ThemedView>
-                    <TouchableOpacity onPress={eraseRecords}><ThemedText style={styles.menu}>Reset Records</ThemedText></TouchableOpacity>
-                    <TouchableOpacity onPress={playAgain}><ThemedText style={styles.menu}>To Menu</ThemedText></TouchableOpacity>
-                </ThemedView>
+            <Modal visible={showHighScore} style={styles.modal} animationType="fade" transparent={false}>
+                <View style={styles.gameOver}>
+                    <Text style={styles.title}>High Scores</Text>
+                    <View style={styles.over}>
+                        {highScore.map(h => <Text key={h.score} style={styles.question}>{h.score} of {h.question} (mode: {h.type})</Text>)}
+                    </View>
+                    <TouchableOpacity onPress={eraseRecords}><Text style={styles.menu}>Reset Records</Text></TouchableOpacity>
+                    <TouchableOpacity onPress={playAgain}><Text style={styles.menu}>To Menu</Text></TouchableOpacity>
+                </View>
             </Modal>
-        </ThemedView>
+        </View>
     )
 };
 
@@ -222,33 +220,34 @@ const styles = StyleSheet.create({
         flex: 1,
         alignSelf: 'center',
         justifyContent: 'center',
-        width: '410px',
-        backgroundColor: 'transperent',
+        width: '410px',        
     },
     card: {
         flex: 1,
         alignSelf: 'center',
         justifyContent: 'space-between',
         width: '410px',
+        backgroundColor: '#a1c6d1'
     },
     gameOver: {
         flex: 1,
         alignSelf: 'center',
         justifyContent: 'center',
         width: '410px',
+        backgroundColor: '#446b7762',
     },
     title: {
         fontFamily: 'papyrus',
         fontSize: '40px',
         color: 'white',
-        margin: 10,
-        paddingBottom: 20,
+        margin: 8,
+        paddingBottom: 15,
         textAlign: 'center',
     },
     touches: {
         width: '60%',
         alignSelf: 'center',
-        margin: (0, 15),
+        margin: (0, 12),
     },
     menu: {
         width: '100%',
@@ -260,7 +259,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         backgroundColor: '#446b77',
         borderRadius: '20px',
-        padding: 12,
+        padding: 8,
     },
     ulti: {
         width: '100%',
@@ -272,18 +271,18 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         backgroundColor: '#694477',
         borderRadius: '20px',
-        padding: 12,
+        padding: 8,
     },
     modal: {
         flex: 1,
         alignSelf: 'center',
+        backgroundColor: '#446b7700',
     },
     container: {
         height: 250,
         alignContent: 'center',
         justifyContent: 'center',
-        flexWrap: 'wrap',
-        backgroundColor: 'transperent',
+        flexWrap: 'wrap',        
     },
     option: {
         width: '90%',
