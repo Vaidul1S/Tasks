@@ -380,7 +380,7 @@ const styles = StyleSheet.create({
         textShadow: '-2px 2px black',
         margin: (0, 8),
         textAlign: 'center',
-        border: '1.5px, solid, #ffffff80',
+        backgroundColor: '#446b77',
         borderRadius: '20px',
         padding: 8,
         width: '100px',
