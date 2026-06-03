@@ -60,12 +60,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     color: 'white',
-    marginTop: 210,    
+    marginTop: 210,      
   },
   image: {
     width: 100,
     height: 100,
-    borderRadius: 100,
-
+    borderRadius: 100,   
+    top: -12, 
   },
 });
