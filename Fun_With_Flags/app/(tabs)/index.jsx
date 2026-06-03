@@ -158,7 +158,7 @@ export default function game() {
 
             <Modal visible={gameOn} style={styles.modal} animationType="fade" transparent={true}>
                 <ThemedView style={styles.card}>
-                    <TouchableOpacity onPress={forfeit}><ThemedText style={styles.back}>Forfeit</ThemedText></TouchableOpacity>
+                    <TouchableOpacity onPress={forfeit}><ThemedText style={styles.forfeit}>Forfeit</ThemedText></TouchableOpacity>
                     {lives > 0 ?
                         <ThemedView style={{ height: 60, flexDirection: "row", alignSelf: 'center', }}>
                             <ThemedText style={styles.lives}>Lives:</ThemedText>
@@ -250,6 +250,7 @@ const styles = StyleSheet.create({
         fontFamily: 'papyrus',
         fontSize: '24px',
         color: 'white',
+        textShadow: '-2px 2px black',
         margin: (0, 15),
         textAlign: 'center',
         alignSelf: 'center',
@@ -262,6 +263,7 @@ const styles = StyleSheet.create({
         fontFamily: 'papyrus',
         fontSize: '24px',
         color: 'white',
+        textShadow: '-2px 2px black',
         margin: (0, 15),
         textAlign: 'center',
         alignSelf: 'center',
@@ -285,6 +287,7 @@ const styles = StyleSheet.create({
         fontFamily: 'papyrus',
         fontSize: 20,
         color: 'white',
+        textShadow: '-2px 2px black',
         margin: (0, 10),
         textAlign: 'center',
         alignSelf: 'center',
@@ -293,7 +296,7 @@ const styles = StyleSheet.create({
         padding: (0, 8),
     },
     records: {
-
+        textShadow: '-2px 2px black',
         fontFamily: 'papyrus',
         fontSize: 16,
         color: 'white',
@@ -370,10 +373,11 @@ const styles = StyleSheet.create({
         fontSize: '24px',
         color: 'lime',
     },
-    back: {
+    forfeit: {
         fontFamily: 'papyrus',
         fontSize: '14px',
         color: 'white',
+        textShadow: '-2px 2px black',
         margin: (0, 8),
         textAlign: 'center',
         border: '1.5px, solid, #ffffff80',
