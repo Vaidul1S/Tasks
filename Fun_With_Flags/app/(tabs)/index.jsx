@@ -147,12 +147,12 @@ export default function game() {
                     <Image style={{ width: 350, height: 220, alignSelf: 'center' }} source={require('@/assets/images/world.png')} contentFit={'contain'} />
                 </ThemedView>
                 <ThemedText style={styles.title}>Fun With Flags!</ThemedText>
-                <TouchableOpacity onPress={_ => startTheGame(20)}><ThemedText style={styles.menu}>20 Quesions</ThemedText></TouchableOpacity>
-                <TouchableOpacity onPress={_ => startTheGame(50)}><ThemedText style={styles.menu}>50 Quesions</ThemedText></TouchableOpacity>
-                <TouchableOpacity onPress={_ => startTheGame(3)}><ThemedText style={styles.menu}>3 Lives</ThemedText></TouchableOpacity>
-                <TouchableOpacity onPress={_ => startTheGame(5)}><ThemedText style={styles.menu}>5 Lives</ThemedText></TouchableOpacity>
-                <TouchableOpacity onPress={_ => startTheGame(1)}><ThemedText style={styles.ulti}>Ultimate</ThemedText></TouchableOpacity>
-                <TouchableOpacity onPress={_ => setShowHighScore(true)}><ThemedText style={styles.records}> Records</ThemedText></TouchableOpacity>
+                <TouchableOpacity style={styles.touches} onPress={_ => startTheGame(20)}><ThemedText style={styles.menu}>20 Quesions</ThemedText></TouchableOpacity>
+                <TouchableOpacity style={styles.touches} onPress={_ => startTheGame(50)}><ThemedText style={styles.menu}>50 Quesions</ThemedText></TouchableOpacity>
+                <TouchableOpacity style={styles.touches} onPress={_ => startTheGame(3)}><ThemedText style={styles.menu}>3 Lives</ThemedText></TouchableOpacity>
+                <TouchableOpacity style={styles.touches} onPress={_ => startTheGame(5)}><ThemedText style={styles.menu}>5 Lives</ThemedText></TouchableOpacity>
+                <TouchableOpacity style={styles.touches} onPress={_ => startTheGame(1)}><ThemedText style={styles.ulti}>Ultimate</ThemedText></TouchableOpacity>
+                <TouchableOpacity style={styles.touches} onPress={_ => setShowHighScore(true)}><ThemedText style={styles.records}> Records</ThemedText></TouchableOpacity>
 
             </ThemedView>
 
@@ -245,13 +245,17 @@ const styles = StyleSheet.create({
         paddingBottom: 20,
         textAlign: 'center',
     },
-    menu: {
+    touches: {
         width: '60%',
+        alignSelf: 'center',
+        margin: (0, 15),
+    },
+    menu: {
+        width: '100%',
         fontFamily: 'papyrus',
         fontSize: '24px',
         color: 'white',
-        textShadow: '-2px 2px black',
-        margin: (0, 15),
+        textShadow: '-2px 2px black',        
         textAlign: 'center',
         alignSelf: 'center',
         backgroundColor: '#446b77',
@@ -259,12 +263,11 @@ const styles = StyleSheet.create({
         padding: 12,
     },
     ulti: {
-        width: '60%',
+        width: '100%',
         fontFamily: 'papyrus',
         fontSize: '24px',
         color: 'white',
-        textShadow: '-2px 2px black',
-        margin: (0, 15),
+        textShadow: '-2px 2px black',       
         textAlign: 'center',
         alignSelf: 'center',
         backgroundColor: '#694477',
@@ -299,8 +302,7 @@ const styles = StyleSheet.create({
         textShadow: '-2px 2px black',
         fontFamily: 'papyrus',
         fontSize: 16,
-        color: 'white',
-        marginTop: 40,
+        color: 'white',       
         textAlign: 'center',
         alignSelf: 'center',
         backgroundColor: '#446b77',
