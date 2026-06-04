@@ -111,7 +111,7 @@ export default function game() {
     };
 
     useEffect(() => {
-        if (gameOn) {
+        if (gameOn && lives == 0) {
             setGameOn(false);
             setGameOver(true);
             if (!highScore.find(h => h.type === type) || highScore.some(h => h.type === type && h.score < score)) {
@@ -123,7 +123,7 @@ export default function game() {
     }, [lives == 0]);
 
     useEffect(() => {
-        if (gameOn) {
+        if (gameOn && length == 0) {
             setGameOn(false);
             setGameOver(true);
             if (!highScore.find(h => h.type === type) || highScore.some(h => h.type === type && h.score < score)) {
