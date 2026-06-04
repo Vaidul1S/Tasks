@@ -111,7 +111,7 @@ export default function game() {
     };
 
     useEffect(() => {
-        if (gameOn && lives == 0) {
+        if (gameOn) {
             setGameOn(false);
             setGameOver(true);
             if (!highScore.find(h => h.type === type) || highScore.some(h => h.type === type && h.score < score)) {
@@ -120,10 +120,10 @@ export default function game() {
                 setNewRecord(true);
             };
         }
-    }, [lives]);
+    }, [lives == 0]);
 
     useEffect(() => {
-        if (gameOn && length == 0) {
+        if (gameOn) {
             setGameOn(false);
             setGameOver(true);
             if (!highScore.find(h => h.type === type) || highScore.some(h => h.type === type && h.score < score)) {
@@ -132,7 +132,7 @@ export default function game() {
                 setNewRecord(true);
             };
         }
-    }, [length]);
+    }, [length == 0]);
 
     const eraseRecords = _ => {
         setHighScore([]);
@@ -227,14 +227,14 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         justifyContent: 'space-between',
         width: '410px',
-        backgroundColor: '#a1c6d1'
+        backgroundColor: '#102b33',
     },
     gameOver: {
         flex: 1,
         alignSelf: 'center',
         justifyContent: 'center',
         width: '410px',
-        backgroundColor: '#446b7762',
+        backgroundColor: '#102b33',
     },
     title: {
         fontFamily: 'papyrus',
