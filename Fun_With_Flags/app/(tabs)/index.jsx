@@ -1,6 +1,6 @@
 import { ScrollView, StyleSheet, TouchableOpacity, Modal, View, Text } from "react-native";
 import { Image } from 'expo-image';
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { flags } from '../../assets/data/flags.js';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -19,14 +19,16 @@ export default function game() {
     const [type, setType] = useState(null);
     const [newRecord, setNewRecord] = useState(false);
 
-    const flag = flags[pick];
-    const options = [
-        flag.name,
-        flags[Math.floor(Math.random() * flags.length)].name,
-        flags[Math.floor(Math.random() * flags.length)].name,
-        flags[Math.floor(Math.random() * flags.length)].name
-    ];
-    options.sort(function () { return 0.5 - Math.random() });
+    const { flag, options } = useMemo(() => {
+        const flag = flags[pick];
+        const opts = [
+            flag.name,
+            flags[Math.floor(Math.random() * flags.length)].name,
+            flags[Math.floor(Math.random() * flags.length)].name,
+            flags[Math.floor(Math.random() * flags.length)].name,
+        ].sort(() => 0.5 - Math.random());
+        return { flag, options: opts };
+    }, [pick]);
 
     useEffect(() => {
         const loadData = async () => {
@@ -54,16 +56,16 @@ export default function game() {
     }, [highScore]);
 
     const submitGuess = e => {
-        if (e == flag.name) {
+        if (e === flag.name) {
             setScore(s => s + 1);
             setGuess('Correct!');
         } else {
             setGuess('Wrong!');
-            if (lives > 0) {
+            if (lives !== null) {
                 setLives(l => l - 1);
             }
         }
-        if (length > 0) {
+        if (length !== null) {
             setLength(l => l - 1);
         }
         setQuestion(q => q + 1);
@@ -78,6 +80,9 @@ export default function game() {
     };
 
     const startTheGame = e => {
+        setLives(null);
+        setLength(null);
+        
         if (e == 20) {
             setLength(20);
             setType('20 quesions');
