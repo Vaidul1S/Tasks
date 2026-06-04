@@ -1,6 +1,6 @@
 import { ScrollView, StyleSheet, TouchableOpacity, Modal, View, Text } from "react-native";
 import { Image } from 'expo-image';
-import { useEffect, useState, useMemo } from "react";
+import { useCallback, useEffect, useState, useMemo } from "react";
 import { flags } from '../../assets/data/flags.js';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -15,6 +15,7 @@ export default function game() {
     const [length, setLength] = useState(null);
     const [pick, setPick] = useState(Math.floor(Math.random() * flags.length));
     const [highScore, setHighScore] = useState([]);
+    const [highScoreLoaded, setHighScoreLoaded] = useState(false);
     const [showHighScore, setShowHighScore] = useState(false);
     const [type, setType] = useState(null);
     const [newRecord, setNewRecord] = useState(false);
@@ -45,15 +46,18 @@ export default function game() {
     }, []);
 
     useEffect(() => {
+        if (!highScoreLoaded) return;
         const storeData = async () => {
             try {
                 await AsyncStorage.setItem('fwf', JSON.stringify(highScore));
             } catch (err) {
                 console.error("Failed to save data", err);
+            } finally {
+                setHighScoreLoaded(true);
             }
         };
         storeData();
-    }, [highScore]);
+    }, [highScore, highScoreLoaded]);
 
     const submitGuess = e => {
         if (e === flag.name) {
@@ -82,20 +86,20 @@ export default function game() {
     const startTheGame = e => {
         setLives(null);
         setLength(null);
-        
-        if (e == 20) {
+
+        if (e === 20) {
             setLength(20);
             setType('20 quesions');
-        } else if (e == 50) {
+        } else if (e === 50) {
             setLength(50);
             setType('50 quesions');
-        } else if (e == 3) {
+        } else if (e === 3) {
             setLives(3);
             setType('3 lives');
-        } else if (e == 5) {
+        } else if (e === 5) {
             setLives(5);
             setType('5 lives');
-        } else if (e == 1) {
+        } else if (e === 1) {
             setLives(1);
             setType('Ultimate');
         }
@@ -115,29 +119,34 @@ export default function game() {
         setGameOver(true);
     };
 
-    useEffect(() => {
-        if (gameOn && lives == 0) {
-            setGameOn(false);
-            setGameOver(true);
-            if (!highScore.find(h => h.type === type) || highScore.some(h => h.type === type && h.score < score)) {
-                setHighScore(h => h.filter(h => h.type !== type));
-                setHighScore(h => [...h, { score, question, type }]);
-                setNewRecord(true);
-            };
+    const saveRecord = useCallback((currentScore, currentQuestion) => {
+        if (
+            !highScore.find(h => h.type === type) ||
+            highScore.some(h => h.type === type && h.score < currentScore)
+        ) {
+            setHighScore(h => [
+                ...h.filter(h => h.type !== type),
+                { score: currentScore, question: currentQuestion, type },
+            ]);
+            setNewRecord(true);
         }
-    }, [lives == 0]);
+    }, [highScore, type]);
 
     useEffect(() => {
-        if (gameOn && length == 0) {
+        if (gameOn && lives === 0) {
             setGameOn(false);
             setGameOver(true);
-            if (!highScore.find(h => h.type === type) || highScore.some(h => h.type === type && h.score < score)) {
-                setHighScore(h => h.filter(h => h.type !== type));
-                setHighScore(h => [...h, { score, question, type }]);
-                setNewRecord(true);
-            };
+            saveRecord(score, question);
         }
-    }, [length == 0]);
+    }, [lives, gameOn, score, question, type]);
+
+    useEffect(() => {
+        if (gameOn && length === 0) {
+            setGameOn(false);
+            setGameOver(true);
+            saveRecord(score, question);
+        }
+    }, [lives, gameOn, score, question, type]);
 
     const eraseRecords = _ => {
         setHighScore([]);
@@ -225,7 +234,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignSelf: 'center',
         justifyContent: 'center',
-        width: '410px',        
+        width: '410px',
     },
     card: {
         flex: 1,
@@ -259,7 +268,7 @@ const styles = StyleSheet.create({
         fontFamily: 'papyrus',
         fontSize: '24px',
         color: 'white',
-        textShadow: '-2px 2px black',        
+        textShadow: '-2px 2px black',
         textAlign: 'center',
         alignSelf: 'center',
         backgroundColor: '#446b77',
@@ -271,7 +280,7 @@ const styles = StyleSheet.create({
         fontFamily: 'papyrus',
         fontSize: '24px',
         color: 'white',
-        textShadow: '-2px 2px black',       
+        textShadow: '-2px 2px black',
         textAlign: 'center',
         alignSelf: 'center',
         backgroundColor: '#694477',
@@ -287,12 +296,12 @@ const styles = StyleSheet.create({
         height: 250,
         alignContent: 'center',
         justifyContent: 'center',
-        flexWrap: 'wrap',        
+        flexWrap: 'wrap',
     },
     option: {
         width: '90%',
         fontFamily: 'papyrus',
-        fontSize: 20,
+        fontSize: 22,
         color: 'white',
         textShadow: '-2px 2px black',
         margin: (0, 10),
@@ -306,7 +315,7 @@ const styles = StyleSheet.create({
         textShadow: '-2px 2px black',
         fontFamily: 'papyrus',
         fontSize: 16,
-        color: 'white',       
+        color: 'white',
         textAlign: 'center',
         alignSelf: 'center',
         backgroundColor: '#446b77',

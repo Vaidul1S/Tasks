@@ -1,7 +1,5 @@
 import { Image } from 'expo-image';
-import { ThemedView } from '@/components/themed-view';
-import { ThemedText } from '@/components/themed-text';
-import { ScrollView, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { flags } from '../../assets/data/flags.js';
 
 export default function sheet() {
@@ -10,12 +8,12 @@ export default function sheet() {
 
         <ScrollView style={styles.sheet}>
             {flags.map(f =>
-                <ThemedView key={f.name} style={styles.list} >
-                    <ThemedText style={styles.text}>{f.name} </ThemedText>
-                    <ThemedView style={styles.container}>
+                <View key={f.name} style={styles.list} >
+                    <Text style={styles.text}>{f.name} </Text>
+                    <View style={styles.container}>
                         <Image style={{ width: 140, height: 80, alignSelf: 'center' }} source={f.flag} contentFit={'contain'} />
-                    </ThemedView>
-                </ThemedView>
+                    </View>
+                </View>
             )}
         </ScrollView>
 
@@ -40,6 +38,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         paddingBottom: 5,
         fontFamily: 'papyrus',
+        color: 'white',
     },
     container: {
         height: 80,
