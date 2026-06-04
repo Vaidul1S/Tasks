@@ -191,7 +191,7 @@ export default function game() {
                     <Text style={styles.over}>You made <Text style={styles.result}>{score}</Text> correct answers
                         <br /> out of <Text style={styles.result}>{question}</Text> questions.</Text>
                     <Text style={styles.over}>Good luck next time.</Text>
-                    <TouchableOpacity onPress={playAgain}><Text style={styles.menu}>To Menu</Text></TouchableOpacity>
+                    <TouchableOpacity style={styles.touches} onPress={playAgain}><Text style={styles.menu}>To Menu</Text></TouchableOpacity>
                 </View>
             </Modal>
 
@@ -201,8 +201,8 @@ export default function game() {
                     <View style={styles.over}>
                         {highScore.map(h => <Text key={h.score} style={styles.question}>{h.score} of {h.question} (mode: {h.type})</Text>)}
                     </View>
-                    <TouchableOpacity onPress={eraseRecords}><Text style={styles.menu}>Reset Records</Text></TouchableOpacity>
-                    <TouchableOpacity onPress={playAgain}><Text style={styles.menu}>To Menu</Text></TouchableOpacity>
+                    <TouchableOpacity style={styles.touches} onPress={eraseRecords}><Text style={styles.menu}>Reset Records</Text></TouchableOpacity>
+                    <TouchableOpacity style={styles.touches} onPress={playAgain}><Text style={styles.menu}>To Menu</Text></TouchableOpacity>
                 </View>
             </Modal>
         </View>
