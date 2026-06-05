@@ -146,7 +146,7 @@ export default function game() {
             setGameOver(true);
             saveRecord(score, question);
         }
-    }, [lives, gameOn, score, question, type]);
+    }, [length, gameOn, score, question, type]);
 
     const eraseRecords = _ => {
         setHighScore([]);
