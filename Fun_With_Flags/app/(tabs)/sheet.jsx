@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     sheet: {
         alignSelf: 'center',
         padding: 10,
-        width: 410,
+        width: 415,
         backgroundColor: '#446b7762',
     },
     list: {

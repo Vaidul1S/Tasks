@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     backgroundColor: 'transperent',
-  },  
+  },
   background: {
     flex: 1,
     top: 0,
@@ -60,12 +60,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     color: 'white',
-    marginTop: 180,      
+    marginTop: 180,
   },
   image: {
     width: 100,
     height: 100,
-    borderRadius: 100,   
-    top: -12, 
+    borderRadius: 100,
+    top: -12,
   },
 });
