@@ -225,7 +225,7 @@ export default function game() {
 
 const styles = StyleSheet.create({
     body: {
-        width: '410px',
+        width: '415px',
         height: '100vh',
         alignSelf: 'center',
         backgroundColor: '#446b7762',
@@ -234,20 +234,20 @@ const styles = StyleSheet.create({
         flex: 1,
         alignSelf: 'center',
         justifyContent: 'center',
-        width: '410px',
+        width: '415px',
     },
     card: {
         flex: 1,
         alignSelf: 'center',
         justifyContent: 'space-between',
-        width: '410px',
+        width: '415px',
         backgroundColor: '#102b33',
     },
     gameOver: {
         flex: 1,
         alignSelf: 'center',
         justifyContent: 'center',
-        width: '410px',
+        width: '415px',
         backgroundColor: '#102b33',
     },
     title: {
