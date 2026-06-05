@@ -168,7 +168,7 @@ export default function game() {
 
             </View>
 
-            <Modal visible={gameOn} style={styles.modal} animationType="slide" transparent={false}>
+            <Modal visible={gameOn} style={styles.modal} animationType="fade" transparent={false}>
                 <View style={styles.card}>
                     <TouchableOpacity onPress={forfeit}><Text style={styles.forfeit}>Forfeit</Text></TouchableOpacity>
                     {lives > 0 ?
@@ -254,8 +254,6 @@ const styles = StyleSheet.create({
         fontFamily: 'papyrus',
         fontSize: '40px',
         color: 'white',
-        margin: 8,
-        paddingBottom: 15,
         textAlign: 'center',
     },
     touches: {
