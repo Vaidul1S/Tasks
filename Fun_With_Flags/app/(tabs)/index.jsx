@@ -15,7 +15,6 @@ export default function game() {
     const [length, setLength] = useState(null);
     const [pick, setPick] = useState(Math.floor(Math.random() * flags.length));
     const [highScore, setHighScore] = useState([]);
-    const [highScoreLoaded, setHighScoreLoaded] = useState(false);
     const [showHighScore, setShowHighScore] = useState(false);
     const [type, setType] = useState(null);
     const [newRecord, setNewRecord] = useState(false);
@@ -46,18 +45,15 @@ export default function game() {
     }, []);
 
     useEffect(() => {
-        if (!highScoreLoaded) return;
         const storeData = async () => {
             try {
                 await AsyncStorage.setItem('fwf', JSON.stringify(highScore));
             } catch (err) {
                 console.error("Failed to save data", err);
-            } finally {
-                setHighScoreLoaded(true);
             }
         };
         storeData();
-    }, [highScore, highScoreLoaded]);
+    }, [highScore]);
 
     const submitGuess = e => {
         if (e === flag.name) {
@@ -174,8 +170,8 @@ export default function game() {
                     {lives > 0 ?
                         <View style={{ height: 60, flexDirection: "row", alignSelf: 'center', }}>
                             <Text style={styles.lives}>Lives:</Text>
-                            {Array.from({ length: lives }).map((_, index) => (
-                                <Image key={index} style={{ width: 60, height: 60 }} source={require("@/assets/images/heart.svg")} contentFit="contain" />))}
+                            {Array.from({ length: lives }).map((_, livesIndex) => (
+                                <Image key={livesIndex} style={{ width: 60, height: 60 }} source={require("@/assets/images/heart.svg")} contentFit="contain" />))}
                         </View> : null}
 
                     <Text style={styles.title}>Guess a Country!</Text>
@@ -184,9 +180,9 @@ export default function game() {
                     <View style={styles.container}>
                         <Image style={{ width: 380, height: 220 }} source={flag.flag} contentFit={'contain'} />
                     </View>
-                    {options.map((option, index) => (
-                        <TouchableOpacity key={index} onPress={() => submitGuess(option)}>
-                            <Text style={styles.option}>{index + 1}. {option}</Text>
+                    {options.map((option, optionIndex) => (
+                        <TouchableOpacity key={optionIndex} onPress={() => submitGuess(option)}>
+                            <Text style={styles.option}>{optionIndex + 1}. {option}</Text>
                         </TouchableOpacity>
                     ))}
 
@@ -210,12 +206,13 @@ export default function game() {
             </Modal>
 
             <Modal visible={showHighScore} style={styles.modal} animationType="fade" transparent={false}>
+
                 <View style={styles.gameOver}>
+                    <TouchableOpacity onPress={eraseRecords}><Text style={styles.reset}>Reset Records</Text></TouchableOpacity>
                     <Text style={styles.title}>High Scores</Text>
                     <View style={styles.over}>
-                        {highScore.map(h => <Text key={h.score} style={styles.question}>{h.score} of {h.question} (mode: {h.type})</Text>)}
+                        {highScore.map((h, index) => <Text key={index} style={styles.question}>{h.score} of {h.question} (mode: {h.type})</Text>)}
                     </View>
-                    <TouchableOpacity style={styles.touches} onPress={eraseRecords}><Text style={styles.menu}>Reset Records</Text></TouchableOpacity>
                     <TouchableOpacity style={styles.touches} onPress={playAgain}><Text style={styles.menu}>To Menu</Text></TouchableOpacity>
                 </View>
             </Modal>
@@ -397,5 +394,19 @@ const styles = StyleSheet.create({
         borderRadius: '20px',
         padding: 8,
         width: '100px',
+    },
+    reset: {
+        fontFamily: 'papyrus',
+        fontSize: '18px',
+        color: 'white',
+        textShadow: '-2px 2px black',
+        position: 'absolute',
+        margin: (0, 8),
+        textAlign: 'center',
+        backgroundColor: '#446b77',
+        borderRadius: '20px',
+        padding: 8,
+        width: '150px',
+        top: -360,
     },
 })
