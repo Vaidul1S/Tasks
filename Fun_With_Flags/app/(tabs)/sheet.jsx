@@ -47,5 +47,4 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         backgroundColor: 'transperent',
     },
-
 })
