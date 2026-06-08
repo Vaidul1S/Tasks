@@ -360,7 +360,7 @@ const styles = StyleSheet.create({
     },
     lives: {
         fontFamily: 'papyrus',
-        fontSize: '25px',
+        fontSize: '24px',
         color: 'lime',
         alignSelf: 'center',
         paddingLeft: 20,
@@ -370,7 +370,7 @@ const styles = StyleSheet.create({
         fontSize: '24px',
         color: 'white',
         textAlign: 'center',
-        padding: 25,
+        padding: 24,
         lineHeight: 'none',
     },
     newrecord: {
@@ -378,7 +378,7 @@ const styles = StyleSheet.create({
         fontSize: '24px',
         color: 'lime',
         textAlign: 'center',
-        padding: 25,
+        padding: 24,
         lineHeight: 'none',
     },
     result: {
@@ -388,7 +388,7 @@ const styles = StyleSheet.create({
     },
     forfeit: {
         fontFamily: 'papyrus',
-        fontSize: '14px',
+        fontSize: '18px',
         color: 'white',
         textShadow: '-2px 2px black',
         margin: (0, 8),
