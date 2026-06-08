@@ -206,7 +206,6 @@ export default function game() {
             </Modal>
 
             <Modal visible={showHighScore} style={styles.modal} animationType="fade" transparent={false}>
-
                 <View style={styles.gameOver}>
                     <TouchableOpacity onPress={eraseRecords}><Text style={styles.reset}>Reset Records</Text></TouchableOpacity>
                     <Text style={styles.title}>High Scores</Text>
@@ -244,7 +243,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignSelf: 'center',
         justifyContent: 'center',
-        width: '415px',
+        width: '415px',        
         backgroundColor: '#102b33',
     },
     title: {
@@ -285,7 +284,7 @@ const styles = StyleSheet.create({
     modal: {
         flex: 1,
         alignSelf: 'center',
-        backgroundColor: '#446b7700',
+        backgroundColor: '#446b7700',        
     },
     container: {
         height: 250,
@@ -407,6 +406,6 @@ const styles = StyleSheet.create({
         borderRadius: '20px',
         padding: 8,
         width: '150px',
-        top: -360,
+        top: '-20vh',
     },
 })
