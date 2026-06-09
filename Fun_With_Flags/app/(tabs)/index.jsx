@@ -243,7 +243,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignSelf: 'center',
         justifyContent: 'center',
-        width: '415px',        
+        width: '415px',
         backgroundColor: '#102b33',
     },
     title: {
@@ -284,7 +284,7 @@ const styles = StyleSheet.create({
     modal: {
         flex: 1,
         alignSelf: 'center',
-        backgroundColor: '#446b7700',        
+        backgroundColor: '#446b7700',
     },
     container: {
         height: 250,
