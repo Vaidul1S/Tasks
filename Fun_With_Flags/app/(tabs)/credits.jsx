@@ -16,10 +16,11 @@ export default function Credits() {
       />
 
       <View style={styles.container}>
-        <Text type="title" style={styles.title}>Fun With Flags!</Text>
-        <Text type="subtitle" style={styles.text}>Guess a country by the flag.</Text>
-        <Text type="subtitle" style={styles.text}>List of {count} countries.</Text>
-
+        <View style={styles.bin}>
+          <Text type="title" style={styles.title}>Fun With Flags!</Text>
+          <Text type="subtitle" style={styles.text}>Guess a country by the flag.</Text>
+          <Text type="subtitle" style={styles.text}>List of {count} countries.</Text>
+        </View>
         <Link style={styles.link} href='https://github.com/Vaidul1S' target='_blank'>GitHub
           <br /> <Image
             source={require("../../assets/images/gg.jpg")}
@@ -32,15 +33,18 @@ export default function Credits() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    backgroundColor: 'transperent',
-  },
   background: {
     flex: 1,
     top: 0,
     left: 0,
+  },
+  container: {
+    flex: 1,    
+    justifyContent: 'space-between',    
+  },
+  bin: {
+    
+    height: '40%',
   },
   title: {
     fontFamily: 'papyrus',
@@ -60,7 +64,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     color: 'white',
-    marginTop: 180,
+    height: '40%',
   },
   image: {
     width: 100,
