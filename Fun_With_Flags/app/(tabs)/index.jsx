@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, TouchableOpacity, Modal, View, Text } from "react-native";
+import { StyleSheet, TouchableOpacity, Modal, View, Text } from "react-native";
 import { Image } from 'expo-image';
 import { useCallback, useEffect, useState, useMemo } from "react";
 import { flags } from '../../assets/data/flags.js';
