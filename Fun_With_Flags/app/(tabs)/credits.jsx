@@ -1,5 +1,5 @@
 import { Image } from 'expo-image';
-import { StyleSheet, ScrollView, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { flags } from '../../assets/data/flags';
 import { Link } from 'expo-router';
 
@@ -8,7 +8,7 @@ export default function Credits() {
   const count = flags.length;
 
   return (
-    <ScrollView style={{ height: '100vh', backgroundColor: '#446b7762' }}>
+    <View style={{ height: '100vh', backgroundColor: '#446b7762' }}>
 
       <Image
         source={require('@/assets/images/flag_map.jpg')}
@@ -26,9 +26,9 @@ export default function Credits() {
             source={require("../../assets/images/gg.jpg")}
             style={styles.image} />
           <br />&copy; Vaidul1s {new Date().getFullYear()}</Link>
-
       </View>
-    </ScrollView>
+
+    </View>
   );
 }
 
@@ -39,11 +39,11 @@ const styles = StyleSheet.create({
     left: 0,
   },
   container: {
-    flex: 1,    
-    justifyContent: 'space-between',    
+    flex: 3,
+    justifyContent: 'space-between',
+    flexDirection: 'column',
   },
   bin: {
-    
     height: '40%',
   },
   title: {
@@ -60,11 +60,11 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   link: {
+    height: '35%',
     fontFamily: 'papyrus',
     fontSize: 20,
     textAlign: 'center',
     color: 'white',
-    height: '40%',
   },
   image: {
     width: 100,
