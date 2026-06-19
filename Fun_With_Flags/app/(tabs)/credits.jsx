@@ -21,11 +21,11 @@ export default function Credits() {
           <Text type="subtitle" style={styles.text}>Guess a country by the flag.</Text>
           <Text type="subtitle" style={styles.text}>List of {count} countries.</Text>
         </View>
-        <Link style={styles.link} href='https://github.com/Vaidul1S' target='_blank'>GitHub
-          <br /> <Image
+        <Link style={styles.link} href='https://github.com/Vaidul1S' target='_blank'>{'GitHub\n'}
+          <Image
             source={require("../../assets/images/gg.jpg")}
             style={styles.image} />
-          <br />&copy; Vaidul1s {new Date().getFullYear()}</Link>
+          {'\n'}&copy; Vaidul1s {new Date().getFullYear()}</Link>
       </View>
 
     </View>
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   bin: {
-    height: '40%',
+    flex: 2,
   },
   title: {
     fontFamily: 'papyrus',
@@ -60,11 +60,11 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   link: {
-    height: '35%',
+    flex: 1,
     fontFamily: 'papyrus',
     fontSize: 20,
     textAlign: 'center',
-    color: 'white',
+    color: 'white',    
   },
   image: {
     width: 100,
