@@ -198,8 +198,7 @@ export default function game() {
                     <Text style={styles.title}>Game Over</Text>
                     {newRecord ? <Text style={styles.newrecord}>New Record!!!</Text> : null}
 
-                    <Text style={styles.over}>You made <Text style={styles.result}>{score}</Text> correct answers
-                        <br /> out of <Text style={styles.result}>{question}</Text> questions.</Text>
+                    <Text style={styles.over}>{`You made ${score} correct answers\nout of ${question} questions.`}</Text>
                     <Text style={styles.over}>Good luck next time.</Text>
                     <TouchableOpacity style={styles.touches} onPress={playAgain}><Text style={styles.menu}>To Menu</Text></TouchableOpacity>
                 </View>
@@ -221,7 +220,7 @@ export default function game() {
 
 const styles = StyleSheet.create({
     body: {
-        width: '415px',
+        width: 415,
         height: '100vh',
         alignSelf: 'center',
         backgroundColor: '#446b7762',
@@ -230,25 +229,25 @@ const styles = StyleSheet.create({
         flex: 1,
         alignSelf: 'center',
         justifyContent: 'center',
-        width: '415px',
+        width: 415,
     },
     card: {
         flex: 1,
         alignSelf: 'center',
         justifyContent: 'space-between',
-        width: '415px',
+        width: 415,
         backgroundColor: '#102b33',
     },
     gameOver: {
         flex: 1,
         alignSelf: 'center',
         justifyContent: 'center',
-        width: '415px',
+        width: 415,
         backgroundColor: '#102b33',
     },
     title: {
         fontFamily: 'papyrus',
-        fontSize: '40px',
+        fontSize: 40,
         color: 'white',
         textAlign: 'center',
     },
@@ -260,25 +259,25 @@ const styles = StyleSheet.create({
     menu: {
         width: '100%',
         fontFamily: 'papyrus',
-        fontSize: '24px',
+        fontSize: 24,
         color: 'white',
         textShadow: '-2px 2px black',
         textAlign: 'center',
         alignSelf: 'center',
         backgroundColor: '#446b77',
-        borderRadius: '20px',
+        borderRadius: 20,
         padding: 8,
     },
     ulti: {
         width: '100%',
         fontFamily: 'papyrus',
-        fontSize: '24px',
+        fontSize: 24,
         color: 'white',
         textShadow: '-2px 2px black',
         textAlign: 'center',
         alignSelf: 'center',
         backgroundColor: '#694477',
-        borderRadius: '20px',
+        borderRadius: 20,
         padding: 8,
     },
     modal: {
@@ -302,7 +301,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         alignSelf: 'center',
         backgroundColor: '#446b77',
-        borderRadius: '20px',
+        borderRadius: 20,
         padding: (0, 8),
     },
     records: {
@@ -313,12 +312,12 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         alignSelf: 'center',
         backgroundColor: '#446b77',
-        borderRadius: '20px',
+        borderRadius: 20,
         padding: 8,
     },
     score: {
         fontFamily: 'papyrus',
-        fontSize: '40px',
+        fontSize: 40,
         color: 'white',
         alignSelf: 'flex-end',
         margin: 20,
@@ -326,7 +325,7 @@ const styles = StyleSheet.create({
     guess: {
         fontFamily: 'papyrus',
         textAlign: 'center',
-        fontSize: '30px',
+        fontSize: 30,
         padding: 12,
         color: 'white',
         fontWeight: 800,
@@ -334,7 +333,7 @@ const styles = StyleSheet.create({
     guess1: {
         fontFamily: 'papyrus',
         textAlign: 'center',
-        fontSize: '30px',
+        fontSize: 30,
         padding: 12,
         color: 'lime',
         fontWeight: 800,
@@ -342,21 +341,21 @@ const styles = StyleSheet.create({
     guess2: {
         fontFamily: 'papyrus',
         textAlign: 'center',
-        fontSize: '30px',
+        fontSize: 30,
         padding: 12,
         color: 'red',
         fontWeight: 800,
     },
     question: {
         fontFamily: 'papyrus',
-        fontSize: '18px',
+        fontSize: 18,
         color: 'white',
         textAlign: 'center',
         paddingBottom: 8,
     },
     lives: {
         fontFamily: 'papyrus',
-        fontSize: '24px',
+        fontSize: 24,
         color: 'lime',
         alignSelf: 'center',
         paddingLeft: 20,
@@ -371,41 +370,36 @@ const styles = StyleSheet.create({
     },
     newrecord: {
         fontFamily: 'papyrus',
-        fontSize: '24px',
+        fontSize: 24,
         color: 'lime',
         textAlign: 'center',
         padding: 24,
         lineHeight: 'none',
     },
-    result: {
-        fontFamily: 'papyrus',
-        fontSize: '24px',
-        color: 'lime',
-    },
     forfeit: {
         fontFamily: 'papyrus',
-        fontSize: '18px',
+        fontSize: 18,
         color: 'white',
         textShadow: '-2px 2px black',
         margin: (0, 8),
         textAlign: 'center',
         backgroundColor: '#446b77',
-        borderRadius: '20px',
+        borderRadius: 20,
         padding: 8,
-        width: '100px',
+        width: 100,
     },
     reset: {
         fontFamily: 'papyrus',
-        fontSize: '18px',
+        fontSize: 18,
         color: 'white',
         textShadow: '-2px 2px black',
         position: 'absolute',
         margin: (0, 8),
         textAlign: 'center',
         backgroundColor: '#446b77',
-        borderRadius: '20px',
+        borderRadius: 20,
         padding: 8,
-        width: '150px',
+        width: 150,
         top: '-20vh',
     },
 })
