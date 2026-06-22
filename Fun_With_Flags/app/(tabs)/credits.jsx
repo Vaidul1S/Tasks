@@ -8,7 +8,7 @@ export default function Credits() {
   const count = flags.length;
 
   return (
-    <View style={{ height: '100vh', backgroundColor: '#446b7762' }}>
+    <View style={{ flex: 1, backgroundColor: '#446b7762' }}>
 
       <Image
         source={require('@/assets/images/flag_map.jpg')}

@@ -220,7 +220,7 @@ export default function game() {
 
 const styles = StyleSheet.create({
     body: {
-        width: 415,
+        width: '100%',
         flex: 1,
         alignSelf: 'center',
         backgroundColor: '#446b7762',
@@ -229,20 +229,20 @@ const styles = StyleSheet.create({
         flex: 1,
         alignSelf: 'center',
         justifyContent: 'center',
-        width: 415,
+        width: '100%',        
     },
     card: {
         flex: 1,
         alignSelf: 'center',
         justifyContent: 'space-between',
-        width: 415,
+        width: '100%',        
         backgroundColor: '#102b33',
     },
     gameOver: {
         flex: 1,
         alignSelf: 'center',
         justifyContent: 'center',
-        width: 415,
+        width: '100%',       
         backgroundColor: '#102b33',
     },
     title: {
@@ -337,7 +337,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
         padding: 12,
         color: 'white',
-        fontWeight: 800,
+        fontWeight: '800',
     },
     guess1: {
         fontFamily: 'papyrus',
@@ -345,7 +345,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
         padding: 12,
         color: 'lime',
-        fontWeight: 800,
+        fontWeight: '800',
     },
     guess2: {
         fontFamily: 'papyrus',
@@ -353,7 +353,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
         padding: 12,
         color: 'red',
-        fontWeight: 800,
+        fontWeight: '800',
     },
     question: {
         fontFamily: 'papyrus',
@@ -382,8 +382,7 @@ const styles = StyleSheet.create({
         fontSize: 24,
         color: 'lime',
         textAlign: 'center',
-        padding: 24,
-        lineHeight: 'none',
+        padding: 24,        
     },
     forfeit: {
         fontFamily: 'papyrus',
