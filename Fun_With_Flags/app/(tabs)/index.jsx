@@ -219,30 +219,30 @@ export default function game() {
 };
 
 const styles = StyleSheet.create({
-    body: {
-        width: '100%',
+    body: {        
         flex: 1,
+        width: '100%',
         alignSelf: 'center',
         backgroundColor: '#446b7762',
     },
     game: {
         flex: 1,
+        width: '100%',
         alignSelf: 'center',
-        justifyContent: 'center',
-        width: '100%',        
+        justifyContent: 'center',               
     },
     card: {
         flex: 1,
+        width: '100%',
         alignSelf: 'center',
-        justifyContent: 'space-between',
-        width: '100%',        
+        justifyContent: 'space-between',               
         backgroundColor: '#102b33',
     },
     gameOver: {
         flex: 1,
+        width: '100%',
         alignSelf: 'center',
-        justifyContent: 'center',
-        width: '100%',       
+        justifyContent: 'center',           
         backgroundColor: '#102b33',
     },
     title: {
