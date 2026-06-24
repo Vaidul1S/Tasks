@@ -374,8 +374,7 @@ const styles = StyleSheet.create({
         fontSize: 24,
         color: 'white',
         textAlign: 'center',
-        padding: 24,
-        lineHeight: 'none',
+        padding: 24,        
     },
     newrecord: {
         fontFamily: 'papyrus',
