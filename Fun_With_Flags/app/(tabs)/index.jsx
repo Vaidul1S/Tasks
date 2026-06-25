@@ -219,7 +219,7 @@ export default function game() {
 };
 
 const styles = StyleSheet.create({
-    body: {        
+    body: {
         flex: 1,
         width: '100%',
         alignSelf: 'center',
@@ -229,20 +229,20 @@ const styles = StyleSheet.create({
         flex: 1,
         width: '100%',
         alignSelf: 'center',
-        justifyContent: 'center',               
+        justifyContent: 'center',
     },
     card: {
         flex: 1,
         width: '100%',
         alignSelf: 'center',
-        justifyContent: 'space-between',               
+        justifyContent: 'space-between',
         backgroundColor: '#102b33',
     },
     gameOver: {
         flex: 1,
         width: '100%',
         alignSelf: 'center',
-        justifyContent: 'center',           
+        justifyContent: 'center',
         backgroundColor: '#102b33',
     },
     title: {
@@ -374,14 +374,14 @@ const styles = StyleSheet.create({
         fontSize: 24,
         color: 'white',
         textAlign: 'center',
-        padding: 24,        
+        padding: 24,
     },
     newrecord: {
         fontFamily: 'papyrus',
         fontSize: 24,
         color: 'lime',
         textAlign: 'center',
-        padding: 24,        
+        padding: 24,
     },
     forfeit: {
         fontFamily: 'papyrus',
@@ -395,7 +395,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#446b77',
         borderRadius: 20,
         padding: 8,
-        width: 100,        
+        width: 100,
     },
     reset: {
         fontFamily: 'papyrus',
@@ -403,7 +403,7 @@ const styles = StyleSheet.create({
         color: 'white',
         textShadowColor: 'black',
         textShadowOffset: { width: -2, height: 2 },
-        textShadowRadius: 1,        
+        textShadowRadius: 1,
         margin: 18,
         textAlign: 'center',
         backgroundColor: '#446b77',
