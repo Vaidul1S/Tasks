@@ -42,13 +42,16 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: Text(widget.title, style: TextStyle(fontFamily: 'Papyrus')),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: .start,
           children: [
-            const Text('You have pushed the button this many times:'),
+            const Text(
+              'You have pushed the button this many times:',
+              style: TextStyle(fontFamily: 'Papyrus', fontSize: 20),
+            ),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
