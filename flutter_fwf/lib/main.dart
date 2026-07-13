@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_fwf/navbar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,13 +24,15 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
       home: Scaffold(
-        appBar: AppBar(title: Text('Fun with Flags')),
-        bottomNavigationBar: NavigationBar(
-          destinations: [
-            NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
-            NavigationDestination(icon: Icon(Icons.copyright_rounded), label: 'Credits'),
-          ],
+        appBar: AppBar(
+          title: Center(
+            child: Text(
+              'Fun with Flags',
+              style: TextStyle(color: Color.fromRGBO(135, 8, 139, 1), fontFamily: 'Papyrus'),
+            ),
+          ),
         ),
+        bottomNavigationBar: NavBarWidget(),
       ),
     );
   }
