@@ -34,45 +34,48 @@ class Credits extends StatelessWidget {
           ),
           Expanded(
             flex: 4,
-            child: RichText(
-              textAlign: TextAlign.center,
-              text: TextSpan(
-                style: const TextStyle(
-                  fontFamily: 'Papyrus',
-                  fontSize: 20,
-                  color: Colors.white,
-                ),
-                children: [
-                  TextSpan(text: 'Fun With Flags!\n'),
-                  TextSpan(text: 'Guess a country by the flag.\n'),
-                  TextSpan(text: 'List of $count countries.\n'),
-                  TextSpan(
-                    text: 'GitHub\n',
-                    recognizer: TapGestureRecognizer()..onTap = _openGithub,
+            child: Container(
+              alignment: Alignment.bottomCenter,
+              child: RichText(
+                textAlign: TextAlign.center,
+                text: TextSpan(
+                  style: const TextStyle(                  
+                    fontFamily: 'Papyrus',
+                    fontSize: 20,
+                    color: Colors.white,
                   ),
-                  WidgetSpan(
-                    alignment: PlaceholderAlignment.middle,
-                    child: GestureDetector(
-                      onTap: _openGithub,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(100),
-                          child: Image.asset(
-                            '../assets/images/gg.jpg',
-                            width: 100,
-                            height: 100,
-                            fit: BoxFit.cover,
+                  children: [
+                    TextSpan(text: 'Fun With Flags!\n'),
+                    TextSpan(text: 'Guess a country by the flag.\n'),
+                    TextSpan(text: 'List of $count countries.\n'),
+                    TextSpan(
+                      text: 'GitHub\n',
+                      recognizer: TapGestureRecognizer()..onTap = _openGithub,
+                    ),
+                    WidgetSpan(
+                      alignment: PlaceholderAlignment.middle,
+                      child: GestureDetector(
+                        onTap: _openGithub,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(100),
+                            child: Image.asset(
+                              '../assets/images/gg.jpg',
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  TextSpan(
-                    text: '\n\u00A9 Vaidul1s $year',
-                    recognizer: TapGestureRecognizer()..onTap = _openGithub,
-                  ),
-                ],
+                    TextSpan(
+                      text: '\n\u00A9 Vaidul1s $year',
+                      recognizer: TapGestureRecognizer()..onTap = _openGithub,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
