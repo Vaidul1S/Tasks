@@ -19,8 +19,8 @@ import 'package:url_launcher/url_launcher.dart';
 // import '../data/flags.dart' show flags;
 final List<dynamic> flags = <dynamic>[];
 
-class CreditsScreen extends StatelessWidget {
-  const CreditsScreen({super.key});
+class Credits extends StatelessWidget {
+  const Credits({super.key});
 
   Future<void> _openGithub() async {
     final uri = Uri.parse('https://github.com/Vaidul1S');

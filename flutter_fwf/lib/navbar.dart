@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_fwf/pages/credits.dart';
 import 'package:flutter_fwf/pages/game.dart';
 
-List<Widget> pages = [Game(), ];
+List<Widget> pages = [Game(), Credits()];
 
 class NavBarWidget extends StatefulWidget {
   const NavBarWidget({super.key});
