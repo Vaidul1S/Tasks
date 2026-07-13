@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+List<Widget> pages = [];
+
 class NavBarWidget extends StatefulWidget {
   const NavBarWidget({super.key});
 
