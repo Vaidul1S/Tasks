@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fwf/navbar.dart';
+import 'package:flutter_fwf/notifiers.dart';
+import 'package:flutter_fwf/pages/credits.dart';
+import 'package:flutter_fwf/pages/game.dart';
+
+List<Widget> pages = [Game(), Credits()];
 
 void main() {
   runApp(const MyApp());
@@ -23,15 +28,10 @@ class _MyAppState extends State<MyApp> {
           brightness: Brightness.dark,
         ),
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Center(
-            child: Text(
-              'Fun with Flags',
-              style: TextStyle(color: Color.fromRGBO(135, 8, 139, 1), fontFamily: 'Papyrus'),
-            ),
-          ),
-        ),
+      home: Scaffold(        
+        body: ValueListenableBuilder(valueListenable: selectedPageNotifier, builder: (context, value, child) {
+          return pages.elementAt(value);
+        },),
         bottomNavigationBar: NavBarWidget(),
       ),
     );
