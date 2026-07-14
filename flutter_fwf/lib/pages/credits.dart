@@ -45,9 +45,9 @@ class Credits extends StatelessWidget {
                     color: Colors.white,
                   ),
                   children: [
-                    TextSpan(text: 'Fun With Flags!\n'),
-                    TextSpan(text: 'Guess a country by the flag.\n'),
-                    TextSpan(text: 'List of $count countries.\n'),
+                    TextSpan(text: 'Fun With Flags!\n', style: TextStyle(fontSize: 32)),
+                    TextSpan(text: 'Guess a country by the flag.\n', style: TextStyle(fontSize: 26)),
+                    TextSpan(text: 'List of $count countries.\n\n\n\n\n\n', style: TextStyle(fontSize: 26)),
                     TextSpan(
                       text: 'GitHub\n',
                       recognizer: TapGestureRecognizer()..onTap = _openGithub,
