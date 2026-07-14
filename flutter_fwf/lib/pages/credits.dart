@@ -1,10 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../data/flags.dart';
 
 // Replace with your actual flags data source, e.g.:
 // import '../data/flags.dart' show flags;
-final List<dynamic> flags = <dynamic>[];
+final List<dynamic> flags = <dynamic>[Flags];
 
 class Credits extends StatelessWidget {
   const Credits({super.key});
