@@ -5,7 +5,7 @@ import '../data/flags.dart';
 
 // Replace with your actual flags data source, e.g.:
 // import '../data/flags.dart' show flags;
-final List<dynamic> flags = <dynamic>[Flags];
+final List<dynamic> flags = <dynamic>[Flag];
 
 class Credits extends StatelessWidget {
   const Credits({super.key});

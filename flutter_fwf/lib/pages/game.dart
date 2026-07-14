@@ -11,24 +11,12 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-// ---------------------------------------------------------------------------
-// Data model — replace/import from your own flags data source.
-// Each entry should provide a display name and an asset path to the flag image.
-// ---------------------------------------------------------------------------
-class FlagItem {
-  final String name;
-  final String flagAsset; // e.g. 'assets/images/flags/france.png'
-
-  const FlagItem({required this.name, required this.flagAsset});
-}
+import '../data/flags.dart';
 
 // Example placeholder — replace with the real list (equivalent of flags.js).
 // import '../data/flags.dart' show flags;
-final List<FlagItem> flags = <FlagItem>[
-  // FlagItem(name: 'France', flagAsset: 'assets/images/flags/france.png'),
-  // ... populate with your actual flag data
-];
+final List<dynamic> flags = <dynamic>[Flag];
+
 
 class HighScoreEntry {
   final int score;
@@ -75,7 +63,7 @@ class _GameScreenState extends State<Game> {
 
   List<String> currentOptions = [];
 
-  FlagItem get currentFlagItem => flags[pick];
+  Flag get currentFlagItem => flags[pick];
 
   @override
   void initState() {
@@ -343,7 +331,7 @@ class _GameScreenState extends State<Game> {
             height: 250,
             child: Center(
               child: Image.asset(
-                flag.flagAsset,
+                flag.flag,
                 width: 380,
                 height: 220,
                 fit: BoxFit.contain,
