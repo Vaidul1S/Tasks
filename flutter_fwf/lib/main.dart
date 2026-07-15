@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_fwf/navbar.dart';
 import 'package:flutter_fwf/notifiers.dart';
 import 'package:flutter_fwf/pages/credits.dart';
@@ -7,6 +8,8 @@ import 'package:flutter_fwf/pages/game.dart';
 List<Widget> pages = [Game(), Credits()];
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(const MyApp());
 }
 
