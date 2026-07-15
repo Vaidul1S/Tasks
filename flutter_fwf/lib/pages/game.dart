@@ -317,13 +317,13 @@ class _GameScreenState extends State<Game> {
               color: Colors.white,              
             ),
           ),
-          const SizedBox(height: 8),
-          SizedBox(
-            height: 200,
+          Padding(
+            padding: EdgeInsetsGeometry.symmetric(vertical: 10),
             child: Center(
               child: SvgPicture.asset(
-                flag.flag,                
-                fit: BoxFit.contain,
+                flag.flag,            
+                height: 190,    
+                fit: BoxFit.cover,
               ),
             ),
           ),
@@ -345,7 +345,7 @@ class _GameScreenState extends State<Game> {
                     fontWeight: FontWeight.w800,
                     color: guess == 'Choose your answer'
                         ? Colors.white
-                        : (guess == 'Correct!' ? Colors.lime : Colors.red),
+                        : (guess == 'Correct!' ? Colors.green : Colors.red),
                   ),
                 ),
               ],
@@ -359,7 +359,7 @@ class _GameScreenState extends State<Game> {
                 'Score: $score',
                 style: const TextStyle(
                   fontFamily: 'Papyrus',
-                  fontSize: 40,
+                  fontSize: 36,
                   color: Colors.white,
                 ),
               ),
@@ -478,7 +478,7 @@ class _GameScreenState extends State<Game> {
   // Shared style helpers
   // ---------------------------------------------------------------------
   List<Shadow> _textShadow() => const [
-        Shadow(color: Colors.black, offset: Offset(-2, 2), blurRadius: 1),
+        Shadow(color: Colors.black, offset: Offset(-1, 1), blurRadius: 1),
       ];
 
   Widget _title(String text) => Padding(
@@ -488,7 +488,7 @@ class _GameScreenState extends State<Game> {
           textAlign: TextAlign.center,
           style: const TextStyle(
             fontFamily: 'Papyrus',
-            fontSize: 40,
+            fontSize: 36,
             color: Colors.white,
           ),
         ),
@@ -505,7 +505,7 @@ class _GameScreenState extends State<Game> {
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
             color: ultimate ? const Color(0xFF694477) : const Color(0xFF446B77),
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(15),
           ),
           child: Text(
             label,
@@ -528,7 +528,7 @@ class _GameScreenState extends State<Game> {
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 18),
       decoration: BoxDecoration(
         color: const Color(0xFF446B77),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(15),
       ),
       child: Text(
         label,
@@ -545,12 +545,11 @@ class _GameScreenState extends State<Game> {
 
   Widget _optionLabel(String label) {
     return Container(
-      width: 390,
-      margin: const EdgeInsets.symmetric(vertical: 10),
+      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
       padding: const EdgeInsets.symmetric(vertical: 8),
       decoration: BoxDecoration(
         color: const Color(0xFF446B77),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(15),
       ),
       child: Text(
         label,
@@ -567,12 +566,11 @@ class _GameScreenState extends State<Game> {
 
   Widget _forfeitLabel() {
     return Container(
-      width: 100,
-      margin: const EdgeInsets.all(8),
-      padding: const EdgeInsets.all(8),
+      margin: const EdgeInsets.symmetric(vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       decoration: BoxDecoration(
         color: const Color(0xFF446B77),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(15),
       ),
       child: Text(
         'Forfeit',
