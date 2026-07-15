@@ -319,11 +319,10 @@ class _GameScreenState extends State<Game> {
           ),
           const SizedBox(height: 8),
           SizedBox(
-            height: 250,
+            height: 200,
             child: Center(
-              child: Image.asset(
-                flag.flag,
-                
+              child: SvgPicture.asset(
+                flag.flag,                
                 fit: BoxFit.contain,
               ),
             ),
