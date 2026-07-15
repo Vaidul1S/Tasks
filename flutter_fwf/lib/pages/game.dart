@@ -280,33 +280,30 @@ class _GameScreenState extends State<Game> {
             ),
           ),
           if (lives != null && lives! > 0)
-            SizedBox(
-              height: 60,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    'Lives:',
-                    style: TextStyle(
-                      fontFamily: 'Papyrus',
-                      fontSize: 24,
-                      color: Colors.lime,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'Lives:',
+                  style: TextStyle(
+                    fontFamily: 'Papyrus',
+                    fontSize: 24,
+                    color: Colors.lime,
+                  ),
+                ),
+                const SizedBox(width: 20),
+                ...List.generate(
+                  lives!,
+                  (i) => Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 2),
+                    child: SvgPicture.asset(
+                      'assets/images/heart.svg',
+                      width: 50,
+                      height: 50,
                     ),
                   ),
-                  const SizedBox(width: 20),
-                  ...List.generate(
-                    lives!,
-                    (i) => Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 2),
-                      child: SvgPicture.asset(
-                        'assets/images/heart.svg',
-                        width: 60,
-                        height: 60,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           _title('Guess a Country!'),
           Text(
