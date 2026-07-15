@@ -19,6 +19,10 @@ class NavBarWidget extends StatelessWidget {
               icon: Icon(Icons.copyright_rounded),
               label: 'Credits',
             ),
+            NavigationDestination(
+              icon: Icon(Icons.book_online_rounded),
+              label: 'Sheet',
+            ),
           ],
           onDestinationSelected: (int value) {
             selectedPageNotifier.value = value;
