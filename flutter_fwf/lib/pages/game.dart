@@ -1,11 +1,3 @@
-// Assets expected (add to pubspec.yaml under flutter/assets):
-//   assets/images/world.png
-//   assets/images/heart.svg
-
-// This file assumes a `FlagItem` data model and a `flags` list are provided
-// elsewhere (mirroring assets/data/flags.js). A matching model/import is
-// included below — replace the import with wherever your flags data lives.
-
 import 'dart:convert';
 import 'dart:math';
 import 'package:flutter/material.dart';
@@ -15,7 +7,6 @@ import '../data/flags.dart';
 
 // Example placeholder — replace with the real list (equivalent of flags.js).
 // import '../data/flags.dart' show flags;
-final List<dynamic> flags = <dynamic>[Flag];
 
 
 class HighScoreEntry {
@@ -332,8 +323,7 @@ class _GameScreenState extends State<Game> {
             child: Center(
               child: Image.asset(
                 flag.flag,
-                width: 380,
-                height: 220,
+                
                 fit: BoxFit.contain,
               ),
             ),
