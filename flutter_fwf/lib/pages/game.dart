@@ -310,7 +310,6 @@ class _GameScreenState extends State<Game> {
                 ),
               ],
             ),
-          _title('Guess a Country!'),
           Text(
             'Question #${question + 1}',
             style: const TextStyle(
