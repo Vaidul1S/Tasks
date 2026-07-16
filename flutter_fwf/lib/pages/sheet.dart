@@ -11,7 +11,7 @@ class SheetPage extends StatelessWidget {
       color: const Color.fromRGBO(68, 107, 119, 0.4),
       child: Center(
         child: ListView.builder(
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(20),
           itemCount: flags.length,
           itemBuilder: (context, index) {
             final f = flags[index];

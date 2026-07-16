@@ -27,10 +27,7 @@ class Credits extends StatelessWidget {
         children: [
           Expanded(
             flex: 2,
-            child: Image.asset(
-              'assets/images/flag_map.jpg',
-              fit: BoxFit.cover,
-            ),
+            child: Image.asset('assets/images/flag_map.jpg', fit: BoxFit.cover),
           ),
           Expanded(
             flex: 4,
@@ -39,15 +36,24 @@ class Credits extends StatelessWidget {
               child: RichText(
                 textAlign: TextAlign.center,
                 text: TextSpan(
-                  style: const TextStyle(                  
+                  style: const TextStyle(
                     fontFamily: 'Papyrus',
                     fontSize: 20,
                     color: Colors.white,
                   ),
                   children: [
-                    TextSpan(text: 'Fun With Flags!\n', style: TextStyle(fontSize: 32)),
-                    TextSpan(text: 'Guess a country by the flag.\n', style: TextStyle(fontSize: 26)),
-                    TextSpan(text: 'List of $count countries.\n\n\n\n\n\n', style: TextStyle(fontSize: 26)),
+                    TextSpan(
+                      text: 'Fun With Flags!\n',
+                      style: TextStyle(fontSize: 32),
+                    ),
+                    TextSpan(
+                      text: 'Guess a country by the flag.\n',
+                      style: TextStyle(fontSize: 26),
+                    ),
+                    TextSpan(
+                      text: 'List of $count countries.\n\n\n\n\n\n',
+                      style: TextStyle(fontSize: 26),
+                    ),
                     TextSpan(
                       text: 'GitHub\n',
                       recognizer: TapGestureRecognizer()..onTap = _openGithub,
@@ -71,7 +77,7 @@ class Credits extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text: '\n\u00A9 Vaidul1s $year\n',
+                      text: '\n\u00A9 Vaidul1s $year\n ',
                       recognizer: TapGestureRecognizer()..onTap = _openGithub,
                     ),
                   ],
