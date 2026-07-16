@@ -10,6 +10,9 @@ class NavBarWidget extends StatelessWidget {
       valueListenable: selectedPageNotifier,
       builder: (context, selectedPage, child) {
         return NavigationBar(
+          labelTextStyle: WidgetStatePropertyAll(
+            TextStyle(fontFamily: 'Papyrus', fontWeight: FontWeight.w800),
+          ),
           destinations: [
             NavigationDestination(
               icon: Icon(Icons.games_outlined),
@@ -20,7 +23,7 @@ class NavBarWidget extends StatelessWidget {
               label: 'Credits',
             ),
             NavigationDestination(
-              icon: Icon(Icons.book_online_rounded),
+              icon: Icon(Icons.list_alt_rounded),
               label: 'Sheet',
             ),
           ],

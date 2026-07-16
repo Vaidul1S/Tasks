@@ -8,25 +8,28 @@ import '../data/flags.dart';
 // Example placeholder — replace with the real list (equivalent of flags.js).
 // import '../data/flags.dart' show flags;
 
-
 class HighScoreEntry {
   final int score;
   final int question;
   final String type;
 
-  HighScoreEntry({required this.score, required this.question, required this.type});
+  HighScoreEntry({
+    required this.score,
+    required this.question,
+    required this.type,
+  });
 
   Map<String, dynamic> toJson() => {
-        'score': score,
-        'question': question,
-        'type': type,
-      };
+    'score': score,
+    'question': question,
+    'type': type,
+  };
 
   factory HighScoreEntry.fromJson(Map<String, dynamic> json) => HighScoreEntry(
-        score: json['score'] as int,
-        question: json['question'] as int,
-        type: json['type'] as String,
-      );
+    score: json['score'] as int,
+    question: json['question'] as int,
+    type: json['type'] as String,
+  );
 }
 
 class Game extends StatefulWidget {
@@ -177,13 +180,18 @@ class _GameScreenState extends State<Game> {
 
   Future<void> _saveRecord(int currentScore, int currentQuestion) async {
     final matching = highScore.where((h) => h.type == type);
-    final shouldSave = matching.isEmpty || matching.any((h) => h.score < currentScore);
+    final shouldSave =
+        matching.isEmpty || matching.any((h) => h.score < currentScore);
 
     if (shouldSave) {
       setState(() {
         highScore = [
           ...highScore.where((h) => h.type != type),
-          HighScoreEntry(score: currentScore, question: currentQuestion, type: type!),
+          HighScoreEntry(
+            score: currentScore,
+            question: currentQuestion,
+            type: type!,
+          ),
         ];
         newRecord = true;
       });
@@ -274,10 +282,7 @@ class _GameScreenState extends State<Game> {
         children: [
           Align(
             alignment: Alignment.centerLeft,
-            child: TextButton(
-              onPressed: _forfeit,
-              child: _forfeitLabel(),
-            ),
+            child: TextButton(onPressed: _forfeit, child: _forfeitLabel()),
           ),
           if (lives != null && lives! > 0)
             Row(
@@ -288,7 +293,7 @@ class _GameScreenState extends State<Game> {
                   style: TextStyle(
                     fontFamily: 'Papyrus',
                     fontSize: 24,
-                    color: Colors.lime,
+                    color: Color.fromRGBO(95, 220, 57, 1),
                   ),
                 ),
                 const SizedBox(width: 20),
@@ -311,15 +316,15 @@ class _GameScreenState extends State<Game> {
             style: const TextStyle(
               fontFamily: 'Papyrus',
               fontSize: 18,
-              color: Colors.white,              
+              color: Colors.white,
             ),
           ),
           Padding(
-            padding: EdgeInsetsGeometry.symmetric(vertical: 10),
+            padding: EdgeInsetsGeometry.symmetric(vertical: 15),
             child: Center(
               child: SvgPicture.asset(
-                flag.flag,            
-                height: 190,    
+                flag.flag,
+                height: 190,
                 fit: BoxFit.cover,
               ),
             ),
@@ -338,11 +343,11 @@ class _GameScreenState extends State<Game> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontFamily: 'Papyrus',
-                    fontSize: 30,
+                    fontSize: 26,
                     fontWeight: FontWeight.w800,
                     color: guess == 'Choose your answer'
                         ? Colors.white
-                        : (guess == 'Correct!' ? Colors.green : Colors.red),
+                        : (guess == 'Correct!' ? const Color.fromRGBO(95, 220, 57, 1) : const Color.fromRGBO(231, 36, 22, 1)),
                   ),
                 ),
               ],
@@ -351,7 +356,7 @@ class _GameScreenState extends State<Game> {
           Align(
             alignment: Alignment.centerRight,
             child: Padding(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
               child: Text(
                 'Score: $score',
                 style: const TextStyle(
@@ -387,7 +392,7 @@ class _GameScreenState extends State<Game> {
                   style: TextStyle(
                     fontFamily: 'Papyrus',
                     fontSize: 24,
-                    color: Colors.lime,                    
+                    color: Color.fromRGBO(95, 220, 57, 1),
                   ),
                 ),
               ),
@@ -430,17 +435,25 @@ class _GameScreenState extends State<Game> {
       color: const Color(0xFF102B33),
       child: Column(
         children: [
-          GestureDetector(
-            onTap: _eraseRecords,
-            child: Padding(
-              padding: const EdgeInsets.only(top: 18),
-              child: Text(
-                'Reset Records',
-                style: TextStyle(
-                  fontFamily: 'Papyrus',
-                  fontSize: 18,
-                  color: Colors.white,
-                  shadows: _textShadow(),
+          Align(
+            alignment: Alignment.topLeft,
+            child: GestureDetector(
+              onTap: _eraseRecords,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: const Color(0xFF446B77),
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                margin: const EdgeInsets.only(top: 150, left: 20, bottom: 20),
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                child: Text(
+                  'Reset Records',
+                  style: TextStyle(
+                    fontFamily: 'Papyrus',
+                    fontSize: 18,
+                    color: Colors.white,
+                    shadows: _textShadow(),
+                  ),
                 ),
               ),
             ),
@@ -451,7 +464,10 @@ class _GameScreenState extends State<Game> {
               padding: const EdgeInsets.all(24),
               child: ListView(
                 children: highScore
-                    .map((h) => Text(
+                    .map(
+                      (h) => Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 5),
+                        child: Text(
                           '${h.score} of ${h.question} (mode: ${h.type})',
                           textAlign: TextAlign.center,
                           style: const TextStyle(
@@ -459,7 +475,9 @@ class _GameScreenState extends State<Game> {
                             fontSize: 18,
                             color: Colors.white,
                           ),
-                        ))
+                        ),
+                      ),
+                    )
                     .toList(),
               ),
             ),
@@ -475,23 +493,27 @@ class _GameScreenState extends State<Game> {
   // Shared style helpers
   // ---------------------------------------------------------------------
   List<Shadow> _textShadow() => const [
-        Shadow(color: Colors.black, offset: Offset(-1, 1), blurRadius: 1),
-      ];
+    Shadow(color: Colors.black, offset: Offset(-1, 1), blurRadius: 1),
+  ];
 
   Widget _title(String text) => Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8),
-        child: Text(
-          text,
-          textAlign: TextAlign.center,
-          style: const TextStyle(
-            fontFamily: 'Papyrus',
-            fontSize: 36,
-            color: Colors.white,
-          ),
-        ),
-      );
+    padding: const EdgeInsets.symmetric(vertical: 8),
+    child: Text(
+      text,
+      textAlign: TextAlign.center,
+      style: const TextStyle(
+        fontFamily: 'Papyrus',
+        fontSize: 36,
+        color: Colors.white,
+      ),
+    ),
+  );
 
-  Widget _menuButton(String label, VoidCallback onTap, {bool ultimate = false}) {
+  Widget _menuButton(
+    String label,
+    VoidCallback onTap, {
+    bool ultimate = false,
+  }) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 12),
       child: GestureDetector(

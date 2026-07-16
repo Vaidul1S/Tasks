@@ -71,7 +71,7 @@ class Credits extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text: '\n\u00A9 Vaidul1s $year',
+                      text: '\n\u00A9 Vaidul1s $year\n',
                       recognizer: TapGestureRecognizer()..onTap = _openGithub,
                     ),
                   ],
