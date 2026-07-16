@@ -8,7 +8,7 @@ class SheetPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: const Color.fromRGBO(68, 107, 119, 0.384),
+      color: const Color.fromRGBO(68, 107, 119, 0.4),
       child: Center(
         child: ListView.builder(
           padding: const EdgeInsets.all(10),
@@ -16,8 +16,7 @@ class SheetPage extends StatelessWidget {
           itemBuilder: (context, index) {
             final f = flags[index];
             return Container(
-              margin: const EdgeInsets.all(10),
-              color: Colors.transparent,
+              margin: const EdgeInsets.symmetric(vertical: 10),              
               child: Column(
                 children: [
                   Text(
@@ -29,14 +28,12 @@ class SheetPage extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
-                  const SizedBox(height: 5),
                   Container(
                     alignment: Alignment.center,
-                    color: Colors.transparent,
                     child: Center(
                       child: SvgPicture.asset(
                         f.flag,
-                        height: 80,
+                        height: 100,
                         fit: BoxFit.contain,
                       ),
                     ),

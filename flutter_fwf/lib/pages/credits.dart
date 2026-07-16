@@ -28,7 +28,7 @@ class Credits extends StatelessWidget {
           Expanded(
             flex: 2,
             child: Image.asset(
-              '../assets/images/flag_map.jpg',
+              'assets/images/flag_map.jpg',
               fit: BoxFit.cover,
             ),
           ),
@@ -61,7 +61,7 @@ class Credits extends StatelessWidget {
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(100),
                             child: Image.asset(
-                              '../assets/images/gg.jpg',
+                              'assets/images/gg.jpg',
                               width: 100,
                               height: 100,
                               fit: BoxFit.cover,
