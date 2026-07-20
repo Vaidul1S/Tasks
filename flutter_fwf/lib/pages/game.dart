@@ -232,7 +232,7 @@ class _GameScreenState extends State<Game> {
     }
 
     return Scaffold(
-      backgroundColor: const Color(0x62446B77),
+      backgroundColor: const Color.fromRGBO(68, 107, 119, 0.4),
       body: SafeArea(child: body),
     );
   }
@@ -277,7 +277,7 @@ class _GameScreenState extends State<Game> {
   Widget _buildGameScreen() {
     final flag = currentFlagItem;
     return Container(
-      color: const Color(0xFF102B33),
+      color: const Color.fromRGBO(16, 43, 51, 1),
       child: Column(
         children: [
           Align(
@@ -376,7 +376,7 @@ class _GameScreenState extends State<Game> {
   // ---------------------------------------------------------------------
   Widget _buildGameOverScreen() {
     return Container(
-      color: const Color(0xFF102B33),
+      color: const Color.fromRGBO(16, 43, 51, 1),
       alignment: Alignment.center,
       child: SingleChildScrollView(
         child: Column(
@@ -431,7 +431,7 @@ class _GameScreenState extends State<Game> {
   // ---------------------------------------------------------------------
   Widget _buildHighScoreScreen() {
     return Container(
-      color: const Color(0xFF102B33),
+      color: const Color.fromRGBO(16, 43, 51, 1),
       child: Column(
         children: [
           Align(
@@ -440,7 +440,7 @@ class _GameScreenState extends State<Game> {
               onTap: _eraseRecords,
               child: Container(
                 decoration: BoxDecoration(
-                  color: const Color(0xFF446B77),
+                  color: const Color.fromRGBO(68, 107, 119, 1),
                   borderRadius: BorderRadius.circular(15),
                 ),
                 margin: const EdgeInsets.only(top: 150, left: 20, bottom: 20),
@@ -522,7 +522,7 @@ class _GameScreenState extends State<Game> {
           alignment: Alignment.center,
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: ultimate ? const Color(0xFF694477) : const Color(0xFF446B77),
+            color: ultimate ? const Color.fromRGBO(105, 68, 119, 1) : const Color.fromRGBO(68, 107, 119, 1),
             borderRadius: BorderRadius.circular(15),
           ),
           child: Text(
@@ -545,7 +545,7 @@ class _GameScreenState extends State<Game> {
       margin: const EdgeInsets.symmetric(vertical: 12),
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 18),
       decoration: BoxDecoration(
-        color: const Color(0xFF446B77),
+        color: const Color.fromRGBO(68, 107, 119, 1),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Text(
@@ -566,7 +566,7 @@ class _GameScreenState extends State<Game> {
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
       padding: const EdgeInsets.symmetric(vertical: 8),
       decoration: BoxDecoration(
-        color: const Color(0xFF446B77),
+        color: const Color.fromRGBO(68, 107, 119, 1),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Text(
@@ -587,7 +587,7 @@ class _GameScreenState extends State<Game> {
       margin: const EdgeInsets.symmetric(vertical: 5),
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       decoration: BoxDecoration(
-        color: const Color(0xFF446B77),
+        color: const Color.fromRGBO(68, 107, 119, 1),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Text(

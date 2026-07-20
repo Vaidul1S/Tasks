@@ -22,7 +22,7 @@ class Credits extends StatelessWidget {
     final year = DateTime.now().year;
 
     return Container(
-      color: const Color(0x62446B77),
+      color: const Color.fromRGBO(68, 107, 119, 0.4),
       child: Column(
         children: [
           Expanded(
