@@ -5,9 +5,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../data/flags.dart';
 
-// Example placeholder — replace with the real list (equivalent of flags.js).
-// import '../data/flags.dart' show flags;
-
 class HighScoreEntry {
   final int score;
   final int question;
@@ -237,9 +234,7 @@ class _GameScreenState extends State<Game> {
     );
   }
 
-  // ---------------------------------------------------------------------
-  // Menu
-  // ---------------------------------------------------------------------
+  // --------------------------------------------------------------------- Menu ---------------------------------------------------------------------
   Widget _buildMenuScreen() {
     return Center(
       child: SingleChildScrollView(
@@ -271,9 +266,7 @@ class _GameScreenState extends State<Game> {
     );
   }
 
-  // ---------------------------------------------------------------------
-  // Game (equivalent of the "gameOn" Modal)
-  // ---------------------------------------------------------------------
+  // --------------------------------------------------------------------- Game ---------------------------------------------------------------------
   Widget _buildGameScreen() {
     final flag = currentFlagItem;
     return Container(
@@ -371,9 +364,7 @@ class _GameScreenState extends State<Game> {
     );
   }
 
-  // ---------------------------------------------------------------------
-  // Game Over (equivalent of the "gameOver" Modal)
-  // ---------------------------------------------------------------------
+  // --------------------------------------------------------------------- Game Over ---------------------------------------------------------------------
   Widget _buildGameOverScreen() {
     return Container(
       color: const Color.fromRGBO(16, 43, 51, 1),
@@ -426,9 +417,7 @@ class _GameScreenState extends State<Game> {
     );
   }
 
-  // ---------------------------------------------------------------------
-  // High Scores (equivalent of the "showHighScore" Modal)
-  // ---------------------------------------------------------------------
+  // --------------------------------------------------------------------- High Scores ---------------------------------------------------------------------
   Widget _buildHighScoreScreen() {
     return Container(
       color: const Color.fromRGBO(16, 43, 51, 1),
@@ -488,9 +477,7 @@ class _GameScreenState extends State<Game> {
     );
   }
 
-  // ---------------------------------------------------------------------
-  // Shared style helpers
-  // ---------------------------------------------------------------------
+  // --------------------------------------------------------------------- Style helpers ---------------------------------------------------------------------
   List<Shadow> _textShadow() => const [
     Shadow(color: Colors.black, offset: Offset(-1, 1), blurRadius: 1),
   ];
