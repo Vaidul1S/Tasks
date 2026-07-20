@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../data/flags.dart';
 
-// Replace with your actual flags data source, e.g.:
-// import '../data/flags.dart' show flags;
-
 class Credits extends StatelessWidget {
   const Credits({super.key});
 

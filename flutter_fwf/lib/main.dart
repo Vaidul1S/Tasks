@@ -32,10 +32,13 @@ class _MyAppState extends State<MyApp> {
           brightness: Brightness.dark,
         ),
       ),
-      home: Scaffold(        
-        body: ValueListenableBuilder(valueListenable: selectedPageNotifier, builder: (context, value, child) {
-          return pages.elementAt(value);
-        },),
+      home: Scaffold(
+        body: ValueListenableBuilder(
+          valueListenable: selectedPageNotifier,
+          builder: (context, value, child) {
+            return pages.elementAt(value);
+          },
+        ),
         bottomNavigationBar: NavBarWidget(),
       ),
     );
