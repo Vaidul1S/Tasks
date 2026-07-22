@@ -9,6 +9,8 @@ const tarpine = document.querySelector('[data-tarpine]');
 const viso = document.querySelector('[data-viso]');
 const visoPVM = document.querySelector('[data-visoPvm');
 
+//   api NEBEVEIKIA
+
 fetch('https://in3.dev/inv/')
     .then(response => response.json())
     .then(data => {
