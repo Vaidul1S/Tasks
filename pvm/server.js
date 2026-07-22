@@ -32,3 +32,4 @@ app.listen(port, () => {
 
 
 //   frontas - http://localhost:5005/read.html
+//   api NEBEVEIKIA
