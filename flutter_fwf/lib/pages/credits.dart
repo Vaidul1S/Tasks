@@ -44,7 +44,7 @@ class Credits extends StatelessWidget {
                       style: TextStyle(fontSize: 32),
                     ),
                     TextSpan(
-                      text: 'Guess a country by the flag.\nList of $count countries.\n\n\n\n\n\n',
+                      text: 'Guess a country by the flag\nList of $count countries\n\n\n\n\n\n',
                       style: TextStyle(fontSize: 26),
                     ),
                     TextSpan(
