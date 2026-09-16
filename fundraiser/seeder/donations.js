@@ -3,4 +3,5 @@ export const donations = [
     { id: 2, story_id: 2, donor_name: 'Gerasis Samarietis', amount: 54321 },
     { id: 3, story_id: 3, donor_name: 'Pooppies Lovers', amount: 4989 },
     { id: 4, story_id: 2, donor_name: 'Hooters', amount: 1111 },
+    { id: 5, story_id: 4, donor_name: 'Gill Bates', amount: 2000000 },
 ];
