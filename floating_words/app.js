@@ -34,4 +34,18 @@ function movePhrases() {
     requestAnimationFrame(movePhrases);
 }
 
+let dr = 0.5;
+let angle = 0;
+function spin() {
+    const spiny = document.getElementById('phrase1');
+    angle += dr;    
+    spiny.style.rotate = `${angle}deg`;
+    requestAnimationFrame(spin);
+    if (angle === 360) {
+        angle = 0;
+    }
+}
+
+spin();
+
 movePhrases();
