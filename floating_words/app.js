@@ -37,7 +37,7 @@ function movePhrases() {
 let dr = 0.5;
 let angle = 0;
 function spin() {
-    const spiny = document.getElementById('phrase1');
+    const spiny = document.getElementById('phrase13');
     angle += dr;    
     spiny.style.rotate = `${angle}deg`;
     requestAnimationFrame(spin);
