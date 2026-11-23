@@ -47,5 +47,6 @@ function spin() {
     }
 }
 
-spin();
+
 movePhrases();
+spin();
