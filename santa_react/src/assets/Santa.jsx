@@ -64,9 +64,7 @@ export default function Santa() {
 
             localStorage.setItem('santa', JSON.stringify(poolIndex));
         }
-
         setName("");
-
     };
 
     return (
