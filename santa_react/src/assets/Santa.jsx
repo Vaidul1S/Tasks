@@ -34,7 +34,6 @@ export default function Santa() {
             return;
         }
 
-
         if (localStorage.getItem('santa').includes(ivestis) || JSON.parse(localStorage.getItem('santa')) == null) {
             pairs.forEach(pair => {
                 if (ivestis == pair[0]) {
