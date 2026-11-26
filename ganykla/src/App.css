@@ -6,8 +6,8 @@ body {
 }
 
 @font-face {
-    font-family: 'Freck';
-    src: url(./Components/FreckleFace-Regular.ttf);
+  font-family: 'Freck';
+  src: url(./Components/FreckleFace-Regular.ttf);
 }
 
 .app {
@@ -27,6 +27,7 @@ body {
 
   h2,
   h4 {
+    letter-spacing: 10px;
     text-shadow: 2px 2px 5px red;
   }
 }
@@ -74,6 +75,7 @@ body {
   background-image: url("./Components/sheep.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  letter-spacing: 1px;
 }
 
 .cow {
@@ -91,9 +93,11 @@ body {
   background-image: url("./Components/cow.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  letter-spacing: 1px;
 }
 
 .buttons {
+  font-family: 'Freck';
   width: 30%;
   display: flex;
   justify-content: center;
