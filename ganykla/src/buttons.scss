@@ -5,6 +5,11 @@ $dblue: #454372;
 $cadet: #2F2963;
 $cyan: #29abcc;
 
+@font-face {
+  font-family: 'Freck';
+  src: url(./Components/FreckleFace-Regular.ttf);
+}
+
 button {
     background-color: $cadet;
     border: 0;
@@ -101,7 +106,8 @@ button {
     color: white;
     cursor: pointer;
     display: inline-block;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Freck';
+    letter-spacing: 5px;
     font-size: 16px;
     font-weight: 600;
     margin: 0;

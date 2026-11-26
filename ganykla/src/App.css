@@ -96,8 +96,7 @@ body {
   letter-spacing: 1px;
 }
 
-.buttons {
-  font-family: 'Freck';
+.buttons {  
   width: 30%;
   display: flex;
   justify-content: center;

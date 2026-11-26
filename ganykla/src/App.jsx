@@ -90,8 +90,8 @@ export default function App() {
 
                 </div>
                 <div className='buttons'>
-                    <button className="button27 green" onClick={iGanykla}>Į ganyklą</button>
-                    <button className="button27 red" onClick={iSkerdykla}>Į skerdyklą</button>
+                    <button className="button27 green" onClick={iGanykla}>Į Ganyklą</button>
+                    <button className="button27 red" onClick={iSkerdykla}>Į Skerdyklą</button>
                 </div>
             </header>
         </div>
