@@ -84,14 +84,13 @@ export default function App() {
                             {
                                 ganykla.map(g => g.gardas === 'karvide' ? <Karve key={g.id} id={g.id} perbegimas={perbegimas} kind={g.kind} gardas={g.gardas} /> : null)
                             }
-
                         </div>
                     </div>
 
                 </div>
                 <div className='buttons'>
-                    <button className="button27 green" onClick={iGanykla}>Į Ganyklą</button>
-                    <button className="button27 red" onClick={iSkerdykla}>Į Skerdyklą</button>
+                    <button className="button27 green" onClick={iGanykla}>Į Ganyklą 🏡</button>
+                    <button className="button27 red" onClick={iSkerdykla}>Į Skerdyklą 🔪</button>
                 </div>
             </header>
         </div>
